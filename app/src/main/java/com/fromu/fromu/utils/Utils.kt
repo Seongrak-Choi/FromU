@@ -50,17 +50,16 @@ class Utils {
             }
             return null
         }
-    }
 
-
-    /**
-     * FromUCustomSnackBar show method
-     *
-     * @param view
-     * @param message
-     * @param duration
-     */
-    fun showCustomSnackBar(view: View, message: String, duration: Int = 2500) {
-        FromUSnackBarBlack(view, message, duration).show()
+        /**
+         * FromUCustomSnackBar show method
+         *
+         * @param view
+         * @param message
+         * @param duration
+         */
+        fun showCustomSnackBar(view: View, message: String, duration: Int = 2500) {
+            FromUSnackBarBlack(view, message, duration).show()
+        }
     }
 }
