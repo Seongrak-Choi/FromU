@@ -30,7 +30,7 @@ class FromUSnackBarBlack(view: View, private val message: String, private val du
 
     private fun initView() {
         with(snackBarLayout) {
-            width = ViewGroup.LayoutParams.WRAP_CONTENT
+            width = ViewGroup.LayoutParams.MATCH_PARENT
             gravity = (Gravity.CENTER or Gravity.BOTTOM)
         }
 

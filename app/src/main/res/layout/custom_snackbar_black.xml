@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="message"
             type="String" />
@@ -20,19 +19,20 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_2B2B2B"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="7dp">
+            android:background="@color/color_2B2B2B">
 
             <TextView
-                android:id="@+id/tv_snackbar"
                 style="@style/PretendardRegular.ffffff.14dp"
+                android:id="@+id/tv_snackbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@{message}"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@{message}"
                 tools:text="연인과의 연결이 실행되지 않았어!" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
