@@ -78,6 +78,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
 
+    // viewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
+
+
     /* glide image */
     implementation "com.github.bumptech.glide:glide:4.14.2"
     annotationProcessor "com.github.bumptech.glide:compiler:4.13.2"
@@ -101,4 +107,14 @@ dependencies {
     /* hilt */
     implementation "com.google.dagger:hilt-android:2.44"
     kapt "com.google.dagger:hilt-android-compiler:2.44"
+
+    //kakao
+    implementation "com.kakao.sdk:v2-user:2.11.2" // 카카오 로그인
+
+    //google
+    implementation 'com.google.android.gms:play-services-auth:20.4.1' //구글 로그인
+
+    /* Google Sign-In */
+    // https://developers.google.com/identity/sign-in/android/start-integrating
+    implementation 'com.google.android.gms:play-services-auth:20.4.1'
 }

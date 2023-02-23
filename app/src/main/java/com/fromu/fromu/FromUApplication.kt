@@ -1,8 +1,25 @@
 package com.fromu.fromu
 
 import android.app.Application
+import com.fromu.fromu.utils.Const
+import com.kakao.sdk.common.KakaoSdk
+import dagger.hilt.android.HiltAndroidApp
+import timber.log.Timber
 
+@HiltAndroidApp
 class FromUApplication : Application() {
 
-    companion object {}
+    companion object {
+
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+
+        // Timber Tree 인스턴스 설정
+        Timber.plant(Timber.DebugTree())
+
+        //카카오 로그인
+        KakaoSdk.init(this, Const.KAKAO_SDK_NATIVE_APP_KEY)
+    }
 }
