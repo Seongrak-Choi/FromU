@@ -7,8 +7,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.fromu.fromu.databinding.ActivityLoginBinding
 import com.fromu.fromu.ui.base.BaseActivity
-import com.fromu.fromu.utils.GoogleLogin
-import com.fromu.fromu.utils.KakaoLogin
+import com.fromu.fromu.utils.GoogleLoginManager
+import com.fromu.fromu.utils.KakaoLoginManager
 import com.fromu.fromu.utils.UiUtils
 import com.fromu.fromu.viewmodel.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -24,7 +24,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     private val loginViewModel: LoginViewModel by viewModels()
 
-    private lateinit var googleLoginInstance: GoogleLogin
+    private lateinit var googleLoginManagerInstance: GoogleLoginManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,13 +37,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {
                 val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-                googleLoginInstance.handleSignInResult(task)
+                googleLoginManagerInstance.handleSignInResult(task)
             } else {
                 Timber.tag("ator").e("구글 로그인 실패")
             }
         }
 
-        googleLoginInstance = GoogleLogin(this, activityLauncher)
+        googleLoginManagerInstance = GoogleLoginManager(this, activityLauncher)
     }
 
     private fun initView() {
@@ -59,7 +59,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
      * 카카오 로그인
      */
     fun loginKakao() {
-        KakaoLogin(this).loginKakao(object : KakaoLogin.OnKakaoLoginListener {
+        KakaoLoginManager(this).loginKakao(object : KakaoLoginManager.OnKakaoLoginListener {
             override fun onSuccess(accessToken: String) {
                 Timber.tag("rak").e(accessToken)
                 //TODO accessToken 서버와 연결
@@ -75,6 +75,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
      * 구글 로그인
      */
     fun loginGoogle() {
-        googleLoginInstance.loginGoogle()
+        googleLoginManagerInstance.loginGoogle()
     }
 }

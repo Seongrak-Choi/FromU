@@ -11,7 +11,7 @@ import com.google.android.gms.tasks.Task
 import timber.log.Timber
 
 
-class GoogleLogin(private val mContext: Context, private val activityLauncher: ActivityResultLauncher<Intent>) {
+class GoogleLoginManager(private val mContext: Context, private val activityLauncher: ActivityResultLauncher<Intent>) {
     private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestIdToken(Const.GOOGLE_CLIENT_ID)
         .requestEmail() // email addresses도 요청함

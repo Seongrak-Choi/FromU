@@ -6,7 +6,7 @@ import com.kakao.sdk.user.UserApiClient
 import timber.log.Timber
 
 
-class KakaoLogin(private val context: Context) {
+class KakaoLoginManager(private val context: Context) {
 
     interface OnKakaoLoginListener {
         fun onSuccess(accessToken: String)
