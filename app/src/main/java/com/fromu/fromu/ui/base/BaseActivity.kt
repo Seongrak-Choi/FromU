@@ -1,22 +1,25 @@
-package com.fromu.fromu.base
+package com.fromu.fromu.ui.base
 
 import android.content.Context
 import android.os.*
 import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
-import com.fromu.fromu.utils.custom.FromUSnackBarBlack
 
-abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : Fragment() {
+abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : AppCompatActivity() {
     protected lateinit var binding: T
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         binding = inflate(layoutInflater)
-        return binding.root
+        setContentView(binding.root)
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        binding.unbind()
     }
 
 
@@ -24,8 +27,8 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
      * 키보드를 강제로 내리기 위한 메소드
      */
     protected fun hideKeyboard() {
-        val inputManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        val currentFocus = requireActivity().window.currentFocus
+        val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val currentFocus = window.currentFocus
         if (currentFocus != null) {
             inputManager.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
         }
@@ -38,15 +41,14 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
      * @param milliSecondsOfDuration
      * @param power
      */
-    fun doVibrate(milliSecondsOfDuration: Long, power:Int) {
+    fun doVibrate(milliSecondsOfDuration: Long, power: Int) {
         val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            val vibratorManager = requireActivity().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
+            val vibratorManager = getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
             vibratorManager.defaultVibrator
         } else {
             @Suppress("DEPRECATION")
-            requireActivity().getSystemService(AppCompatActivity.VIBRATOR_SERVICE) as Vibrator
+            getSystemService(VIBRATOR_SERVICE) as Vibrator
         }
         vibrator.vibrate(VibrationEffect.createOneShot(milliSecondsOfDuration, power))
     }
-
 }
