@@ -2,16 +2,19 @@ package com.fromu.fromu.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
-import com.fromu.fromu.base.BaseActivity
 import com.fromu.fromu.databinding.ActivitySplashBinding
+import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.UiUtils
+import com.fromu.fromu.viewmodel.SplashViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding::inflate) {
+
+    private val splashViewModel: SplashViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -29,11 +32,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
         UiUtils.hideStatusBarAndSystemBar(window)
         UiUtils.setFullScreenWithStatusBar(this)
 
-        binding.apply {
-            lifecycleOwner = this@SplashActivity
-        }
+        binding.apply {}
     }
-
 
 
     /**
