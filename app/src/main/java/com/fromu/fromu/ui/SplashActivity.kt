@@ -39,5 +39,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
     /**
      * dynamic link handle method
      */
-    private fun handleDynamicLinks() {}
+    private fun handleDynamicLinks() {
+        //TODO 추후 다이나믹 링크 연동
+    }
 }

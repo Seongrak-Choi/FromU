@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/transparent</item>
         <!-- Customize your theme here. -->
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
@@ -26,6 +27,43 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+
+
+
+
+
+
+
+    <!-- ************ Font ************ -->
+
+
+    <!-- EfDiary -->
+    <style name="EfDiary" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/ef_diary</item>
+    </style>
+
+    <style name="EfDiary.ffffff">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="EfDiary.ffffff.14dp">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+
+    <!-- PretendardRegular -->
+    <style name="PretendardRegular" parent="TextAppearance.AppCompat">
+        <item name="fontFamily">@font/pretendard_regular</item>
+    </style>
+
+    <style name="PretendardRegular.ffffff">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="PretendardRegular.ffffff.14dp">
+        <item name="android:textSize">14dp</item>
     </style>
 
 </resources>
