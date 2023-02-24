@@ -1,8 +1,16 @@
 <resources>
     <string name="app_name">프롬유</string>
     <!-- common -->
+    <string name="next">다음</string>
 
     <!-- login -->
     <string name="login_google">Google로 로그인하기</string>
     <string name="login_kakao">카카오로 로그인하기</string>
+
+
+    <!-- sign_up -->
+    <string name="nickname_title">반가워,\n너의 닉네임을 정해줘</string>
+    <string name="nickname_subtitle">상대방과 함께하는 애칭도 좋아!</string>
+    <string name="nickname_contents_hint">예) 프롬이</string>
+    <string name="nickname_warring_msg">다섯글자 이내(특수문자 제외)로 작성해줘</string>\
 </resources>
