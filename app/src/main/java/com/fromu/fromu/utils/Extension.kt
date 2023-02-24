@@ -29,6 +29,13 @@ object Extension {
         }
     }
 
+    /**
+     * 클릭 후 1초 동안 재동작 안 하도록 throttle 메소드
+     *
+     * @param uiScope
+     * @param windowDuration
+     * @param onClick
+     */
     fun View.setThrottleClick(uiScope: CoroutineScope, windowDuration: Long = 1000, onClick: () -> Unit) {
         clicks()
             .throttleFirst(windowDuration)
@@ -36,6 +43,13 @@ object Extension {
             .launchIn(uiScope)
     }
 
+    /**
+     * EditText 입력 시 0.5초 후 원하는 작업 실행 되도록 debounce 해주는 확장 함수
+     *
+     * @param time
+     * @param coroutineScope
+     * @param block
+     */
     fun EditText.debounce(time: Long = 500L, coroutineScope: CoroutineScope, block: (String) -> Unit) {
         var job: Job? = null
         doAfterTextChanged {
