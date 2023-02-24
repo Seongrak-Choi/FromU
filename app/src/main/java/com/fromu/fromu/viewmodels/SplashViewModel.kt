@@ -1,4 +1,4 @@
-package com.fromu.fromu.viewmodel
+package com.fromu.fromu.viewmodels
 
 import com.fromu.fromu.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

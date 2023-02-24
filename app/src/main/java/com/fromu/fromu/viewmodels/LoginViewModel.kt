@@ -1,4 +1,4 @@
-package com.fromu.fromu.viewmodel
+package com.fromu.fromu.viewmodels
 
 import com.fromu.fromu.data.repository.LoginRepository
 import com.fromu.fromu.ui.base.BaseViewModel

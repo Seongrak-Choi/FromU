@@ -7,7 +7,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.fromu.fromu.databinding.ActivitySplashBinding
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.UiUtils
-import com.fromu.fromu.viewmodel.SplashViewModel
+import com.fromu.fromu.viewmodels.SplashViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

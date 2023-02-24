@@ -1,4 +1,4 @@
-package com.fromu.fromu.ui.login
+package com.fromu.fromu.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,7 +10,7 @@ import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.GoogleLoginManager
 import com.fromu.fromu.utils.KakaoLoginManager
 import com.fromu.fromu.utils.UiUtils
-import com.fromu.fromu.viewmodel.LoginViewModel
+import com.fromu.fromu.viewmodels.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
@@ -25,6 +25,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     private val loginViewModel: LoginViewModel by viewModels()
 
     private lateinit var googleLoginManagerInstance: GoogleLoginManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -48,7 +49,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     private fun initView() {
         UiUtils.setFullScreenWithStatusBar(this)
-
         binding.apply {
             viewmodels = loginViewModel
             view = this@LoginActivity
@@ -61,12 +61,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     fun loginKakao() {
         KakaoLoginManager(this).loginKakao(object : KakaoLoginManager.OnKakaoLoginListener {
             override fun onSuccess(accessToken: String) {
-                Timber.tag("rak").e(accessToken)
+                Timber.tag("ator").e(accessToken)
                 //TODO accessToken 서버와 연결
             }
 
             override fun onFailure(errorMsg: String) {
-                Timber.tag("rak").e(errorMsg)
+                Timber.tag("ator").e(errorMsg)
             }
         })
     }

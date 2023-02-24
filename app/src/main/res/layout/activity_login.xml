@@ -6,11 +6,11 @@
 
         <variable
             name="viewmodels"
-            type="com.fromu.fromu.viewmodel.LoginViewModel" />
+            type="com.fromu.fromu.viewmodels.LoginViewModel" />
 
         <variable
             name="view"
-            type="com.fromu.fromu.ui.login.LoginActivity" />
+            type="com.fromu.fromu.ui.LoginActivity" />
 
         <import type="com.fromu.fromu.utils.Const.LoginType" />
     </data>
