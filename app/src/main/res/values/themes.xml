@@ -12,7 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/transparent</item>
         <!-- Customize your theme here. -->
-        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
@@ -35,6 +34,7 @@
 
     <!-- EfDiary -->
     <style name="EfDiary" parent="TextAppearance.AppCompat">
+        <item name="android:includeFontPadding">true</item>
         <item name="fontFamily">@font/ef_diary</item>
     </style>
 
@@ -47,8 +47,35 @@
     </style>
 
 
+    <style name="EfDiary.000000">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="EfDiary.000000.18dp">
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="EfDiary.000000.20dp">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+
+    <style name="EfDiary.6f6f6f">
+        <item name="android:textColor">@color/color_6f6f6f</item>
+    </style>
+
+    <style name="EfDiary.6f6f6f.12dp">
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="EfDiary.6f6f6f.16dp">
+        <item name="android:textSize">16dp</item>
+    </style>
+
+
     <!-- PretendardRegular -->
     <style name="PretendardRegular" parent="TextAppearance.AppCompat">
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/pretendard_regular</item>
     </style>
 
@@ -58,6 +85,10 @@
 
     <style name="PretendardRegular.ffffff.14dp">
         <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="PretendardRegular.ffffff.16dp">
+        <item name="android:textSize">16dp</item>
     </style>
 
 
@@ -73,6 +104,7 @@
     <!-- PretendardMedium -->
 
     <style name="PretendardMedium" parent="TextAppearance.AppCompat">
+        <item name="android:includeFontPadding">false</item>
         <item name="fontFamily">@font/pretendard_medium</item>
     </style>
 
