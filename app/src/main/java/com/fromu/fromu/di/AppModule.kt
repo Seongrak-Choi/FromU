@@ -3,7 +3,7 @@ package com.fromu.fromu.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.fromu.fromu.utils.Const
+import com.fromu.fromu.utils.PrefManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -18,6 +18,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences {
-        return context.getSharedPreferences(Const.SHARED_PREFERENCES_NAME, Application.MODE_PRIVATE)
+        return context.getSharedPreferences(PrefManager.SHARED_PREFERENCES_NAME, Application.MODE_PRIVATE)
     }
 }
