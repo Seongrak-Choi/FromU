@@ -9,5 +9,16 @@
         android:id="@+id/signupNicknameFragment"
         android:name="com.fromu.fromu.ui.signup.SignupNicknameFragment"
         android:label="SignupNicknameFragment"
-        tools:layout="@layout/fragment_signup_nickname" />
+        tools:layout="@layout/fragment_signup_nickname" >
+        <action
+            android:id="@+id/action_signupNicknameFragment_to_signupBirthdayFragment"
+            app:destination="@id/signupBirthdayFragment"
+            app:enterAnim="@anim/view_fade_in"
+            app:exitAnim="@anim/view_fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/signupBirthdayFragment"
+        android:name="com.fromu.fromu.ui.signup.SignupBirthdayFragment"
+        android:label="SignupBirthdayFragment"
+        tools:layout="@layout/fragment_signup_birthday"/>
 </navigation>

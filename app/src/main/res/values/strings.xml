@@ -12,5 +12,8 @@
     <string name="nickname_title">반가워,\n너의 닉네임을 정해줘</string>
     <string name="nickname_subtitle">상대방과 함께하는 애칭도 좋아!</string>
     <string name="nickname_contents_hint">예) 프롬이</string>
-    <string name="nickname_warring_msg">다섯글자 이내(특수문자 제외)로 작성해줘</string>\
+    <string name="nickname_warring_msg">다섯글자 이내(특수문자 제외)로 작성해줘</string>
+
+    <string name="birthday_title">너의 생일을 알려줘!</string>
+    <string name="birthday_hint">YYYY / MM / DD</string>
 </resources>

@@ -9,8 +9,12 @@ import javax.inject.Inject
 class SignupViewModel @Inject constructor() : BaseViewModel() {
     // 입력한 nickName 값
     val nickname: MutableStateFlow<String> = MutableStateFlow("")
+    // nickName의 유효성 확인결과
+    val isValidNickname: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
-    // nickName의 유효성 타당 결과
-    val isNicknameMatch: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    // 생년월일 유효성 확인 결과
+    val isValidBirthday: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
 }
 
