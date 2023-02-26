@@ -2,6 +2,7 @@ package com.fromu.fromu.ui.signup
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.OnFocusChangeListener
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
@@ -43,6 +44,11 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
 
     private fun initEvent() {
         binding.apply {
+
+            etContents.onFocusChangeListener = OnFocusChangeListener { v, hasFocuse ->
+                vNicknameUnderline.isSelected = hasFocuse
+            }
+
             etContents.debounce(coroutineScope = lifecycleScope) {
                 if (it.isEmpty()) {
                     signupViewModel.isValidNickname.value = false

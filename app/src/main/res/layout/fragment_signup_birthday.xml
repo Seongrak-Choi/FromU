@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -11,7 +12,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_nickname_title"
@@ -24,7 +26,9 @@
             app:layout_constraintTop_toTopOf="@id/gl_v_1475"
             app:lineHeight="28dp" />
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_birthday_contents"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/gl_end"
@@ -32,16 +36,78 @@
             app:layout_constraintTop_toBottomOf="@+id/gl_v_3300">
 
             <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/et_birthday_contents"
+                android:id="@+id/et_birthday_year"
+                style="@style/PretendardRegular.000000.18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="@string/birthday_year_hint"
+                android:inputType="date"
+                android:maxLength="4"
+                android:nextFocusForward="@id/et_birthday_month"
+                android:textColorHint="@color/color_999999"
+                android:textCursorDrawable="@drawable/cursor_bg_a735ff"
+                app:layout_constraintEnd_toStartOf="@+id/tv_birthday_slash_1"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            ?
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_birthday_slash_1"
                 style="@style/PretendardRegular.999999.18dp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:text="@string/splash"
+                app:layout_constraintBaseline_toBaselineOf="@id/et_birthday_year"
+                app:layout_constraintEnd_toStartOf="@+id/et_birthday_month"
+                app:layout_constraintStart_toEndOf="@+id/et_birthday_year" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_birthday_month"
+                style="@style/PretendardRegular.000000.18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="@string/birthday_month_hint"
+                android:inputType="date"
+                android:maxLength="2"
+                android:textColorHint="@color/color_999999"
+                android:textCursorDrawable="@drawable/cursor_bg_a735ff"
+                app:layout_constraintEnd_toStartOf="@+id/tv_birthday_slash_2"
+                app:layout_constraintStart_toEndOf="@+id/tv_birthday_slash_1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_birthday_slash_2"
+                style="@style/PretendardRegular.999999.18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:text="@string/splash"
+                app:layout_constraintBaseline_toBaselineOf="@id/et_birthday_year"
+                app:layout_constraintEnd_toStartOf="@+id/et_birthday_day"
+                app:layout_constraintStart_toEndOf="@+id/et_birthday_month" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_birthday_day"
+                style="@style/PretendardRegular.000000.18dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="center"
-                android:hint="@string/birthday_hint"
+                android:hint="@string/birthday_day_hint"
                 android:inputType="date"
+                android:maxLength="2"
                 android:textColorHint="@color/color_999999"
                 android:textCursorDrawable="@drawable/cursor_bg_a735ff"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_birthday_slash_2"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
@@ -50,10 +116,11 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="10.5dp"
                 android:background="@drawable/selector_bg_unclick_dedee2_click_a735ff"
-                app:layout_constraintTop_toBottomOf="@+id/et_birthday_contents" />
+                app:layout_constraintTop_toBottomOf="@+id/et_birthday_year" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_birthday_next"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
@@ -71,7 +138,8 @@
                 android:gravity="center"
                 android:paddingVertical="18.5dp"
                 android:text="@string/next"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

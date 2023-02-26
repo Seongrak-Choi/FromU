@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="kotlinx.coroutines.flow.StateFlow" />
+
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.SignupViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_gender_title"
+            style="@style/EfDiary.000000.20dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/gender_title"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start"
+            app:layout_constraintTop_toTopOf="@id/gl_v_1475"
+            app:lineHeight="28dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_gender_female"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="11dp"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toStartOf="@id/cv_gender_male"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toTopOf="@id/gl_v_2660">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_gender_female"
+                selected='@{vm.gender.equals(String.valueOf("fm"))}'
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_unclick_ffffff_click_e2dbff"
+                android:gravity="center"
+                android:onClick='@{(view) -> vm.setGender(String.valueOf("fm"))}'
+                android:orientation="vertical"
+                android:paddingHorizontal="60dp"
+                android:paddingVertical="28dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_gender_women" />
+
+                <TextView
+                    style="@style/EfDiary.000000.16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/gender_female" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_gender_male"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toEndOf="@+id/cv_gender_female"
+            app:layout_constraintTop_toTopOf="@id/gl_v_2660">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_gender_male"
+                selected='@{vm.gender.equals(String.valueOf("m"))}'
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_unclick_ffffff_click_e2dbff"
+                android:gravity="center"
+                android:onClick='@{(view) -> vm.setGender(String.valueOf("m"))}'
+                android:orientation="vertical"
+                android:paddingHorizontal="60dp"
+                android:paddingVertical="28dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_gender_men" />
+
+                <TextView
+                    style="@style/EfDiary.000000.16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/gender_male" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_birthday_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:fitsSystemWindows="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/PretendardRegular.ffffff.16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
+                android:enabled="@{!vm.gender.isEmpty()}"
+                android:gravity="center"
+                android:paddingVertical="18.5dp"
+                android:text="@string/done"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1475"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1475" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_2660"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2660" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
