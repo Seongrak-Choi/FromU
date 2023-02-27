@@ -15,6 +15,16 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_birthday_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:src="@drawable/ic_back_6f6f6f"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_v_0591" />
+
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_nickname_title"
             style="@style/EfDiary.000000.20dp"
@@ -53,7 +63,7 @@
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            ?
+
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_birthday_slash_1"
@@ -61,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
-                android:text="@string/splash"
+                android:text="@string/slash"
                 app:layout_constraintBaseline_toBaselineOf="@id/et_birthday_year"
                 app:layout_constraintEnd_toStartOf="@+id/et_birthday_month"
                 app:layout_constraintStart_toEndOf="@+id/et_birthday_year" />
@@ -89,7 +99,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
-                android:text="@string/splash"
+                android:text="@string/slash"
                 app:layout_constraintBaseline_toBaselineOf="@id/et_birthday_year"
                 app:layout_constraintEnd_toStartOf="@+id/et_birthday_day"
                 app:layout_constraintStart_toEndOf="@+id/et_birthday_month" />
@@ -142,6 +152,13 @@
                 tools:layout_editor_absoluteX="0dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_0591"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0591" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_1475"

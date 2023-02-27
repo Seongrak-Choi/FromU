@@ -6,7 +6,7 @@ import android.text.InputFilter
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.databinding.FragmentSignupBirthdayBinding
@@ -17,7 +17,7 @@ import com.fromu.fromu.viewmodels.SignupViewModel
 
 class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(FragmentSignupBirthdayBinding::inflate) {
 
-    private val signupViewModel: SignupViewModel by viewModels()
+    private val signupViewModel: SignupViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -148,6 +148,11 @@ class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(Fragm
             clBirthdayNext.setOnClickListener {
                 signupViewModel.birthday.value = "${etBirthdayYear.text}${etBirthdayMonth.text}${etBirthdayDay.text}"
                 findNavController().navigate(R.id.action_signupBirthdayFragment_to_signupGenderFragment)
+            }
+
+            // back 버튼
+            ivBirthdayBack.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }

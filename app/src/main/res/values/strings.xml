@@ -2,6 +2,8 @@
     <string name="app_name">프롬유</string>
     <!-- common -->
     <string name="next">다음</string>
+    <string name="slash">/</string>
+    <string name="done">완료</string>
 
     <!-- login -->
     <string name="login_google">Google로 로그인하기</string>
@@ -15,5 +17,25 @@
     <string name="nickname_warring_msg">다섯글자 이내(특수문자 제외)로 작성해줘</string>
 
     <string name="birthday_title">너의 생일을 알려줘!</string>
-    <string name="birthday_hint">YYYY / MM / DD</string>
+    <string name="birthday_year_hint">YYYY</string>
+    <string name="birthday_month_hint">MM</string>
+    <string name="birthday_day_hint">DD</string>
+
+    <string name="gender_title">너의 성별을 알려줘!</string>
+    <string name="gender_male">남성</string>
+    <string name="gender_female">여성</string>
+
+
+    <!-- terms -->
+    <string name="terms_title">%s야,\n안녕.</string>
+    <string name="terms_agree">동의하고 시작할래!</string>
+    <string name="terms_of_user">(필수)이용약관</string>
+    <string name="terms_personal_information">(필수)개인 정보 수집/이용 동의</string>
+
+
+    <!-- invitation -->
+    <string name="invitation_title">너에게 코드를 줄게.\n너의 연인과 연결해보자!</string>
+    <string name="invitation_send">초대장 보내기</string>
+    <string name="invitation_input_code">연인의 코드 입력하기</string>
+    <string name="invitation_description_title">새로고침 아이콘을 눌러,\n연인과의 연결상태를 확인해봐!</string>
 </resources>

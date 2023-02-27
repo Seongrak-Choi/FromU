@@ -1,8 +1,9 @@
-package com.fromu.fromu.utils
+package com.fromu.fromu.utils.sns
 
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
+import com.fromu.fromu.utils.Const
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions

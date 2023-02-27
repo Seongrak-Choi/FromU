@@ -1,4 +1,4 @@
-package com.fromu.fromu.utils
+package com.fromu.fromu.utils.sns
 
 import android.content.Context
 import com.kakao.sdk.auth.model.OAuthToken

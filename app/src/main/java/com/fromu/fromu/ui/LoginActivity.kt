@@ -7,9 +7,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.fromu.fromu.databinding.ActivityLoginBinding
 import com.fromu.fromu.ui.base.BaseActivity
-import com.fromu.fromu.utils.GoogleLoginManager
-import com.fromu.fromu.utils.KakaoLoginManager
 import com.fromu.fromu.utils.UiUtils
+import com.fromu.fromu.utils.sns.GoogleLoginManager
+import com.fromu.fromu.utils.sns.KakaoLoginManager
 import com.fromu.fromu.viewmodels.LoginViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount

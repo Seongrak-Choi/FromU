@@ -1,6 +1,8 @@
 package com.fromu.fromu.utils
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Build
 import android.view.View
 import android.view.Window
@@ -42,6 +44,20 @@ class UiUtils {
                 hide(WindowInsetsCompat.Type.systemBars()) // systemBar 숨기기
                 systemBarsBehavior = WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE // 스와이프로 가려진 systemBar 볼 수 있음
             }
+        }
+
+
+        fun getStatusBarHeight(context: Context): Int {
+            val screenSizeType: Int = context.getResources().getConfiguration().screenLayout and
+                    Configuration.SCREENLAYOUT_SIZE_MASK
+            var statusbar = 0
+            if (screenSizeType != Configuration.SCREENLAYOUT_SIZE_XLARGE) {
+                val resourceId: Int = context.resources.getIdentifier("status_bar_height", "dimen", "android")
+                if (resourceId > 0) {
+                    statusbar = context.resources.getDimensionPixelSize(resourceId)
+                }
+            }
+            return statusbar
         }
     }
 }

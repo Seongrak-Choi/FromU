@@ -1,15 +1,11 @@
-package com.fromu.fromu.ui.signup
+package com.fromu.fromu.ui.invitaion
 
 import android.os.Bundle
-import androidx.activity.viewModels
-import com.fromu.fromu.databinding.ActivitySignupBinding
+import com.fromu.fromu.databinding.ActivityInvitationBinding
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.UiUtils
-import com.fromu.fromu.viewmodels.SignupViewModel
 
-class SignupActivity : BaseActivity<ActivitySignupBinding>(ActivitySignupBinding::inflate) {
-
-    private val signupViewModel: SignupViewModel by viewModels()
+class InvitationActivity : BaseActivity<ActivityInvitationBinding>(ActivityInvitationBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,5 +16,6 @@ class SignupActivity : BaseActivity<ActivitySignupBinding>(ActivitySignupBinding
     private fun initData() {}
     private fun initView() {
         UiUtils.setFullScreenWithStatusBar(this)
+
     }
 }

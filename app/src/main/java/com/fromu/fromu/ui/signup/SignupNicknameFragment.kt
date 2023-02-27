@@ -5,7 +5,7 @@ import android.view.View
 import android.view.View.OnFocusChangeListener
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
@@ -18,7 +18,7 @@ import com.fromu.fromu.viewmodels.SignupViewModel
 
 class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(FragmentSignupNicknameBinding::inflate) {
 
-    private val signupViewModel: SignupViewModel by viewModels()
+    private val signupViewModel: SignupViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,7 +45,7 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
     private fun initEvent() {
         binding.apply {
 
-            etContents.onFocusChangeListener = OnFocusChangeListener { v, hasFocuse ->
+            etContents.onFocusChangeListener = OnFocusChangeListener { _, hasFocuse ->
                 vNicknameUnderline.isSelected = hasFocuse
             }
 

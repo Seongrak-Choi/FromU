@@ -5,8 +5,6 @@
 
     <data>
 
-        <import type="kotlinx.coroutines.flow.StateFlow" />
-
         <variable
             name="vm"
             type="com.fromu.fromu.viewmodels.SignupViewModel" />
@@ -16,6 +14,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_gender_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:src="@drawable/ic_back_6f6f6f"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_v_0591" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_gender_title"
@@ -40,7 +48,6 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/ll_gender_female"
-                selected='@{vm.gender.equals(String.valueOf("fm"))}'
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_unclick_ffffff_click_e2dbff"
@@ -48,7 +55,8 @@
                 android:onClick='@{(view) -> vm.setGender(String.valueOf("fm"))}'
                 android:orientation="vertical"
                 android:paddingHorizontal="60dp"
-                android:paddingVertical="28dp">
+                android:paddingVertical="28dp"
+                android:selected='@{vm.gender.equals(String.valueOf("fm"))}'>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
@@ -113,6 +121,7 @@
             app:layout_constraintStart_toStartOf="@+id/gl_start">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_gender_done"
                 style="@style/PretendardRegular.ffffff.16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,6 +134,12 @@
                 tools:layout_editor_absoluteX="0dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_0591"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0591" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_1475"

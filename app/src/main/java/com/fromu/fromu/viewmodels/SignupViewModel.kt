@@ -23,9 +23,23 @@ class SignupViewModel @Inject constructor() : BaseViewModel() {
     // 선택한 Gender 값
     val gender: MutableStateFlow<String> = MutableStateFlow("")
 
+    // 이용약관 체크 상태
+    val isCheckedTermsOfUser: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    // 개인 정보 수집 체크 상태
+    val isCheckedPersonalInformation: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
 
     fun setGender(value: String) {
         gender.value = value
+    }
+
+    fun clickTermsOfUser() {
+        isCheckedTermsOfUser.value = !isCheckedTermsOfUser.value
+    }
+
+    fun clickPersonalInformation() {
+        isCheckedPersonalInformation.value = !isCheckedPersonalInformation.value
     }
 }
 

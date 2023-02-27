@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.databinding.CustomSnackbarBlackBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -24,27 +25,31 @@ class FromUSnackBarBlack(view: View, private val message: String, private val du
     private val snackBarBinding: CustomSnackbarBlackBinding = CustomSnackbarBlackBinding.inflate(inflater)
 
     init {
-        initView()
         initData()
-    }
-
-    private fun initView() {
-        with(snackBarLayout) {
-            width = ViewGroup.LayoutParams.MATCH_PARENT
-            gravity = (Gravity.CENTER or Gravity.BOTTOM)
-        }
-
-        with(snackBarView) {
-            removeAllViews()
-            setPadding(0, 0, 0, 30)
-            setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
-            addView(snackBarBinding.root, 0)
-        }
+        initView()
     }
 
     private fun initData() {
         snackBarBinding.message = message
     }
+
+    private fun initView() {
+        with(snackBarLayout) {
+            width = ViewGroup.LayoutParams.MATCH_PARENT
+            gravity = (Gravity.CENTER or Gravity.TOP)
+        }
+
+        with(snackBarView) {
+            removeAllViews()
+            setPadding(0, FromUApplication.statusHeight, 0, 0)
+
+            setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
+            addView(snackBarBinding.root, 0)
+        }
+
+
+    }
+
 
     fun show() {
         snackBar.show()
