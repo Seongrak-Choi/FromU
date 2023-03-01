@@ -9,9 +9,11 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.fromu.fromu.utils.LoadingDialog
 
 abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : Fragment() {
     protected lateinit var binding: T
+    lateinit var loadingDialog: LoadingDialog
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = inflate(layoutInflater)
@@ -48,4 +50,22 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
         vibrator.vibrate(VibrationEffect.createOneShot(milliSecondsOfDuration, power))
     }
 
+    /**
+     * 로딩 다이얼로그를 출력하기 위한 메소드
+     *
+     * @param context
+     */
+    fun showLoadingDialog(context: Context) {
+        loadingDialog = LoadingDialog(context)
+        loadingDialog.show()
+    }
+
+    /**
+     * 출력된 로딩 다이얼로그를 해제하기 위한 메소드
+     */
+    fun dismissLoadingDialog() {
+        if (loadingDialog.isShowing) {
+            loadingDialog.dismiss()
+        }
+    }
 }

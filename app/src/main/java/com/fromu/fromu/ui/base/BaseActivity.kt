@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
+import com.fromu.fromu.utils.LoadingDialog
 
 abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : AppCompatActivity() {
     protected lateinit var binding: T
+    lateinit var loadingDialog: LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,5 +52,24 @@ abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInf
             getSystemService(VIBRATOR_SERVICE) as Vibrator
         }
         vibrator.vibrate(VibrationEffect.createOneShot(milliSecondsOfDuration, power))
+    }
+
+    /**
+     * 로딩 다이얼로그를 출력하기 위한 메소드
+     *
+     * @param context
+     */
+    fun showLoadingDialog(context: Context) {
+        loadingDialog = LoadingDialog(context)
+        loadingDialog.show()
+    }
+
+    /**
+     * 출력된 로딩 다이얼로그를 해제하기 위한 메소드
+     */
+    fun dismissLoadingDialog() {
+        if (loadingDialog.isShowing) {
+            loadingDialog.dismiss()
+        }
     }
 }
