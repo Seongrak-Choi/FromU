@@ -103,6 +103,7 @@
             app:layout_constraintStart_toStartOf="@+id/gl_start">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_birthday_next"
                 style="@style/PretendardRegular.ffffff.16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

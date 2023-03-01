@@ -1,13 +1,25 @@
 package com.fromu.fromu.ui.signup
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.fromu.fromu.data.remote.network.Resource
+import com.fromu.fromu.data.remote.network.response.SignupRes
 import com.fromu.fromu.databinding.FragmentTermsBinding
 import com.fromu.fromu.ui.base.BaseFragment
+import com.fromu.fromu.ui.invitaion.InvitationActivity
+import com.fromu.fromu.utils.Const
+import com.fromu.fromu.utils.Extension.setThrottleClick
+import com.fromu.fromu.utils.Logger
+import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.SignupViewModel
+import kotlinx.coroutines.launch
 
-class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::inflate) {
+class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::inflate), Observer<Resource<SignupRes>> {
 
     private val signupViewModel: SignupViewModel by activityViewModels()
 
@@ -37,6 +49,48 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
     private fun initEvent() {
         binding.apply {
 
+            // '동의하고 시작하기' 버튼
+            tvBirthdayNext.setThrottleClick(lifecycleScope) {
+                lifecycleScope.launch {
+                    signupViewModel.postSignup().observe(viewLifecycleOwner, this@TermsFragment)
+                }
+            }
+
+            // 뒤로가기 버튼
+            ivTemrsBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+        }
+    }
+
+    private fun handleSignupResult(signupRes: SignupRes) {
+        when (signupRes.code) {
+            Const.SUCCESS_CODE -> {
+                //invitation activity로 이동
+                Intent(requireContext(), InvitationActivity::class.java).apply {
+                    startActivity(this)
+                }
+            }
+            else -> {
+                Logger.e("signupResult", signupRes.message ?: "회원가입 실패")
+                Utils.showCustomSnackBar(binding.root, "회원가입에 실패하였습니다")
+            }
+        }
+    }
+
+    override fun onChanged(resource: Resource<SignupRes>) {
+        when (resource) {
+            is Resource.Loading -> {
+                showLoadingDialog(requireContext())
+            }
+            is Resource.Success -> {
+                dismissLoadingDialog()
+                handleSignupResult(resource.body)
+            }
+            is Resource.Failed -> {
+                dismissLoadingDialog()
+                Utils.showNetworkErrorSnackBar(binding.root)
+            }
         }
     }
 }

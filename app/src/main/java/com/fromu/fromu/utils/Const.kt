@@ -5,9 +5,6 @@ class Const {
         /* BASE_URL */
         const val BASE_URL = "https://fromu.store/app/"
 
-        /* 소셜 로그인 시 header로 전달할 accessToken Name */
-        const val LOGIN_ACCESS_TOKEN = "LOGIN-ACCESS-TOKEN"
-
         /* api 서버 응답 코드 */
         const val SUCCESS_CODE = 1000
 
@@ -22,5 +19,9 @@ class Const {
 
     enum class LoginType {
         JWT, KAKAO, GOOGLE
+    }
+
+    enum class GenderType(val value: String) {
+        Male("M"), Female("FM")
     }
 }

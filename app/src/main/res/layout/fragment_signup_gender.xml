@@ -8,6 +8,8 @@
         <variable
             name="vm"
             type="com.fromu.fromu.viewmodels.SignupViewModel" />
+
+        <import type="com.fromu.fromu.utils.Const.GenderType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -52,11 +54,11 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_unclick_ffffff_click_e2dbff"
                 android:gravity="center"
-                android:onClick='@{(view) -> vm.setGender(String.valueOf("fm"))}'
+                android:onClick="@{(view) -> vm.setGender(String.valueOf(GenderType.Female.value))}"
                 android:orientation="vertical"
                 android:paddingHorizontal="60dp"
                 android:paddingVertical="28dp"
-                android:selected='@{vm.gender.equals(String.valueOf("fm"))}'>
+                android:selected='@{vm.gender.equals(String.valueOf(GenderType.Female.value))}'>
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="match_parent"
@@ -84,12 +86,12 @@
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/ll_gender_male"
-                selected='@{vm.gender.equals(String.valueOf("m"))}'
+                selected='@{vm.gender.equals(String.valueOf(GenderType.Male.value))}'
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_unclick_ffffff_click_e2dbff"
                 android:gravity="center"
-                android:onClick='@{(view) -> vm.setGender(String.valueOf("m"))}'
+                android:onClick='@{(view) -> vm.setGender(String.valueOf(GenderType.Male.value))}'
                 android:orientation="vertical"
                 android:paddingHorizontal="60dp"
                 android:paddingVertical="28dp">

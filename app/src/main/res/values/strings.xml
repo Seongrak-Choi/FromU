@@ -4,7 +4,7 @@
     <string name="next">다음</string>
     <string name="slash">/</string>
     <string name="done">완료</string>
-    <string name="network_error">서버와의 연결이 원할하지 않습니다.</string>
+    <string name="network_error">서버와의 연결이 원활하지 않습니다.</string>
 
     <!-- login -->
     <string name="login_google">Google로 로그인하기</string>

@@ -2,6 +2,6 @@ package com.fromu.fromu.data.remote.network.response
 
 import com.fromu.fromu.data.dto.LoginResult
 
-data class LoginResponse(
+data class LoginRes(
     val result: LoginResult
 ) : BaseResponse()

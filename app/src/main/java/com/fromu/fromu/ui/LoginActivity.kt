@@ -8,10 +8,12 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.fromu.fromu.data.remote.network.Resource
-import com.fromu.fromu.data.remote.network.response.LoginResponse
+import com.fromu.fromu.data.remote.network.response.LoginRes
 import com.fromu.fromu.databinding.ActivityLoginBinding
 import com.fromu.fromu.ui.base.BaseActivity
+import com.fromu.fromu.ui.invitaion.InvitationActivity
 import com.fromu.fromu.ui.signup.SignupActivity
+import com.fromu.fromu.ui.signup.SignupActivity.Companion.EMAIL_KEY
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Logger
 import com.fromu.fromu.utils.UiUtils
@@ -26,7 +28,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), Observer<Resource<LoginResponse>> {
+class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), Observer<Resource<LoginRes>> {
 
 
     //google 로그인 callback
@@ -98,14 +100,27 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         googleLoginManagerInstance.loginGoogle()
     }
 
-    private fun handleLoginResult(loginResponse: LoginResponse) {
-        when (loginResponse.code) {
+    private fun handleLoginResult(loginRes: LoginRes) {
+        when (loginRes.code) {
             Const.SUCCESS_CODE -> {
-                if (loginResponse.result.isMember) {
+                if (loginRes.result.isMember) {
                     //TODO 벨라가 응답 변수 추가해 주면 매칭이 되었는지 확인
+                    if (false) {
+
+                    } else {
+                        Intent(this, InvitationActivity::class.java).apply {
+                            startActivity(this)
+                        }
+                    }
                 } else {
-                    Intent(this, SignupActivity::class.java).apply {
-                        startActivity(this)
+                    loginRes.result.email?.let {
+                        Intent(this, SignupActivity::class.java).apply {
+                            putExtra(EMAIL_KEY, loginRes.result.email)
+                            startActivity(this)
+                        }
+                    } ?: let {
+                        // TODO email이 비어있으면 안 됨. google의 경우 email이 항상 있지만, 카카오는 필수로 하기 위해서 비즈앱을 신청해야 됨 추후 신청하면 해당 분기 처리 삭제해도 됨.
+                        Utils.showCustomSnackBar(binding.root, "Email is null")
                     }
                 }
             }
@@ -115,7 +130,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         }
     }
 
-    override fun onChanged(resource: Resource<LoginResponse>) {
+    override fun onChanged(resource: Resource<LoginRes>) {
         when (resource) {
             is Resource.Loading -> {
                 showLoadingDialog(this)
