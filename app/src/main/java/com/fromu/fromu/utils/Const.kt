@@ -2,6 +2,15 @@ package com.fromu.fromu.utils
 
 class Const {
     companion object {
+        /* BASE_URL */
+        const val BASE_URL = "https://fromu.store/app/"
+
+        /* 소셜 로그인 시 header로 전달할 accessToken Name */
+        const val LOGIN_ACCESS_TOKEN = "LOGIN-ACCESS-TOKEN"
+
+        /* api 서버 응답 코드 */
+        const val SUCCESS_CODE = 1000
+
         /* 카카오 SDK 네이티브 앱 키 */
         const val KAKAO_SDK_NATIVE_APP_KEY = "c36fb0ce439b3a9e9be9673d048dadb4"
 
