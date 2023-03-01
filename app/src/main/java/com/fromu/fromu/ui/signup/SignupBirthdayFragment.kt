@@ -44,7 +44,6 @@ class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(Fragm
     @SuppressLint("SetTextI18n")
     private fun initEvent() {
         binding.apply {
-
             // 년
             etBirthdayYear.apply {
                 doAfterTextChanged {
@@ -77,13 +76,19 @@ class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(Fragm
 
             // 월
             etBirthdayMonth.apply {
-                filters = arrayOf<InputFilter>(InputFilterMinMax("1", "12"))
+                filters = arrayOf<InputFilter>(InputFilterMinMax("0", "12"))
 
                 doAfterTextChanged {
-                    signupViewModel.isValidBirthday.value = checkValidation()
+                    if (this.text.toString().isNotEmpty()) {
+                        if (this.text.toString().toInt() == 0 && this.text.toString().length == 2) {
+                            setText("0")
+                        } else {
+                            signupViewModel.isValidBirthday.value = checkValidation()
 
-                    if (it.toString().length >= 2) {
-                        etBirthdayDay.requestFocus()
+                            if (it.toString().length >= 2) {
+                                etBirthdayDay.requestFocus()
+                            }
+                        }
                     }
                 }
 
@@ -105,20 +110,26 @@ class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(Fragm
                         vBirthdayUnderline.isSelected = true
                     } else {
                         if (this.text.toString().length == 1) {
-                            signupViewModel.isValidBirthday.value = checkValidation()
                             this.setText("0${this.text.toString()}")
                         }
                     }
+                    signupViewModel.isValidBirthday.value = checkValidation()
                 }
             }
 
 
             // 일
             etBirthdayDay.apply {
-                filters = arrayOf<InputFilter>(InputFilterMinMax("1", "31"))
+                filters = arrayOf<InputFilter>(InputFilterMinMax("0", "31"))
 
                 doAfterTextChanged {
-                    signupViewModel.isValidBirthday.value = checkValidation()
+                    if (this.text.toString().isNotEmpty()) {
+                        if (this.text.toString().toInt() == 0 && this.text.toString().length == 2) {
+                            setText("0")
+                        } else {
+                            signupViewModel.isValidBirthday.value = checkValidation()
+                        }
+                    }
                 }
 
                 setOnEditorActionListener { _, actionId, _ ->
@@ -138,14 +149,16 @@ class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(Fragm
                         this.text?.clear()
                         vBirthdayUnderline.isSelected = true
                     } else {
-                        this.setText("0${this.text.toString()}")
-                        signupViewModel.isValidBirthday.value = checkValidation()
+                        if (this.text.toString().length == 1) {
+                            this.setText("0${this.text.toString()}")
+                        }
                     }
+                    signupViewModel.isValidBirthday.value = checkValidation()
                 }
             }
 
             // 다음 버튼 클릭
-            clBirthdayNext.setOnClickListener {
+            tvBirthdayNext.setOnClickListener {
                 signupViewModel.birthday.value = "${etBirthdayYear.text}${etBirthdayMonth.text}${etBirthdayDay.text}"
                 findNavController().navigate(R.id.action_signupBirthdayFragment_to_signupGenderFragment)
             }

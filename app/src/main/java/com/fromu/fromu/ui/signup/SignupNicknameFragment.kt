@@ -13,7 +13,6 @@ import com.fromu.fromu.databinding.FragmentSignupNicknameBinding
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.debounce
-import com.fromu.fromu.utils.Extension.setThrottleClick
 import com.fromu.fromu.viewmodels.SignupViewModel
 
 class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(FragmentSignupNicknameBinding::inflate) {
@@ -63,12 +62,14 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
                 }
             }
 
+            // 닉네임 입력창
             etContents.doAfterTextChanged {
                 signupViewModel.isValidNickname.value = false
                 setNicknameNormalUi()
             }
 
-            tvNicknameNext.setThrottleClick(lifecycleScope) {
+            // 다음 버튼
+            tvNicknameNext.setOnClickListener {
                 findNavController().navigate(R.id.action_signupNicknameFragment_to_signupBirthdayFragment)
             }
         }
