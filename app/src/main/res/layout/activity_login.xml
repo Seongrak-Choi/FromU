@@ -5,10 +5,6 @@
     <data>
 
         <variable
-            name="viewmodels"
-            type="com.fromu.fromu.viewmodels.LoginViewModel" />
-
-        <variable
             name="view"
             type="com.fromu.fromu.ui.LoginActivity" />
 

@@ -31,7 +31,7 @@
             style="@style/EfDiary.6f6f6f.16dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:text="@string/nickname_subtitle"
             app:layout_constraintEnd_toEndOf="@+id/gl_end"
             app:layout_constraintStart_toStartOf="@+id/gl_start"

@@ -1,9 +1,9 @@
 package com.fromu.fromu.utils.sns
 
 import android.content.Context
+import com.fromu.fromu.utils.Logger
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
-import timber.log.Timber
 
 
 class KakaoLoginManager(private val context: Context) {
@@ -56,9 +56,9 @@ class KakaoLoginManager(private val context: Context) {
     fun logoutKakao() {
         kakaoApiClient.logout { error ->
             if (error != null) {
-                Timber.tag("ator").e(error)
+                Logger.e("kakao", error.message.toString())
             } else {
-                Timber.tag("ator").d("로그아웃 성공. SDK에서 토큰 삭제됨")
+                Logger.d("kakao", "로그아웃 성공. SDK에서 토큰 삭제됨")
             }
         }
     }
@@ -69,9 +69,10 @@ class KakaoLoginManager(private val context: Context) {
     fun showUserInfo() {
         kakaoApiClient.me { user, error ->
             if (error != null) {
-                Timber.tag("ator").e("사용자 정보 요청 실패")
+                Logger.e("kakao", "사용자 정보 요청 실패")
             } else if (user != null) {
-                Timber.tag("ator").d(
+                Logger.d(
+                    "kakao",
                     "사용자 정보 요청 성공" +
                             "\n회원번호: ${user.id}" +
                             "\n이메일: ${user.kakaoAccount?.email}" +

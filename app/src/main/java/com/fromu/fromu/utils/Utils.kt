@@ -5,7 +5,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.util.Base64
 import android.view.View
-import android.widget.Toast
+import com.fromu.fromu.R
 import com.fromu.fromu.utils.custom.FromUSnackBarBlack
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -52,7 +52,7 @@ class Utils {
         }
 
         /**
-         * FromUCustomSnackBar show method
+         * show FromUCustomSnackBar method
          *
          * @param view
          * @param message
@@ -60,6 +60,15 @@ class Utils {
          */
         fun showCustomSnackBar(view: View, message: String, duration: Int = 2500) {
             FromUSnackBarBlack(view, message, duration).show()
+        }
+
+        /**
+         * show networkErrorMsg
+         *
+         * @param view
+         */
+        fun showNetworkErrorSnackBar(view: View) {
+            showCustomSnackBar(view, view.resources.getString(R.string.network_error))
         }
     }
 }

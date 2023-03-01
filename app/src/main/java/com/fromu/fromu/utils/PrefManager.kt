@@ -7,6 +7,7 @@ import javax.inject.Inject
 class PrefManager @Inject constructor(private val sp: SharedPreferences) {
 
     companion object {
+        const val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
         const val SHARED_PREFERENCES_NAME = "FROMU_APP"
         const val FCM_TOKEN_KEY = "fcmToken"
         const val PUSH_ALARM_ENABLE_KEY = "isPushAlarmEnable"
