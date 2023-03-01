@@ -15,6 +15,7 @@ import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.debounce
 import com.fromu.fromu.viewmodels.SignupViewModel
 
+
 class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(FragmentSignupNicknameBinding::inflate) {
 
     private val signupViewModel: SignupViewModel by activityViewModels()
@@ -37,7 +38,9 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
             lifecycleOwner = this@SignupNicknameFragment
             vm = signupViewModel
         }
+
         initEvent()
+
     }
 
 
@@ -73,6 +76,8 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
                 findNavController().navigate(R.id.action_signupNicknameFragment_to_signupBirthdayFragment)
             }
         }
+
+
     }
 
     /**

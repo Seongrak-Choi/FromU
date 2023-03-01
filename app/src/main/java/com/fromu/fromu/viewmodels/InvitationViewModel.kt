@@ -2,8 +2,10 @@ package com.fromu.fromu.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
+import com.fromu.fromu.data.remote.network.response.MatchingRes
 import com.fromu.fromu.data.remote.network.response.UserInfoRes
 import com.fromu.fromu.data.repository.InvitationRepo
 import com.fromu.fromu.ui.base.BaseViewModel
@@ -21,11 +23,17 @@ class InvitationViewModel @Inject constructor(
     // 내 코드
     val myCode: MutableStateFlow<String> = MutableStateFlow("")
 
+    // 유저가 입력한 상대방 코드
+    val opponentCode: MutableStateFlow<String> = MutableStateFlow("")
+
     // 내 닉네임
     val myNickname: MutableStateFlow<String> = MutableStateFlow("")
 
     // Description visible 여부
     val isShowDescription: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    // 상대방 코드 8자리 제대로 입력 했는지
+    val isValidOpponentCode: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     // 매칭 여부
     private var _isMatching: MutableLiveData<Resource<CheckMatchingRes>> = MutableLiveData()
@@ -37,6 +45,12 @@ class InvitationViewModel @Inject constructor(
     private var _userInfo: MutableLiveData<Resource<UserInfoRes>> = MutableLiveData()
     val userInfo: LiveData<Resource<UserInfoRes>>
         get() = _userInfo
+
+
+    // 매칭 시도 결과
+    private var _matchingResult: MutableLiveData<Resource<MatchingRes>> = MutableLiveData()
+    val matchingResult: LiveData<Resource<MatchingRes>>
+        get() = _matchingResult
 
 
     /**
@@ -65,5 +79,12 @@ class InvitationViewModel @Inject constructor(
         invitationRepo.getCheckMatching().collect {
             _isMatching.value = it
         }
+    }
+
+    /**
+     * 매칭 시도
+     */
+    suspend fun postMatching(): LiveData<Resource<MatchingRes>> {
+        return invitationRepo.postMatching(opponentCode.value).asLiveData()
     }
 }

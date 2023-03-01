@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
 import com.fromu.fromu.data.remote.network.response.UserInfoRes
@@ -88,7 +89,7 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
 
                             Utils.sendString(
                                 requireActivity(),
-                                getString(R.string.invitation_send_msg).format(invitationViewModel.myNickname.value, deepLink, invitationViewModel.myCode)
+                                getString(R.string.invitation_send_msg).format(invitationViewModel.myNickname.value, invitationViewModel.myCode, deepLink)
                             )
                         }
 
@@ -98,6 +99,10 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
                         }
                     })
                 }
+            }
+
+            tvInvitationInputCode.setOnClickListener {
+                findNavController().navigate(R.id.action_invitationMainFragment_to_invitationInputCodeFragment)
             }
         }
     }

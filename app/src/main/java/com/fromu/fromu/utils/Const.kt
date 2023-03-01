@@ -15,5 +15,8 @@ class Const {
         const val GOOGLE_CLIENT_ID = "662521080151-229e0lg2re6o17g8m1gnocape34i8m9v.apps.googleusercontent.com"
 
         const val ONLY_KOREAN_EXPRESSION = "^[a-zA-Z가-힣0-9\\s]*$"
+
+        // 초대 코드 길이
+        const val INVITATION_CODE_LENGTH = 8
     }
 }

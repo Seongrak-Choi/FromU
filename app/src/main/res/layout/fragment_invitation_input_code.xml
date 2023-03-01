@@ -6,44 +6,42 @@
 
         <variable
             name="vm"
-            type="com.fromu.fromu.viewmodels.SignupViewModel" />
+            type="com.fromu.fromu.viewmodels.InvitationViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_input_code_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:src="@drawable/ic_back_6f6f6f"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_v_0591" />
+
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_nickname_title"
+            android:id="@+id/tv_input_code_title"
             style="@style/EfDiary.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/nickname_title"
+            android:text="연인의 코드를 입력해줘!"
             app:layout_constraintEnd_toEndOf="@+id/gl_end"
             app:layout_constraintStart_toStartOf="@+id/gl_start"
-            app:layout_constraintTop_toTopOf="@id/gl_v_1475"
+            app:layout_constraintTop_toTopOf="@id/gl_v_1699"
             app:lineHeight="28dp" />
 
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_nickname_subtitle"
-            style="@style/EfDiary.6f6f6f.16dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/nickname_subtitle"
-            app:layout_constraintEnd_toEndOf="@+id/gl_end"
-            app:layout_constraintStart_toStartOf="@+id/gl_start"
-            app:layout_constraintTop_toBottomOf="@+id/tv_nickname_title" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/gl_end"
             app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintTop_toBottomOf="@+id/gl_v_3300">
+            app:layout_constraintTop_toBottomOf="@+id/gl_v_3522">
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_contents"
@@ -52,15 +50,15 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="center"
-                android:hint="@string/nickname_contents_hint"
+                android:hint="FROMU123"
                 android:inputType="text"
-                android:maxLength="5"
+                android:maxLength="8"
                 android:textColorHint="@color/color_999999"
                 android:textCursorDrawable="@drawable/cursor_bg_a735ff"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
-                android:id="@+id/v_nickname_underline"
+                android:id="@+id/v_input_code_underline"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10.5dp"
@@ -73,9 +71,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="@string/nickname_warring_msg"
-                app:layout_constraintTop_toBottomOf="@+id/v_nickname_underline" />
+                android:text="8글자(특수문자 및 공백 제외)"
+                app:layout_constraintTop_toBottomOf="@+id/v_input_code_underline" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
@@ -87,32 +86,38 @@
             app:layout_constraintStart_toStartOf="@+id/gl_start">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_nickname_next"
+                android:id="@+id/tv_input_code_connect"
                 style="@style/PretendardRegular.ffffff.16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
-                android:enabled="@{vm.isValidNickname()}"
+                android:enabled="@{vm.isValidOpponentCode()}"
                 android:gravity="center"
                 android:paddingVertical="18.5dp"
                 android:text="@string/next"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_v_1475"
+            android:id="@+id/gl_v_0591"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.1475" />
+            app:layout_constraintGuide_percent="0.0591" />
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_v_3300"
+            android:id="@+id/gl_v_1699"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.3300" />
+            app:layout_constraintGuide_percent="0.1699" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_3522"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3522" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -128,6 +133,5 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_end="20dp" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

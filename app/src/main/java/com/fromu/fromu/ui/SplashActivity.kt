@@ -63,12 +63,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
                 } else {
                     // 다이나믹 링크로 앱이 켜졌을 때
                     val deepLink: Uri? = data.link
-                    Logger.e("rak", "다이나믹 링크로 켜짐")
 
                     if (deepLink != null) {
-                        Logger.e("rak", "deepLink 널 아님")
-                        Logger.e("rak", "${deepLink.lastPathSegment}")
-
                         when (deepLink.lastPathSegment) {
                             DynamicLinkUtil.INVITATION_CODE_SCHEME -> {
                                 // 초대 코드 공유 링크인 경우
@@ -93,7 +89,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
      */
     private fun initInvitationCode(deepLink: Uri) {
         val invitationCode = deepLink.getQueryParameter(DynamicLinkUtil.INVITATION_CODE_KEY) ?: ""
-        Logger.e("rak", invitationCode)
         // TODO 자동 로그인 실행
         Utils.setTextToClipboard(this, invitationCode)
 

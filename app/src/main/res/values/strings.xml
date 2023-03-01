@@ -40,5 +40,7 @@
     <string name="invitation_input_code">연인의 코드 입력하기</string>
     <string name="invitation_description_title">새로고침 아이콘을 눌러,\n연인과의 연결상태를 확인해봐!</string>
     <string name="invitation_matching_not_yet">연인과의 연결이 완료되지 않았어!</string>
-    <string name="invitation_send_msg">당신의 연인 \'%s\'로부터 초대장이 도착했어.\n링크를 눌러 우리와 함께 할래?\n%s\n\n커플코드:\n%s</string>
+    <string name="invitation_send_msg">당신의 연인 \'%s\'로부터 초대장이 도착했어.\n링크를 눌러 우리와 함께 할래?\n\n커플코드:\n%s \n\n%s</string>
+    <string name="invitation_already_exist_msg">이미 매칭이 완료된 유저야! 새로고침을 눌러봐</string>
+    <string name="invitation_not_exist_msg">존재하지 않는 코드를 입력했어!</string>
 </resources>
