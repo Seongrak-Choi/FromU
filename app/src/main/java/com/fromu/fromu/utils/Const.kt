@@ -16,12 +16,4 @@ class Const {
 
         const val ONLY_KOREAN_EXPRESSION = "^[a-zA-Z가-힣0-9\\s]*$"
     }
-
-    enum class LoginType {
-        JWT, KAKAO, GOOGLE
-    }
-
-    enum class GenderType(val value: String) {
-        Male("M"), Female("FM")
-    }
 }

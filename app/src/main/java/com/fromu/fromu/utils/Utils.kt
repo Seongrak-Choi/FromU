@@ -1,14 +1,17 @@
 package com.fromu.fromu.utils
 
-import android.content.Context
+import android.content.*
+import android.content.Context.CLIPBOARD_SERVICE
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.util.Base64
 import android.view.View
+import androidx.fragment.app.FragmentActivity
 import com.fromu.fromu.R
 import com.fromu.fromu.utils.custom.FromUSnackBarBlack
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+
 
 class Utils {
 
@@ -69,6 +72,37 @@ class Utils {
          */
         fun showNetworkErrorSnackBar(view: View) {
             showCustomSnackBar(view, view.resources.getString(R.string.network_error))
+        }
+
+        /**
+         * 공유하기
+         *
+         * @param activity
+         * @param msg : String = 공유할 메시지
+         * @param listener : SendStringListener = 결과 리스너
+         */
+        fun sendString(activity: FragmentActivity, msg: String) {
+            try {
+                Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, msg)
+                    type = "text/plain"
+                    activity.startActivity(Intent.createChooser(this, "Share"))
+                }
+            } catch (e: ActivityNotFoundException) {
+                Logger.e("sendString", "공유하기 실패")
+            }
+        }
+
+
+        /**
+         * 클립보드에 String 복사
+         */
+        fun setTextToClipboard(context: Context, message: String) {
+            val clipboard: ClipboardManager = context.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+            val clip = ClipData.newPlainText("copyMsg", message)
+
+            clipboard.setPrimaryClip(clip)
         }
     }
 }

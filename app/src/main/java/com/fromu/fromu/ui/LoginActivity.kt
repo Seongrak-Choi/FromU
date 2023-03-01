@@ -10,6 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.LoginRes
 import com.fromu.fromu.databinding.ActivityLoginBinding
+import com.fromu.fromu.model.LoginType
+import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.ui.invitaion.InvitationActivity
 import com.fromu.fromu.ui.signup.SignupActivity
@@ -32,22 +34,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
 
     //google 로그인 callback
-    private var activityLauncher: ActivityResultLauncher<Intent> = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        if (it.resultCode == RESULT_OK) {
-            val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-            googleLoginManagerInstance.handleSignInResult(task)?.let { accessToken ->
-                //서버로 accessToken 전달
-                lifecycleScope.launch {
-                    loginViewModel.login(accessToken, Const.LoginType.GOOGLE).observe(this@LoginActivity, this@LoginActivity)
-                }
-
-            } ?: let {
-                Utils.showCustomSnackBar(binding.root, "구글 로그인에 실패하였습니다.")
-            }
-        } else {
-            Utils.showCustomSnackBar(binding.root, "구글 로그인에 실패하였습니다.")
-        }
-    }
+    private lateinit var activityLauncher: ActivityResultLauncher<Intent>
 
     private val loginViewModel: LoginViewModel by viewModels()
 
@@ -61,6 +48,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     }
 
     private fun initData() {
+        initLauncher()
         googleLoginManagerInstance = GoogleLoginManager(this, activityLauncher)
     }
 
@@ -69,6 +57,25 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         binding.apply {
             lifecycleOwner = this@LoginActivity
             view = this@LoginActivity
+        }
+    }
+
+    private fun initLauncher() {
+        activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(it.data)
+                googleLoginManagerInstance.handleSignInResult(task)?.let { accessToken ->
+                    //서버로 accessToken 전달
+                    lifecycleScope.launch {
+                        loginViewModel.login(accessToken, LoginType.GOOGLE).observe(this@LoginActivity, this@LoginActivity)
+                    }
+
+                } ?: let {
+                    Utils.showCustomSnackBar(binding.root, "구글 로그인에 실패하였습니다.")
+                }
+            } else {
+                Utils.showCustomSnackBar(binding.root, "구글 로그인에 실패하였습니다.")
+            }
         }
     }
 
@@ -82,7 +89,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                 Logger.d("kakao_login", accessToken)
 
                 lifecycleScope.launch {
-                    loginViewModel.login(accessToken, Const.LoginType.KAKAO).observe(this@LoginActivity, this@LoginActivity)
+                    loginViewModel.login(accessToken, LoginType.KAKAO).observe(this@LoginActivity, this@LoginActivity)
                 }
             }
 
@@ -131,18 +138,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     }
 
     override fun onChanged(resource: Resource<LoginRes>) {
-        when (resource) {
-            is Resource.Loading -> {
-                showLoadingDialog(this)
+        handleResource(resource, true, object : ResourceSuccessListener<LoginRes> {
+            override fun onSuccess(res: LoginRes) {
+                handleLoginResult(res)
             }
-            is Resource.Success -> {
-                dismissLoadingDialog()
-                handleLoginResult(resource.body)
-            }
-            is Resource.Failed -> {
-                dismissLoadingDialog()
-                Utils.showNetworkErrorSnackBar(binding.root)
-            }
-        }
+        })
     }
 }

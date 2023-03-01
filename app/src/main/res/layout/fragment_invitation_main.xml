@@ -80,12 +80,14 @@
             app:layout_constraintEnd_toEndOf="@id/gl_end"
             app:layout_constraintStart_toStartOf="@id/gl_start" />
 
+
+        <!-- description view -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_description"
+            visibleGone="@{vm.isShowDescription()}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color_99000000"
-            android:visibility="invisible">
+            android:background="@color/color_99000000">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_description_close"

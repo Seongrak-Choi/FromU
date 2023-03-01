@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.SignupRes
 import com.fromu.fromu.databinding.FragmentTermsBinding
+import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.invitaion.InvitationActivity
 import com.fromu.fromu.utils.Const
@@ -48,7 +49,6 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
 
     private fun initEvent() {
         binding.apply {
-
             // '동의하고 시작하기' 버튼
             tvBirthdayNext.setThrottleClick(lifecycleScope) {
                 lifecycleScope.launch {
@@ -79,18 +79,10 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
     }
 
     override fun onChanged(resource: Resource<SignupRes>) {
-        when (resource) {
-            is Resource.Loading -> {
-                showLoadingDialog(requireContext())
+        handleResource(resource, listener = object : ResourceSuccessListener<SignupRes> {
+            override fun onSuccess(res: SignupRes) {
+                handleSignupResult(res)
             }
-            is Resource.Success -> {
-                dismissLoadingDialog()
-                handleSignupResult(resource.body)
-            }
-            is Resource.Failed -> {
-                dismissLoadingDialog()
-                Utils.showNetworkErrorSnackBar(binding.root)
-            }
-        }
+        })
     }
 }

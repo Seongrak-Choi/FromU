@@ -41,13 +41,11 @@ class FromUSnackBarBlack(view: View, private val message: String, private val du
 
         with(snackBarView) {
             removeAllViews()
-            setPadding(0, FromUApplication.statusHeight, 0, 0)
+            setPadding(20, FromUApplication.statusHeight, 20, 0)
 
             setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
             addView(snackBarBinding.root, 0)
         }
-
-
     }
 
 

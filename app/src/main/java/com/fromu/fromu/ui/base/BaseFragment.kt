@@ -9,7 +9,10 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.fromu.fromu.data.remote.network.Resource
+import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.utils.LoadingDialog
+import com.fromu.fromu.utils.Utils
 
 abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : Fragment() {
     protected lateinit var binding: T
@@ -55,8 +58,8 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
      *
      * @param context
      */
-    fun showLoadingDialog(context: Context) {
-        loadingDialog = LoadingDialog(context)
+    fun showLoadingDialog() {
+        loadingDialog = LoadingDialog(requireContext())
         loadingDialog.show()
     }
 
@@ -66,6 +69,31 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
     fun dismissLoadingDialog() {
         if (loadingDialog.isShowing) {
             loadingDialog.dismiss()
+        }
+    }
+
+
+    /**
+     * Resource 핸들링
+     *
+     * @param T : API Response
+     * @param resource
+     * @param listener
+     */
+    open fun <T> handleResource(resource: Resource<T>, isShowLoadingDialog: Boolean = false, listener: ResourceSuccessListener<T>) {
+        when (resource) {
+            is Resource.Loading -> {
+                if (isShowLoadingDialog)
+                    showLoadingDialog()
+            }
+            is Resource.Success -> {
+                dismissLoadingDialog()
+                listener.onSuccess(resource.body)
+            }
+            is Resource.Failed -> {
+                dismissLoadingDialog()
+                Utils.showNetworkErrorSnackBar(binding.root)
+            }
         }
     }
 }

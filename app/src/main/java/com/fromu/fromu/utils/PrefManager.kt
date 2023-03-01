@@ -2,9 +2,11 @@ package com.fromu.fromu.utils
 
 import android.content.SharedPreferences
 import javax.inject.Inject
+import javax.inject.Singleton
 
 
-class PrefManager @Inject constructor(private val sp: SharedPreferences) {
+@Singleton
+class PrefManager @Inject constructor(val sp: SharedPreferences) {
 
     companion object {
         const val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
@@ -12,9 +14,11 @@ class PrefManager @Inject constructor(private val sp: SharedPreferences) {
         const val FCM_TOKEN_KEY = "fcmToken"
         const val PUSH_ALARM_ENABLE_KEY = "isPushAlarmEnable"
         const val LOGIN_TOKEN_KEY = "loginToken"
+        const val WHETHER_SHOW_INVITATION_DESCRIPTION = "whetherShowInvitationDescription" //초대장의 디스크립션을 한 번이라도 봤으면 flase, 아니면 true
+        const val USER_ID = "userId"
     }
 
-    private val editor = sp.edit()
+    val editor = sp.edit()
 
     fun clearAll() {
         editor.clear()
@@ -62,8 +66,10 @@ class PrefManager @Inject constructor(private val sp: SharedPreferences) {
      *
      * @param loginToken
      */
-    fun setLoginToken(loginToken: String) {
-        editor.putString(LOGIN_TOKEN_KEY, loginToken).apply()
+    fun setLoginToken(loginToken: String?) {
+        loginToken?.let { jwt ->
+            editor.putString(X_ACCESS_TOKEN, jwt).apply()
+        }
     }
 
     /**
@@ -72,6 +78,29 @@ class PrefManager @Inject constructor(private val sp: SharedPreferences) {
      * @return
      */
     fun getLoginToken(): String {
-        return sp.getString(LOGIN_TOKEN_KEY, "").toString()
+        return sp.getString(X_ACCESS_TOKEN, "").toString()
+    }
+
+    /**
+     * UserId 저장
+     *
+     * @param userId
+     */
+    fun setUserId(userId: Int?) {
+        userId?.let {
+            sp.edit().putInt(USER_ID, it).apply()
+        }
+    }
+
+    /**
+     * UserId
+     *
+     * @return
+     */
+    fun getUserId(): Int? {
+        sp.getInt(USER_ID, -1).apply {
+            return if (this == -1) null
+            else this
+        }
     }
 }

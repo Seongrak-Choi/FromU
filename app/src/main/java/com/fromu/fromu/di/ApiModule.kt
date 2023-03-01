@@ -1,5 +1,6 @@
 package com.fromu.fromu.di
 
+import com.fromu.fromu.data.remote.network.api.InvitationService
 import com.fromu.fromu.data.remote.network.api.LoginService
 import com.fromu.fromu.data.remote.network.api.SignupService
 import dagger.Module
@@ -24,6 +25,12 @@ object ApiModule {
     @Singleton
     fun provideSignupService(retrofit: Retrofit): SignupService {
         return retrofit.create(SignupService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideInvitationService(retrofit: Retrofit): InvitationService {
+        return retrofit.create(InvitationService::class.java)
     }
 
 }

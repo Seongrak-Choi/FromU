@@ -9,7 +9,7 @@
             name="vm"
             type="com.fromu.fromu.viewmodels.SignupViewModel" />
 
-        <import type="com.fromu.fromu.utils.Const.GenderType" />
+        <import type="com.fromu.fromu.model.GenderType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

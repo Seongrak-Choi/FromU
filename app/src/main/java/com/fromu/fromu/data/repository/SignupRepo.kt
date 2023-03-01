@@ -7,7 +7,7 @@ import com.fromu.fromu.data.remote.network.response.SignupRes
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class SignupRepository @Inject constructor(private val signupDataSource: SignupDataSource) {
+class SignupRepo @Inject constructor(private val signupDataSource: SignupDataSource) {
     suspend fun postSignup(signupReq: SignupReq): Flow<Resource<SignupRes>> {
         return signupDataSource.postSignup(signupReq)
     }

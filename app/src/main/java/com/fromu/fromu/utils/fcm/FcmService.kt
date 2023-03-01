@@ -1,4 +1,4 @@
-package com.fromu.fromu.fcm
+package com.fromu.fromu.utils.fcm
 
 import com.fromu.fromu.utils.Logger
 import com.fromu.fromu.utils.PrefManager

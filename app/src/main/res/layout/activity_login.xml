@@ -8,7 +8,7 @@
             name="view"
             type="com.fromu.fromu.ui.LoginActivity" />
 
-        <import type="com.fromu.fromu.utils.Const.LoginType" />
+        <import type="com.fromu.fromu.model.LoginType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -5,14 +5,14 @@ import androidx.lifecycle.asLiveData
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.request.SignupReq
 import com.fromu.fromu.data.remote.network.response.SignupRes
-import com.fromu.fromu.data.repository.SignupRepository
+import com.fromu.fromu.data.repository.SignupRepo
 import com.fromu.fromu.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class SignupViewModel @Inject constructor(private val signupRepository: SignupRepository) : BaseViewModel() {
+class SignupViewModel @Inject constructor(private val signupRepo: SignupRepo) : BaseViewModel() {
     // 로그인 했던 이메일
     val email: MutableStateFlow<String> = MutableStateFlow("")
 
@@ -65,7 +65,7 @@ class SignupViewModel @Inject constructor(private val signupRepository: SignupRe
      * @return
      */
     suspend fun postSignup(): LiveData<Resource<SignupRes>> {
-        return signupRepository.postSignup(getSignupReq()).asLiveData()
+        return signupRepo.postSignup(getSignupReq()).asLiveData()
     }
 }
 
