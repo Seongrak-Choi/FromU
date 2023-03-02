@@ -125,8 +125,8 @@ class InvitationInputCodeFragment : BaseFragment<FragmentInvitationInputCodeBind
     private fun handleMatchingRes(res: MatchingRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                //TODO 연인연결 Fragment로 이동
-                Logger.e("rak", "연인연결 성공")
+                invitationViewModel.opponentNickname.value = res.result.partnerNickname
+                findNavController().navigate(R.id.action_invitationInputCodeFragment_to_matchSuccessLottieFragment)
             }
             2020 -> {
                 Utils.showCustomSnackBar(binding.root, getString(R.string.invitation_already_exist_msg))

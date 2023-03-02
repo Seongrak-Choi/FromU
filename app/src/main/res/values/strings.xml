@@ -43,4 +43,5 @@
     <string name="invitation_send_msg">당신의 연인 \'%s\'로부터 초대장이 도착했어.\n링크를 눌러 우리와 함께 할래?\n\n커플코드:\n%s \n\n%s</string>
     <string name="invitation_already_exist_msg">이미 매칭이 완료된 유저야! 새로고침을 눌러봐</string>
     <string name="invitation_not_exist_msg">존재하지 않는 코드를 입력했어!</string>
+    <string name="invitation_match_success_title">%s와 매칭이 되었어!</string>
 </resources>

@@ -12,6 +12,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/transparent</item>
         <!-- Customize your theme here. -->
+        <item name="windowNoTitle">true</item>
+
     </style>
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
@@ -21,7 +23,7 @@
         <item name="postSplashScreenTheme">@style/SplashTheme</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@color/transparent</item>
@@ -69,6 +71,10 @@
 
     <style name="EfDiary.000000.20dp">
         <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="EfDiary.000000.24dp">
+        <item name="android:textSize">24dp</item>
     </style>
 
     <style name="EfDiary.000000.30dp">

@@ -29,6 +29,9 @@ class InvitationViewModel @Inject constructor(
     // 내 닉네임
     val myNickname: MutableStateFlow<String> = MutableStateFlow("")
 
+    // 상대방 닉네임
+    val opponentNickname: MutableStateFlow<String> = MutableStateFlow("")
+
     // Description visible 여부
     val isShowDescription: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
