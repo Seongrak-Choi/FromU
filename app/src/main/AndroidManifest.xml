@@ -69,6 +69,13 @@
             android:theme="@style/Theme.FromU"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".ui.mailbox.DecideMailBoxNameActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.FromU"
+            android:windowSoftInputMode="adjustResize"
+            tools:ignore="LockedOrientationActivity" />
 
         <service
             android:name=".utils.fcm.FcmService"

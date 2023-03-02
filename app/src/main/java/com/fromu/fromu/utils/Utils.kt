@@ -4,7 +4,9 @@ import android.content.*
 import android.content.Context.CLIPBOARD_SERVICE
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.util.Base64
+import android.util.DisplayMetrics
 import android.view.View
 import androidx.fragment.app.FragmentActivity
 import com.fromu.fromu.R
@@ -103,6 +105,22 @@ class Utils {
             val clip = ClipData.newPlainText("copyMsg", message)
 
             clipboard.setPrimaryClip(clip)
+        }
+
+        /**
+         * dp를 px로 변경해주는 메소드
+         */
+        fun dp2px(resources: Resources, dp: Float): Int {
+            val metrics = resources.displayMetrics
+            return (dp * (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)).toInt()
+        }
+
+        /**
+         * px를 dp로 변경해주는 메소드
+         */
+        fun px2dp(resources: Resources, px: Float): Float {
+            val metrics = resources.displayMetrics
+            return px / (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
         }
     }
 }

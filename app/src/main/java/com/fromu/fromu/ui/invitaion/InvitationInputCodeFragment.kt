@@ -1,5 +1,6 @@
 package com.fromu.fromu.ui.invitaion
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -14,6 +15,7 @@ import com.fromu.fromu.data.remote.network.response.MatchingRes
 import com.fromu.fromu.databinding.FragmentInvitationInputCodeBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
+import com.fromu.fromu.ui.mailbox.DecideMailBoxNameActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.debounce
 import com.fromu.fromu.utils.Logger
@@ -50,8 +52,8 @@ class InvitationInputCodeFragment : BaseFragment<FragmentInvitationInputCodeBind
         binding.apply {
             // 코드 입력창 이벤트
             etContents.apply {
-                onFocusChangeListener = View.OnFocusChangeListener { _, hasFocuse ->
-                    vInputCodeUnderline.isSelected = hasFocuse
+                onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                    vInputCodeUnderline.isSelected = hasFocus
                 }
 
                 debounce(coroutineScope = lifecycleScope) {
@@ -83,7 +85,13 @@ class InvitationInputCodeFragment : BaseFragment<FragmentInvitationInputCodeBind
             // 연결하기 버튼
             tvInputCodeConnect.setOnClickListener {
                 lifecycleScope.launch {
-                    invitationViewModel.postMatching().observe(viewLifecycleOwner, this@InvitationInputCodeFragment)
+                    //TODO only test
+                    Intent(requireContext(), DecideMailBoxNameActivity::class.java).apply {
+                        startActivity(this)
+                    }
+                    requireActivity().finish()
+
+//                    invitationViewModel.postMatching().observe(viewLifecycleOwner, this@InvitationInputCodeFragment)
                 }
             }
         }
@@ -97,7 +105,7 @@ class InvitationInputCodeFragment : BaseFragment<FragmentInvitationInputCodeBind
      * @return
      */
     private fun checkPattern(str: String): Boolean {
-        return str.matches(Regex(Const.ONLY_KOREAN_EXPRESSION)) && str.length == Const.INVITATION_CODE_LENGTH
+        return str.matches(Regex(Const.NOT_SPECIAL_CHAR_EXPRESSION)) && str.length == Const.INVITATION_CODE_LENGTH
     }
 
     /**
@@ -126,7 +134,7 @@ class InvitationInputCodeFragment : BaseFragment<FragmentInvitationInputCodeBind
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 invitationViewModel.opponentNickname.value = res.result.partnerNickname
-                findNavController().navigate(R.id.action_invitationInputCodeFragment_to_matchSuccessLottieFragment)
+                //TODO DecideMainBoxNameActivity로 이동. 기존 activity finish 해주기
             }
             2020 -> {
                 Utils.showCustomSnackBar(binding.root, getString(R.string.invitation_already_exist_msg))

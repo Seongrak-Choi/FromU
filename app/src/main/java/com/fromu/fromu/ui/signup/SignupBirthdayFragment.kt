@@ -66,8 +66,8 @@ class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(Fragm
                     }
                 }
 
-                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocuse ->
-                    if (hasFocuse) {
+                onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
                         this.text?.clear()
                         vBirthdayUnderline.isSelected = true
                     }
@@ -104,8 +104,8 @@ class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(Fragm
                     }
                 }
 
-                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocuse ->
-                    if (hasFocuse) {
+                onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
                         this.text?.clear()
                         vBirthdayUnderline.isSelected = true
                     } else {
@@ -144,8 +144,8 @@ class SignupBirthdayFragment : BaseFragment<FragmentSignupBirthdayBinding>(Fragm
                     }
                 }
 
-                onFocusChangeListener = View.OnFocusChangeListener { v, hasFocuse ->
-                    if (hasFocuse) {
+                onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                    if (hasFocus) {
                         this.text?.clear()
                         vBirthdayUnderline.isSelected = true
                     } else {

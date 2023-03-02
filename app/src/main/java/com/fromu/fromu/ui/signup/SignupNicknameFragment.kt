@@ -47,8 +47,8 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
     private fun initEvent() {
         binding.apply {
 
-            etContents.onFocusChangeListener = OnFocusChangeListener { _, hasFocuse ->
-                vNicknameUnderline.isSelected = hasFocuse
+            etContents.onFocusChangeListener = OnFocusChangeListener { _, hasFocus ->
+                vNicknameUnderline.isSelected = hasFocus
             }
 
             etContents.debounce(coroutineScope = lifecycleScope) {
@@ -111,6 +111,6 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
      * @return
      */
     private fun checkPattern(str: String): Boolean {
-        return str.matches(Regex(Const.ONLY_KOREAN_EXPRESSION))
+        return str.matches(Regex(Const.NOT_SPECIAL_CHAR_EXPRESSION))
     }
 }

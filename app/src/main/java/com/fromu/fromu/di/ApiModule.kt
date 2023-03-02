@@ -1,5 +1,6 @@
 package com.fromu.fromu.di
 
+import com.fromu.fromu.data.remote.network.api.CoupleService
 import com.fromu.fromu.data.remote.network.api.InvitationService
 import com.fromu.fromu.data.remote.network.api.LoginService
 import com.fromu.fromu.data.remote.network.api.SignupService
@@ -33,4 +34,9 @@ object ApiModule {
         return retrofit.create(InvitationService::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideCoupleService(retrofit: Retrofit): CoupleService {
+        return retrofit.create(CoupleService::class.java)
+    }
 }

@@ -1,4 +1,4 @@
-package com.fromu.fromu.ui.invitaion
+package com.fromu.fromu.ui.mailbox
 
 import android.os.Bundle
 import android.view.View
