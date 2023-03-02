@@ -15,7 +15,6 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.App.Starting"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
@@ -23,6 +22,7 @@
             android:name=".ui.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.App.Starting"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -54,7 +54,7 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.FromU"
-            tools:ignore="LockedOrientationActivity"></activity>
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.signup.SignupActivity"
             android:exported="true"
