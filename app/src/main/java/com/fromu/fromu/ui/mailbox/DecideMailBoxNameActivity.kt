@@ -13,6 +13,7 @@ import com.fromu.fromu.databinding.ActivityDecideMailBoxNameBinding
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.debounce
+import com.fromu.fromu.utils.Extension.setThrottleClick
 import com.fromu.fromu.viewmodels.DecideMailBoxNameViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.math.ceil
@@ -42,6 +43,7 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
 
     private fun initEvent() {
         binding.apply {
+
             etContents.apply {
                 onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
                     vDecideMailBoxUnderline.isSelected = hasFocus
@@ -75,6 +77,11 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
                     invalidate()
                     setNicknameNormalUi()
                 }
+            }
+
+            // 중복 확인 버튼
+            tvDecideMailBoxCheckDuplication.setThrottleClick(lifecycleScope) {
+                //TODO 중복확인 api 호출
             }
         }
     }

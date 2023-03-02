@@ -10,11 +10,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".ui.MainActivity">
 
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcv_main"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toBottomOf="@id/bnv_main"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph="@navigation/nav_main"
+            tools:layout="@layout/fragment_diary" />
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:fitsSystemWindows="false"
+            app:itemTextAppearanceActive="@style/BottomNavFontStyle"
+            app:itemTextAppearanceInactive="@style/BottomNavFontStyle"
+            app:itemTextColor="@color/selector_bottom_nav_text_color"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/menu_main_bottom" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

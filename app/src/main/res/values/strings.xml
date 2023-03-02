@@ -52,4 +52,10 @@
     <!-- decide_mail_box_name -->
     <string name="decide_mail_box_name_hint">예) 프롬프롬함</string>
     <string name="decide_mail_box_name_title">%s와 %s의\n우편함 이름을 정해줄래?</string>
+
+    <!-- main -->
+    <string name="main_nav_diary">일기장</string>
+    <string name="main_nav_calendar">달력</string>
+    <string name="main_nav_letter">우편함</string>
+    <string name="main_nav_profile">마이페이지</string>
 </resources>

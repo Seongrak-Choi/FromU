@@ -15,6 +15,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:theme="@style/Theme.FromU"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
@@ -22,13 +23,7 @@
             android:name=".ui.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.App.Starting"
             tools:ignore="LockedOrientationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
@@ -48,34 +43,36 @@
             android:name=".ui.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.LoginActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.FromU"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.signup.SignupActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.FromU"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.invitaion.InvitationActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.FromU"
             android:windowSoftInputMode="adjustResize"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".ui.mailbox.DecideMailBoxNameActivity"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.FromU"
             android:windowSoftInputMode="adjustResize"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"></activity>
 
         <service
             android:name=".utils.fcm.FcmService"

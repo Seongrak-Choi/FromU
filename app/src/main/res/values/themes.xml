@@ -31,6 +31,12 @@
     </style>
 
 
+    <style name="BottomNavFontStyle">
+        <item name="fontFamily">@font/pretendard_medium</item>
+        <item name="android:textSize">9dp</item>
+    </style>
+
+
     <!-- ************ Font ************ -->
 
 
@@ -140,13 +146,22 @@
         <item name="android:textColor">#a735ff</item>
     </style>
 
-    <style name="PretendardRegular.a735ff.18dp">
-        <item name="android:textSize">18dp</item>
+    <style name="PretendardRegular.a735ff.13dp">
+        <item name="android:textSize">13dp</item>
     </style>
 
     <style name="PretendardRegular.a735ff.16dp">
         <item name="android:textSize">16dp</item>
     </style>
+
+    <style name="PretendardRegular.a735ff.18dp">
+        <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="PretendardRegular.a735ff.20dp">
+        <item name="android:textSize">20dp</item>
+    </style>
+
 
 
     <!-- PretendardMedium -->

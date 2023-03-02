@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_diary"
+        android:enabled="true"
+        android:icon="@drawable/selector_bottom_nav_diary"
+        android:title="@string/main_nav_diary"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/nav_calendar"
+        android:enabled="true"
+        android:icon="@drawable/selector_bottom_nav_calendar"
+        android:title="@string/main_nav_calendar"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/nav_letter"
+        android:enabled="true"
+        android:icon="@drawable/selector_bottom_nav_letter"
+        android:title="@string/main_nav_letter"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/nav_profile"
+        android:enabled="true"
+        android:icon="@drawable/selector_bottom_nav_profile"
+        android:title="@string/main_nav_profile"
+        app:showAsAction="ifRoom"
+        />
+
+</menu>
+
