@@ -70,6 +70,7 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
                 Intent(requireContext(), InvitationActivity::class.java).apply {
                     startActivity(this)
                 }
+                requireActivity().finish()
             }
             else -> {
                 Logger.e("signupResult", signupRes.message ?: "회원가입 실패")
