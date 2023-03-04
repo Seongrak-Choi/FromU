@@ -15,6 +15,9 @@ abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInf
     protected lateinit var binding: T
     lateinit var loadingDialog: LoadingDialog
 
+    private var isLoading: Boolean = false
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = inflate(layoutInflater)
@@ -63,16 +66,22 @@ abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInf
      * @param context
      */
     fun showLoadingDialog() {
-        loadingDialog = LoadingDialog(this)
-        loadingDialog.show()
+        if (!isLoading) {
+            loadingDialog = LoadingDialog(this)
+            loadingDialog.show()
+            isLoading = true
+        }
     }
 
     /**
      * 출력된 로딩 다이얼로그를 해제하기 위한 메소드
      */
     fun dismissLoadingDialog() {
-        if (loadingDialog.isShowing) {
-            loadingDialog.dismiss()
+        if (isLoading) {
+            if (loadingDialog.isShowing) {
+                loadingDialog.dismiss()
+                isLoading = false
+            }
         }
     }
 

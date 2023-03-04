@@ -7,6 +7,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.SignupRes
 import com.fromu.fromu.databinding.FragmentTermsBinding
@@ -66,6 +67,7 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
     private fun handleSignupResult(signupRes: SignupRes) {
         when (signupRes.code) {
             Const.SUCCESS_CODE -> {
+                FromUApplication.prefManager.setUserId(signupRes.result.userId)
                 //invitation activity로 이동
                 Intent(requireContext(), InvitationActivity::class.java).apply {
                     startActivity(this)

@@ -87,7 +87,7 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
 
                             Utils.sendString(
                                 requireActivity(),
-                                getString(R.string.invitation_send_msg).format(invitationViewModel.myNickname.value, invitationViewModel.myCode, deepLink)
+                                getString(R.string.invitation_send_msg).format(invitationViewModel.myNickname.value, invitationViewModel.myCode.value, deepLink)
                             )
                         }
 

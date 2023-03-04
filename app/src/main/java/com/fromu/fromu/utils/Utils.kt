@@ -63,7 +63,7 @@ class Utils {
          * @param message
          * @param duration
          */
-        fun showCustomSnackBar(view: View, message: String, duration: Int = 2500) {
+        fun showCustomSnackBar(view: View, message: String, duration: Int = 2000) {
             FromUSnackBarBlack(view, message, duration).show()
         }
 

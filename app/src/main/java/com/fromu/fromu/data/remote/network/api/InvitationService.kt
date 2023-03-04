@@ -1,5 +1,6 @@
 package com.fromu.fromu.data.remote.network.api
 
+import com.fromu.fromu.data.remote.network.request.CouplesPostReq
 import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
 import com.fromu.fromu.data.remote.network.response.MatchingRes
 import com.fromu.fromu.data.remote.network.response.UserInfoRes
@@ -17,5 +18,5 @@ interface InvitationService {
     suspend fun getCheckingMatch(): Response<CheckMatchingRes>
 
     @POST("couples")
-    suspend fun postMatching(@Body opponentCode: String): Response<MatchingRes>
+    suspend fun postMatching(@Body couplesPostReq: CouplesPostReq): Response<MatchingRes>
 }

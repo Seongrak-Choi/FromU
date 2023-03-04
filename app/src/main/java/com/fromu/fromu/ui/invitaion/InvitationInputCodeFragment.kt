@@ -85,13 +85,7 @@ class InvitationInputCodeFragment : BaseFragment<FragmentInvitationInputCodeBind
             // 연결하기 버튼
             tvInputCodeConnect.setOnClickListener {
                 lifecycleScope.launch {
-                    //TODO only test
-                    Intent(requireContext(), DecideMailBoxNameActivity::class.java).apply {
-                        startActivity(this)
-                    }
-                    requireActivity().finish()
-
-//                    invitationViewModel.postMatching().observe(viewLifecycleOwner, this@InvitationInputCodeFragment)
+                    invitationViewModel.postMatching().observe(viewLifecycleOwner, this@InvitationInputCodeFragment)
                 }
             }
         }
@@ -134,7 +128,10 @@ class InvitationInputCodeFragment : BaseFragment<FragmentInvitationInputCodeBind
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 invitationViewModel.opponentNickname.value = res.result.partnerNickname
-                //TODO DecideMainBoxNameActivity로 이동. 기존 activity finish 해주기
+                Intent(requireContext(), DecideMailBoxNameActivity::class.java).apply {
+                    startActivity(this)
+                }
+                requireActivity().finish()
             }
             2020 -> {
                 Utils.showCustomSnackBar(binding.root, getString(R.string.invitation_already_exist_msg))

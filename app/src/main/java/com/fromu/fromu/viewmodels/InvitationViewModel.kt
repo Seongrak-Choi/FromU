@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
 import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.data.remote.network.Resource
+import com.fromu.fromu.data.remote.network.request.CouplesPostReq
 import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
 import com.fromu.fromu.data.remote.network.response.MatchingRes
 import com.fromu.fromu.data.remote.network.response.UserInfoRes
@@ -84,10 +85,11 @@ class InvitationViewModel @Inject constructor(
         }
     }
 
+
     /**
      * 매칭 시도
      */
     suspend fun postMatching(): LiveData<Resource<MatchingRes>> {
-        return invitationRepo.postMatching(opponentCode.value).asLiveData()
+        return invitationRepo.postMatching(CouplesPostReq(opponentCode.value)).asLiveData()
     }
 }

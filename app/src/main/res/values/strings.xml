@@ -51,7 +51,10 @@
 
     <!-- decide_mail_box_name -->
     <string name="decide_mail_box_name_hint">예) 프롬프롬함</string>
+    <string name="decide_mail_box_confirm">이 이름으로 결정하기!</string>
     <string name="decide_mail_box_name_title">%s와 %s의\n우편함 이름을 정해줄래?</string>
+    <string name="decide_mail_box_name_invalid_error_msg">4글자 이내(특수문자 및 공백 제외)</string>
+    <string name="decide_mail_box_name_duplication_error_msg">중복되는 우편함 이름이야! 다른 걸로 변경해줘</string>
 
     <!-- main -->
     <string name="main_nav_diary">일기장</string>
