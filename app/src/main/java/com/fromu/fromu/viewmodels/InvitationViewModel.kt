@@ -3,6 +3,7 @@ package com.fromu.fromu.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.asLiveData
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
 import com.fromu.fromu.data.remote.network.response.MatchingRes
@@ -17,7 +18,6 @@ import javax.inject.Inject
 @HiltViewModel
 class InvitationViewModel @Inject constructor(
     private val invitationRepo: InvitationRepo,
-    private val prefManager: PrefManager
 ) : BaseViewModel() {
 
     // 내 코드
@@ -60,7 +60,7 @@ class InvitationViewModel @Inject constructor(
      * 디스크립션 visible 셋팅
      */
     fun setWhetherFirstDescription() {
-        isShowDescription.value = prefManager.sp.getBoolean(PrefManager.WHETHER_SHOW_INVITATION_DESCRIPTION, true)
+        isShowDescription.value = FromUApplication.prefManager.sp.getBoolean(PrefManager.WHETHER_SHOW_INVITATION_DESCRIPTION, true)
     }
 
     /**

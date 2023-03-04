@@ -1,9 +1,14 @@
 package com.fromu.fromu.utils.sns
 
 import android.content.Context
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.utils.Logger
+import com.fromu.fromu.utils.PrefManager
+import com.fromu.fromu.utils.Utils
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 
 class KakaoLoginManager(private val context: Context) {
@@ -33,16 +38,16 @@ class KakaoLoginManager(private val context: Context) {
     }
 
     /**
-     * 카카오 로그인 결과를 Map 형식으로 반환하는 메소드
+     * 카카오 로그인 결과를 반환
      *
      * @param token
      * @param error
-     * @return
      */
     private fun setLoginResult(token: OAuthToken?, error: Throwable?, listener: OnKakaoLoginListener) {
         if (error != null) {
             listener.onFailure(error.message ?: "카카오 계정으로 로그인 실패")
         } else if (token != null) {
+            saveUserEmail()
             listener.onSuccess(token.accessToken)
         } else {
             listener.onFailure("카카오 계정으로 로그인 실패")
@@ -59,6 +64,16 @@ class KakaoLoginManager(private val context: Context) {
                 Logger.e("kakao", error.message.toString())
             } else {
                 Logger.d("kakao", "로그아웃 성공. SDK에서 토큰 삭제됨")
+            }
+        }
+    }
+
+    private fun saveUserEmail() {
+        kakaoApiClient.me { user, error ->
+            if (error != null) {
+                Logger.e("kazkaoLogin", "카카오 사용자 정보 요청 실패")
+            } else if (user != null) {
+                FromUApplication.prefManager.setUserLoginEmail(user.kakaoAccount?.email)
             }
         }
     }

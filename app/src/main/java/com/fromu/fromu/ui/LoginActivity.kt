@@ -14,12 +14,10 @@ import com.fromu.fromu.model.LoginType
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.ui.invitaion.InvitationActivity
+import com.fromu.fromu.ui.mailbox.DecideMailBoxNameActivity
 import com.fromu.fromu.ui.signup.SignupActivity
 import com.fromu.fromu.ui.signup.SignupActivity.Companion.EMAIL_KEY
-import com.fromu.fromu.utils.Const
-import com.fromu.fromu.utils.Logger
-import com.fromu.fromu.utils.UiUtils
-import com.fromu.fromu.utils.Utils
+import com.fromu.fromu.utils.*
 import com.fromu.fromu.utils.sns.GoogleLoginManager
 import com.fromu.fromu.utils.sns.KakaoLoginManager
 import com.fromu.fromu.viewmodels.LoginViewModel
@@ -28,6 +26,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.Task
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), Observer<Resource<LoginRes>> {
@@ -39,6 +38,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     private val loginViewModel: LoginViewModel by viewModels()
 
     private lateinit var googleLoginManagerInstance: GoogleLoginManager
+
+    private lateinit var kakaoLoginManager: KakaoLoginManager
+
+    @Inject lateinit var prefManager: PrefManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,10 +87,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
      * 카카오 로그인
      */
     fun loginKakao() {
-        KakaoLoginManager(this).loginKakao(object : KakaoLoginManager.OnKakaoLoginListener {
+        kakaoLoginManager = KakaoLoginManager(this)
+
+        kakaoLoginManager.loginKakao(object : KakaoLoginManager.OnKakaoLoginListener {
             override fun onSuccess(accessToken: String) {
                 Logger.d("kakao_login", accessToken)
-
                 lifecycleScope.launch {
                     loginViewModel.login(accessToken, LoginType.KAKAO).observe(this@LoginActivity, this@LoginActivity)
                 }
@@ -107,27 +111,37 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         googleLoginManagerInstance.loginGoogle()
     }
 
+    /**
+     * 로그인 결과 핸들링
+     */
     private fun handleLoginResult(loginRes: LoginRes) {
         when (loginRes.code) {
             Const.SUCCESS_CODE -> {
-                if (loginRes.result.isMember) {
-                    //TODO 벨라가 응답 변수 추가해 주면 매칭이 되었는지 확인
-                    if (false) {
-
-                    } else {
-                        Intent(this, InvitationActivity::class.java).apply {
-                            startActivity(this)
+                if (loginRes.result.isMember) { //회원인 경우
+                    Logger.e("rak", "회원인 경우")
+                    loginRes.result.userInfo?.let { userInfo ->
+                        if (userInfo.isMatch) { //커플 매칭이 된 경우
+                            Intent(this, MainActivity::class.java).apply {
+                                startActivity(this)
+                            }
+                        } else { //커플 매칭이 안 된 경우
+                            if (userInfo.isSetMailboxName) { //우편함 이름을 정한 경우
+                                Intent(this, InvitationActivity::class.java).apply {
+                                    startActivity(this)
+                                }
+                            } else { //우편함 이름을 정하지 않은 경우
+                                Intent(this, DecideMailBoxNameActivity::class.java).apply {
+                                    startActivity(this)
+                                }
+                            }
                         }
                     }
-                } else {
-                    loginRes.result.email?.let {
-                        Intent(this, SignupActivity::class.java).apply {
-                            putExtra(EMAIL_KEY, loginRes.result.email)
-                            startActivity(this)
-                        }
-                    } ?: let {
-                        // TODO email이 비어있으면 안 됨. google의 경우 email이 항상 있지만, 카카오는 필수로 하기 위해서 비즈앱을 신청해야 됨 추후 신청하면 해당 분기 처리 삭제해도 됨.
-                        Utils.showCustomSnackBar(binding.root, "Email is null")
+                } else { //회원이 아닌 경우
+                    Logger.e("rak", "회원 아닌 경우")
+
+                    Intent(this, SignupActivity::class.java).apply {
+                        putExtra(EMAIL_KEY, prefManager.getUserLoginEmail())
+                        startActivity(this)
                     }
                 }
             }

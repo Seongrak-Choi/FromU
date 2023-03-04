@@ -4,9 +4,7 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
-@Singleton
-class PrefManager @Inject constructor(val sp: SharedPreferences) {
+class PrefManager constructor(val sp: SharedPreferences) {
 
     companion object {
         const val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
@@ -16,6 +14,7 @@ class PrefManager @Inject constructor(val sp: SharedPreferences) {
         const val LOGIN_TOKEN_KEY = "loginToken"
         const val WHETHER_SHOW_INVITATION_DESCRIPTION = "whetherShowInvitationDescription" //초대장의 디스크립션을 한 번이라도 봤으면 flase, 아니면 true
         const val USER_ID = "userId"
+        const val USER_LOGIN_EMAIL = "userLoginEmail"
     }
 
     val editor = sp.edit()
@@ -101,6 +100,28 @@ class PrefManager @Inject constructor(val sp: SharedPreferences) {
         sp.getInt(USER_ID, -1).apply {
             return if (this == -1) null
             else this
+        }
+    }
+
+    /**
+     * 유저가 로그인한 이메일 저장
+     *
+     * @param userId
+     */
+    fun setUserLoginEmail(email: String?) {
+        email?.let {
+            sp.edit().putString(USER_LOGIN_EMAIL, it).apply()
+        }
+    }
+
+    /**
+     * 유저가 로그인한 이메일 반환
+     *
+     * @return
+     */
+    fun getUserLoginEmail(): String? {
+        sp.getString(USER_LOGIN_EMAIL, null).apply {
+            return this
         }
     }
 }

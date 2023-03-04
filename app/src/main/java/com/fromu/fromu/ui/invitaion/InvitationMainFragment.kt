@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
 import com.fromu.fromu.data.remote.network.response.UserInfoRes
@@ -23,9 +24,6 @@ import javax.inject.Inject
 class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(FragmentInvitationMainBinding::inflate) {
 
     private val invitationViewModel: InvitationViewModel by activityViewModels()
-
-    @Inject
-    lateinit var prefManager: PrefManager
 
     @Inject
     lateinit var dynamicLinkUtil: DynamicLinkUtil
@@ -47,7 +45,7 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
         invitationViewModel.setWhetherFirstDescription()
 
         lifecycleScope.launch {
-            prefManager.getUserId()?.let { userId ->
+            FromUApplication.prefManager.getUserId()?.let { userId ->
                 invitationViewModel.getUserInfo(userId)
             }
         }
@@ -68,7 +66,7 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
             // x 버튼
             ivDescriptionClose.setOnClickListener {
                 invitationViewModel.isShowDescription.value = false
-                prefManager.editor.putBoolean(PrefManager.WHETHER_SHOW_INVITATION_DESCRIPTION, false).apply()
+                FromUApplication.prefManager.editor.putBoolean(PrefManager.WHETHER_SHOW_INVITATION_DESCRIPTION, false).apply()
             }
 
             // 새로고침 버튼

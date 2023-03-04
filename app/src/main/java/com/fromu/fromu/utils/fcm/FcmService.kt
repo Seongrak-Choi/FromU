@@ -1,5 +1,6 @@
 package com.fromu.fromu.utils.fcm
 
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.utils.Logger
 import com.fromu.fromu.utils.PrefManager
 import com.google.android.gms.tasks.Task
@@ -10,12 +11,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 
-@AndroidEntryPoint
 class FcmService : FirebaseMessagingService() {
     private var notificationId = 0
-
-    @Inject
-    lateinit var prefManager: PrefManager
 
     init {
         val token: Task<String> = FirebaseMessaging.getInstance().token
@@ -31,7 +28,7 @@ class FcmService : FirebaseMessagingService() {
 
         Logger.d("FCM_SERVICE", token)
 
-        prefManager.setFcmId(token)
+        FromUApplication.prefManager.setFcmId(token)
     }
 
 

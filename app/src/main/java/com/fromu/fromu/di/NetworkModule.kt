@@ -1,7 +1,7 @@
 package com.fromu.fromu.di
 
-import android.content.SharedPreferences
 import com.fromu.fromu.BuildConfig
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.data.remote.network.XAccessTokenInterceptor
 import com.fromu.fromu.utils.Const
 import dagger.Module
@@ -22,19 +22,19 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(sharedPreferences: SharedPreferences) = if (BuildConfig.DEBUG) {
+    fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
         OkHttpClient.Builder()
             .readTimeout(5000, TimeUnit.MILLISECONDS)
             .connectTimeout(5000, TimeUnit.MILLISECONDS)
             // 로그캣에 okhttp.OkHttpClient로 검색하면 http 통신 내용을 보여줍니다.
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-            .addNetworkInterceptor(XAccessTokenInterceptor(sharedPreferences)) // JWT 자동 헤더 전송
+            .addNetworkInterceptor(XAccessTokenInterceptor(FromUApplication.prefManager.sp)) // JWT 자동 헤더 전송
             .build()
     } else {
         OkHttpClient.Builder()
             .readTimeout(5000, TimeUnit.MILLISECONDS)
             .connectTimeout(5000, TimeUnit.MILLISECONDS)
-            .addNetworkInterceptor(XAccessTokenInterceptor(sharedPreferences)) // JWT 자동 헤더 전송
+            .addNetworkInterceptor(XAccessTokenInterceptor(FromUApplication.prefManager.sp)) // JWT 자동 헤더 전송
             .build()
     }
 
