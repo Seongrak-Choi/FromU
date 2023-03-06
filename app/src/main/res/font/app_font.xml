@@ -2,10 +2,10 @@
 <font-family xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <font
-        android:font="@font/ef_diary"
+        android:font="@font/cafe24_ssurround_air"
         android:fontStyle="normal"
         android:fontWeight="400"
-        app:font="@font/ef_diary"
+        app:font="@font/cafe24_ssurround_air"
         app:fontStyle="normal"
         app:fontWeight="400" />
 

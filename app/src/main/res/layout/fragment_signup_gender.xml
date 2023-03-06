@@ -29,7 +29,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_gender_title"
-            style="@style/EfDiary.000000.20dp"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/gender_title"
@@ -67,7 +67,7 @@
                     android:src="@drawable/ic_gender_women" />
 
                 <TextView
-                    style="@style/EfDiary.000000.16dp"
+                    style="@style/Cafe24SsurroundAir.000000.16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -103,7 +103,7 @@
                     android:src="@drawable/ic_gender_men" />
 
                 <TextView
-                    style="@style/EfDiary.000000.16dp"
+                    style="@style/Cafe24SsurroundAir.000000.16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"

@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="@id/gl_v_0591" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/EfDiary.000000.30dp"
+            style="@style/Cafe24SsurroundAir.000000.30dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{@string/terms_title(vm.nickname)}"
@@ -57,7 +57,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_terms_of_user"
-                style="@style/EfDiary.000000.14dp"
+                style="@style/Cafe24SsurroundAir.000000.14dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/terms_of_user" />
@@ -85,7 +85,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_personal_information"
-                style="@style/EfDiary.000000.14dp"
+                style="@style/Cafe24SsurroundAir.000000.14dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/terms_personal_information" />

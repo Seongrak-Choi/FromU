@@ -13,7 +13,7 @@ class FromUApplication : Application() {
 
     companion object {
         // statusbar 높이
-        var statusHeight: Int = 50
+        var statusHeight: Int = 0
 
         // PrefManager 싱글톤으로 사용
         lateinit var prefManager: PrefManager

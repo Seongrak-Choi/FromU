@@ -16,7 +16,7 @@
         android:background="@drawable/ic_splash_bg">
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/EfDiary.000000.24dp"
+            style="@style/Cafe24SsurroundAir.000000.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{@string/invitation_match_success_title(vm.opponentNickname)}"

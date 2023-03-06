@@ -9,4 +9,10 @@ object CustomBinder {
     fun setVisibility(view: View, visible: Boolean) {
         view.visibility = if (visible) View.VISIBLE else View.GONE
     }
+
+    @JvmStatic
+    @BindingAdapter("isInvisible")
+    fun setInVisibility(view: View, visible: Boolean) {
+        view.visibility = if (visible) View.VISIBLE else View.INVISIBLE
+    }
 }

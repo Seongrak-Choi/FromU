@@ -16,7 +16,7 @@ import com.fromu.fromu.data.remote.network.request.PatchMailBoxNameReq
 import com.fromu.fromu.data.remote.network.response.PatchMailBoxNameRes
 import com.fromu.fromu.databinding.ActivityDecideMailBoxNameBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
-import com.fromu.fromu.ui.MainActivity
+import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.debounce

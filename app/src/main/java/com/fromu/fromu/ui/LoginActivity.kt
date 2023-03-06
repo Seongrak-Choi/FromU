@@ -16,6 +16,7 @@ import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.ui.invitaion.InvitationActivity
 import com.fromu.fromu.ui.mailbox.DecideMailBoxNameActivity
+import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.ui.signup.SignupActivity
 import com.fromu.fromu.ui.signup.SignupActivity.Companion.EMAIL_KEY
 import com.fromu.fromu.utils.Const

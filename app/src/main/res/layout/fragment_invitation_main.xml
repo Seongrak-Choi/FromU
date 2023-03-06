@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="@id/gl_v_0591" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/EfDiary.000000.20dp"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/invitation_title"
@@ -128,7 +128,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_invitation_description_title"
-                style="@style/EfDiary.ffffff.20dp"
+                style="@style/Cafe24SsurroundAir.ffffff.20dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"

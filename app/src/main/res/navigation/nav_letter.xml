@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/letterFragment"
-        android:name="com.fromu.fromu.ui.letter.LetterFragment"
+        android:name="com.fromu.fromu.ui.main.letter.LetterFragment"
         tools:layout="@layout/fragment_letter"
         android:label="LetterFragment" />
 </navigation>

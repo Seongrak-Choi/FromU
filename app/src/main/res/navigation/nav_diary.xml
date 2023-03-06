@@ -7,7 +7,20 @@
 
     <fragment
         android:id="@+id/diaryFragment"
-        android:name="com.fromu.fromu.ui.diary.DiaryFragment"
+        android:name="com.fromu.fromu.ui.main.diary.DiaryFragment"
         android:label="DiaryFragment"
-        tools:layout="@layout/fragment_diary"/>
+        tools:layout="@layout/fragment_diary">
+        <action
+            android:id="@+id/action_diaryFragment_to_firstMetDayFragment"
+            app:destination="@id/firstMetDayFragment"
+            app:enterAnim="@anim/view_fade_in"
+            app:exitAnim="@anim/view_fade_out"
+            app:popEnterAnim="@anim/view_fade_in"
+            app:popExitAnim="@anim/view_fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/firstMetDayFragment"
+        android:name="com.fromu.fromu.ui.main.FirstMetDayFragment"
+        android:label="FirstMetDayFragment"
+        tools:layout="@layout/fragment_first_met_day" />
 </navigation>

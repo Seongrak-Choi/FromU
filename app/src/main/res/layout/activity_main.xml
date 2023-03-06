@@ -5,13 +5,24 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.MainViewModel" />
     </data>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_main_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".ui.MainActivity">
+        tools:context=".ui.main.MainActivity">
+
+        <include
+            android:id="@+id/layout_appbar"
+            layout="@layout/view_main_appbar"
+            app:fromCount="@{vm.fromCount}"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcv_main"
@@ -19,8 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toBottomOf="@id/bnv_main"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/bnv_main"
+            app:layout_constraintTop_toBottomOf="@+id/layout_appbar"
             app:navGraph="@navigation/nav_main"
             tools:layout="@layout/fragment_diary" />
 

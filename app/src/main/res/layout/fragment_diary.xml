@@ -1,19 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.DiaryViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_diary_my_name"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.myNickname}"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toTopOf="@+id/gl_v_0250"
+            tools:text="아라" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_diary_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:src="@drawable/ic_heart"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_diary_my_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_diary_my_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_diary_my_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_diary_partner_name"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@{vm.partnerNickname}"
+            app:layout_constraintStart_toEndOf="@+id/iv_diary_heart"
+            app:layout_constraintTop_toTopOf="@+id/gl_v_0250"
+            tools:text="은다" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_diary_front_dday_title"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/diary_dday_front_title"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diary_my_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_diary_dday"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
+            isInvisible="@{vm.isSetFirstMetDay()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{vm.dday}"
+            tools:text="00"
+            app:layout_constraintStart_toEndOf="@+id/tv_diary_front_dday_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_diary_front_dday_title" />
+
+        <View
+            android:id="@+id/v_diary_dday"
+            isInvisible="@{!vm.isSetFirstMetDay()}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="@+id/tv_diary_dday"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_diary_dday"
+            app:layout_constraintEnd_toEndOf="@+id/tv_diary_dday"
+            app:layout_constraintTop_toTopOf="@+id/tv_diary_dday" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="-3dp"
+            android:background="@color/color_e2dbff"
+            app:layout_constraintEnd_toEndOf="@id/tv_diary_dday"
+            app:layout_constraintStart_toStartOf="@id/tv_diary_dday"
+            app:layout_constraintTop_toBottomOf="@id/tv_diary_dday" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_diary_back_dday_title"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/diary_dday_back_title"
+            app:layout_constraintStart_toEndOf="@+id/tv_diary_dday"
+            app:layout_constraintTop_toTopOf="@id/tv_diary_front_dday_title" />
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_diary_tooltip"
+            visibleGone="@{!vm.isSetFirstMetDay()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-7dp"
+            android:background="@drawable/ic_diary_tooltip"
             android:gravity="center"
-            android:text="일기장" />
+            android:paddingHorizontal="15dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_diary_dday"
+            app:layout_constraintStart_toStartOf="@+id/tv_diary_dday"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diary_dday">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Cafe24SsurroundAir.000000.12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:paddingHorizontal="8dp"
+                android:text="@string/diary_dday_tooltip" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <!-- 일기장 생성되지 않았을 때 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_diary_no_create"
+            visibleGone="@{!vm.isHaveDiary()}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toTopOf="@id/gl_v_4473">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_diary_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_diary_add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Cafe24SsurroundAir.999999.16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-3dp"
+                android:gravity="center"
+                android:text="@string/diary_dday_add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_diary_add" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 일기가 생성 된 경우 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            visibleGone="@{vm.isHaveDiary()}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diary_front_dday_title">
+
+            <!-- 일기가 나한테 있을 때 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_diary_got"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="45dp"
+                    android:layout_marginTop="47dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_diary_cover_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/PretendardRegular.a735ff.16dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/bg_rectangle_e2dbff_radius_8"
+                    android:gravity="center"
+                    android:paddingVertical="18.5dp"
+                    android:text="@string/diary_diary_send"
+                    android:textColor="@color/selector_enable_a735ff_disable_ffffff"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <!-- 일기장이 나한테 없을 때 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_diary_no_got"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/Cafe24SsurroundAir.999999.14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@{@string/diary_no_got_title(vm.partnerNickname)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/gl_v_3174" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/PretendardRegular.c983ff.16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="96dp"
+                    android:padding="10dp"
+                    android:text="@string/diary_bell"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/gl_v_3174"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintGuide_percent="0.3174" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_0250"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0250" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_4473"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4473" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

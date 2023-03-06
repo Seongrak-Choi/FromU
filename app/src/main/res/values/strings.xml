@@ -5,6 +5,9 @@
     <string name="slash">/</string>
     <string name="done">완료</string>
     <string name="network_error">서버와의 연결이 원활하지 않습니다.</string>
+    <string name="year_hint">YYYY</string>
+    <string name="month_hint">MM</string>
+    <string name="day_hint">DD</string>
 
     <!-- login -->
     <string name="login_google">Google로 로그인하기</string>
@@ -18,10 +21,6 @@
     <string name="nickname_warring_msg">다섯글자 이내(특수문자 제외)로 작성해줘</string>
 
     <string name="birthday_title">너의 생일을 알려줘!</string>
-    <string name="birthday_year_hint">YYYY</string>
-    <string name="birthday_month_hint">MM</string>
-    <string name="birthday_day_hint">DD</string>
-
     <string name="gender_title">너의 성별을 알려줘!</string>
     <string name="gender_male">남성</string>
     <string name="gender_female">여성</string>
@@ -61,4 +60,18 @@
     <string name="main_nav_calendar">달력</string>
     <string name="main_nav_letter">우편함</string>
     <string name="main_nav_profile">마이페이지</string>
+
+    <!-- first_met_day -->
+    <string name="first_met_day_appbar_title">디데이 설정</string>
+    <string name="first_met_day_title">연인과 처음 만난 날을 알려줘!</string>
+
+    <!-- diary -->
+    <string name="diary_bell"><u>띵동! 벨 울리기</u></string>
+    <string name="diary_dday_front_title">사랑한 지</string>
+    <string name="diary_dday_back_title">일 째</string>
+    <string name="diary_dday_tooltip">처음 만난 날을 설정해주세요!</string>
+    <string name="diary_dday_add">아직 일기장이 없어\n하나 추가해 볼까?</string>
+    <string name="diary_diary_send">일기장 전송하기</string>
+    <string name="diary_no_got_title">지금은 나에게 일기장이 없어\n%s에게 벨을 울려볼까?</string>
+
 </resources>

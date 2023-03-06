@@ -16,7 +16,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_decide_mail_box_title"
-            style="@style/EfDiary.000000.20dp"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="아라와 은다의\n우편함 이름을 정해줄래?"
@@ -42,7 +42,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_contents"
-                    style="@style/EfDiary.000000.18dp"
+                    style="@style/Cafe24SsurroundAir.000000.18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -55,7 +55,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_decide_mail_box_context_suffix"
-                    style="@style/EfDiary.000000.18dp"
+                    style="@style/Cafe24SsurroundAir.000000.18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="함"
@@ -75,7 +75,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_warring_msg"
-                style="@style/EfDiary.6f6f6f.12dp"
+                style="@style/Cafe24SsurroundAir.6f6f6f.12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
