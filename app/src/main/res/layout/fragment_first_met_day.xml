@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.fromu.fromu.viewmodels.SignupViewModel" />
+            type="com.fromu.fromu.viewmodels.FirstMetDayViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,9 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/first_met_day_appbar_title"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_first_met_day_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/gl_v_0591" />
+            app:layout_constraintTop_toTopOf="@id/iv_first_met_day_back" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_first_met_day_title"
@@ -140,7 +141,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="25dp"
             android:fitsSystemWindows="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/gl_end"
@@ -152,7 +153,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
-                android:enabled="@{vm.isValidBirthday()}"
+                android:enabled="@{vm.isValidFirstMetDay()}"
                 android:gravity="center"
                 android:paddingVertical="18.5dp"
                 android:text="@string/done"

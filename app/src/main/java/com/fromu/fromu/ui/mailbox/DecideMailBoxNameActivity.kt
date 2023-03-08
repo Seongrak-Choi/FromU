@@ -16,11 +16,12 @@ import com.fromu.fromu.data.remote.network.request.PatchMailBoxNameReq
 import com.fromu.fromu.data.remote.network.response.PatchMailBoxNameRes
 import com.fromu.fromu.databinding.ActivityDecideMailBoxNameBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
-import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.ui.base.BaseActivity
+import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.debounce
 import com.fromu.fromu.utils.Extension.setThrottleClick
+import com.fromu.fromu.utils.UiUtils
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.DecideMailBoxNameViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,6 +43,8 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
 
     private fun initData() {}
     private fun initView() {
+        UiUtils.setFullScreenWithStatusBar(this)
+
         binding.apply {
             lifecycleOwner = this@DecideMailBoxNameActivity
             vm = decideMailBoxNameViewModel
@@ -118,8 +121,21 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
      * @return
      */
     private fun checkPattern(str: String): Boolean {
-        return str.matches(Regex(Const.NOT_SPECIAL_CHAR_EXPRESSION))
+        return str.matches(Regex(Const.NO_SPECIAL_CHAR_AND_NO_GAP_EXPRESSION))
     }
+
+
+    /**
+     * 정규식에 통과했을 때 입력 UI 셋팅
+     *
+     */
+    private fun setPassNicknameUi() {
+        binding.apply {
+            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(this@DecideMailBoxNameActivity, R.color.color_dedee2)
+            tvWarringMsg.visibility = View.GONE
+        }
+    }
+
 
     /**
      * 정규화에 일치하지 않은 경우의 입력 UI 셋팅
@@ -128,10 +144,12 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
     private fun setNicknameErrorUi(errorMsg: String) {
         binding.apply {
             vDecideMailBoxUnderline.background = ContextCompat.getDrawable(this@DecideMailBoxNameActivity, R.color.color_ff4a6b)
+            tvWarringMsg.visibility = View.VISIBLE
             tvWarringMsg.text = errorMsg
             tvWarringMsg.setTextColor(ContextCompat.getColor(this@DecideMailBoxNameActivity, R.color.color_ff4a6b))
         }
     }
+
 
     /**
      *  일반적인 경우의 입력 UI 셋팅
@@ -140,6 +158,7 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
     private fun setNicknameNormalUi() {
         binding.apply {
             vDecideMailBoxUnderline.background = ContextCompat.getDrawable(this@DecideMailBoxNameActivity, R.color.color_a735ff)
+            tvWarringMsg.visibility = View.VISIBLE
             tvWarringMsg.setTextColor(ContextCompat.getColor(this@DecideMailBoxNameActivity, R.color.color_6f6f6f))
         }
     }

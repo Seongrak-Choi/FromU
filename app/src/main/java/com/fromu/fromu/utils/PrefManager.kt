@@ -1,13 +1,12 @@
 package com.fromu.fromu.utils
 
 import android.content.SharedPreferences
-import javax.inject.Inject
-import javax.inject.Singleton
 
 class PrefManager constructor(val sp: SharedPreferences) {
 
     companion object {
         const val X_ACCESS_TOKEN = "X-ACCESS-TOKEN"
+        const val REFRESH_TOKEN = "refreshToken"
         const val SHARED_PREFERENCES_NAME = "FROMU_APP"
         const val FCM_TOKEN_KEY = "fcmToken"
         const val PUSH_ALARM_ENABLE_KEY = "isPushAlarmEnable"
@@ -15,6 +14,7 @@ class PrefManager constructor(val sp: SharedPreferences) {
         const val WHETHER_SHOW_INVITATION_DESCRIPTION = "whetherShowInvitationDescription" //초대장의 디스크립션을 한 번이라도 봤으면 flase, 아니면 true
         const val USER_ID = "userId"
         const val USER_LOGIN_EMAIL = "userLoginEmail"
+        const val INIT_ON_BOARDING_KEY = "initOnBoardingKey" // 온보딩 봤으면 true 안 봤으면 false
     }
 
     val editor = sp.edit()
@@ -76,8 +76,26 @@ class PrefManager constructor(val sp: SharedPreferences) {
      *
      * @return
      */
-    fun getLoginToken(): String {
-        return sp.getString(X_ACCESS_TOKEN, "").toString()
+    fun getLoginToken(): String? {
+        return sp.getString(X_ACCESS_TOKEN, null)
+    }
+
+    /**
+     * 리프레시 토큰 저장
+     *
+     * @param refreshToken
+     */
+    fun setRefreshToken(refreshToken: String) {
+        editor.putString(REFRESH_TOKEN, refreshToken).apply()
+    }
+
+    /**
+     * 리프레쉬 토큰 반환
+     *
+     * @return
+     */
+    fun getRefreshToken(): String? {
+        return sp.getString(REFRESH_TOKEN, "")
     }
 
     /**

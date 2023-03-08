@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.CreateDiaryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_pick_cover_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:src="@drawable/ic_back_6f6f6f"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_v_0541" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_pick_cover_title"
+            style="@style/Cafe24SsurroundAir.000000.22dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/pick_cover_title"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start"
+            app:layout_constraintTop_toTopOf="@id/gl_v_1182"
+            app:lineHeight="28dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_pick_cover"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="6dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginBottom="22dp"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/cl_pick_cover_next"
+            app:layout_constraintTop_toBottomOf="@id/tv_pick_cover_title"
+            app:spanCount="2"
+            tools:listitem="@layout/item_rv_pick_cover" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_pick_cover_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_pick_cover_next"
+                style="@style/PretendardRegular.ffffff.16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
+                android:enabled="@{vm.selectCoverNum != 0}"
+                android:gravity="center"
+                android:paddingVertical="18.5dp"
+                android:text="@string/next"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_0541"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0541" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1182"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1182" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_3300"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3300" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

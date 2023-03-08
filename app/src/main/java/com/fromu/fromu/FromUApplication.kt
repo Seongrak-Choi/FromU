@@ -1,7 +1,8 @@
 package com.fromu.fromu
 
 import android.app.Application
-import android.content.SharedPreferences
+import com.fromu.fromu.model.AppRunningState
+import com.fromu.fromu.utils.AppLifecycle
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.PrefManager
 import com.fromu.fromu.utils.UiUtils
@@ -12,6 +13,8 @@ import dagger.hilt.android.HiltAndroidApp
 class FromUApplication : Application() {
 
     companion object {
+        var RUNNING_FLAG: AppRunningState = AppRunningState.NOT_RUNNING
+
         // statusbar 높이
         var statusHeight: Int = 0
 
@@ -27,5 +30,14 @@ class FromUApplication : Application() {
         KakaoSdk.init(this, Const.KAKAO_SDK_NATIVE_APP_KEY)
 
         statusHeight = UiUtils.getStatusBarHeight(this)
+
+        registerLifecycle()
+    }
+
+    /**
+     * Activity들의 생명주기 콜백 셋팅
+     */
+    private fun registerLifecycle() {
+        registerActivityLifecycleCallbacks(AppLifecycle())
     }
 }

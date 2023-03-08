@@ -7,14 +7,24 @@ import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.fromu.fromu.data.remote.network.Resource
+import com.fromu.fromu.data.remote.network.response.PatchFirstMetDayRes
 import com.fromu.fromu.databinding.FragmentFirstMetDayBinding
+import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
-import com.fromu.fromu.utils.InputFilterMinMax
+import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Logger
+import com.fromu.fromu.utils.Utils
+import com.fromu.fromu.utils.filter.InputFilterMinMax
 import com.fromu.fromu.viewmodels.FirstMetDayViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-class FirstMetDayFragment : BaseFragment<FragmentFirstMetDayBinding>(FragmentFirstMetDayBinding::inflate) {
+@AndroidEntryPoint
+class FirstMetDayFragment : BaseFragment<FragmentFirstMetDayBinding>(FragmentFirstMetDayBinding::inflate), Observer<Resource<PatchFirstMetDayRes>> {
 
     private val firstMetDayViewModel: FirstMetDayViewModel by viewModels()
 
@@ -29,14 +39,14 @@ class FirstMetDayFragment : BaseFragment<FragmentFirstMetDayBinding>(FragmentFir
         initView()
     }
 
-    private fun initData() {}
+    private fun initData() {
+        (requireActivity() as MainActivity).isVisibleBottomNav(false)
+    }
+
     private fun initView() {
-
-
-
-
         binding.apply {
-
+            lifecycleOwner = this@FirstMetDayFragment
+            vm = firstMetDayViewModel
         }
         initEvent()
     }
@@ -160,7 +170,10 @@ class FirstMetDayFragment : BaseFragment<FragmentFirstMetDayBinding>(FragmentFir
             // 다음 버튼 클릭
             tvFirstMetDayNext.setOnClickListener {
                 firstMetDayViewModel.firstMetDay.value = "${etFirstMetDayYear.text}${etFirstMetDayMonth.text}${etFirstMetDayDay.text}"
-                Logger.e("rak", firstMetDayViewModel.firstMetDay.value.toString())
+
+                lifecycleScope.launch {
+                    firstMetDayViewModel.patchFirstMetDay().observe(viewLifecycleOwner, this@FirstMetDayFragment)
+                }
             }
 
             // back 버튼
@@ -177,5 +190,21 @@ class FirstMetDayFragment : BaseFragment<FragmentFirstMetDayBinding>(FragmentFir
         binding.apply {
             return etFirstMetDayYear.text.toString().length == 4 && etFirstMetDayMonth.text.toString().length == 2 && etFirstMetDayDay.text.toString().length == 2
         }
+    }
+
+    override fun onChanged(resource: Resource<PatchFirstMetDayRes>) {
+        handleResource(resource, listener = object : ResourceSuccessListener<PatchFirstMetDayRes> {
+            override fun onSuccess(res: PatchFirstMetDayRes) {
+                when (res.code) {
+                    Const.SUCCESS_CODE -> {
+                        findNavController().popBackStack()
+                    }
+                    else -> {
+                        Logger.e("firstMetDay", res.message.toString())
+                        Utils.showNetworkErrorSnackBar(binding.root)
+                    }
+                }
+            }
+        })
     }
 }

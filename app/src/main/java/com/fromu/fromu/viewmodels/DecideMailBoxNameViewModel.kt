@@ -15,21 +15,7 @@ import javax.inject.Inject
 class DecideMailBoxNameViewModel @Inject constructor(private val coupleRepo: CoupleRepo) : BaseViewModel() {
     val isInvalidMailBoxName: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
-    val userName: MutableStateFlow<String> = MutableStateFlow("")
-    val partnerName: MutableStateFlow<String> = MutableStateFlow("")
-
     suspend fun patchMailBoxName(patchMailBoxNameReq: PatchMailBoxNameReq): LiveData<Resource<PatchMailBoxNameRes>> {
         return coupleRepo.patchMailBoxName(patchMailBoxNameReq).asLiveData()
     }
-
-//    /**
-//     * 커플 정보 조회
-//     */
-//    suspend fun getCoupleInfo() {
-//        coupleRepo.getCoupleInfo().collect { resource ->
-//            when(resource) {
-//
-//            }
-//        }
-//    }
 }

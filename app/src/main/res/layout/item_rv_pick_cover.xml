@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginVertical="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_item_pick_cover_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_pick_cover"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_diary_cover_1_no_shadow" />
+
+            <View
+                android:id="@+id/v_item_pick_cover_checked"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_rectangle_empty_stroke_a735ff_radius_8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_pick_cover"
+                app:layout_constraintEnd_toEndOf="@+id/iv_pick_cover"
+                app:layout_constraintStart_toStartOf="@+id/iv_pick_cover"
+                app:layout_constraintTop_toTopOf="@id/iv_pick_cover" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_diary_cover_title"
+                app:layout_constraintEnd_toEndOf="@id/gl_h_8441"
+                app:layout_constraintStart_toStartOf="@id/gl_h_2402"
+                app:layout_constraintTop_toTopOf="@+id/gl_v_1534" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_v_1534"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1534" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_h_2402"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.2402" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_h_8441"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.8441" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

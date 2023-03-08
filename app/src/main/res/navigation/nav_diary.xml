@@ -12,12 +12,12 @@
         tools:layout="@layout/fragment_diary">
         <action
             android:id="@+id/action_diaryFragment_to_firstMetDayFragment"
-            app:destination="@id/firstMetDayFragment"
-            app:enterAnim="@anim/view_fade_in"
-            app:exitAnim="@anim/view_fade_out"
-            app:popEnterAnim="@anim/view_fade_in"
-            app:popExitAnim="@anim/view_fade_out" />
+            app:destination="@id/firstMetDayFragment" />
+        <action
+            android:id="@+id/action_diaryFragment_to_CreateDiary"
+            app:destination="@+id/nav_create_diary" />
     </fragment>
+
     <fragment
         android:id="@+id/firstMetDayFragment"
         android:name="com.fromu.fromu.ui.main.FirstMetDayFragment"

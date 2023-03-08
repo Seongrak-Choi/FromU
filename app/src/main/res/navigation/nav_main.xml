@@ -8,5 +8,6 @@
     <include app:graph="@navigation/nav_calendar" />
     <include app:graph="@navigation/nav_letter" />
     <include app:graph="@navigation/nav_profile" />
+    <include app:graph="@navigation/nav_create_diary" />
 
 </navigation>

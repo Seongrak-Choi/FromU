@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.data.remote.network.Resource
-import com.fromu.fromu.data.remote.network.response.LoginRes
+import com.fromu.fromu.data.remote.network.response.SNSLoginRes
 import com.fromu.fromu.databinding.ActivityLoginBinding
 import com.fromu.fromu.model.LoginType
 import com.fromu.fromu.model.listener.ResourceSuccessListener
@@ -33,7 +33,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), Observer<Resource<LoginRes>> {
+class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), Observer<Resource<SNSLoginRes>> {
 
 
     //google 로그인 callback
@@ -72,7 +72,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                 googleLoginManagerInstance.handleSignInResult(task)?.let { accessToken ->
                     //서버로 accessToken 전달
                     lifecycleScope.launch {
-                        loginViewModel.login(accessToken, LoginType.GOOGLE).observe(this@LoginActivity, this@LoginActivity)
+                        loginViewModel.loginWithSns(accessToken, LoginType.GOOGLE).observe(this@LoginActivity, this@LoginActivity)
                     }
 
                 } ?: let {
@@ -95,7 +95,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             override fun onSuccess(accessToken: String) {
                 Logger.d("kakao_login", accessToken)
                 lifecycleScope.launch {
-                    loginViewModel.login(accessToken, LoginType.KAKAO).observe(this@LoginActivity, this@LoginActivity)
+                    loginViewModel.loginWithSns(accessToken, LoginType.KAKAO).observe(this@LoginActivity, this@LoginActivity)
                 }
             }
 
@@ -116,11 +116,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     /**
      * 로그인 결과 핸들링
      */
-    private fun handleLoginResult(loginRes: LoginRes) {
-        when (loginRes.code) {
+    private fun handleLoginResult(SNSLoginRes: SNSLoginRes) {
+        when (SNSLoginRes.code) {
             Const.SUCCESS_CODE -> {
-                if (loginRes.result.isMember) { //회원인 경우
-                    loginRes.result.userInfo?.let { userInfo ->
+                if (SNSLoginRes.result.isMember) { //회원인 경우
+                    SNSLoginRes.result.userInfo?.let { userInfo ->
                         if (userInfo.isMatch) { //커플 매칭이 된 경우
                             if (userInfo.isSetMailboxName) { //우편함 이름을 정한 경우
                                 Intent(this, MainActivity::class.java).apply {
@@ -154,9 +154,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         }
     }
 
-    override fun onChanged(resource: Resource<LoginRes>) {
-        handleResource(resource, true, object : ResourceSuccessListener<LoginRes> {
-            override fun onSuccess(res: LoginRes) {
+    override fun onChanged(resource: Resource<SNSLoginRes>) {
+        handleResource(resource, true, object : ResourceSuccessListener<SNSLoginRes> {
+            override fun onSuccess(res: SNSLoginRes) {
                 handleLoginResult(res)
             }
         })

@@ -36,6 +36,9 @@ class InvitationViewModel @Inject constructor(
     // Description visible 여부
     val isShowDescription: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
+    // 새로고침 버튼 visible 여부
+    val isVisibleRefreshBtn: MutableStateFlow<Boolean> = MutableStateFlow(true)
+
     // 상대방 코드 8자리 제대로 입력 했는지
     val isValidOpponentCode: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
@@ -61,7 +64,9 @@ class InvitationViewModel @Inject constructor(
      * 디스크립션 visible 셋팅
      */
     fun setWhetherFirstDescription() {
-        isShowDescription.value = FromUApplication.prefManager.sp.getBoolean(PrefManager.WHETHER_SHOW_INVITATION_DESCRIPTION, true)
+        isShowDescription.value = FromUApplication.prefManager.sp.getBoolean(PrefManager.WHETHER_SHOW_INVITATION_DESCRIPTION, true).apply {
+            isVisibleRefreshBtn.value = !this
+        }
     }
 
     /**

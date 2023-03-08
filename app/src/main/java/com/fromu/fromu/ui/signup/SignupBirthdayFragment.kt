@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.databinding.FragmentSignupBirthdayBinding
 import com.fromu.fromu.ui.base.BaseFragment
-import com.fromu.fromu.utils.InputFilterMinMax
+import com.fromu.fromu.utils.filter.InputFilterMinMax
 import com.fromu.fromu.viewmodels.SignupViewModel
 
 

@@ -118,4 +118,14 @@ dependencies {
     /* Google Sign-In */
     // https://developers.google.com/identity/sign-in/android/start-integrating
     implementation 'com.google.android.gms:play-services-auth:20.4.1'
+
+
+    /* Lottie */
+    // https://github.com/airbnb/lottie-android
+    implementation 'com.airbnb.android:lottie:3.4.0'
+
+    /* DotsIndicator */
+    // https://github.com/tommybuonomo/dotsindicator
+    implementation 'com.tbuonomo:dotsindicator:4.2'
+
 }

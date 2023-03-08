@@ -42,6 +42,7 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
     }
 
     private fun initData() {
+        // 디스크립션 화면 셋팅
         invitationViewModel.setWhetherFirstDescription()
 
         lifecycleScope.launch {
@@ -66,6 +67,7 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
             // x 버튼
             ivDescriptionClose.setOnClickListener {
                 invitationViewModel.isShowDescription.value = false
+                invitationViewModel.isVisibleRefreshBtn.value = true
                 FromUApplication.prefManager.editor.putBoolean(PrefManager.WHETHER_SHOW_INVITATION_DESCRIPTION, false).apply()
             }
 

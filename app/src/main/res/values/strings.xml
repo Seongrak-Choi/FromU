@@ -8,6 +8,14 @@
     <string name="year_hint">YYYY</string>
     <string name="month_hint">MM</string>
     <string name="day_hint">DD</string>
+    <string name="ok">알겠어</string>
+
+    <!-- on_boarding -->
+    <string name="on_boarding_first">연인과 서로의 일상을 공유하는\n교환일기를 작성해볼까?</string>
+    <string name="on_boarding_second">일기가 쌓이면 우리만의 일기장을\n실제로 배송받을 수 있어!</string>
+    <string name="on_boarding_third">우리의 이야기를 편지를 통해\n다른 커플과 공유도 해볼 수 있어!</string>
+    <string name="on_boarding_skip">건너뛰기</string>
+    <string name="on_boarding_starting">시작하기</string>
 
     <!-- login -->
     <string name="login_google">Google로 로그인하기</string>
@@ -18,7 +26,7 @@
     <string name="nickname_title">반가워,\n너의 닉네임을 정해줘</string>
     <string name="nickname_subtitle">상대방과 함께하는 애칭도 좋아!</string>
     <string name="nickname_contents_hint">예) 프롬이</string>
-    <string name="nickname_warring_msg">다섯글자 이내(특수문자 제외)로 작성해줘</string>
+    <string name="nickname_warring_msg">5글자 이내(특수문자 및 공백 제외)</string>
 
     <string name="birthday_title">너의 생일을 알려줘!</string>
     <string name="gender_title">너의 성별을 알려줘!</string>
@@ -46,12 +54,12 @@
     <string name="invitation_send_msg">당신의 연인 \'%s\'로부터 초대장이 도착했어.\n링크를 눌러 우리와 함께 할래?\n\n커플코드:\n%s \n\n%s</string>
     <string name="invitation_already_exist_msg">이미 매칭이 완료된 유저야! 새로고침을 눌러봐</string>
     <string name="invitation_not_exist_msg">존재하지 않는 코드를 입력했어!</string>
-    <string name="invitation_match_success_title">%s와 매칭이 되었어!</string>
+    <string name="invitation_match_success_title">%s,\n그리고 %s.\n\n프롬유에 온 걸 환영해!</string>
 
     <!-- decide_mail_box_name -->
+    <string name="decide_mail_box_name_title">둘만의 우편함 이름을 정해줄래?</string>
     <string name="decide_mail_box_name_hint">예) 프롬프롬함</string>
     <string name="decide_mail_box_confirm">이 이름으로 결정하기!</string>
-    <string name="decide_mail_box_name_title">%s와 %s의\n우편함 이름을 정해줄래?</string>
     <string name="decide_mail_box_name_invalid_error_msg">4글자 이내(특수문자 및 공백 제외)</string>
     <string name="decide_mail_box_name_duplication_error_msg">중복되는 우편함 이름이야! 다른 걸로 변경해줘</string>
 
@@ -73,5 +81,11 @@
     <string name="diary_dday_add">아직 일기장이 없어\n하나 추가해 볼까?</string>
     <string name="diary_diary_send">일기장 전송하기</string>
     <string name="diary_no_got_title">지금은 나에게 일기장이 없어\n%s에게 벨을 울려볼까?</string>
+    <string name="diary_popup_no_write">일기를 작성하지 않으면\n상대방에게 일기를 보낼 수 없어</string>
 
+    <!-- create_diary -->
+    <string name="pick_cover_title">일기장의 표지를 골라줘!</string>
+    <string name="decide_name_warring">5글자 이내(공백 제외)</string>
+    <string name="decide_name_hint">예) 우리기록♥</string>
+    <string name="decide_name_title">일기장의 이름을 정해줘!</string>
 </resources>

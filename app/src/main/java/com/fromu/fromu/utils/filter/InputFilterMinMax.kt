@@ -1,4 +1,4 @@
-package com.fromu.fromu.utils
+package com.fromu.fromu.utils.filter
 
 import android.text.InputFilter
 import android.text.Spanned

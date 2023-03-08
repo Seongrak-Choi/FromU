@@ -22,6 +22,15 @@
         android:id="@+id/invitationInputCodeFragment"
         android:name="com.fromu.fromu.ui.invitaion.InvitationInputCodeFragment"
         android:label="InvitationInputCodeFragment"
-        tools:layout="@layout/fragment_invitation_input_code" />
+        tools:layout="@layout/fragment_invitation_input_code">
+        <action
+            android:id="@+id/action_invitationInputCodeFragment_to_matchSuccessLottieFragment"
+            app:destination="@id/matchSuccessLottieFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchSuccessLottieFragment"
+        android:name="com.fromu.fromu.ui.invitaion.MatchSuccessLottieFragment"
+        android:label="MatchSuccessLottieFragment"
+        tools:layout="@layout/fragment_match_success_lottie" />
 
 </navigation>

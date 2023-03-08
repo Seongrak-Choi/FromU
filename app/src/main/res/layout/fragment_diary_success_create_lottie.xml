@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_splash_bg">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_diary_decide_name_success_title"
+            style="@style/Cafe24SsurroundAir.000000.22dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="하루에 한 번,\n서로의 일상을 공유해보자!"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_v_1699" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_diary_success_create"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_diary_decide_name_success_title"
+            app:lottie_fileName="letter.json" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1699"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1699" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,14 +1,21 @@
 package com.fromu.fromu.ui.base
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.*
 import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.utils.LoadingDialog
+import com.fromu.fromu.utils.Logger
 import com.fromu.fromu.utils.Utils
 
 abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : AppCompatActivity() {
@@ -16,6 +23,30 @@ abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInf
     lateinit var loadingDialog: LoadingDialog
 
     private var isLoading: Boolean = false
+
+
+    val notificationPermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                //권한 허용
+
+            } else {
+                //권한 거부
+                //TODO 추후 한 번 더 확인용 다이얼로그 디자인 받기
+                Utils.showCustomSnackBar(binding.root, "알림 허용을 원하시면 마이페이지에서 변경하실 수 있습니다.")
+            }
+        }
+
+    val storagePermissionLauncher =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                //권한 허용
+
+            } else {
+                //권한 거부
+                //TODO 추후 한 번 더 확인용 다이얼로그 디자인 받기
+            }
+        }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,6 +137,49 @@ abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInf
                 dismissLoadingDialog()
                 Utils.showNetworkErrorSnackBar(binding.root)
             }
+        }
+    }
+
+    /**
+     * sdk 33이상을 위한 백 프레스드
+     *
+     * @param callback
+     */
+    fun backPressed(callback: OnBackPressedCallback) {
+        this.onBackPressedDispatcher.addCallback(callback)
+    }
+
+    /**
+     * 알림 권한 체크
+     *
+     */
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    fun checkNotificationPermission() {
+        val notificationCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+        if (notificationCheck != PackageManager.PERMISSION_DENIED) {
+            //권한 있음
+            //Nothing
+            Logger.e("checkNotificationPermission", "NotificationStorage권한 있음")
+        } else {
+            //권한 없음
+            Logger.e("checkNotificationPermission", "NotificationStorage권한 없음")
+            notificationPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
+    /**
+     * 저장소 읽기 권한 체크
+     *
+     */
+    fun checkReadStoragePermission() {
+        val notificationCheck = ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        if (notificationCheck != PackageManager.PERMISSION_DENIED) {
+            //권한 있음
+            //Nothing
+        } else {
+            //권한 없음
+            Logger.e("checkNotificationPermission", "ReadStorage권한 없음")
+            storagePermissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE)
         }
     }
 }

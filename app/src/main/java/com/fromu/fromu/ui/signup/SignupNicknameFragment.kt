@@ -57,8 +57,8 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
                 } else {
                     if (checkPattern(it)) {
                         signupViewModel.isValidNickname.value = checkPattern(it)
-                        setNicknameNormalUi()
                         signupViewModel.nickname.value = it
+                        setPassNicknameUi()
                     } else {
                         setNicknameErrorUi()
                     }
@@ -87,6 +87,7 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
     private fun setNicknameErrorUi() {
         binding.apply {
             vNicknameUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_ff4a6b)
+            tvWarringMsg.visibility = View.VISIBLE
             tvWarringMsg.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_ff4a6b))
         }
     }
@@ -99,7 +100,19 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
     private fun setNicknameNormalUi() {
         binding.apply {
             vNicknameUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_a735ff)
+            tvWarringMsg.visibility = View.VISIBLE
             tvWarringMsg.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_6f6f6f))
+        }
+    }
+
+    /**
+     * 정규식에 통과했을 때 입력 UI 셋팅
+     *
+     */
+    private fun setPassNicknameUi() {
+        binding.apply {
+            vNicknameUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_dedee2)
+            tvWarringMsg.visibility = View.GONE
         }
     }
 
@@ -111,6 +124,6 @@ class SignupNicknameFragment : BaseFragment<FragmentSignupNicknameBinding>(Fragm
      * @return
      */
     private fun checkPattern(str: String): Boolean {
-        return str.matches(Regex(Const.NOT_SPECIAL_CHAR_EXPRESSION))
+        return str.matches(Regex(Const.NO_SPECIAL_CHAR_AND_NO_GAP_EXPRESSION))
     }
 }

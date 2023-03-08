@@ -1,9 +1,6 @@
 package com.fromu.fromu.di
 
-import com.fromu.fromu.data.remote.network.api.CoupleService
-import com.fromu.fromu.data.remote.network.api.InvitationService
-import com.fromu.fromu.data.remote.network.api.LoginService
-import com.fromu.fromu.data.remote.network.api.SignupService
+import com.fromu.fromu.data.remote.network.api.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,5 +35,17 @@ object ApiModule {
     @Singleton
     fun provideCoupleService(retrofit: Retrofit): CoupleService {
         return retrofit.create(CoupleService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideViewService(retrofit: Retrofit): ViewService {
+        return retrofit.create(ViewService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDiaryService(retrofit: Retrofit): DiaryService {
+        return retrofit.create(DiaryService::class.java)
     }
 }

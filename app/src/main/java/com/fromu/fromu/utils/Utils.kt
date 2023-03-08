@@ -5,14 +5,19 @@ import android.content.Context.CLIPBOARD_SERVICE
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.graphics.Rect
 import android.util.Base64
 import android.util.DisplayMetrics
 import android.view.View
+import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.fromu.fromu.R
 import com.fromu.fromu.utils.custom.FromUSnackBarBlack
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
+import kotlin.system.exitProcess
 
 
 class Utils {
@@ -121,6 +126,29 @@ class Utils {
         fun px2dp(resources: Resources, px: Float): Float {
             val metrics = resources.displayMetrics
             return px / (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+        }
+
+        /**
+         * 앱을 종료하는 메소드
+         */
+        fun exitApp(activity: FragmentActivity) {
+            ActivityCompat.finishAffinity(activity)
+            System.runFinalization()
+            exitProcess(0)
+        }
+
+
+        /**
+         * 다이얼로그 팝업창 기기 화면 기준으로 가로 비율 설정
+         *
+         * @param percentage
+         */
+        fun DialogFragment.setWidthPercent(percentage: Int) {
+            val percent = percentage.toFloat() / 100
+            val dm = Resources.getSystem().displayMetrics
+            val rect = dm.run { Rect(0, 0, widthPixels, heightPixels) }
+            val percentWidth = rect.width() * percent
+            dialog?.window?.setLayout(percentWidth.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
         }
     }
 }

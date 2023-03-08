@@ -2,17 +2,20 @@ package com.fromu.fromu.ui.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.R
 import com.fromu.fromu.databinding.ActivityMainBinding
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.UiUtils
+import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
     private lateinit var navController: NavController
     private val mainViewModel: MainViewModel by viewModels()
@@ -24,9 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         initView()
     }
 
-    private fun initData() {
-
-    }
+    private fun initData() {}
 
     private fun initView() {
         UiUtils.setFullScreenWithStatusBar(this)
@@ -36,10 +37,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         binding.apply {
             lifecycleOwner = this@MainActivity
             vm = mainViewModel
-            clMainRoot.setPadding(0, FromUApplication.statusHeight, 0, 0)
         }
-    }
 
+        initBackPress()
+    }
 
     /**
      * bottomNav와 navigation component 셋팅
@@ -51,18 +52,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         binding.bnvMain.setupWithNavController(navController)
     }
 
-    /**
-     * 바텀네비게이션 visible 핸들
-     */
-    fun setVisibleBottomNav(isVisible: Boolean) {
-        binding.bnvMain.visibility = if (isVisible) View.VISIBLE else View.GONE
+    fun isVisibleBottomNav(visible: Boolean) {
+        binding.bnvMain.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
-
-    /**
-     * appbar visible 핸들
-     */
-    fun setVisibleAppbar(isVisible: Boolean) {
-        binding.layoutAppbar.mainAppbar.visibility = if (isVisible) View.VISIBLE else View.GONE
+    private fun initBackPress() {
+        backPressed(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Utils.exitApp(this@MainActivity)
+            }
+        })
     }
 }

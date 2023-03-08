@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isLastPage"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp_on_boarding"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator
+            android:id="@+id/indicator_on_boarding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:dotsColor="@color/color_d9d0ff"
+            app:dotsCornerRadius="8dp"
+            app:dotsSize="8dp"
+            app:dotsSpacing="6dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_h_7561"
+            app:selectedDotColor="@color/color_c983ff" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_on_boarding_skip"
+            style="@style/Cafe24SsurroundAir.000000.16dp"
+            visibleGone="@{!isLastPage}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/on_boarding_skip"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_h_8805" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_on_boarding_next"
+            style="@style/Cafe24SsurroundAir.a735ff.16dp"
+            visibleGone="@{!isLastPage}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:paddingHorizontal="10dp"
+            android:paddingBottom="10dp"
+            android:text="@string/next"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_h_8805" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_on_boarding_starting"
+            style="@style/PretendardRegular.ffffff.16dp"
+            visibleGone="@{isLastPage}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/bg_rectangle_c983ff_radius_8"
+            android:gravity="center"
+            android:paddingVertical="18.5dp"
+            android:text="@string/on_boarding_starting"
+            app:layout_constraintBottom_toBottomOf="@id/gl_h_8805"
+            app:layout_constraintTop_toTopOf="@id/gl_h_8805" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_7561"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7561" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_8805"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8805" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.CreateDiaryViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_diary_decide_name_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:src="@drawable/ic_back_6f6f6f"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_v_0541" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_diary_decide_name_title"
+            style="@style/Cafe24SsurroundAir.000000.22dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/decide_name_title"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start"
+            app:layout_constraintTop_toTopOf="@id/gl_v_1182"
+            app:lineHeight="28dp" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@+id/gl_v_2549">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_contents"
+                style="@style/Cafe24SsurroundAir.000000.18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="@string/decide_name_hint"
+                android:inputType="text"
+                android:maxLength="5"
+                android:textColorHint="@color/color_999999"
+                android:textCursorDrawable="@drawable/cursor_bg_a735ff"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/v_underline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10.5dp"
+                android:background="@drawable/selector_bg_unclick_dedee2_click_a735ff"
+                app:layout_constraintTop_toBottomOf="@+id/et_contents" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_warring_msg"
+                style="@style/Cafe24SsurroundAir.6f6f6f.12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="@string/decide_name_warring"
+                app:layout_constraintTop_toBottomOf="@+id/v_underline" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_diary_decide_name_next"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:fitsSystemWindows="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_diary_decide_name_done"
+                style="@style/PretendardRegular.ffffff.16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
+                android:enabled="@{vm.isValidDiaryName()}"
+                android:gravity="center"
+                android:paddingVertical="18.5dp"
+                android:text="@string/done"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_0541"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0541" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1182"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1182" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_2549"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2549" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
