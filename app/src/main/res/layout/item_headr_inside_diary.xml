@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="diaryBook"
+            type="com.fromu.fromu.data.dto.DiaryBook" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_inside_paper">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_add_inside_add_img"
+            isInvisible="@{diaryBook.imageUrl == null ? true : false}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_rectangle_empty_stroke_c1c1c1_radius_8dp_width_1dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="@id/cv_inside_diary_img"
+            app:layout_constraintEnd_toEndOf="@id/cv_inside_diary_img"
+            app:layout_constraintStart_toStartOf="@id/cv_inside_diary_img"
+            app:layout_constraintTop_toTopOf="@id/cv_inside_diary_img">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_img" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_inside_diary_img"
+            isInvisible="@{diaryBook.imageUrl != null ? true : false}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toTopOf="@id/gl_v_0948">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_inside_diary_img"
+                imgResource="@{diaryBook.imageUrl}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher_background" />
+        </androidx.cardview.widget.CardView>
+
+        <View
+            android:id="@+id/v_img_area"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/cv_inside_diary_img"
+            app:layout_constraintEnd_toEndOf="@id/cv_inside_diary_img"
+            app:layout_constraintStart_toStartOf="@id/cv_inside_diary_img"
+            app:layout_constraintTop_toTopOf="@id/cv_inside_diary_img" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_inside_diary_book_name"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@{diaryBook.name}"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@+id/cv_inside_diary_img"
+            tools:text="추억기록장" />
+
+        <View
+            android:id="@+id/v_inside_diary_book_name"
+            android:layout_width="0dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="3dp"
+            android:background="@color/color_7d7d7d"
+            app:layout_constraintEnd_toEndOf="@+id/tv_inside_diary_book_name"
+            app:layout_constraintStart_toStartOf="@+id/tv_inside_diary_book_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_inside_diary_book_name" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_0948"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0948" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="25dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="25dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

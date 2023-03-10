@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.model.listener.ResourceSuccessListener
-import com.fromu.fromu.utils.LoadingDialog
+import com.fromu.fromu.ui.dialog.LoadingDialog
 import com.fromu.fromu.utils.Utils
 
 abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : Fragment() {
@@ -25,6 +26,12 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
         return binding.root
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        dismissLoadingDialog()
+    }
+
 
     /**
      * 키보드를 강제로 내리기 위한 메소드
@@ -35,6 +42,16 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
         if (currentFocus != null) {
             inputManager.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
         }
+    }
+
+    /**
+     * 토스트 메세지를 간편하게 출력하기 위한 메소드
+     *
+     * @param message = 출력하고자 하는 문자열
+     */
+    fun showCustomToast(message: String) {
+        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+        toast.show()
     }
 
 

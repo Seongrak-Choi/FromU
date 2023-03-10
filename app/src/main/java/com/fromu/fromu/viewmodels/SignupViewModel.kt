@@ -2,6 +2,7 @@ package com.fromu.fromu.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.request.SignupReq
 import com.fromu.fromu.data.remote.network.response.SignupRes
@@ -9,6 +10,7 @@ import com.fromu.fromu.data.repository.SignupRepo
 import com.fromu.fromu.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @HiltViewModel
@@ -65,7 +67,15 @@ class SignupViewModel @Inject constructor(private val signupRepo: SignupRepo) : 
      * @return
      */
     suspend fun postSignup(): LiveData<Resource<SignupRes>> {
-        return signupRepo.postSignup(getSignupReq()).asLiveData()
+        return signupRepo.postSignup(getSignupReq()).map { resource ->
+            if (resource is Resource.Success) {
+                resource.body.result.apply {
+                    FromUApplication.prefManager.setUserId(userId)
+                    FromUApplication.prefManager.setLoginToken(jwt)
+                    FromUApplication.prefManager.setRefreshToken(refreshToken)
+                }
+            }
+            resource
+        }.asLiveData()
     }
 }
-

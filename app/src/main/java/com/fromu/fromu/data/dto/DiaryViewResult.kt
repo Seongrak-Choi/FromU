@@ -1,6 +1,7 @@
 package com.fromu.fromu.data.dto
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class DiaryViewResult(
     val dday: Int?,
@@ -12,8 +13,8 @@ data class DiaryViewResult(
 
 data class DiaryBook(
     val coverNum: Int, //일기장 표지 아이디
-    @SerializedName("diarybookId") val diaryBookId: Int,
-    val imageUrl: String,
-    val name: String,
+    @SerializedName("diarybookId") val diaryBookId: Int, //일기장 고유 아이디
+    var imageUrl: String?, //첫 장 이미지
+    val name: String, // 일기장 이름
     val writeFlag: Boolean //일기를 작성 하였는지
-)
+) : Serializable

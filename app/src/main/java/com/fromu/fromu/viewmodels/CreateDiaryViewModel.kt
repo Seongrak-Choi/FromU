@@ -3,8 +3,8 @@ package com.fromu.fromu.viewmodels
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.fromu.fromu.data.remote.network.Resource
-import com.fromu.fromu.data.remote.network.request.PostDiaryBookReq
-import com.fromu.fromu.data.remote.network.response.PostDiaryBookRes
+import com.fromu.fromu.data.remote.network.request.CreateDiaryBookReq
+import com.fromu.fromu.data.remote.network.response.CreateDiaryBookRes
 import com.fromu.fromu.data.repository.CreateDiaryRepo
 import com.fromu.fromu.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +25,7 @@ class CreateDiaryViewModel @Inject constructor(private val createDiaryRepo: Crea
     // 다이어리 생성 결과
     val isSuccessCreateDiary: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
-    suspend fun postDiaryBook(): LiveData<Resource<PostDiaryBookRes>> {
-        return createDiaryRepo.postDiaryBook(PostDiaryBookReq(selectCoverNum.value, inputDiaryName.value)).asLiveData()
+    suspend fun postDiaryBook(): LiveData<Resource<CreateDiaryBookRes>> {
+        return createDiaryRepo.postDiaryBook(CreateDiaryBookReq(selectCoverNum.value, inputDiaryName.value)).asLiveData()
     }
 }

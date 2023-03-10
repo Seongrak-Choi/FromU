@@ -14,7 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.ViewDataBinding
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.model.listener.ResourceSuccessListener
-import com.fromu.fromu.utils.LoadingDialog
+import com.fromu.fromu.ui.dialog.LoadingDialog
 import com.fromu.fromu.utils.Logger
 import com.fromu.fromu.utils.Utils
 

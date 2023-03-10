@@ -21,7 +21,7 @@ class LoginViewModel @Inject constructor(
     private val loginRepo: LoginRepo,
 ) : BaseViewModel() {
 
-    // refresh 로그인 결과과
+    // refresh 로그인 결과
     private var _loginWithRefreshTokenResult: MutableLiveData<Resource<JWTLoginRes>> = MutableLiveData()
     val loginWithRefreshTokenResult: LiveData<Resource<JWTLoginRes>>
         get() = _loginWithRefreshTokenResult

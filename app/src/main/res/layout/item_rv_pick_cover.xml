@@ -32,7 +32,7 @@
                 android:id="@+id/v_item_pick_cover_checked"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/bg_rectangle_empty_stroke_a735ff_radius_8dp"
+                android:background="@drawable/bg_rectangle_empty_stroke_a735ff_radius_8dp_width_3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_pick_cover"
                 app:layout_constraintEnd_toEndOf="@+id/iv_pick_cover"
                 app:layout_constraintStart_toStartOf="@+id/iv_pick_cover"

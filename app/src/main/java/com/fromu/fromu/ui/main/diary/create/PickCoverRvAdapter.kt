@@ -1,4 +1,4 @@
-package com.fromu.fromu.ui.main.diary
+package com.fromu.fromu.ui.main.diary.create
 
 import android.view.LayoutInflater
 import android.view.View

@@ -8,9 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.fromu.fromu.databinding.DialogPopupOneBtnBinding
-import com.fromu.fromu.model.listener.DialogPopupOneBtnListener
 
-class DialogPopupOneBtn(private val contents: String, private val btnText: String, private val listener: DialogPopupOneBtnListener) : DialogFragment() {
+class DialogPopupOneBtn(
+    private val contents: String,
+    private val btnText: String,
+    private val listener: () -> Unit
+) : DialogFragment() {
     companion object {
         const val TAG = "DialogPopupOneBtn"
     }
@@ -44,7 +47,7 @@ class DialogPopupOneBtn(private val contents: String, private val btnText: Strin
             btnText = this@DialogPopupOneBtn.btnText
 
             tvPopupOneBtnConfirm.setOnClickListener {
-                listener.onResult()
+                listener()
                 dismiss()
             }
         }

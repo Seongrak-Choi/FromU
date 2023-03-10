@@ -1,0 +1,91 @@
+package com.fromu.fromu.viewmodels
+
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.fromu.fromu.data.remote.network.Resource
+import com.fromu.fromu.data.remote.network.response.AllDiariesRes
+import com.fromu.fromu.data.remote.network.response.ChangeFirstPageImgRes
+import com.fromu.fromu.data.repository.InsideDiaryRepo
+import com.fromu.fromu.model.listener.DetailDiaryListener
+import com.fromu.fromu.ui.base.BaseViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
+import javax.inject.Inject
+
+@HiltViewModel
+class InsideDiaryViewModel @Inject constructor(private val insideDiaryRepo: InsideDiaryRepo) : BaseViewModel() {
+
+    // 현지 일기 포지션
+    val currentDiaryPosition: MutableStateFlow<Int> = MutableStateFlow(0)
+
+    // 일기 전체 개수
+    val maxLengthOfDiaries: MutableStateFlow<Int> = MutableStateFlow(0)
+
+    // 일기 첫 장 대표 이미지
+    val diaryFirstPageFilePath: MutableStateFlow<String?> = MutableStateFlow(null)
+
+    // 디스크립션 노출 된 적 있는지 확인 / true = 디스크립션 노출, false = 미노출
+    val isShowDescription: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    // 두 번째 디스크립션 visible 여부
+    val isShowDescription2: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
+    // 일기 첫 장 대표 이미지 변경 결과
+    private var _changeFirstPageImgResult: MutableLiveData<Resource<ChangeFirstPageImgRes>> = MutableLiveData()
+    val changeFirstPageImgResult: LiveData<Resource<ChangeFirstPageImgRes>>
+        get() = _changeFirstPageImgResult
+
+    // 모든 일기의 id 조회 결과
+    private var _allDiariesId: MutableLiveData<Resource<AllDiariesRes>> = MutableLiveData()
+    val allDiariesRes: LiveData<Resource<AllDiariesRes>>
+        get() = _allDiariesId
+
+
+    /**
+     * 모든 일기를 오름차순으로 조회
+     *
+     * @param diaryBookId
+     */
+    fun getAllDiaries(diaryBookId: Int) {
+        viewModelScope.launch {
+            insideDiaryRepo.getAllDiaries(diaryBookId).collect {
+                _allDiariesId.value = it
+            }
+        }
+    }
+
+    /**
+     * diaryid로 일기 상세 조회
+     */
+    fun getDetailDiaries(diaryId: Int, listener: DetailDiaryListener) {
+        insideDiaryRepo.getDetailDiariesById(diaryId, listener)
+    }
+
+    /**
+     * 일기 첫 장 표지 이미지 변경
+     */
+    fun changeFirstPageImg(imagePath: String?) {
+        viewModelScope.launch {
+            insideDiaryRepo.changeFirstPageImg(makeFirstPageImgToMultipartBody(imagePath)).collect {
+                _changeFirstPageImgResult.value = it
+            }
+        }
+    }
+
+    /**
+     * make 일기 첫 장 표지 이미지 TO MultiPartBody
+     *
+     * @return
+     */
+    private fun makeFirstPageImgToMultipartBody(imagePath: String?): MultipartBody.Part {
+        val file = File(imagePath ?: "")
+        val requestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
+        return MultipartBody.Part.createFormData("imageFile", file.name, requestBody)
+    }
+}

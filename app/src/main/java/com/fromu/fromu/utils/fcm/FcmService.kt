@@ -8,7 +8,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.media.RingtoneManager
 import android.net.Uri
-import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -16,6 +15,7 @@ import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.R
 import com.fromu.fromu.model.AppRunningState
 import com.fromu.fromu.ui.SplashActivity
+import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.utils.Logger
 import com.google.android.gms.tasks.Task
 import com.google.firebase.messaging.FirebaseMessaging
@@ -52,28 +52,19 @@ class FcmService : FirebaseMessagingService() {
 
     override fun onMessageReceived(message: RemoteMessage) {
         super.onMessageReceived(message)
-        Log.e("rak", "메세지 왔다")
-
-
+        //Notification으로 보냈을 때
         val title: String = message.notification?.title.toString()
         val body: String = message.notification?.body.toString()
-
-        Logger.e("rak", "${title}, ${body}")
-
 
         if (message.data.isNotEmpty())
             showNotification(message.data["title"], message.data["body"])
     }
 
     private fun showNotification(title: String?, message: String?, imgUri: String? = null) {
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-
         }
 
-        //TODO 추후 앱이 켜져 있을 때는 splash가 아닌 다른 곳으로 이동하도록 처리
         val uri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
-
 
         val notificationManager = NotificationManagerCompat.from(applicationContext)
 
@@ -84,13 +75,27 @@ class FcmService : FirebaseMessagingService() {
         if (FromUApplication.RUNNING_FLAG == AppRunningState.NOT_RUNNING) { //앱이 꺼져 있는 경우
             notificationManager.notify(notificationId, setAppNotRunning(title, message).build())
         } else { //앱이 켜져 있는 경우
-            notificationManager.notify(notificationId, setAppNotRunning(title, message).build())
+            notificationManager.notify(notificationId, setAppRunning(title, message).build())
         }
+    }
+
+    private fun setAppRunning(title: String?, message: String?): NotificationCompat.Builder {
+        val intent = Intent(this, MainActivity::class.java)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+
+        return NotificationCompat.Builder(this, CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle(title) //타이틀
+            .setContentText(message) // 콘텐츠
+            .setVibrate(longArrayOf(1000, 1000, 1000)) //진동
+            .setAutoCancel(true) //알람 클릭하면 알람이 자동으로 삭제 되도록 설정
+            .setOnlyAlertOnce(true) //알림이 한 번만 울리게 설정
+            .setContentIntent(pendingIntent)
     }
 
     private fun setAppNotRunning(title: String?, message: String?): NotificationCompat.Builder {
         val intent = Intent(this, SplashActivity::class.java)
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_NO_CREATE)
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_foreground)

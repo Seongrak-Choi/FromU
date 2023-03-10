@@ -1,4 +1,4 @@
-package com.fromu.fromu.utils
+package com.fromu.fromu.ui.dialog
 
 import android.app.Dialog
 import android.content.Context

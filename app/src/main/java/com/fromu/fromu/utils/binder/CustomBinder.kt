@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DecodeFormat
 
 object CustomBinder {
     @JvmStatic
@@ -26,9 +27,10 @@ object CustomBinder {
 
     @JvmStatic
     @BindingAdapter("imgResource")
-    fun setImgResourceByGlide(view: ImageView, imgResource: String) {
+    fun setImgResourceByGlide(view: ImageView, imgResource: String?) {
         Glide.with(view)
             .load(imgResource)
+            .format(DecodeFormat.PREFER_RGB_565)
             .into(view)
     }
 }

@@ -1,5 +1,7 @@
 package com.fromu.fromu.utils
 
+import android.os.Build
+import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
@@ -9,6 +11,7 @@ import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import java.io.Serializable
 
 object Extension {
     fun View.clicks(): Flow<Unit> = callbackFlow {
@@ -58,6 +61,15 @@ object Extension {
                 delay(time)
                 block(it.toString())
             }
+        }
+    }
+
+    @Suppress("DEPRECATION")
+    inline fun <reified T : Serializable> Bundle.customGetSerializable(key: String): T? {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            getSerializable(key, T::class.java)
+        } else {
+            getSerializable(key) as? T
         }
     }
 }

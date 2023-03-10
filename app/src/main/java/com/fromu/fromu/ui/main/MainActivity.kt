@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.fromu.fromu.R
 import com.fromu.fromu.databinding.ActivityMainBinding
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.UiUtils
@@ -46,7 +45,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
      * bottomNav와 navigation component 셋팅
      */
     private fun settingBottomNavWithNavController() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fcv_main) as NavHostFragment
+        val navHostFragment = supportFragmentManager.findFragmentById(binding.fcvMain.id) as NavHostFragment
         navController = navHostFragment.navController
 
         binding.bnvMain.setupWithNavController(navController)

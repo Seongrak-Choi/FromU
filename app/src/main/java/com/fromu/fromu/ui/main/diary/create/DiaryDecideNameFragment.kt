@@ -10,7 +10,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.Resource
-import com.fromu.fromu.data.remote.network.response.PostDiaryBookRes
+import com.fromu.fromu.data.remote.network.response.CreateDiaryBookRes
 import com.fromu.fromu.databinding.FragmentDiaryDecideNameBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
@@ -21,7 +21,7 @@ import com.fromu.fromu.viewmodels.CreateDiaryViewModel
 import kotlinx.coroutines.launch
 
 
-class DiaryDecideNameFragment : BaseFragment<FragmentDiaryDecideNameBinding>(FragmentDiaryDecideNameBinding::inflate), Observer<Resource<PostDiaryBookRes>> {
+class DiaryDecideNameFragment : BaseFragment<FragmentDiaryDecideNameBinding>(FragmentDiaryDecideNameBinding::inflate), Observer<Resource<CreateDiaryBookRes>> {
     private val createDiaryViewModel: CreateDiaryViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -123,7 +123,7 @@ class DiaryDecideNameFragment : BaseFragment<FragmentDiaryDecideNameBinding>(Fra
         }
     }
 
-    private fun handlePostDiaryBook(res: PostDiaryBookRes) {
+    private fun handlePostDiaryBook(res: CreateDiaryBookRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 findNavController().navigate(R.id.action_diaryDecideNameFragment_to_diarySuccessCreateLottieFragment)
@@ -144,9 +144,9 @@ class DiaryDecideNameFragment : BaseFragment<FragmentDiaryDecideNameBinding>(Fra
         return str.matches(Regex(Const.NO_GAP_EXPRESSION))
     }
 
-    override fun onChanged(resource: Resource<PostDiaryBookRes>) {
-        handleResource(resource, true, object : ResourceSuccessListener<PostDiaryBookRes> {
-            override fun onSuccess(res: PostDiaryBookRes) {
+    override fun onChanged(resource: Resource<CreateDiaryBookRes>) {
+        handleResource(resource, true, object : ResourceSuccessListener<CreateDiaryBookRes> {
+            override fun onSuccess(res: CreateDiaryBookRes) {
                 handlePostDiaryBook(res)
             }
         })

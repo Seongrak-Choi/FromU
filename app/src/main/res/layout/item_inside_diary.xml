@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.fromu.fromu.model.WeatherType" />
+
+        <import type="com.fromu.fromu.utils.TimeUtils" />
+
+        <variable
+            name="detailDiary"
+            type="com.fromu.fromu.data.dto.DetailDiaryResult" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_inside_paper"
+        android:fillViewport="true"
+        android:paddingBottom="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ic_inside_paper">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_inside_diary_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/bg_rectangle_empty_stroke_c1c1c1_radius_8dp_width_1dp"
+                android:paddingVertical="9dp"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_inside_diary_month"
+                    style="@style/Cafe24SsurroundAir.000000.14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="@{@string/month(Integer.toString(TimeUtils.getMonthByYyyyMMdd(detailDiary.date)))}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="3월" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_inside_diary_day"
+                    style="@style/Cafe24SsurroundAir.000000.14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@{@string/day(Integer.toString(TimeUtils.getDayByYyyyMMdd(detailDiary.date)))}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_inside_diary_month"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="10일" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_inside_diary_day_of_week"
+                    style="@style/Cafe24SsurroundAir.000000.14dp"
+                    dayOfWeek="@{detailDiary.day}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_inside_diary_day"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_inside_diary_weather"
+                    style="@style/Cafe24SsurroundAir.000000.14dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/emotion_weather"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_inside_diary_sun"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_inside_diary_sun"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_weather_sun"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_inside_diary_lightning"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_inside_diary_sun_circle"
+                    visibleByWeatherId="@{detailDiary.weather}"
+                    android:layout_width="46dp"
+                    android:layout_height="41dp"
+                    android:src="@drawable/ic_weather_check_circle"
+                    android:tag="@{WeatherType.SUNNY.weather}"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_inside_diary_sun"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_inside_diary_sun"
+                    app:layout_constraintStart_toStartOf="@+id/iv_inside_diary_sun"
+                    app:layout_constraintTop_toTopOf="@+id/iv_inside_diary_sun" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_inside_diary_lightning"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_weather_lightning"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/iv_inside_diary_raining"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_inside_diary_lightning_circle"
+                    visibleByWeatherId="@{detailDiary.weather}"
+                    android:layout_width="46dp"
+                    android:layout_height="41dp"
+                    android:src="@drawable/ic_weather_check_circle"
+                    android:tag="@{WeatherType.CLOUD.weather}"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_inside_diary_lightning"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_inside_diary_lightning"
+                    app:layout_constraintStart_toStartOf="@+id/iv_inside_diary_lightning"
+                    app:layout_constraintTop_toTopOf="@+id/iv_inside_diary_lightning" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_inside_diary_raining"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="15dp"
+                    android:src="@drawable/ic_weather_raining"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_inside_diary_raining_circle"
+                    visibleByWeatherId="@{detailDiary.weather}"
+                    android:layout_width="46dp"
+                    android:layout_height="41dp"
+                    android:src="@drawable/ic_weather_check_circle"
+                    android:tag="@{WeatherType.RAINY.weather}"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_inside_diary_raining"
+                    app:layout_constraintEnd_toEndOf="@+id/iv_inside_diary_raining"
+                    app:layout_constraintStart_toStartOf="@+id/iv_inside_diary_raining"
+                    app:layout_constraintTop_toTopOf="@+id/iv_inside_diary_raining" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_inside_diary_img"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="12dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@+id/cl_inside_diary_date">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    imgResource="@{detailDiary.imageUrl}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:src="@drawable/ic_launcher_background" />
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Cafe24SsurroundAir.000000.16dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:lineHeight="25dp"
+                android:text="@{detailDiary.content}"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toBottomOf="@+id/cv_inside_diary_img" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Cafe24SsurroundAir.000000.16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/contents_from(detailDiary.writerNickname)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_end" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_v_0578"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.0578" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="25dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="25dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

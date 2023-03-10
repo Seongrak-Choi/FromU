@@ -9,7 +9,6 @@ import com.fromu.fromu.data.dto.DiaryCoverDto
 import com.fromu.fromu.databinding.FragmentDiaryPickCoverBinding
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.main.MainActivity
-import com.fromu.fromu.ui.main.diary.PickCoverRvAdapter
 import com.fromu.fromu.viewmodels.CreateDiaryViewModel
 
 class DiaryPickCoverFragment : BaseFragment<FragmentDiaryPickCoverBinding>(FragmentDiaryPickCoverBinding::inflate) {

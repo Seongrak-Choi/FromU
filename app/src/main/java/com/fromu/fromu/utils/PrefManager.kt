@@ -15,6 +15,7 @@ class PrefManager constructor(val sp: SharedPreferences) {
         const val USER_ID = "userId"
         const val USER_LOGIN_EMAIL = "userLoginEmail"
         const val INIT_ON_BOARDING_KEY = "initOnBoardingKey" // 온보딩 봤으면 true 안 봤으면 false
+        const val WHETHER_SHOW_DIARY_DESCRIPTION = "whetherShowDiaryDescription"
     }
 
     val editor = sp.edit()

@@ -9,6 +9,12 @@
     <string name="month_hint">MM</string>
     <string name="day_hint">DD</string>
     <string name="ok">알겠어</string>
+    <string name="day">%s일</string>
+    <string name="month">%s월</string>
+    <string name="change">변경하기</string>
+
+    <!-- error -->
+    <string name="load_img_failure_msg">이미지를 불러오는 데 실패하였습니다.</string>
 
     <!-- on_boarding -->
     <string name="on_boarding_first">연인과 서로의 일상을 공유하는\n교환일기를 작성해볼까?</string>
@@ -67,7 +73,7 @@
     <string name="main_nav_diary">일기장</string>
     <string name="main_nav_calendar">달력</string>
     <string name="main_nav_letter">우편함</string>
-    <string name="main_nav_profile">마이페이지</string>
+    <string name="main_nav_profile">우리집</string>
 
     <!-- first_met_day -->
     <string name="first_met_day_appbar_title">디데이 설정</string>
@@ -88,4 +94,13 @@
     <string name="decide_name_warring">5글자 이내(공백 제외)</string>
     <string name="decide_name_hint">예) 우리기록♥</string>
     <string name="decide_name_title">일기장의 이름을 정해줘!</string>
+
+    <!-- inside_diary -->
+    <string name="contents_length">%d/200</string>
+    <string name="contents_hint">내용을 입력해주세요</string>
+    <string name="contents_from">From.%s의 기록</string>
+    <string name="emotion_weather">감정날씨:</string>
+    <string name="current_position">%d/%d</string>
+    <string name="go_last_page">마지막 페이지로</string>
+    <string name="change_first_page_img">사진을 변경하고 싶어?</string>
 </resources>

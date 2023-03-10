@@ -1,5 +1,6 @@
 package com.fromu.fromu.ui.main.diary
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -9,15 +10,16 @@ import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.DiaryViewRes
-import com.fromu.fromu.data.remote.network.response.PatchDiaryBooksPassRes
+import com.fromu.fromu.data.remote.network.response.SendDiaryBooksRes
 import com.fromu.fromu.databinding.FragmentDiaryBinding
 import com.fromu.fromu.model.DiaryStatusType
-import com.fromu.fromu.model.listener.DialogPopupOneBtnListener
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.dialog.DialogPopupOneBtn
 import com.fromu.fromu.ui.main.MainActivity
+import com.fromu.fromu.ui.main.diary.inside.InsideDiaryActivity
 import com.fromu.fromu.utils.Const
+import com.fromu.fromu.utils.EventObserver
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.DiaryViewModel
 import com.fromu.fromu.viewmodels.MainViewModel
@@ -41,9 +43,7 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
     }
 
     private fun initData() {
-        lifecycleScope.launch {
-            diaryViewModel.getDiaryView()
-        }
+        initApi()
     }
 
     private fun initView() {
@@ -53,17 +53,22 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
             }
         }
 
-
         binding.apply {
             lifecycleOwner = this@DiaryFragment
             vm = diaryViewModel
             mainVm = mainViewModel
 
-            clDiaryRoot.setPadding(0, FromUApplication.statusHeight, 0, 0)
+            binding.root.setPadding(0, FromUApplication.statusHeight, 0, 0)
         }
 
-        initObserver()
+        initObserve()
         initEvent()
+    }
+
+    private fun initApi() {
+        lifecycleScope.launch {
+            diaryViewModel.getDiaryView()
+        }
     }
 
     private fun initEvent() {
@@ -76,27 +81,30 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
 
             //일기장 추가
             ivDiaryAdd.setOnClickListener {
-                DialogPopupOneBtn(getString(R.string.diary_popup_no_write), getString(R.string.ok), object : DialogPopupOneBtnListener {
-                    override fun onResult() {
-                        //Nothing
-                    }
-                }).show(childFragmentManager, DialogPopupOneBtn.TAG)
-//                findNavController().navigate(R.id.action_diaryFragment_to_CreateDiary)
+                findNavController().navigate(R.id.action_diaryFragment_to_CreateDiary)
             }
 
             //일기장 보내기 버튼
             tvDiarySend.setOnClickListener {
-                diaryViewModel.patchDiaryBooksPass()
+                diaryViewModel.sendDiaryBooks()
+            }
+
+            //일기장 커버
+            ivDiaryCover.setOnClickListener {
+                Intent(requireContext(), InsideDiaryActivity::class.java).apply {
+                    putExtra(InsideDiaryActivity.DIARY_BOOK_ID_KEY, diaryViewModel.diaryBook.value)
+                    startActivity(this)
+                }
             }
         }
     }
 
-    private fun initObserver() {
+    private fun initObserve() {
         diaryViewModel.apply {
 
             // 다이어리 뷰 조회 결과
             diaryViewInfo.observe(viewLifecycleOwner) { resource ->
-                handleResource(resource, true, object : ResourceSuccessListener<DiaryViewRes> {
+                handleResource(resource, listener = object : ResourceSuccessListener<DiaryViewRes> {
                     override fun onSuccess(res: DiaryViewRes) {
                         handleDiaryViewResult(res)
                     }
@@ -104,13 +112,13 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
             }
 
             // 일기 보내기 결과
-            diaryPassResult.observe(viewLifecycleOwner) { resource ->
-                handleResource(resource, listener = object : ResourceSuccessListener<PatchDiaryBooksPassRes> {
-                    override fun onSuccess(res: PatchDiaryBooksPassRes) {
+            diaryPassResult.observe(viewLifecycleOwner, EventObserver { resource ->
+                handleResource(resource, listener = object : ResourceSuccessListener<SendDiaryBooksRes> {
+                    override fun onSuccess(res: SendDiaryBooksRes) {
                         handleDiaryPassResult(res)
                     }
                 })
-            }
+            })
         }
     }
 
@@ -132,8 +140,10 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
                     diaryBookStatusId.value = diaryInfo.diaryBookStatus.toString()
 
                     diaryInfo.diaryBook?.let { diary ->
+                        diaryBook.value = diary
                         diaryName.value = diary.name
                         diaryCoverNum.value = diary.coverNum
+                        diary.diaryBookId
                     }
                 }
             }
@@ -148,13 +158,13 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
      *
      * @param res
      */
-    private fun handleDiaryPassResult(res: PatchDiaryBooksPassRes) {
+    private fun handleDiaryPassResult(res: SendDiaryBooksRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                // 화면 새로고침을 할 지 아니면 어차피 보냈으니까 보낸 화면으로 처리할 지 추후 생각해 보자.
+                // 가는 중으로 UI 변경
                 diaryViewModel.diaryBookStatusId.value = DiaryStatusType.GOING.id.toString()
             }
-            2074 -> {
+            2071 -> {
                 showNoWritePopup()
             }
             else -> {
@@ -167,10 +177,9 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
      * 일기를 작성하지 않은 경우 보여줄 다이얼로그
      */
     private fun showNoWritePopup() {
-        DialogPopupOneBtn(getString(R.string.diary_popup_no_write), getString(R.string.ok), object : DialogPopupOneBtnListener {
-            override fun onResult() {
-                //Nothing
-            }
-        }).show(childFragmentManager, DialogPopupOneBtn.TAG)
+        DialogPopupOneBtn(getString(R.string.diary_popup_no_write), getString(R.string.ok)) {
+            //Nothing
+        }.show(childFragmentManager, DialogPopupOneBtn.TAG)
     }
+
 }

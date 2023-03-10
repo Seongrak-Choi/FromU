@@ -10,10 +10,12 @@ import android.util.Base64
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.fromu.fromu.R
+import com.fromu.fromu.model.OnDiaryCropImgListener
 import com.fromu.fromu.utils.custom.FromUSnackBarBlack
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -149,6 +151,13 @@ class Utils {
             val rect = dm.run { Rect(0, 0, widthPixels, heightPixels) }
             val percentWidth = rect.width() * percent
             dialog?.window?.setLayout(percentWidth.toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+        }
+
+        fun goGalleryWithSinglePicture(galleryResultLauncher: ActivityResultLauncher<Intent>, listener: OnDiaryCropImgListener? = null) {
+            Intent(Intent.ACTION_PICK).apply {
+                type = "image/*"
+                galleryResultLauncher.launch(this)
+            }
         }
     }
 }
