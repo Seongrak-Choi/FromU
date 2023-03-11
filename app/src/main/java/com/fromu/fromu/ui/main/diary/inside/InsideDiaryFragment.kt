@@ -60,6 +60,8 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        initEvent()
+        initObserve()
     }
 
     private fun initData() {
@@ -91,13 +93,10 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
             lifecycleOwner = this@InsideDiaryFragment
             vm = insideDiaryViewModel
         }
-
-        initViewPager()
-        initEvent()
-        initObserve()
+        settingViewPager()
     }
 
-    private fun initViewPager() {
+    private fun settingViewPager() {
         binding.vpInsideDiary.apply {
             adapter = insideDiaryVpAdapter
             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
@@ -184,6 +183,12 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                 })
             }
         }
+
+        // backStack
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Int>(AddInsideDiaryFragment.UPLOADED_DIARY_ID)
+            ?.observe(viewLifecycleOwner) { uploadedDiaryId ->
+                addDiaryToDiariesListAndGoLastPage(uploadedDiaryId)
+            }
     }
 
     private fun callApi() {
@@ -192,6 +197,14 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         } ?: let {
             Utils.showNetworkErrorSnackBar(binding.root)
         }
+    }
+
+    private fun addDiaryToDiariesListAndGoLastPage(diaryId: Int) {
+        insideDiaryList.add(InsideDiaryModel.Diaries(DetailDiaryResult(diaryId = diaryId)))
+        insideDiaryVpAdapter.submitList(insideDiaryList.toMutableList())
+        insideDiaryViewModel.currentDiaryPosition.value = insideDiaryList.size - 1
+        insideDiaryViewModel.maxLengthOfDiaries.value = insideDiaryList.size - 1
+        binding.vpInsideDiary.currentItem = insideDiaryList.size - 1
     }
 
     /**

@@ -41,6 +41,9 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+
+        initObserve()
+        initEvent()
     }
 
     private fun initData() {}
@@ -60,9 +63,6 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
 
             binding.root.setPadding(0, FromUApplication.statusHeight, 0, 0)
         }
-
-        initObserve()
-        initEvent()
     }
 
     private fun initApi() {

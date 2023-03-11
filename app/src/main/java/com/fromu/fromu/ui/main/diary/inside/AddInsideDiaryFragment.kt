@@ -30,6 +30,11 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(FragmentAddInsideDiaryBinding::inflate), Observer<Resource<WriteDiaryRes>> {
+
+    companion object {
+        const val UPLOADED_DIARY_ID = "uploadedDiaryId"
+    }
+
     private val addInsideDiaryViewModel: AddInsideDairyViewModel by viewModels()
 
     // 키보드 show에 따른 스크롤 위치 변경 유틸 클래스
@@ -52,6 +57,10 @@ class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(Fragm
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+
+        initKeyBoardVisibilityUtils()
+        initEvent()
+        initObserve()
     }
 
     private fun initData() {
@@ -65,10 +74,6 @@ class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(Fragm
             lifecycleOwner = this@AddInsideDiaryFragment
             vm = addInsideDiaryViewModel
         }
-
-        initKeyBoardVisibilityUtils()
-        initEvent()
-        initObserve()
     }
 
 
@@ -195,7 +200,7 @@ class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(Fragm
     private fun handleWriteDiaryRes(res: WriteDiaryRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                findNavController().previousBackStackEntry?.savedStateHandle?.set("key", "value that needs to be passed")
+                findNavController().previousBackStackEntry?.savedStateHandle?.set(UPLOADED_DIARY_ID, res.result) //등록된 다이어리 id를 이전 프래그먼트에 전달
                 findNavController().popBackStack()
             }
             else -> {

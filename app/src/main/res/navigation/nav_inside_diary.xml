@@ -23,5 +23,6 @@
     <fragment
         android:id="@+id/addInsideDiaryFragment"
         android:name="com.fromu.fromu.ui.main.diary.inside.AddInsideDiaryFragment"
+        tools:layout="@layout/fragment_add_inside_diary"
         android:label="AddInsideDiaryFragment" />
 </navigation>
