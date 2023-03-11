@@ -219,6 +219,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_v_1534"
                 android:layout_width="wrap_content"
@@ -273,13 +274,17 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageView
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_diary_hand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="-22dp"
-                android:src="@drawable/ic_bell_pointing_hand"
                 app:layout_constraintBottom_toTopOf="@+id/tv_diary_bell"
-                app:layout_constraintStart_toEndOf="@+id/tv_diary_bell" />
+                app:layout_constraintStart_toEndOf="@+id/tv_diary_bell"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="hand.json"
+                app:lottie_loop="true" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_v_3174"

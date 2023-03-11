@@ -48,4 +48,10 @@ object ApiModule {
     fun provideDiaryService(retrofit: Retrofit): DiaryService {
         return retrofit.create(DiaryService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun providePushService(retrofit: Retrofit): PushService {
+        return retrofit.create(PushService::class.java)
+    }
 }

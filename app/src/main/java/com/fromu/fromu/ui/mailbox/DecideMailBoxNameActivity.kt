@@ -95,7 +95,7 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
             // 결정하기 버튼
             tvDecideMailBoxConnect.setThrottleClick(lifecycleScope) {
                 lifecycleScope.launch {
-                    decideMailBoxNameViewModel.patchMailBoxName(PatchMailBoxNameReq(etContents.text.toString())).observe(this@DecideMailBoxNameActivity, this@DecideMailBoxNameActivity)
+                    decideMailBoxNameViewModel.patchMailBoxName(PatchMailBoxNameReq("${etContents.text.toString()}함")).observe(this@DecideMailBoxNameActivity, this@DecideMailBoxNameActivity)
                 }
             }
         }

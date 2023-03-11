@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.dialog.LoadingDialog
+import com.fromu.fromu.utils.Logger
 import com.fromu.fromu.utils.Utils
 
 abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : Fragment() {
@@ -59,17 +60,20 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
      * 진동 울리는 메소드
      *
      * @param milliSecondsOfDuration
-     * @param power
+     * @param power 기본 100
      */
-    fun doVibrate(milliSecondsOfDuration: Long, power: Int) {
-        val vibrator = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+    fun doVibrate(milliSecondsOfDuration: Long, power: Int = 100) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            Logger.e("rak", "진동하기")
             val vibratorManager = requireActivity().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
-            vibratorManager.defaultVibrator
+            val vibrationEffect = VibrationEffect.createOneShot(100L, VibrationEffect.DEFAULT_AMPLITUDE)
+            val combinedVibration = CombinedVibration.createParallel(vibrationEffect)
+            vibratorManager.vibrate(combinedVibration)
         } else {
             @Suppress("DEPRECATION")
-            requireActivity().getSystemService(AppCompatActivity.VIBRATOR_SERVICE) as Vibrator
+            val vibrator = requireActivity().getSystemService(AppCompatActivity.VIBRATOR_SERVICE) as Vibrator
+            vibrator.vibrate(VibrationEffect.createOneShot(milliSecondsOfDuration, power))
         }
-        vibrator.vibrate(VibrationEffect.createOneShot(milliSecondsOfDuration, power))
     }
 
     /**

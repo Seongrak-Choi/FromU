@@ -3,12 +3,8 @@ package com.fromu.fromu.utils.sns
 import android.content.Context
 import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.utils.Logger
-import com.fromu.fromu.utils.PrefManager
-import com.fromu.fromu.utils.Utils
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
-import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 
 class KakaoLoginManager(private val context: Context) {

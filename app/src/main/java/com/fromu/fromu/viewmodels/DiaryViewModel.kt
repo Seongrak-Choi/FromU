@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.fromu.fromu.data.dto.DiaryBook
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.DiaryViewRes
+import com.fromu.fromu.data.remote.network.response.PushPartnerRes
 import com.fromu.fromu.data.remote.network.response.SendDiaryBooksRes
 import com.fromu.fromu.data.repository.DiaryViewRepo
 import com.fromu.fromu.ui.base.BaseViewModel
@@ -43,11 +44,15 @@ class DiaryViewModel @Inject constructor(private val diaryViewRepo: DiaryViewRep
     val diaryViewInfo: LiveData<Resource<DiaryViewRes>>
         get() = _diaryViewInfo
 
-
     // 일기장 보내기 결과
     private var _diaryPassResult: MutableLiveData<Event<Resource<SendDiaryBooksRes>>> = MutableLiveData()
     val diaryPassResult: LiveData<Event<Resource<SendDiaryBooksRes>>>
         get() = _diaryPassResult
+
+    // 띵동 벨 울리기 결과
+    private var _pushPartnerResult: MutableLiveData<Event<Resource<PushPartnerRes>>> = MutableLiveData()
+    val pushPartnerResult: LiveData<Event<Resource<PushPartnerRes>>>
+        get() = _pushPartnerResult
 
     /**
      * 다이어리 뷰 데이터 조회
@@ -60,7 +65,6 @@ class DiaryViewModel @Inject constructor(private val diaryViewRepo: DiaryViewRep
         }
     }
 
-
     /**
      * 일기장 보내기
      */
@@ -68,6 +72,17 @@ class DiaryViewModel @Inject constructor(private val diaryViewRepo: DiaryViewRep
         viewModelScope.launch {
             diaryViewRepo.sendDiaryBooks().collect {
                 _diaryPassResult.value = Event(it)
+            }
+        }
+    }
+
+    /**
+     * 띵동 벨 울리기
+     */
+    fun pushPartner() {
+        viewModelScope.launch {
+            diaryViewRepo.pushPartner().collect {
+                _pushPartnerResult.value = Event(it)
             }
         }
     }

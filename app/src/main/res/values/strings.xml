@@ -16,6 +16,10 @@
     <!-- error -->
     <string name="load_img_failure_msg">이미지를 불러오는 데 실패하였습니다.</string>
 
+
+    <!-- splash -->
+    <string name="splash_welcome">당신으로부터,</string>
+
     <!-- on_boarding -->
     <string name="on_boarding_first">연인과 서로의 일상을 공유하는\n교환일기를 작성해볼까?</string>
     <string name="on_boarding_second">일기가 쌓이면 우리만의 일기장을\n실제로 배송받을 수 있어!</string>
@@ -88,6 +92,7 @@
     <string name="diary_diary_send">일기장 전송하기</string>
     <string name="diary_no_got_title">지금은 나에게 일기장이 없어\n%s에게 벨을 울려볼까?</string>
     <string name="diary_popup_no_write">일기를 작성하지 않으면\n상대방에게 일기를 보낼 수 없어</string>
+    <string name="diary_create_success">하루에 한 번,\n서로의 일상을 공유해보자!</string>
 
     <!-- create_diary -->
     <string name="pick_cover_title">일기장의 표지를 골라줘!</string>

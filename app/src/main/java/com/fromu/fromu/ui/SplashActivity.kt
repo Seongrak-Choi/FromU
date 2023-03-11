@@ -43,8 +43,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 
     private fun initData() {
         handleDynamicLinks()
-
-        FromUApplication.prefManager.setLoginToken("eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWQiOjIyLCJpYXQiOjE2NzgyOTY0NjksImV4cCI6MTY3OTc2NzY5OH0.jKsIbEXzWT4fKyViwINtnnyNiFijofzGCFdUts_VA3c")
     }
 
     private fun initView() {
@@ -95,7 +93,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 
     private fun <T> goActivityWithDelay(activity: Class<T>) {
         lifecycleScope.launch {
-            delay(2000)
+            delay(3000)
             Intent(this@SplashActivity, activity).apply {
                 startActivity(this)
                 finish()
@@ -136,7 +134,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 
         if (jwt.isNullOrEmpty()) { //저장된 jwt가 없다면 로그인 화면으로 이동
             checkInitOnBoardingBeforeGoingLoginActivity()
-
         } else { //저장된 jwt가 있다면 자동로그인 api 호출
             loginViewModel.loginWithRefreshToken()
         }

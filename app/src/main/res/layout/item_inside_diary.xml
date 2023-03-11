@@ -173,7 +173,7 @@
                 style="@style/Cafe24SsurroundAir.000000.16dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:lineHeight="25dp"
                 android:text="@{detailDiary.content}"
                 app:layout_constraintEnd_toEndOf="@id/gl_end"

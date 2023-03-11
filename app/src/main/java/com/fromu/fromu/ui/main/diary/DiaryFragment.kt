@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.DiaryViewRes
+import com.fromu.fromu.data.remote.network.response.PushPartnerRes
 import com.fromu.fromu.data.remote.network.response.SendDiaryBooksRes
 import com.fromu.fromu.databinding.FragmentDiaryBinding
 import com.fromu.fromu.model.DiaryStatusType
@@ -42,11 +43,10 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
         initView()
     }
 
-    private fun initData() {
-        initApi()
-    }
+    private fun initData() {}
 
     private fun initView() {
+        initApi()
         activity?.let { activity ->
             if (activity is MainActivity) {
                 activity.isVisibleBottomNav(true)
@@ -96,6 +96,12 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
                     startActivity(this)
                 }
             }
+
+            // 띵동! 벨 울리기
+            tvDiaryBell.setOnClickListener {
+                diaryViewModel.pushPartner()
+                doVibrate(100)
+            }
         }
     }
 
@@ -116,6 +122,15 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
                 handleResource(resource, listener = object : ResourceSuccessListener<SendDiaryBooksRes> {
                     override fun onSuccess(res: SendDiaryBooksRes) {
                         handleDiaryPassResult(res)
+                    }
+                })
+            })
+
+            // 띵동 벨 울리기 결과
+            diaryViewModel.pushPartnerResult.observe(viewLifecycleOwner, EventObserver { resources ->
+                handleResource(resources, listener = object : ResourceSuccessListener<PushPartnerRes> {
+                    override fun onSuccess(res: PushPartnerRes) {
+                        handlePushPartnerRes(res)
                     }
                 })
             })
@@ -166,6 +181,18 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
             }
             2071 -> {
                 showNoWritePopup()
+            }
+            else -> {
+                Utils.showNetworkErrorSnackBar(binding.root)
+            }
+        }
+    }
+
+
+    private fun handlePushPartnerRes(res: PushPartnerRes) {
+        when (res.code) {
+            Const.SUCCESS_CODE -> {
+                //Nothing
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)

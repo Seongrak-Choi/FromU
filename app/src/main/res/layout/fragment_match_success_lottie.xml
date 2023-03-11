@@ -34,7 +34,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_match_success_title1"
-            app:lottie_fileName="letter.json" />
+            app:lottie_fileName="matching.json" />
 
 
         <androidx.constraintlayout.widget.Guideline

@@ -105,7 +105,6 @@ class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(Fragm
                 cropImgPath.collect {
                     checkInvalidInputData()
                 }
-
             }
 
             lifecycleScope.launch {
@@ -196,7 +195,8 @@ class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(Fragm
     private fun handleWriteDiaryRes(res: WriteDiaryRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-
+                findNavController().previousBackStackEntry?.savedStateHandle?.set("key", "value that needs to be passed")
+                findNavController().popBackStack()
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)

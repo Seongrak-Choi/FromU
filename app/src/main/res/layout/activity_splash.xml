@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -16,6 +17,39 @@
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:src="@drawable/ic_splash_bg" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Cafe24SsurroundAir.000000.20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/splash_welcome"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_h_2192" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_splash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/gl_h_2955"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="splash.json"
+            app:lottie_loop="true" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_2192"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2192" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_2955"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2955" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
