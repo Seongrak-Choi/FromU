@@ -121,4 +121,21 @@ class DiaryDataSource @Inject constructor(
     }.catch {
         emit(Resource.Failed("changeFirstPageImg : An unkown error occurred"))
     }
+
+
+    /**
+     * 일기 월별 조회
+     */
+    suspend fun getMonthList(diaryBookId: Int): Flow<Resource<GetMonthListRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = diaryService.getMonthList(diaryBookId)
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("getMonthList : An unkown error occurred"))
+    }
 }

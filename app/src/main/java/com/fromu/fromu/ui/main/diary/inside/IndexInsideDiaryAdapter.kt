@@ -35,16 +35,28 @@ class IndexInsideDiaryAdapter : ListAdapter<IndexInsideDiaryModel, RecyclerView.
         }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return if (getItem(position) is IndexInsideDiaryModel.IndexMonth)
+        //첫 번째 원소만 헤더로 나타내기 위함
+            TYPE_MONTH
+        else
+            TYPE_DAY
+    }
+
 
     inner class IndexMonthViewHolder(private val binding: ItemIndexMonthInsideDiaryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: IndexInsideDiaryModel.IndexMonth) {
-
+            binding.apply {
+                title = item.item
+            }
         }
     }
 
     inner class IndexDayViewHolder(private val binding: ItemIndexDayInsideDiaryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: IndexInsideDiaryModel.IndexDay) {
-
+            binding.apply {
+                indexByMonthResult = item.item
+            }
         }
     }
 

@@ -9,6 +9,7 @@ import com.fromu.fromu.data.remote.network.response.ChangeFirstPageImgRes
 import com.fromu.fromu.data.repository.InsideDiaryRepo
 import com.fromu.fromu.model.listener.DetailDiaryListener
 import com.fromu.fromu.ui.base.BaseViewModel
+import com.fromu.fromu.utils.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -42,8 +43,8 @@ class InsideDiaryViewModel @Inject constructor(private val insideDiaryRepo: Insi
         get() = _changeFirstPageImgResult
 
     // 모든 일기의 id 조회 결과
-    private var _allDiariesId: MutableLiveData<Resource<AllDiariesRes>> = MutableLiveData()
-    val allDiariesRes: LiveData<Resource<AllDiariesRes>>
+    private var _allDiariesId: MutableLiveData<Event<Resource<AllDiariesRes>>> = MutableLiveData()
+    val allDiariesRes: LiveData<Event<Resource<AllDiariesRes>>>
         get() = _allDiariesId
 
 
@@ -55,7 +56,7 @@ class InsideDiaryViewModel @Inject constructor(private val insideDiaryRepo: Insi
     fun getAllDiaries(diaryBookId: Int) {
         viewModelScope.launch {
             insideDiaryRepo.getAllDiaries(diaryBookId).collect {
-                _allDiariesId.value = it
+                _allDiariesId.value = Event(it)
             }
         }
     }

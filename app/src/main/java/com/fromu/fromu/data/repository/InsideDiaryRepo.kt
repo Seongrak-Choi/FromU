@@ -4,6 +4,7 @@ import com.fromu.fromu.data.remote.datasource.DiaryDataSource
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.AllDiariesRes
 import com.fromu.fromu.data.remote.network.response.ChangeFirstPageImgRes
+import com.fromu.fromu.data.remote.network.response.GetMonthListRes
 import com.fromu.fromu.model.listener.DetailDiaryListener
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
@@ -20,5 +21,9 @@ class InsideDiaryRepo @Inject constructor(private val diaryDataSource: DiaryData
 
     suspend fun changeFirstPageImg(imgFile: MultipartBody.Part): Flow<Resource<ChangeFirstPageImgRes>> {
         return diaryDataSource.changeFirstPageImg(imgFile)
+    }
+
+    suspend fun getMonthList(diaryBookId: Int): Flow<Resource<GetMonthListRes>> {
+        return diaryDataSource.getMonthList(diaryBookId)
     }
 }

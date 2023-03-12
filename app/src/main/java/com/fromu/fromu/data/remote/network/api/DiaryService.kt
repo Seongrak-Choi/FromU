@@ -17,7 +17,6 @@ interface DiaryService {
     @PATCH("diarybooks/pass")
     suspend fun patchDiaryBooksPss(): Response<SendDiaryBooksRes>
 
-
     // 일기 등록
     @Multipart
     @POST("diaries")
@@ -35,4 +34,8 @@ interface DiaryService {
     @Multipart
     @PATCH("diarybooks/image")
     suspend fun patchDiaryBooksImage(@Part imageFile: MultipartBody.Part): Response<ChangeFirstPageImgRes>
+
+    // 일기 월 챕터 조회 api
+    @GET("diaries/monthList/{diarybookId}")
+    suspend fun getMonthList(@Query("diarybookId") diaryBookId: Int): Response<GetMonthListRes>
 }

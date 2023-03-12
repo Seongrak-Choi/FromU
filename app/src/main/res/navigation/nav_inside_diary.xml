@@ -17,12 +17,28 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_insideDiaryFragment_to_indexInsideDiaryFragment"
+            app:destination="@id/indexInsideDiaryFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
 
     <fragment
         android:id="@+id/addInsideDiaryFragment"
         android:name="com.fromu.fromu.ui.main.diary.inside.AddInsideDiaryFragment"
-        tools:layout="@layout/fragment_add_inside_diary"
-        android:label="AddInsideDiaryFragment" />
+        android:label="AddInsideDiaryFragment"
+        tools:layout="@layout/fragment_add_inside_diary" />
+    <fragment
+        android:id="@+id/indexInsideDiaryFragment"
+        android:name="com.fromu.fromu.ui.main.diary.inside.IndexInsideDiaryFragment"
+        android:label="IndexInsideDiaryFragment"
+        tools:layout="@layout/fragment_index_inside_diary">
+        <argument
+            android:name="DiaryBookId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

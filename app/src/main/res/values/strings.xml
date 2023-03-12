@@ -111,4 +111,5 @@
     <string name="description_swipe">스와이프로 일기를 넘겨보세요!</string>
     <string name="description_add">일기추가 아이콘을 눌러\n일기를 작성해보세요!</string>
     <string name="index_title">목차</string>
+
 </resources>

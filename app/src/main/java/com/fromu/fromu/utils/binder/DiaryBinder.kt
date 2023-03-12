@@ -1,11 +1,14 @@
 package com.fromu.fromu.utils.binder
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.fromu.fromu.R
 import com.fromu.fromu.model.FindDiaryCover
+import com.fromu.fromu.utils.TimeUtils
 
 object DiaryBinder {
     @JvmStatic
@@ -42,5 +45,13 @@ object DiaryBinder {
             else -> ""
         }
         view.text = dayOfWeek
+    }
+
+    @SuppressLint("SetTextI18n")
+    @JvmStatic
+    @BindingAdapter("monthAndDayForm")
+    fun setDateToMonthAndDayForm(view: TextView, date: String) {
+        val context = view.context
+        view.text = "${context.getString(R.string.month).format(TimeUtils.getDayByYyyyMMdd(date).toShort())} ${context.getString(R.string.day).format(TimeUtils.getMonthByYyyyMMdd(date))}"
     }
 }

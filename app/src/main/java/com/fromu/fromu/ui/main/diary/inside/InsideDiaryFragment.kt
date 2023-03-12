@@ -6,6 +6,7 @@ import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +23,7 @@ import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.base.ImgCropActivity
 import com.fromu.fromu.utils.Const
+import com.fromu.fromu.utils.EventObserver
 import com.fromu.fromu.utils.Extension.customGetSerializable
 import com.fromu.fromu.utils.PrefManager
 import com.fromu.fromu.utils.Utils
@@ -144,6 +146,12 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                 requireActivity().finish()
             }
 
+            // 목차 버튼
+            ivInsideDiaryIndex.setOnClickListener {
+                val bundle = bundleOf(IndexInsideDiaryFragment.DIARY_BOOK_ID to diaryBookInfo!!.diaryBookId)
+                findNavController().navigate(R.id.action_insideDiaryFragment_to_indexInsideDiaryFragment, bundle)
+            }
+
             clDescription.setOnClickListener {
                 //Nothing
             }
@@ -168,13 +176,13 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
 
     private fun initObserve() {
         insideDiaryViewModel.apply {
-            allDiariesRes.observe(viewLifecycleOwner) { resource ->
+            allDiariesRes.observe(viewLifecycleOwner, EventObserver { resource ->
                 handleResource(resource, true, listener = object : ResourceSuccessListener<AllDiariesRes> {
                     override fun onSuccess(res: AllDiariesRes) {
                         handleAllDiariesRes(res)
                     }
                 })
-            }
+            })
 
             changeFirstPageImgResult.observe(viewLifecycleOwner) { resources ->
                 handleResource(resources, true, object : ResourceSuccessListener<ChangeFirstPageImgRes> {
@@ -200,6 +208,10 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         }
     }
 
+
+    /**
+     * 일기 작성 완료 후 마지막 페이지로 이동
+     */
     private fun addDiaryToDiariesListAndGoLastPage(diaryId: Int) {
         insideDiaryList.add(InsideDiaryModel.Diaries(DetailDiaryResult(diaryId = diaryId)))
         insideDiaryVpAdapter.submitList(insideDiaryList.toMutableList())
@@ -207,6 +219,7 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         insideDiaryViewModel.maxLengthOfDiaries.value = insideDiaryList.size - 1
         binding.vpInsideDiary.currentItem = insideDiaryList.size - 1
     }
+
 
     /**
      * 갤러리 결과 셋팅

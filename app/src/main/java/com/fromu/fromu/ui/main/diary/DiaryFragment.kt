@@ -46,7 +46,9 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
         initEvent()
     }
 
-    private fun initData() {}
+    private fun initData() {
+
+    }
 
     private fun initView() {
         initApi()
@@ -168,6 +170,7 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
         }
     }
 
+
     /**
      * 일기장 전송 결과 핸들링
      *
@@ -199,6 +202,8 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
             }
         }
     }
+
+
 
     /**
      * 일기를 작성하지 않은 경우 보여줄 다이얼로그

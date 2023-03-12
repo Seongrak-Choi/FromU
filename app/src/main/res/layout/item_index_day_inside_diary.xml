@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="indexByMonthResult"
+            type="com.fromu.fromu.data.dto.IndexByMonthResult" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,6 +18,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_index_day_date"
             style="@style/Cafe24SsurroundAir.000000.14dp"
+            monthAndDayForm="@{indexByMonthResult.date}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,8 +28,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/Cafe24SsurroundAir.000000.14dp"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="58dp"
+            android:gravity="center"
+            android:text="@{indexByMonthResult.content}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_index_day"
             app:layout_constraintStart_toEndOf="@+id/tv_index_day_date"
