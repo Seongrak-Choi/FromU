@@ -1,5 +1,5 @@
 package com.fromu.fromu.data.remote.network.response
 
-data class GetMonthListRes(
+data class IndexMonthListRes(
     val result: ArrayList<String>
 ) : BaseResponse()

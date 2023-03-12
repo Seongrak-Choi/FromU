@@ -6,7 +6,6 @@ import android.view.View
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -22,6 +21,7 @@ import com.fromu.fromu.model.InsideDiaryModel
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.base.ImgCropActivity
+import com.fromu.fromu.ui.main.diary.inside.index.IndexDiaryActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.EventObserver
 import com.fromu.fromu.utils.Extension.customGetSerializable
@@ -148,8 +148,12 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
 
             // 목차 버튼
             ivInsideDiaryIndex.setOnClickListener {
-                val bundle = bundleOf(IndexInsideDiaryFragment.DIARY_BOOK_ID to diaryBookInfo!!.diaryBookId)
-                findNavController().navigate(R.id.action_insideDiaryFragment_to_indexInsideDiaryFragment, bundle)
+                diaryBookInfo?.let {
+                    Intent(requireContext(), IndexDiaryActivity::class.java).apply {
+                        putExtra(IndexDiaryActivity.DIARY_BOOk_ID, it.diaryBookId)
+                        startActivity(this)
+                    }
+                }
             }
 
             clDescription.setOnClickListener {

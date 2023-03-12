@@ -7,7 +7,7 @@
 
         <variable
             name="indexByMonthResult"
-            type="com.fromu.fromu.data.dto.IndexByMonthResult" />
+            type="com.fromu.fromu.data.dto.IndexDiaryInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +31,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="58dp"
+            android:ellipsize="end"
             android:gravity="center"
+            android:maxLines="1"
             android:text="@{indexByMonthResult.content}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_index_day"

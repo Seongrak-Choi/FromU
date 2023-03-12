@@ -33,22 +33,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/index_title"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_index_inside_diary"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            tools:listitem="@layout/item_index_month_inside_diary"
+            android:background="@drawable/ic_inside_paper"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:background="@drawable/ic_inside_paper"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_index__app_bar"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            tools:listitem="@layout/item_index_month_inside_diary" />
 
 
         <androidx.constraintlayout.widget.Guideline

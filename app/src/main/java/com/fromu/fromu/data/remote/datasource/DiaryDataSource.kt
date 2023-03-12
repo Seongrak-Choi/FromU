@@ -124,9 +124,9 @@ class DiaryDataSource @Inject constructor(
 
 
     /**
-     * 일기 월별 조회
+     * 목차 월 조회
      */
-    suspend fun getMonthList(diaryBookId: Int): Flow<Resource<GetMonthListRes>> = flow {
+    suspend fun getMonthList(diaryBookId: Int): Flow<Resource<IndexMonthListRes>> = flow {
         emit(Resource.Loading)
 
         val res = diaryService.getMonthList(diaryBookId)
@@ -138,4 +138,22 @@ class DiaryDataSource @Inject constructor(
     }.catch {
         emit(Resource.Failed("getMonthList : An unkown error occurred"))
     }
+
+    /**
+     * 목차 월별 작성일 조회
+     */
+    suspend fun getDiariesByMonth(diaryBookId: Int, month: String): Flow<Resource<IndexByMonthRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = diaryService.getDiaryByMonth(diaryBookId, month)
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("getDiariesByMonth : An unkown error occurred"))
+    }
+
+
 }

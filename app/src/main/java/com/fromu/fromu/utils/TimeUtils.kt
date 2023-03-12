@@ -59,6 +59,20 @@ class TimeUtils {
             return Pair(month, day)
         }
 
+
+        @JvmStatic
+        fun getYearByYyyyMMdd(dateString: String?): Int {
+            val year: Int = if (!dateString.isNullOrEmpty() && dateString.toString().length == 8) {
+                val formatter = DateTimeFormatter.ofPattern("yyyyMMdd")
+                val date = LocalDate.parse(dateString, formatter)
+                date.year
+            } else {
+                0
+            }
+
+            return year
+        }
+
         /**
          * yyyyMMdd에서 월(month)을 추출하는 메소드
          *

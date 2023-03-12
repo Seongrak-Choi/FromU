@@ -1,4 +1,4 @@
-package com.fromu.fromu.ui.main.diary.inside
+package com.fromu.fromu.ui.main.diary.inside.index
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,11 +9,15 @@ import com.fromu.fromu.databinding.ItemIndexDayInsideDiaryBinding
 import com.fromu.fromu.databinding.ItemIndexMonthInsideDiaryBinding
 import com.fromu.fromu.model.IndexInsideDiaryModel
 
-class IndexInsideDiaryAdapter : ListAdapter<IndexInsideDiaryModel, RecyclerView.ViewHolder>(IndexDiffCallback()) {
+class IndexInsideDiaryAdapter(private val listener: IndexDiInsidearyAdapterListener) : ListAdapter<IndexInsideDiaryModel, RecyclerView.ViewHolder>(IndexDiffCallback()) {
 
     companion object {
         const val TYPE_MONTH = 0
         const val TYPE_DAY = 1
+    }
+
+    interface IndexDiInsidearyAdapterListener {
+        fun onClickMonth(month: String)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -26,10 +30,10 @@ class IndexInsideDiaryAdapter : ListAdapter<IndexInsideDiaryModel, RecyclerView.
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is IndexInsideDiaryAdapter.IndexMonthViewHolder -> {
+            is IndexMonthViewHolder -> {
                 holder.bind(getItem(position) as IndexInsideDiaryModel.IndexMonth)
             }
-            is IndexInsideDiaryAdapter.IndexDayViewHolder -> {
+            is IndexDayViewHolder -> {
                 holder.bind(getItem(position) as IndexInsideDiaryModel.IndexDay)
             }
         }
@@ -47,7 +51,11 @@ class IndexInsideDiaryAdapter : ListAdapter<IndexInsideDiaryModel, RecyclerView.
     inner class IndexMonthViewHolder(private val binding: ItemIndexMonthInsideDiaryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: IndexInsideDiaryModel.IndexMonth) {
             binding.apply {
-                title = item.item
+                month = "${item.item.substring(0, 4)} ${item.item.substring(4, 6)}월"
+
+                root.setOnClickListener {
+                    listener.onClickMonth(item.item)
+                }
             }
         }
     }

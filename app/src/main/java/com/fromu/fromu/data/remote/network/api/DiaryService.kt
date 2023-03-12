@@ -35,7 +35,10 @@ interface DiaryService {
     @PATCH("diarybooks/image")
     suspend fun patchDiaryBooksImage(@Part imageFile: MultipartBody.Part): Response<ChangeFirstPageImgRes>
 
-    // 일기 월 챕터 조회 api
+    // 목차 월 챕터 조회 api
     @GET("diaries/monthList/{diarybookId}")
-    suspend fun getMonthList(@Query("diarybookId") diaryBookId: Int): Response<GetMonthListRes>
+    suspend fun getMonthList(@Path("diarybookId") diaryBookId: Int): Response<IndexMonthListRes>
+
+    @GET("diaries/byMonth/{diarybookId}")
+    suspend fun getDiaryByMonth(@Path("diarybookId") diaryBookId: Int, @Query("month") month: String): Response<IndexByMonthRes>
 }
