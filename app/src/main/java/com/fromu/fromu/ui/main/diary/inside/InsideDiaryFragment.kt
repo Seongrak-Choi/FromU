@@ -159,6 +159,7 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                 FromUApplication.prefManager.editor.putBoolean(PrefManager.WHETHER_SHOW_DIARY_DESCRIPTION, false).apply()
             }
 
+            // 디스크립션2 x 버튼
             ivDescription2Close.setOnClickListener {
                 insideDiaryViewModel.isShowDescription2.value = false
             }
