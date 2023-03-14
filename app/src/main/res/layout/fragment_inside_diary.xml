@@ -149,7 +149,8 @@
                 android:src="@drawable/ic_diary_index"
                 android:visibility="invisible"
                 app:layout_constraintEnd_toStartOf="@id/iv_description_inside_diary_menu"
-                app:layout_constraintTop_toTopOf="@id/gl_v_0529_2" />
+                app:layout_constraintTop_toTopOf="@id/gl_v_0529_2"
+                app:layout_goneMarginEnd="10dp" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_description_inside_diary_menu"
