@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.AllDiariesRes
 import com.fromu.fromu.data.remote.network.response.ChangeFirstPageImgRes
+import com.fromu.fromu.data.remote.network.response.FirstPageRes
 import com.fromu.fromu.data.repository.InsideDiaryRepo
 import com.fromu.fromu.model.listener.DetailDiaryListener
 import com.fromu.fromu.ui.base.BaseViewModel
@@ -37,6 +38,11 @@ class InsideDiaryViewModel @Inject constructor(private val insideDiaryRepo: Insi
     // 두 번째 디스크립션 visible 여부
     val isShowDescription2: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
+    // 일기장 내지 첫장 조회 api
+    private var _firstPageResult: MutableLiveData<Event<Resource<FirstPageRes>>> = MutableLiveData()
+    val firstPageResult: LiveData<Event<Resource<FirstPageRes>>>
+        get() = _firstPageResult
+
     // 일기 첫 장 대표 이미지 변경 결과
     private var _changeFirstPageImgResult: MutableLiveData<Resource<ChangeFirstPageImgRes>> = MutableLiveData()
     val changeFirstPageImgResult: LiveData<Resource<ChangeFirstPageImgRes>>
@@ -46,6 +52,18 @@ class InsideDiaryViewModel @Inject constructor(private val insideDiaryRepo: Insi
     private var _allDiariesId: MutableLiveData<Event<Resource<AllDiariesRes>>> = MutableLiveData()
     val allDiariesRes: LiveData<Event<Resource<AllDiariesRes>>>
         get() = _allDiariesId
+
+
+    /**
+     * 일기 첫 페이지 조회
+     */
+    fun getFirstPage() {
+        viewModelScope.launch {
+            insideDiaryRepo.getFirstPage().collect {
+                _firstPageResult.value = Event(it)
+            }
+        }
+    }
 
 
     /**

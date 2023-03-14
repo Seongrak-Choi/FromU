@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.MyHomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_my_home_my_name"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{vm.couple.nickname}"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@+id/gl_v_1280"
+            tools:text="아라" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_my_home_heart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:src="@drawable/ic_heart"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_my_home_my_name"
+            app:layout_constraintStart_toEndOf="@+id/tv_my_home_my_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_my_home_my_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_my_home_partner_name"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@{vm.couple.partnerNickname}"
+            app:layout_constraintStart_toEndOf="@+id/iv_my_home_heart"
+            app:layout_constraintTop_toTopOf="@+id/tv_my_home_my_name"
+            tools:text="은다" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_my_home_front_dday_title"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/diary_dday_front_title"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_home_my_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_my_home_dday"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{vm.dday}"
+            app:layout_constraintStart_toEndOf="@+id/tv_my_home_front_dday_title"
+            app:layout_constraintTop_toTopOf="@+id/tv_my_home_front_dday_title"
+            tools:text="00" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="-3dp"
+            android:background="@color/color_e2dbff"
+            app:layout_constraintEnd_toEndOf="@id/tv_my_home_dday"
+            app:layout_constraintStart_toStartOf="@id/tv_my_home_dday"
+            app:layout_constraintTop_toBottomOf="@id/tv_my_home_dday" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_my_home_back_dday_title"
+            style="@style/Cafe24SsurroundAir.000000.20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/diary_dday_back_title"
+            app:layout_constraintStart_toEndOf="@+id/tv_my_home_dday"
+            app:layout_constraintTop_toTopOf="@id/tv_my_home_front_dday_title" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/color_eeeeee"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_home_front_dday_title" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1280"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1280" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

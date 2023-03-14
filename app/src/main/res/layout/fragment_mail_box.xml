@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.MailBoxViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_mail_box_bg">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_mail_box_title"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@{@string/mail_box_title(vm.mailBoxName)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_h_1280"
+            tools:text="아라은다함의 이야기를\n다른 우편함으로 전송해볼까?" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_mail_box_stamp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_mail_box_stamp"
+            app:layout_constraintEnd_toEndOf="@+id/gl_v_4453"
+            app:layout_constraintStart_toStartOf="@id/gl_v_2533"
+            app:layout_constraintTop_toTopOf="@id/gl_h_2438" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_mail_box_write"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_mail_box_write"
+            app:layout_constraintEnd_toEndOf="@+id/gl_v_7440"
+            app:layout_constraintStart_toStartOf="@id/gl_v_5520"
+            app:layout_constraintTop_toTopOf="@id/gl_h_2438" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_mail_box"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_v_8853"
+            app:layout_constraintStart_toStartOf="@id/gl_v_2373">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_mail_box"
+                srcByNewEmailCount="@{vm.newLetterId}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:src="@drawable/ic_mail_box_empty" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Cafe24SsurroundAir.000000.13dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rectangle_ffffff_radius_4"
+                android:gravity="center"
+                android:paddingVertical="2dp"
+                android:text="@{vm.mailBoxName}"
+                app:layout_constraintEnd_toEndOf="@id/gl_v_6172"
+                app:layout_constraintStart_toStartOf="@id/gl_v_1975"
+                app:layout_constraintTop_toTopOf="@id/gl_h_1489"
+                tools:text="아라은다함" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_h_1489"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1489" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_v_1975"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1975" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_v_6172"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.6172" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_1280"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1280" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_2438"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.2438" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_2373"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2373" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_2533"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2333" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_5520"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5420" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_7440"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7640" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_4453"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4553" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_8853"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.8853" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

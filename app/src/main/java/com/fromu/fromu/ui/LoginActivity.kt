@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.fromu.fromu.FromUApplication
+import com.fromu.fromu.data.dto.GoogleSignInAccessTokenDataClass
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.SNSLoginRes
 import com.fromu.fromu.databinding.ActivityLoginBinding
@@ -50,11 +51,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
         initData()
         initView()
+        initObserve()
     }
 
     private fun initData() {
         initLauncher()
         googleLoginManagerInstance = GoogleLoginManager(this, activityLauncher)
+        googleLoginManagerInstance.logoutGoogle()
     }
 
     private fun initView() {
@@ -69,11 +72,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {
                 val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-                googleLoginManagerInstance.handleSignInResult(task)?.let { accessToken ->
+                googleLoginManagerInstance.handleSignInResult(task)?.let { result ->
                     //서버로 accessToken 전달
-                    lifecycleScope.launch {
-                        loginViewModel.loginWithSns(accessToken, LoginType.GOOGLE).observe(this@LoginActivity, this@LoginActivity)
-                    }
+                    loginViewModel.getGoogleAccessToken(result.first, result.second)
+
 
                 } ?: let {
                     Utils.showCustomSnackBar(binding.root, "구글 로그인에 실패하였습니다.")
@@ -81,6 +83,19 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             } else {
                 Utils.showCustomSnackBar(binding.root, "구글 로그인에 실패하였습니다.")
             }
+        }
+    }
+
+    private fun initObserve() {
+        loginViewModel.getGoogleAccessTokenResult.observe(this) { resources ->
+            handleResource(resources, true, object : ResourceSuccessListener<GoogleSignInAccessTokenDataClass> {
+                override fun onSuccess(res: GoogleSignInAccessTokenDataClass) {
+                    Logger.e("google_login", res.access_token)
+                    lifecycleScope.launch {
+                        loginViewModel.loginWithSns(res.access_token, LoginType.GOOGLE).observe(this@LoginActivity, this@LoginActivity)
+                    }
+                }
+            })
         }
     }
 

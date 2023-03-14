@@ -1,11 +1,11 @@
-package com.fromu.fromu.ui.main.letter
+package com.fromu.fromu.ui.main.mailbox.maillist
 
 import android.os.Bundle
 import android.view.View
-import com.fromu.fromu.databinding.FragmentLetterBinding
+import com.fromu.fromu.databinding.FragmentReceiveMailListBinding
 import com.fromu.fromu.ui.base.BaseFragment
 
-class LetterFragment: BaseFragment<FragmentLetterBinding>(FragmentLetterBinding::inflate) {
+class ReceiveMailListFragment : BaseFragment<FragmentReceiveMailListBinding>(FragmentReceiveMailListBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 

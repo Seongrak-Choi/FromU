@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="negativeBtnText"
+            type="String" />
+
+        <variable
+            name="positiveBtnText"
+            type="String" />
+
+        <variable
+            name="contents"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rectangle_ffffff_radius_20"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="24dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_popup_one_btn_contents"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{contents}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="일기를 작성하지 않으면\n상대방에게 일기를 보낼 수 없어" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_popup_two_btn_negative"
+            style="@style/Cafe24SsurroundAir.a735ff.14dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_rectangle_empty_stroke_c983ff_radius_12dp_width_1dp"
+            android:gravity="center"
+            android:paddingVertical="15dp"
+            android:text="@{negativeBtnText}"
+            app:layout_constraintEnd_toStartOf="@+id/tv_popup_two_btn_positive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_popup_one_btn_contents"
+            tools:text="알겠어" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_popup_two_btn_positive"
+            style="@style/Cafe24SsurroundAir.ffffff.14dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_rectangle_c983ff_radius_12"
+            android:gravity="center"
+            android:paddingVertical="15dp"
+            android:text="@{positiveBtnText}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_popup_two_btn_negative"
+            app:layout_constraintTop_toBottomOf="@+id/tv_popup_one_btn_contents"
+            tools:text="알겠어" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

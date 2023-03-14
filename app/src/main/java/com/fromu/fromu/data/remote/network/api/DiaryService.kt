@@ -9,6 +9,10 @@ import retrofit2.Response
 import retrofit2.http.*
 
 interface DiaryService {
+
+    @GET("diarybooks/firstPage")
+    suspend fun getFirstPage(): Response<FirstPageRes>
+
     //일기장 등록
     @POST("diarybooks")
     suspend fun postDiaryBook(@Body createDiaryBookReq: CreateDiaryBookReq): Response<CreateDiaryBookRes>

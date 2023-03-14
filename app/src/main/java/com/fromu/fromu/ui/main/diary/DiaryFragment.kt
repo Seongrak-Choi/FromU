@@ -3,11 +3,9 @@ package com.fromu.fromu.ui.main.diary
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.DiaryViewRes
 import com.fromu.fromu.data.remote.network.response.PushPartnerRes
@@ -23,7 +21,6 @@ import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.EventObserver
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.DiaryViewModel
-import com.fromu.fromu.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -31,7 +28,6 @@ import kotlinx.coroutines.launch
 class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::inflate) {
 
     private val diaryViewModel: DiaryViewModel by viewModels()
-    private val mainViewModel: MainViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +36,8 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initApi()
         initView()
-
         initObserve()
         initEvent()
     }
@@ -51,19 +47,16 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
     }
 
     private fun initView() {
-        initApi()
         activity?.let { activity ->
             if (activity is MainActivity) {
                 activity.isVisibleBottomNav(true)
+                activity.isVisibleAppbar(true)
             }
         }
 
         binding.apply {
             lifecycleOwner = this@DiaryFragment
             vm = diaryViewModel
-            mainVm = mainViewModel
-
-            binding.root.setPadding(0, FromUApplication.statusHeight, 0, 0)
         }
     }
 
@@ -202,7 +195,6 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
             }
         }
     }
-
 
 
     /**

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class CheckMatchingResult(
     @SerializedName("match") val isMatch: Boolean, // 매칭 여부
+    val dday: Int, // 디데이
     val coupleRes: CoupleRes?
 )
 

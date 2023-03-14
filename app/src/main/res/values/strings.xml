@@ -77,7 +77,7 @@
     <string name="main_nav_diary">일기장</string>
     <string name="main_nav_calendar">달력</string>
     <string name="main_nav_letter">우편함</string>
-    <string name="main_nav_profile">우리집</string>
+    <string name="main_nav_my_home">우리집</string>
 
     <!-- first_met_day -->
     <string name="first_met_day_appbar_title">디데이 설정</string>
@@ -112,4 +112,25 @@
     <string name="description_add">일기추가 아이콘을 눌러\n일기를 작성해보세요!</string>
     <string name="index_title">목차</string>
 
+    <!-- mail_box -->
+    <string name="mail_box_title">%s의 이야기를\n다른 우편함으로 전송해볼까?</string>
+    <string-array name="mail_list_tab_menu">
+        <item>받은 편지</item>
+        <item>보낸 편지</item>
+    </string-array>
+    <string name="mail_list_title">우편함</string>
+    <string name="receive_mail_list_empty">아직 받은 편지가 없어요!</string>
+    <string name="send_mail_list_empty">아직 보낸 편지가 없어요!</string>
+
+
+    <!-- my_home -->
+
+    <!-- setting -->
+    <string name="setting_title">설정</string>
+    <string name="account_management">계정 정보 및 관리</string>
+    <string name="notice_inquire">공지/문의하기</string>
+    <string name="app_info">앱 정보</string>
+    <string name="logout">로그아웃</string>
+    <string name="break_matching">커플매칭 끊기</string>
+    <string name="withdrawal">탈퇴하기</string>
 </resources>

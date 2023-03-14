@@ -10,11 +10,6 @@
         <variable
             name="vm"
             type="com.fromu.fromu.viewmodels.DiaryViewModel" />
-
-        <variable
-            name="mainVm"
-            type="com.fromu.fromu.viewmodels.MainViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,21 +17,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/layout_appbar"
-            layout="@layout/view_main_appbar"
-            app:fromCount="@{mainVm.fromCount}" />
-
-
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diary_my_name"
             style="@style/Cafe24SsurroundAir.000000.18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="@{vm.myNickname}"
             app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintTop_toBottomOf="@+id/layout_appbar"
+            app:layout_constraintTop_toTopOf="@+id/gl_v_1280"
             tools:text="아라" />
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -252,15 +240,27 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_diary_front_dday_title">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_diary_no_got"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_dont_have_diary"
+                app:layout_constraintEnd_toEndOf="@+id/gl_h_8213"
+                app:layout_constraintStart_toStartOf="@+id/gl_h_1813"
+                app:layout_constraintTop_toTopOf="@+id/gl_v_1763" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/Cafe24SsurroundAir.999999.14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:text="@{@string/diary_no_got_title(vm.partnerNickname)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/gl_v_3174" />
+                app:layout_constraintTop_toBottomOf="@id/iv_diary_no_got"
+                tools:text="지금은 나에게 일기장이 없어\n벨라에게 벨을 울려볼까?" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_diary_bell"
@@ -287,11 +287,26 @@
                 app:lottie_loop="true" />
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/gl_v_3174"
+                android:id="@+id/gl_h_1813"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1813" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_h_8213"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.8213" />
+
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_v_1763"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.3174" />
+                app:layout_constraintGuide_percent="0.1763" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- 일기가 상대에게 가고 있을 때 -->
@@ -337,6 +352,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1280"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1280" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_4473"

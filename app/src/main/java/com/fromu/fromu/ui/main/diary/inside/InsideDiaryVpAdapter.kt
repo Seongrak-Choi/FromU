@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fromu.fromu.R
-import com.fromu.fromu.data.dto.DiaryBook
+import com.fromu.fromu.data.dto.FirstPageResult
 import com.fromu.fromu.data.remote.network.response.DetailDiaryRes
 import com.fromu.fromu.databinding.ItemHeadrInsideDiaryBinding
 import com.fromu.fromu.databinding.ItemInsideDiaryBinding
@@ -68,7 +68,7 @@ class InsideDiaryVpAdapter(
 
         fun bind(item: InsideDiaryModel.Header) {
             binding.apply {
-                diaryBook = item.item
+                firstPageInfo = item.item
 
                 vImgArea.setOnClickListener {
                     if (item.item.imageUrl == null) {
@@ -82,8 +82,10 @@ class InsideDiaryVpAdapter(
 
                 CoroutineScope(Dispatchers.Main).launch {
                     insideDiaryViewModel.diaryFirstPageFilePath.collect {
-                        item.item.imageUrl = it
-                        diaryBook = DiaryBook(item.item.coverNum, item.item.diaryBookId, it, item.item.name, item.item.writeFlag)
+                        item.item.apply {
+                            imageUrl = it
+                            firstPageInfo = FirstPageResult(diaryBookId, imageUrl, name, writeFlag)
+                        }
                     }
                 }
             }

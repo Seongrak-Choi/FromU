@@ -5,9 +5,15 @@
 
     <data>
 
+        <import type="com.fromu.fromu.model.BottomMenuType" />
+
         <variable
             name="fromCount"
             type="String" />
+
+        <variable
+            name="type"
+            type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,6 +46,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
+                        visibleGone="@{type != BottomMenuType.MY_HOME.type}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -55,7 +62,7 @@
                             android:layout_marginEnd="2dp"
                             android:src="@drawable/ic_from" />
 
-                        <TextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             style="@style/PretendardRegular.a735ff.12dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -64,25 +71,30 @@
                             android:paddingVertical="4dp"
                             android:text="@{fromCount}"
                             tools:text="10" />
-
-
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_appbar_alarm"
+                        visibleGone="@{type != BottomMenuType.MY_HOME.type}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_alarm"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_appbar_setting"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_appbar_setting"
+                        visibleGone="@{type == BottomMenuType.MY_HOME.type}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
-                        android:src="@drawable/ic_alarm"
+                        android:src="@drawable/ic_setting"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
             </androidx.appcompat.widget.Toolbar>
-
         </com.google.android.material.appbar.AppBarLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

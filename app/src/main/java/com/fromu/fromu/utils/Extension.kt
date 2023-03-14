@@ -1,5 +1,6 @@
 package com.fromu.fromu.utils
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -71,5 +72,10 @@ object Extension {
         } else {
             getSerializable(key) as? T
         }
+    }
+
+    inline fun <reified T : Serializable> Intent.customGetSerializable(key: String): T? = when {
+        Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU -> getSerializableExtra(key, T::class.java)
+        else -> @Suppress("DEPRECATION") getSerializableExtra(key) as? T
     }
 }

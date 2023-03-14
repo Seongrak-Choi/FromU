@@ -8,6 +8,11 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def localProperties = new Properties()
+localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
+repositories {}
+
 android {
     namespace 'com.fromu.fromu'
     compileSdk 33
@@ -23,7 +28,15 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", "GOOGLE_CLIENT_ID", localProperties["GOOGLE_CLIENT_ID"]
+            buildConfigField "String", "GOOGLE_CLIENT_SECRET", localProperties["GOOGLE_CLIENT_SECRET"]
+        }
+
         release {
+            buildConfigField "String", "GOOGLE_CLIENT_ID", localProperties["GOOGLE_CLIENT_ID"]
+            buildConfigField "String", "GOOGLE_CLIENT_SECRET", localProperties["GOOGLE_CLIENT_SECRET"]
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -128,6 +141,11 @@ dependencies {
     /* DotsIndicator */
     // https://github.com/tommybuonomo/dotsindicator
     implementation 'com.tbuonomo:dotsindicator:4.2'
+
+    /* Calendar */
+    //https://github.com/kizitonwose/Calendar
+    implementation 'com.kizitonwose.calendar:view:2.0.2'
+
 
     implementation "com.vanniktech:android-image-cropper:4.5.0"
 }

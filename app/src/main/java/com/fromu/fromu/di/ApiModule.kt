@@ -54,4 +54,16 @@ object ApiModule {
     fun providePushService(retrofit: Retrofit): PushService {
         return retrofit.create(PushService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideMailBoxService(retrofit: Retrofit): MailBoxService {
+        return retrofit.create(MailBoxService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserService(retrofit: Retrofit): UserService {
+        return retrofit.create(UserService::class.java)
+    }
 }

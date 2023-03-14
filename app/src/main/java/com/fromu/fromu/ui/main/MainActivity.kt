@@ -6,8 +6,11 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
+import com.fromu.fromu.R
 import com.fromu.fromu.databinding.ActivityMainBinding
+import com.fromu.fromu.model.BottomMenuType
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.utils.UiUtils
 import com.fromu.fromu.utils.Utils
@@ -24,6 +27,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         initData()
         initView()
+        initEvent()
     }
 
     private fun initData() {}
@@ -41,6 +45,43 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         initBackPress()
     }
 
+    private fun initEvent() {
+        binding.apply {
+            bnvMain.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.nav_diary -> {
+                        mainViewModel.type.value = BottomMenuType.DIARY.type
+                        NavigationUI.onNavDestinationSelected(it, navController)
+                    }
+                    R.id.nav_calendar -> {
+                        mainViewModel.type.value = BottomMenuType.CALENDAR.type
+                        NavigationUI.onNavDestinationSelected(it, navController)
+                    }
+                    R.id.nav_mail_box -> {
+                        mainViewModel.type.value = BottomMenuType.MAIL_BOX.type
+                        NavigationUI.onNavDestinationSelected(it, navController)
+                    }
+                    R.id.nav_my_home -> {
+                        mainViewModel.type.value = BottomMenuType.MY_HOME.type
+                        NavigationUI.onNavDestinationSelected(it, navController)
+                    }
+                    else -> {
+                        false
+                    }
+                }
+            }
+
+            ivAppbarSetting.setOnClickListener {
+                isVisibleAppbar(false)
+                navController.navigate(R.id.action_myHomeFragment_to_settingFragment)
+            }
+
+            ivAppbarAlarm.setOnClickListener {
+                navController.navigate(R.id.action_global_notificationFragment)
+            }
+        }
+    }
+
     /**
      * bottomNav와 navigation component 셋팅
      */
@@ -49,6 +90,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         navController = navHostFragment.navController
 
         binding.bnvMain.setupWithNavController(navController)
+    }
+
+
+    fun isVisibleAppbar(visible: Boolean) {
+        binding.mainAppbar.visibility = if (visible) View.VISIBLE else View.GONE
     }
 
     fun isVisibleBottomNav(visible: Boolean) {

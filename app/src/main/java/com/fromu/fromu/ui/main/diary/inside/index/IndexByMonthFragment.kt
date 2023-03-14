@@ -1,14 +1,16 @@
 package com.fromu.fromu.ui.main.diary.inside.index
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.fromu.fromu.data.dto.IndexDiaryInfo
 import com.fromu.fromu.data.remote.network.response.IndexByMonthRes
 import com.fromu.fromu.databinding.FragmentIndexByMonthBinding
-import com.fromu.fromu.model.IndexInsideDiaryModel
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
+import com.fromu.fromu.ui.main.diary.inside.InsideDiaryActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.EventObserver
 import com.fromu.fromu.utils.Utils
@@ -18,11 +20,12 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class IndexByMonthFragment : BaseFragment<FragmentIndexByMonthBinding>(FragmentIndexByMonthBinding::inflate) {
     companion object {
-        const val MONTH = "month"
+        const val INDEX_BY_MONTH_CODE = 100
+        const val INDEX_DIARY_INFO = "indexDiaryInfo"
     }
 
     private val indexInsideDiaryViewModel: IndexInsideDiaryViewModel by viewModels()
-    private lateinit var indexRvAdapter: IndexInsideDiaryAdapter
+    private lateinit var indexByMonthAdapter: IndexByMonthAdapter
 
     private var diaryBookId: Int = 0
     private var month: String = ""
@@ -54,7 +57,7 @@ class IndexByMonthFragment : BaseFragment<FragmentIndexByMonthBinding>(FragmentI
     private fun settingBundle() {
         arguments?.apply {
             diaryBookId = getInt(IndexMonthFragment.DIARY_BOOK_ID)
-            month = getString(MONTH).toString()
+            month = getString(IndexMonthFragment.MONTH).toString()
         }
     }
 
@@ -82,12 +85,16 @@ class IndexByMonthFragment : BaseFragment<FragmentIndexByMonthBinding>(FragmentI
 
     private fun settingIndexRv() {
         binding.apply {
-            indexRvAdapter = IndexInsideDiaryAdapter(object : IndexInsideDiaryAdapter.IndexDiInsidearyAdapterListener {
-                override fun onClickMonth(month: String) {
-                    //TODO 해당 일기로 이동
+            indexByMonthAdapter = IndexByMonthAdapter(object : IndexByMonthAdapter.IndexByMonthAdapterAdapterListener {
+                override fun onClick(item: IndexDiaryInfo) {
+                    Intent(requireContext(), InsideDiaryActivity::class.java).apply {
+                        putExtra(INDEX_DIARY_INFO, item)
+                        requireActivity().setResult(INDEX_BY_MONTH_CODE, this)
+                        requireActivity().finish()
+                    }
                 }
             })
-            rvIndexInsideDiary.adapter = indexRvAdapter
+            rvIndexInsideDiary.adapter = indexByMonthAdapter
         }
     }
 
@@ -95,7 +102,7 @@ class IndexByMonthFragment : BaseFragment<FragmentIndexByMonthBinding>(FragmentI
     private fun handleGetIndexByMonthListRes(res: IndexByMonthRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                indexRvAdapter.submitList(res.result.diaryInfoList.map { IndexInsideDiaryModel.IndexDay(it) })
+                indexByMonthAdapter.submitList(res.result.diaryInfoList)
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)

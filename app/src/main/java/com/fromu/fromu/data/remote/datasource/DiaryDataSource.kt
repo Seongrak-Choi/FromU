@@ -19,6 +19,25 @@ class DiaryDataSource @Inject constructor(
     private val diaryService: DiaryService,
 ) {
 
+
+    /**
+     * 일기 첫 페이지 조회
+     *
+     * @return
+     */
+    suspend fun getFirstPage(): Flow<Resource<FirstPageRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = diaryService.getFirstPage()
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("getFirstPage : An unkown error occurred"))
+    }
+
     /**
      *일기장 등록(생성)
      */

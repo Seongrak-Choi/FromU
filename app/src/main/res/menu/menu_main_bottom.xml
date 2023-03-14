@@ -12,22 +12,19 @@
         android:enabled="true"
         android:icon="@drawable/selector_bottom_nav_calendar"
         android:title="@string/main_nav_calendar"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/nav_letter"
+        android:id="@+id/nav_mail_box"
         android:enabled="true"
         android:icon="@drawable/selector_bottom_nav_letter"
         android:title="@string/main_nav_letter"
-        app:showAsAction="ifRoom"
-        />
+        app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/nav_profile"
+        android:id="@+id/nav_my_home"
         android:enabled="true"
-        android:icon="@drawable/selector_bottom_nav_profile"
-        android:title="@string/main_nav_profile"
-        app:showAsAction="ifRoom"
-        />
+        android:icon="@drawable/selector_bottom_nav_my_home"
+        android:title="@string/main_nav_my_home"
+        app:showAsAction="ifRoom" />
 
 </menu>
 

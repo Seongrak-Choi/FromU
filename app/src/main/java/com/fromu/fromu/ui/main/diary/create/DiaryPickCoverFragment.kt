@@ -28,9 +28,11 @@ class DiaryPickCoverFragment : BaseFragment<FragmentDiaryPickCoverBinding>(Fragm
     }
 
     private fun initData() {
-        activity?.let {
-            if (it is MainActivity)
-                it.isVisibleBottomNav(false)
+        activity?.let { activity ->
+            if (activity is MainActivity) {
+                activity.isVisibleBottomNav(false)
+                activity.isVisibleAppbar(false)
+            }
         }
     }
 

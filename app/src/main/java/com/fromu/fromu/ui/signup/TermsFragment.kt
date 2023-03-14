@@ -1,6 +1,7 @@
 package com.fromu.fromu.ui.signup
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -35,6 +36,7 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        initEvent()
     }
 
     private fun initData() {}
@@ -45,11 +47,24 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
 
         }
 
-        initEvent()
     }
 
     private fun initEvent() {
         binding.apply {
+            // 이용약관
+            tvTermsOfUser.setOnClickListener {
+                Intent(Intent.ACTION_VIEW, Uri.parse(Const.TERMS_OF_USE)).apply {
+                    startActivity(this)
+                }
+            }
+
+            // 개인정보수집
+            tvPersonalInformation.setOnClickListener {
+                Intent(Intent.ACTION_VIEW, Uri.parse(Const.PRIVACY_POLICY)).apply {
+                    startActivity(this)
+                }
+            }
+
             // '동의하고 시작하기' 버튼
             tvBirthdayNext.setThrottleClick(lifecycleScope) {
                 lifecycleScope.launch {
@@ -82,7 +97,7 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
     }
 
     override fun onChanged(resource: Resource<SignupRes>) {
-        handleResource(resource, listener = object : ResourceSuccessListener<SignupRes> {
+        handleResource(resource, true, listener = object : ResourceSuccessListener<SignupRes> {
             override fun onSuccess(res: SignupRes) {
                 handleSignupResult(res)
             }

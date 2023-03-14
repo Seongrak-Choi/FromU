@@ -2,12 +2,12 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_letter"
+    android:id="@+id/nav_mail_box"
     app:startDestination="@id/letterFragment">
 
     <fragment
         android:id="@+id/letterFragment"
-        android:name="com.fromu.fromu.ui.main.letter.LetterFragment"
-        tools:layout="@layout/fragment_letter"
-        android:label="LetterFragment" />
+        android:name="com.fromu.fromu.ui.main.mailbox.MailBoxFragment"
+        android:label="LetterFragment"
+        tools:layout="@layout/fragment_mail_box" />
 </navigation>

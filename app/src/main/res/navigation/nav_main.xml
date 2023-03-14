@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
     app:startDestination="@id/nav_diary">
 
     <include app:graph="@navigation/nav_diary" />
     <include app:graph="@navigation/nav_calendar" />
-    <include app:graph="@navigation/nav_letter" />
-    <include app:graph="@navigation/nav_profile" />
+    <include app:graph="@navigation/nav_mail_box" />
+    <include app:graph="@navigation/nav_my_home" />
     <include app:graph="@navigation/nav_create_diary" />
+
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.fromu.fromu.ui.main.notification.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notification" />
+
+    <action
+        android:id="@+id/action_global_notificationFragment"
+        app:destination="@id/notificationFragment"
+        app:launchSingleTop="true" />
 
 </navigation>

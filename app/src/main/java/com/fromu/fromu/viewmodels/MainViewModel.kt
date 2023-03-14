@@ -8,4 +8,5 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor() : BaseViewModel() {
     val fromCount: MutableStateFlow<String> = MutableStateFlow("0")
+    val type: MutableStateFlow<Int> = MutableStateFlow(0)
 }

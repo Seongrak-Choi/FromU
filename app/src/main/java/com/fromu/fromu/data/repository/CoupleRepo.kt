@@ -9,7 +9,6 @@ import javax.inject.Inject
 
 
 class CoupleRepo @Inject constructor(private val coupleDataSource: CoupleDataSource) {
-
     suspend fun patchMailBoxName(patchMailBoxNameReq: PatchMailBoxNameReq): Flow<Resource<PatchMailBoxNameRes>> {
         return coupleDataSource.patchMailBoxName(patchMailBoxNameReq)
     }

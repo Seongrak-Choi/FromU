@@ -2,28 +2,39 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-
-        <variable
-            name="mainVm"
-            type="com.fromu.fromu.viewmodels.MainViewModel" />
-    </data>
+    <data></data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/layout_appbar"
-            layout="@layout/view_main_appbar"
-            app:fromCount="@{mainVm.fromCount}"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <!--        <Calenda-->
+        <!--            android:id="@+id/cv_calendar"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/layout_appbar"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+        <!--        <com.kizitonwose.calendar.view.CalendarView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            app:layout_constraintTop_toBottomOf="@+id/layout_appbar"-->
+        <!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+
+        <CalendarView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="달력" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gl_v_1600" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1600"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1600" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

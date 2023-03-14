@@ -25,6 +25,11 @@ class PrefManager constructor(val sp: SharedPreferences) {
         editor.apply()
     }
 
+    fun clearForLogout() {
+        setLoginToken("")
+        setRefreshToken("")
+    }
+
     /**
      * FCM ID 반환
      *

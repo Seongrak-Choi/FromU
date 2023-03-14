@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.IndexMonthListRes
 import com.fromu.fromu.databinding.FragmentIndexMonthBinding
-import com.fromu.fromu.model.IndexInsideDiaryModel
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.utils.Const
@@ -21,10 +20,11 @@ import dagger.hilt.android.AndroidEntryPoint
 class IndexMonthFragment : BaseFragment<FragmentIndexMonthBinding>(FragmentIndexMonthBinding::inflate) {
     companion object {
         const val DIARY_BOOK_ID = "diaryBookId"
+        const val MONTH = "month"
     }
 
     private val indexInsideDiaryViewModel: IndexInsideDiaryViewModel by viewModels()
-    private lateinit var indexRvAdapter: IndexInsideDiaryAdapter
+    private lateinit var indexRvAdapter: IndexMonthAdapter
 
     private var diaryBookId: Int = 0
 
@@ -43,9 +43,9 @@ class IndexMonthFragment : BaseFragment<FragmentIndexMonthBinding>(FragmentIndex
     }
 
     private fun initData() {
-        indexRvAdapter = IndexInsideDiaryAdapter(object : IndexInsideDiaryAdapter.IndexDiInsidearyAdapterListener {
-            override fun onClickMonth(month: String) {
-                val bundle = bundleOf(DIARY_BOOK_ID to diaryBookId, IndexByMonthFragment.MONTH to month)
+        indexRvAdapter = IndexMonthAdapter(object : IndexMonthAdapter.IndexMonthAdapterListener {
+            override fun onClick(month: String) {
+                val bundle = bundleOf(DIARY_BOOK_ID to diaryBookId, MONTH to month)
                 findNavController().navigate(R.id.action_indexMonthFragment_to_indexByMonthFragment, bundle)
             }
         })
@@ -97,7 +97,7 @@ class IndexMonthFragment : BaseFragment<FragmentIndexMonthBinding>(FragmentIndex
     private fun handleGetMonthListRes(res: IndexMonthListRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                indexRvAdapter.submitList(res.result.map { IndexInsideDiaryModel.IndexMonth(it) })
+                indexRvAdapter.submitList(res.result)
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)

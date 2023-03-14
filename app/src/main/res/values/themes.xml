@@ -65,6 +65,10 @@
         <item name="android:textSize">12dp</item>
     </style>
 
+    <style name="Cafe24SsurroundAir.000000.13dp">
+        <item name="android:textSize">13dp</item>
+    </style>
+
     <style name="Cafe24SsurroundAir.000000.14dp">
         <item name="android:textSize">14dp</item>
     </style>
@@ -114,6 +118,11 @@
     <style name="Cafe24SsurroundAir.a735ff.13dp">
         <item name="android:textSize">13dp</item>
     </style>
+
+    <style name="Cafe24SsurroundAir.a735ff.14dp">
+        <item name="android:textSize">14dp</item>
+    </style>
+
 
     <style name="Cafe24SsurroundAir.a735ff.16dp">
         <item name="android:textSize">16dp</item>

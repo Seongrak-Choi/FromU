@@ -2,16 +2,18 @@ package com.fromu.fromu.data.repository
 
 import com.fromu.fromu.data.remote.datasource.DiaryDataSource
 import com.fromu.fromu.data.remote.network.Resource
-import com.fromu.fromu.data.remote.network.response.AllDiariesRes
-import com.fromu.fromu.data.remote.network.response.ChangeFirstPageImgRes
-import com.fromu.fromu.data.remote.network.response.IndexByMonthRes
-import com.fromu.fromu.data.remote.network.response.IndexMonthListRes
+import com.fromu.fromu.data.remote.network.response.*
 import com.fromu.fromu.model.listener.DetailDiaryListener
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
 import javax.inject.Inject
 
 class InsideDiaryRepo @Inject constructor(private val diaryDataSource: DiaryDataSource) {
+
+    suspend fun getFirstPage(): Flow<Resource<FirstPageRes>> {
+        return diaryDataSource.getFirstPage()
+    }
+
     suspend fun getAllDiaries(diaryBookId: Int): Flow<Resource<AllDiariesRes>> {
         return diaryDataSource.getAllDiaries(diaryBookId)
     }

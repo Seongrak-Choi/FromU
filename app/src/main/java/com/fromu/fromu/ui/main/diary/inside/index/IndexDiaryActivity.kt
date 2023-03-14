@@ -9,7 +9,9 @@ import com.fromu.fromu.databinding.ActivityIndexDiaryBinding
 import com.fromu.fromu.ui.base.BaseActivity
 import com.fromu.fromu.ui.main.diary.inside.InsideDiaryActivity
 import com.fromu.fromu.utils.UiUtils
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class IndexDiaryActivity : BaseActivity<ActivityIndexDiaryBinding>(ActivityIndexDiaryBinding::inflate) {
     companion object {
         const val DIARY_BOOk_ID = "diaryBookId"
@@ -45,7 +47,7 @@ class IndexDiaryActivity : BaseActivity<ActivityIndexDiaryBinding>(ActivityIndex
         navController = navHostFragment.navController
 
 
-        navController.setGraph(R.navigation.nav_inside_diary, bundleOf(InsideDiaryActivity.DIARY_BOOK_ID_KEY to diaryBookId))
+        navController.setGraph(R.navigation.nav_index_diary, bundleOf(InsideDiaryActivity.DIARY_BOOK_ID_KEY to diaryBookId))
     }
 
     private fun getIntentData() {

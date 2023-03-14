@@ -4,6 +4,8 @@ import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.api.CoupleService
 import com.fromu.fromu.data.remote.network.request.PatchFirstMetDayReq
 import com.fromu.fromu.data.remote.network.request.PatchMailBoxNameReq
+import com.fromu.fromu.data.remote.network.response.BreakMatchingRes
+import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
 import com.fromu.fromu.data.remote.network.response.PatchFirstMetDayRes
 import com.fromu.fromu.data.remote.network.response.PatchMailBoxNameRes
 import kotlinx.coroutines.flow.Flow
@@ -44,5 +46,36 @@ class CoupleDataSource @Inject constructor(private val coupleService: CoupleServ
         }
     }.catch {
         emit(Resource.Failed("patchFirstMetDay : An unkown error occurred"))
+    }
+
+
+    suspend fun getCheckMatching(): Flow<Resource<CheckMatchingRes>> = flow {
+        emit(Resource.Loading)
+
+        val response = coupleService.getCheckingMatch()
+
+        if (response.isSuccessful) {
+            emit(Resource.Success(response.body()!!))
+        } else {
+            emit(Resource.Failed(response.message()))
+        }
+
+    }.catch {
+        emit(Resource.Failed("An unkown error occurred"))
+    }
+
+
+    fun breakMatching(): Flow<Resource<BreakMatchingRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = coupleService.breakMatching()
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("breakMatching: An unkown error occurred"))
     }
 }

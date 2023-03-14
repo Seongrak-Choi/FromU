@@ -3,7 +3,8 @@ package com.fromu.fromu.utils.sns
 import android.content.Context
 import android.content.Intent
 import androidx.activity.result.ActivityResultLauncher
-import com.fromu.fromu.utils.Const
+import com.fromu.fromu.BuildConfig
+import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.utils.Logger
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -15,7 +16,8 @@ import com.google.android.gms.tasks.Task
 class GoogleLoginManager(private val mContext: Context, private val activityLauncher: ActivityResultLauncher<Intent>) {
 
     private val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-        .requestIdToken(Const.GOOGLE_CLIENT_ID)
+        .requestIdToken(BuildConfig.GOOGLE_CLIENT_ID)
+        .requestServerAuthCode(BuildConfig.GOOGLE_CLIENT_ID)
         .requestEmail() // email addresses도 요청함
         .build()
 
@@ -39,7 +41,7 @@ class GoogleLoginManager(private val mContext: Context, private val activityLaun
         }
     }
 
-    fun handleSignInResult(completedTask: Task<GoogleSignInAccount>): String? {
+    fun handleSignInResult(completedTask: Task<GoogleSignInAccount>): Pair<String, String>? {
         try {
             val account = completedTask.getResult(ApiException::class.java)
             val id = account?.id.toString()
@@ -47,7 +49,10 @@ class GoogleLoginManager(private val mContext: Context, private val activityLaun
             val familyName = account?.familyName.toString()
             val givenName = account?.givenName.toString()
             val displayName = account?.displayName.toString()
-            val accessToken = account.idToken.toString()
+            val authCode = account?.serverAuthCode.toString()
+            val idToken = account?.idToken.toString()
+
+            FromUApplication.prefManager.setUserLoginEmail(email)
 
             //TODO accessToken 서버와 연결
             Logger.d("googleLogin", id)
@@ -55,9 +60,9 @@ class GoogleLoginManager(private val mContext: Context, private val activityLaun
             Logger.d("googleLogin", familyName)
             Logger.d("googleLogin", givenName)
             Logger.d("googleLogin", displayName)
-            Logger.d("googleLogin", accessToken)
+            Logger.d("googleLogin", authCode)
 
-            return accessToken
+            return Pair(authCode, idToken)
         } catch (e: ApiException) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
