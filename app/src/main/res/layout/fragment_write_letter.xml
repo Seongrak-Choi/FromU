@@ -6,30 +6,23 @@
     <data>
 
         <variable
-            name="vm"
-            type="com.fromu.fromu.viewmodels.LetterDetailViewModel" />
-
-        <variable
-            name="isBtnVisible"
-            type="Boolean" />
+            name="stampId"
+            type="Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- 편지 내용 뷰-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            visibleGone="@{vm.readFlag}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/cl_letter_detail_app_bar"
+                android:id="@+id/cl_write_letter_app_bar"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginStart="3dp"
-                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="@id/gl_end"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/gl_v_0529">
@@ -44,123 +37,85 @@
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <androidx.appcompat.widget.AppCompatImageView
-                stampSize5858Background="@{vm.letterDetail.stamp}"
+                stampSize5858Background="@{stampId}"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
-                app:layout_constraintBottom_toTopOf="@+id/nsv_letter_detail"
+                app:layout_constraintBottom_toTopOf="@+id/v_write_letter_paper"
                 app:layout_constraintEnd_toEndOf="@id/gl_end"
                 app:layout_constraintTop_toTopOf="@id/gl_v_0529"
                 tools:src="@drawable/ic_letter_stamp_1_size_58_58" />
 
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/nsv_letter_detail"
-                bottomBtnVisible="@{isBtnVisible}"
-                paperBackgroundByStampId="@{vm.letterDetail.stamp}"
+            <View
+                android:id="@+id/v_write_letter_paper"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="14dp"
-                android:fillViewport="true"
-                android:paddingTop="30dp"
-                android:scrollbars="none"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cl_letter_detail_app_bar"
-                tools:background="@drawable/ic_letter_paper_1">
+                app:layout_constraintTop_toBottomOf="@id/cl_write_letter_app_bar"
+                 />
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv_write_letter"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:fillViewport="true"
+                android:scrollbars="none"
+                paperBackgroundByStampId="@{stampId}"
+                tools:background="@drawable/ic_letter_paper_1"
+                app:layout_constraintBottom_toTopOf="@+id/tv_write_letter_reply"
+                app:layout_constraintTop_toBottomOf="@id/cl_write_letter_app_bar">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_write_letter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_letter_detail_to"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
-                        android:text="@{@string/letter_to(vm.letterDetail.receiveMailboxName)}"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/gl_v_0100"
-                        tools:text="To. 아라은다함에게" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/iv_letter_detail_menu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
-                        visibleGone="@{isBtnVisible}"
-                        android:src="@drawable/ic_diary_menu"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/et_write_letter"
                         style="@style/Cafe24SsurroundAir.000000.16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="40dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="60dp"
+                        android:layout_marginBottom="40dp"
+                        android:background="@null"
                         android:gravity="center_horizontal"
-                        android:text="@{vm.letterDetail.content}"
-                        app:layout_constraintBottom_toTopOf="@+id/tv_letter_detail_date"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_letter_detail_to"
+                        android:hint="@string/contents_hint"
+                        android:inputType="textMultiLine"
+                        android:textColorHint="@color/color_999999"
+                        android:textCursorDrawable="@drawable/cursor_bg_a735ff"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_write_letter_count"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0"
                         tools:text="저희가 쓴 이편지가\n어떤 우편함으로 도착할지는\n모르지만 잘부탁드려요!\n\n저희는 성격이 많이 다른 커플이에요." />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_letter_detail_date"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
-                        letterDate="@{vm.letterDetail.time}"
+                        android:id="@+id/tv_write_letter_count"
+                        style="@style/Cafe24SsurroundAir.999999.12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="40dp"
-                        android:layout_marginBottom="3dp"
-                        app:layout_constraintBottom_toTopOf="@id/tv_letter_detail_from"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:text="2023. 01. 27 PM 5:11" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_letter_detail_from"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginBottom="53dp"
-                        android:text="@{@string/letter_from(vm.letterDetail.sendMailboxName)}"
-                        app:layout_constraintBottom_toTopOf="@id/tv_letter_detail_bottom_virtual_view"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:text="from, 프롬우편함" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_letter_detail_bottom_virtual_view"
-                        style="@style/PretendardRegular.ffffff.16dp"
-                        visibleGone="@{isBtnVisible}"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:paddingVertical="18.5dp"
-                        android:text="@string/reply_letter"
-                        app:layout_constraintBottom_toBottomOf="parent" />
+                        android:layout_marginBottom="27dp"
+                        android:text="0/200"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent" />
 
                     <androidx.constraintlayout.widget.Guideline
                         android:id="@+id/gl_v_0100"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.0100" />
+                        app:layout_constraintGuide_percent="0.01" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_letter_detail_reply"
+                android:id="@+id/tv_write_letter_reply"
                 style="@style/PretendardRegular.ffffff.16dp"
-                visibleGone="@{isBtnVisible}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
-                android:enabled="@{vm.letterDetail.replyFlag}"
                 android:gravity="center"
                 android:paddingVertical="18.5dp"
                 android:text="@string/reply_letter"
@@ -190,13 +145,6 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="20dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- 처음 편지 열었을 때 -->
-        <include
-            android:id="@+id/layout_first_open_lottie"
-            layout="@layout/view_first_open_letter_lottie"
-            app:readFlag="@{vm.readFlag}"
-            app:sendMailBoxName="@{vm.letterDetail.sendMailboxName}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

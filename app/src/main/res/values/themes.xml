@@ -35,6 +35,12 @@
         <item name="android:textSize">9dp</item>
     </style>
 
+    <style name="PopupWindowUpDownAnimation">
+        <item name="android:windowEnterAnimation">@anim/view_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/view_fade_out</item>
+    </style>
+
+
 
     <!-- ************ Font ************ -->
 
@@ -141,6 +147,11 @@
     <style name="Cafe24SsurroundAir.999999">
         <item name="android:textColor">@color/color_999999</item>
     </style>
+
+    <style name="Cafe24SsurroundAir.999999.12dp">
+        <item name="android:textSize">12dp</item>
+    </style>
+
 
     <style name="Cafe24SsurroundAir.999999.13dp">
         <item name="android:textSize">13dp</item>

@@ -111,9 +111,10 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         binding.apply {
             // 일기 쓰기 버튼
             ivInsideDiaryAdd.setOnClickListener {
+                //TODO only test 추후 삭제
+                findNavController().navigate(R.id.action_insideDiaryFragment_to_addInsideDiaryFragment)
                 if (!firstPageResult.writeFlag) {
                     //일기 미작성
-                    findNavController().navigate(R.id.action_insideDiaryFragment_to_addInsideDiaryFragment)
                 } else {
                     //일기 작성
                     DialogPopupErrorAlert(getString(R.string.exist_write_diary), getString(R.string.ok)) {
@@ -189,7 +190,7 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         insideDiaryViewModel.apply {
 
             firstPageResult.observe(viewLifecycleOwner, EventObserver { resource ->
-                handleResource(resource, listener = object : ResourceSuccessListener<FirstPageRes> {
+                handleResource(resource, true, listener = object : ResourceSuccessListener<FirstPageRes> {
                     override fun onSuccess(res: FirstPageRes) {
                         handleFirstPageResult(res)
                     }
@@ -197,7 +198,7 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
             })
 
             allDiariesRes.observe(viewLifecycleOwner, EventObserver { resource ->
-                handleResource(resource, true, listener = object : ResourceSuccessListener<AllDiariesRes> {
+                handleResource(resource, listener = object : ResourceSuccessListener<AllDiariesRes> {
                     override fun onSuccess(res: AllDiariesRes) {
                         handleAllDiariesRes(res)
                     }

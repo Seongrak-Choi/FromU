@@ -28,7 +28,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="@id/gl_v_6600"
             app:layout_constraintTop_toTopOf="@id/gl_v_1995"
-            app:lottie_fileName="open_letter.json" />
+            app:lottie_fileName="comingletter.json" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/Cafe24SsurroundAir.000000.22dp"

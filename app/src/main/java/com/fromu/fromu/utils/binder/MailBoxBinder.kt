@@ -1,9 +1,12 @@
 package com.fromu.fromu.utils.binder
 
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.fromu.fromu.R
+import com.fromu.fromu.model.FindStamp
+import com.fromu.fromu.utils.Utils
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -48,5 +51,23 @@ object MailBoxBinder {
                 String.format("%02d", dateTime.minute)
             )
         }
+    }
+
+    @JvmStatic
+    @BindingAdapter("paperBackgroundByStampId")
+    fun setPaperBackground(view: View, stampId: Int) {
+        view.setBackgroundResource(FindStamp.getPaperDrawableById(stampId))
+    }
+
+    @JvmStatic
+    @BindingAdapter("stampSize5858Background")
+    fun setStampSrc(view: ImageView, stampId: Int) {
+        view.setImageResource(FindStamp.getStampSize5858DrawableById(stampId))
+    }
+
+    @JvmStatic
+    @BindingAdapter("bottomBtnVisible")
+    fun setBottomPaddingByBtnVisible(view: View, isBtnVisible: Boolean) {
+        if (isBtnVisible) view.setPadding(0, Utils.dp2px(view.resources, 30f), 0, Utils.dp2px(view.resources, 25f))
     }
 }

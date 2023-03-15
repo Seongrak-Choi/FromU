@@ -5,7 +5,6 @@
     android:id="@+id/nav_mail_list"
     app:startDestination="@id/mailListFragment">
 
-
     <fragment
         android:id="@+id/mailListFragment"
         android:name="com.fromu.fromu.ui.main.mailbox.maillist.MailListFragment"
@@ -29,6 +28,10 @@
             app:argType="integer" />
         <argument
             android:name="readFlag"
+            android:defaultValue="true"
+            app:argType="boolean" />
+        <argument
+            android:name="isBtnVisible"
             android:defaultValue="true"
             app:argType="boolean" />
     </fragment>

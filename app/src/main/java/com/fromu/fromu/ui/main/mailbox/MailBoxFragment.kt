@@ -11,6 +11,7 @@ import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.dialog.DialogPopupOneBtn
 import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.ui.main.mailbox.maillist.MailListActivity
+import com.fromu.fromu.ui.main.mailbox.write.WriteLetterActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.MailBoxViewModel
@@ -78,10 +79,9 @@ class MailBoxFragment : BaseFragment<FragmentMailBoxBinding>(FragmentMailBoxBind
 
             // 편지 쓰기 버튼
             ivMailBoxWrite.setOnClickListener {
-                //TODO 추후 개발
-                DialogPopupOneBtn("추후 만나 보실 수 있는\n서비스 입니다.", "확인") {
-                    //Nothing
-                }.show(childFragmentManager, DialogPopupOneBtn.TAG)
+                Intent(requireContext(), WriteLetterActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
 
             // 우편함 버튼

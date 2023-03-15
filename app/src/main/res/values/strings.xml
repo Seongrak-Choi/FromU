@@ -12,6 +12,7 @@
     <string name="day">%s일</string>
     <string name="month">%s월</string>
     <string name="change">변경하기</string>
+    <string name="contents_hint">내용을 입력해주세요</string>
 
     <!-- error -->
     <string name="load_img_failure_msg">이미지를 불러오는 데 실패하였습니다.</string>
@@ -103,7 +104,6 @@
 
     <!-- inside_diary -->
     <string name="contents_length">%d/200</string>
-    <string name="contents_hint">내용을 입력해주세요</string>
     <string name="contents_from">From.%s의 기록</string>
     <string name="emotion_weather">감정날씨:</string>
     <string name="current_position">%d/%d</string>
@@ -129,6 +129,7 @@
     <string name="letter_from">from, %s</string>
     <string name="letter_date">%s. %s. %s %s %s:%s</string>
     <string name="first_open_letter">%s에서 편지가 도착했어!</string>
+    <string name="reply_letter">답장하기</string>
 
     <!-- my_home -->
 

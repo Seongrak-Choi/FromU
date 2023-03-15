@@ -58,7 +58,6 @@ class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(Fragm
 
         initView()
 
-        initKeyBoardVisibilityUtils()
         initEvent()
         initObserve()
     }
@@ -70,6 +69,8 @@ class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(Fragm
     }
 
     private fun initView() {
+        settingKeyBoardVisibilityUtils()
+
         binding.apply {
             lifecycleOwner = this@AddInsideDiaryFragment
             vm = addInsideDiaryViewModel
@@ -174,7 +175,7 @@ class AddInsideDiaryFragment : BaseFragment<FragmentAddInsideDiaryBinding>(Fragm
     /**
      * 키보드 높이 만큼 스크롤을 내려서 입력창을 보이도록 셋팅
      */
-    private fun initKeyBoardVisibilityUtils() {
+    private fun settingKeyBoardVisibilityUtils() {
         keyboardVisibilityUtils = KeyboardVisibilityUtils(requireActivity().window, onShowKeyboard = { keyboardHeight ->
             binding.nsvAddInsideDiary.run {
                 smoothScrollTo(scrollX, scrollY + keyboardHeight)
