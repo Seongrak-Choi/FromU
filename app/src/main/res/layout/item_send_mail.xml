@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.fromu.fromu.data.dto.MailListResult" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_send_mail_list_title"
+            style="@style/Cafe24SsurroundAir.000000.14dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="22dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="46dp"
+            android:ellipsize="end"
+            android:text="@{@string/send_mail_list_title(item.mailboxName)}"
+            android:textColor="@{item.readFlag ? @color/color_6d6d6d : @color/color_000000}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_send_mail_list_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="프롬우편함에서 보낸 편지가 도착했어." />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_send_mail_list_date"
+            style="@style/Cafe24SsurroundAir.000000.12dp"
+            mailListDate="@{item.time}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="02. 13" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="@color/color_eeeeee"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

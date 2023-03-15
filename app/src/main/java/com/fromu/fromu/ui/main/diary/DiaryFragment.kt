@@ -185,15 +185,36 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
     }
 
 
+    /**
+     * 벨 울리기 결과 핸들링
+     *
+     * @param res
+     */
     private fun handlePushPartnerRes(res: PushPartnerRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                //Nothing
+                if (!res.result.success) {
+                    // 벨 울리기 횟수를 모두 소진한 경우
+                    showSpendAllBell()
+                } else {
+                    //Nothing
+                }
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)
             }
         }
+    }
+
+
+    /**
+     * 벨 울리기 모두 소진한 경우 보여줄 다이얼로그
+     *
+     */
+    private fun showSpendAllBell() {
+        DialogPopupOneBtn(getString(R.string.diary_spend_all_bell), getString(R.string.ok)) {
+            //Nothing
+        }.show(childFragmentManager, DialogPopupOneBtn.TAG)
     }
 
 

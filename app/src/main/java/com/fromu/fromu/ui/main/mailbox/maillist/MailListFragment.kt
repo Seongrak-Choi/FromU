@@ -5,6 +5,7 @@ import android.view.View
 import com.fromu.fromu.R
 import com.fromu.fromu.databinding.FragmentMailListBinding
 import com.fromu.fromu.ui.base.BaseFragment
+import com.fromu.fromu.ui.main.mailbox.maillist.adapter.MailListMenuVpAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MailListFragment : BaseFragment<FragmentMailListBinding>(FragmentMailListBinding::inflate) {
@@ -19,15 +20,22 @@ class MailListFragment : BaseFragment<FragmentMailListBinding>(FragmentMailListB
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        initEvent()
     }
 
     private fun initData() {}
     private fun initView() {
-        binding.apply {
-
-        }
+        binding.apply {}
         settingViewPager2()
         settingTabLayoutWithViewPager2()
+    }
+
+    private fun initEvent() {
+        binding.apply {
+            ivMailListBack.setOnClickListener {
+                requireActivity().finish()
+            }
+        }
     }
 
     private fun settingViewPager2() {

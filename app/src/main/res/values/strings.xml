@@ -93,6 +93,7 @@
     <string name="diary_no_got_title">지금은 나에게 일기장이 없어\n%s에게 벨을 울려볼까?</string>
     <string name="diary_popup_no_write">일기를 작성하지 않으면\n상대방에게 일기를 보낼 수 없어</string>
     <string name="diary_create_success">하루에 한 번,\n서로의 일상을 공유해보자!</string>
+    <string name="diary_spend_all_bell">벨 울리기 횟수를 다 썼어\n12시간 뒤 충전될 예정이야</string>
 
     <!-- create_diary -->
     <string name="pick_cover_title">일기장의 표지를 골라줘!</string>
@@ -121,7 +122,13 @@
     <string name="mail_list_title">우편함</string>
     <string name="receive_mail_list_empty">아직 받은 편지가 없어요!</string>
     <string name="send_mail_list_empty">아직 보낸 편지가 없어요!</string>
-
+    <string name="send_mail_list_title">%s으로 편지를 보냈어.</string>
+    <string name="receive_mail_list_title">%s에서 편지를 받았어.</string>
+    <string name="mail_list_date">%s. %s</string>
+    <string name="letter_to">To. %s</string>
+    <string name="letter_from">from, %s</string>
+    <string name="letter_date">%s. %s. %s %s %s:%s</string>
+    <string name="first_open_letter">%s에서 편지가 도착했어!</string>
 
     <!-- my_home -->
 

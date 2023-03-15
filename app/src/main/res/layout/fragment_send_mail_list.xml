@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.MailListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,6 +16,7 @@
 
         <!-- 편지가 없을 때 보여줄 뷰 -->
         <androidx.constraintlayout.widget.ConstraintLayout
+            visibleGone="@{!vm.isExistSendMail()}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -42,6 +47,15 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.2837" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_send_mail_list"
+            visibleGone="@{vm.isExistSendMail()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_send_mail" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

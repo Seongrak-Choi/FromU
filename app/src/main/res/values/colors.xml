@@ -11,7 +11,7 @@
 
 
     <color name="color_99000000">#99000000</color>
-
+    <color name="color_000000">#000000</color>
     <color name="color_2B2B2B">#2B2B2B</color>
     <color name="color_fede02">#fede02</color>
     <color name="color_6f6f6f">#6f6f6f</color>
@@ -26,4 +26,5 @@
     <color name="color_7d7d7d">#7d7d7d</color>
     <color name="color_ecebeb">#ecebeb</color>
     <color name="color_eeeeee">#eeeeee</color>
+    <color name="color_6d6d6d">#6d6d6d</color>
 </resources>

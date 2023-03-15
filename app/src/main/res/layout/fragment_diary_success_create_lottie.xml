@@ -21,13 +21,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/gl_v_1699" />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/lottie_diary_success_create"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_diary_decide_name_success_title"
-            app:lottie_fileName="letter.json" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_success_create"
+            app:layout_constraintEnd_toEndOf="@id/gl_h_9360"
+            app:layout_constraintStart_toStartOf="@+id/gl_h_0640"
+            app:layout_constraintTop_toTopOf="@+id/gl_v_3953" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_0640"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.0640" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_9360"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9360" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_1699"
@@ -35,5 +51,12 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.1699" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_3953"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3953" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

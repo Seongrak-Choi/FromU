@@ -68,8 +68,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_inside_paper">
+                android:layout_height="wrap_content">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/cl_add_inside_diary_date"
@@ -262,9 +261,9 @@
                     android:textCursorDrawable="@drawable/cursor_bg_a735ff"
                     app:layout_constraintBottom_toTopOf="@+id/tv_add_inside_diary_contents_length"
                     app:layout_constraintEnd_toEndOf="@id/gl_end"
-                    app:layout_constraintVertical_bias="0"
                     app:layout_constraintStart_toStartOf="@id/gl_start"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_add_inside_diary_img" />
+                    app:layout_constraintTop_toBottomOf="@+id/cv_add_inside_diary_img"
+                    app:layout_constraintVertical_bias="0" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_add_inside_diary_contents_length"

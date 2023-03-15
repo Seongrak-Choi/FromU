@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="sendMailBoxName"
+            type="String" />
+
+        <variable
+            name="readFlag"
+            type="Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        visibleGone="@{!readFlag}"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_splash_bg"
+        tools:visibility="gone">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_first_open"
+            playLottie="@{!readFlag}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="@id/gl_v_6600"
+            app:layout_constraintTop_toTopOf="@id/gl_v_1995"
+            app:lottie_fileName="open_letter.json" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Cafe24SsurroundAir.000000.22dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="31dp"
+            android:layout_marginTop="24dp"
+            android:gravity="center"
+            android:text="@{@string/first_open_letter(sendMailBoxName)}"
+            app:layout_constraintTop_toBottomOf="@id/lottie_first_open" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1995"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1995" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_6600"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6600" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

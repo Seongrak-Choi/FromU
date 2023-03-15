@@ -3,6 +3,7 @@ package com.fromu.fromu.utils.binder
 import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
 
@@ -32,5 +33,11 @@ object CustomBinder {
             .load(imgResource)
             .format(DecodeFormat.PREFER_RGB_565)
             .into(view)
+    }
+
+    @JvmStatic
+    @BindingAdapter("playLottie")
+    fun setLottieAutoPlay(view: LottieAnimationView, isPlay: Boolean) {
+        if (isPlay) view.playAnimation()
     }
 }

@@ -23,6 +23,7 @@ import com.fromu.fromu.model.InsideDiaryModel
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.base.ImgCropActivity
+import com.fromu.fromu.ui.dialog.DialogPopupErrorAlert
 import com.fromu.fromu.ui.main.diary.inside.index.IndexByMonthFragment
 import com.fromu.fromu.ui.main.diary.inside.index.IndexDiaryActivity
 import com.fromu.fromu.utils.Const
@@ -55,8 +56,8 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
 
     private lateinit var firstPageResult: FirstPageResult
 
-    // 디테일 라이프로그 콜백 처리
-    val detailLifelogLauncher =
+    // 목차 콜백 처리
+    private val indexLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == IndexByMonthFragment.INDEX_BY_MONTH_CODE) {
                 // 디테일 라이프로그에서 콜백으로 어떤 동작을 할 것인지 전달 받음
@@ -110,7 +111,15 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         binding.apply {
             // 일기 쓰기 버튼
             ivInsideDiaryAdd.setOnClickListener {
-                findNavController().navigate(R.id.action_insideDiaryFragment_to_addInsideDiaryFragment)
+                if (!firstPageResult.writeFlag) {
+                    //일기 미작성
+                    findNavController().navigate(R.id.action_insideDiaryFragment_to_addInsideDiaryFragment)
+                } else {
+                    //일기 작성
+                    DialogPopupErrorAlert(getString(R.string.exist_write_diary), getString(R.string.ok)) {
+                        //Nothing
+                    }.show(childFragmentManager, DialogPopupErrorAlert.TAG)
+                }
             }
 
             // viewpager
@@ -150,7 +159,7 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
             ivInsideDiaryIndex.setOnClickListener {
                 Intent(requireContext(), IndexDiaryActivity::class.java).apply {
                     putExtra(IndexDiaryActivity.DIARY_BOOk_ID, firstPageResult.diaryBookId)
-                    detailLifelogLauncher.launch(this)
+                    indexLauncher.launch(this)
                 }
             }
 

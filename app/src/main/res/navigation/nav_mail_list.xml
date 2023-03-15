@@ -10,5 +10,26 @@
         android:id="@+id/mailListFragment"
         android:name="com.fromu.fromu.ui.main.mailbox.maillist.MailListFragment"
         android:label="MailListFragment"
-        tools:layout="@layout/fragment_mail_list" />
+        tools:layout="@layout/fragment_mail_list">
+        <action
+            android:id="@+id/action_mailListFragment_to_letterDetailFragment"
+            app:destination="@id/letterDetailFragment"
+            app:enterAnim="@anim/view_fade_in"
+            app:exitAnim="@anim/view_fade_out"
+            app:popEnterAnim="@anim/view_fade_in"
+            app:popExitAnim="@anim/view_fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/letterDetailFragment"
+        android:name="com.fromu.fromu.ui.main.mailbox.maillist.letter.LetterDetailFragment"
+        android:label="LetterDetailFragment"
+        tools:layout="@layout/fragment_letter_detail">
+        <argument
+            android:name="letterId"
+            app:argType="integer" />
+        <argument
+            android:name="readFlag"
+            android:defaultValue="true"
+            app:argType="boolean" />
+    </fragment>
 </navigation>

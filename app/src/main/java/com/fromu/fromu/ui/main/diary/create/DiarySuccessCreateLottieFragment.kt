@@ -1,11 +1,13 @@
 package com.fromu.fromu.ui.main.diary.create
 
-import android.animation.Animator
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.databinding.FragmentDiarySuccessCreateLottieBinding
 import com.fromu.fromu.ui.base.BaseFragment
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class DiarySuccessCreateLottieFragment : BaseFragment<FragmentDiarySuccessCreateLottieBinding>(FragmentDiarySuccessCreateLottieBinding::inflate) {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,34 +22,20 @@ class DiarySuccessCreateLottieFragment : BaseFragment<FragmentDiarySuccessCreate
         initView()
     }
 
-    private fun initData() {}
-    private fun initView() {
-        binding.apply {
-            lottieDiarySuccessCreate.playAnimation()
+    private fun initData() {
+        lifecycleScope.launch {
+            delay(1500)
+            findNavController().popBackStack()
         }
+    }
+
+    private fun initView() {
+        binding.apply {}
 
         initEvent()
     }
 
     private fun initEvent() {
-        binding.apply {
-            lottieDiarySuccessCreate.addAnimatorListener(object : Animator.AnimatorListener {
-                override fun onAnimationStart(p0: Animator) {
-                    //Nothing
-                }
-
-                override fun onAnimationEnd(p0: Animator) {
-                    findNavController().popBackStack()
-                }
-
-                override fun onAnimationCancel(p0: Animator) {
-                    //Nothing
-                }
-
-                override fun onAnimationRepeat(p0: Animator) {
-                    //Nothing
-                }
-            })
-        }
+        binding.apply {}
     }
 }
