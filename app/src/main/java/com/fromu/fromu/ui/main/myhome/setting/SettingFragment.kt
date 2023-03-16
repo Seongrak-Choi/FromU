@@ -15,7 +15,6 @@ import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.LoginActivity
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.dialog.DialogPopupTwoBtn
-import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.MyHomeViewModel
@@ -39,11 +38,7 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(FragmentSettingBind
     }
 
     private fun initData() {}
-    private fun initView() {
-        if (requireActivity() is MainActivity) {
-            (activity as MainActivity).isVisibleBottomNav(false)
-        }
-    }
+    private fun initView() {}
 
     private fun initObserve() {
         myHomeViewModel.logoutResult.observe(viewLifecycleOwner) { resources ->

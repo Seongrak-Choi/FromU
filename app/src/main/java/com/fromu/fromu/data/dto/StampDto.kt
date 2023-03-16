@@ -5,4 +5,7 @@ data class StampDto(
     val stampImg: Int, // 우표 이미지 (size 105x145)
     val stampImgSize5858: Int, //우표 이미지 (size 58x58)
     val paperImg: Int, // 편지지 이미지
+    val explanation: String, // 우표 설명
+    val stampPrice: Int = 3 // 우표 가격
+
 )

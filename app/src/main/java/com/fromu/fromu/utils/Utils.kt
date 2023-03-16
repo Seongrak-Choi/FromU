@@ -16,6 +16,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 import com.fromu.fromu.R
 import com.fromu.fromu.model.OnDiaryCropImgListener
+import com.fromu.fromu.utils.custom.FromUBigSnackBarBlack
 import com.fromu.fromu.utils.custom.FromUSnackBarBlack
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -72,6 +73,17 @@ class Utils {
          */
         fun showCustomSnackBar(view: View, message: String, duration: Int = 2000) {
             FromUSnackBarBlack(view, message, duration).show()
+        }
+
+        /**
+         * show FromUBigCustomSnackBar method
+         *
+         * @param view
+         * @param message
+         * @param duration
+         */
+        fun showBigCustomSnackBar(view: View, message: String, duration: Int = 2000) {
+            FromUBigSnackBarBlack(view, message, duration).show()
         }
 
         /**

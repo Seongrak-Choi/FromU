@@ -8,9 +8,9 @@ import com.fromu.fromu.data.remote.network.response.MailBoxViewRes
 import com.fromu.fromu.databinding.FragmentMailBoxBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
-import com.fromu.fromu.ui.dialog.DialogPopupOneBtn
 import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.ui.main.mailbox.maillist.MailListActivity
+import com.fromu.fromu.ui.main.mailbox.stampbox.StampBoxActivity
 import com.fromu.fromu.ui.main.mailbox.write.WriteLetterActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Utils
@@ -69,12 +69,11 @@ class MailBoxFragment : BaseFragment<FragmentMailBoxBinding>(FragmentMailBoxBind
 
     private fun initEvent() {
         binding.apply {
-            // 우표 버튼
+            // 우표함 버튼
             ivMailBoxStamp.setOnClickListener {
-                //TODO 추후 개발
-                DialogPopupOneBtn("추후 만나 보실 수 있는\n서비스 입니다.", "확인") {
-                    //Nothing
-                }.show(childFragmentManager, DialogPopupOneBtn.TAG)
+                Intent(requireContext(), StampBoxActivity::class.java).apply {
+                    startActivity(this)
+                }
             }
 
             // 편지 쓰기 버튼

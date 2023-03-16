@@ -11,11 +11,6 @@ import com.fromu.fromu.databinding.CustomSnackbarBlackBinding
 import com.google.android.material.snackbar.Snackbar
 
 class FromUSnackBarBlack(view: View, private val message: String, private val duration: Int) {
-    companion object {
-
-        fun make(view: View, message: String, duration: Int) = FromUSnackBarBlack(view, message, duration)
-    }
-
     private val context = view.context
     private val snackBar = Snackbar.make(view, "", duration)
     private val snackBarView = snackBar.view as Snackbar.SnackbarLayout

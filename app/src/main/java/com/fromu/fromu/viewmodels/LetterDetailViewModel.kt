@@ -17,7 +17,12 @@ import javax.inject.Inject
 class LetterDetailViewModel @Inject constructor(private val mailBoxRepo: MailBoxRepo) : BaseViewModel() {
 
     val letterDetail: MutableLiveData<ReadLetterResult> = MutableLiveData()
+
+    /*
+    * true = 한 번 이상 읽음 / false = 아직 안 읽음
+    */
     val readFlag: MutableStateFlow<Boolean> = MutableStateFlow(false)
+
 
     private var _readLetterResult: MutableLiveData<Resource<ReadLetterRes>> = MutableLiveData()
     val readLetterResult: LiveData<Resource<ReadLetterRes>>

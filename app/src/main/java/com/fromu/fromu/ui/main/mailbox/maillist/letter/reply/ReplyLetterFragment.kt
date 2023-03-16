@@ -6,10 +6,13 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.PostLetterRes
 import com.fromu.fromu.databinding.FragmentWriteLetterBinding
+import com.fromu.fromu.model.WriteType
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
+import com.fromu.fromu.ui.dialog.DialogPopupTwoBtn
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.KeyboardVisibilityUtils
 import com.fromu.fromu.utils.Utils
@@ -46,6 +49,7 @@ class ReplyLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWri
         binding.apply {
             lifecycleOwner = this@ReplyLetterFragment
             vm = writeLetterViewModel
+            writeType = WriteType.REPLY
         }
     }
 
@@ -60,10 +64,18 @@ class ReplyLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWri
 
             // 편지 보내기 버튼
             tvWriteLetterSend.setOnClickListener {
-                sendLetter()
+                DialogPopupTwoBtn(getString(R.string.check_reply), getString(R.string.back), getString(R.string.reply_letter), object : DialogPopupTwoBtn.DialogPopupTwoBtnListener {
+                    override fun onNegative() {
+                        //Nothing
+                    }
+
+                    override fun onPositive() {
+                        sendLetter()
+                    }
+                }).show(childFragmentManager, DialogPopupTwoBtn.TAG)
             }
 
-            // 편지 전송
+            // 편지 전송 로티
             layoutPostLetterSuccessLottie.lottiePostLetterSuccess.addAnimatorListener(object : Animator.AnimatorListener {
                 override fun onAnimationStart(p0: Animator) {}
                 override fun onAnimationEnd(p0: Animator) {

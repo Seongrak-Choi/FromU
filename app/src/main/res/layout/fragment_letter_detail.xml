@@ -8,10 +8,6 @@
         <variable
             name="vm"
             type="com.fromu.fromu.viewmodels.LetterDetailViewModel" />
-
-        <variable
-            name="isBtnVisible"
-            type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +17,7 @@
 
         <!-- 편지 내용 뷰-->
         <androidx.constraintlayout.widget.ConstraintLayout
-            visibleGone="@{vm.readFlag || !isBtnVisible}"
+            visibleGone="@{vm.readFlag || (vm.letterDetail.status == 1)}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -36,7 +32,7 @@
                 app:layout_constraintTop_toTopOf="@id/gl_v_0529">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_mail_list_back"
+                    android:id="@+id/iv_letter_detail_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_back_6f6f6f"
@@ -57,7 +53,7 @@
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nsv_letter_detail"
-                bottomBtnVisible="@{isBtnVisible}"
+                bottomBtnVisible="@{vm.letterDetail.status != 1}"
                 paperBackgroundByStampId="@{vm.letterDetail.stamp}"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -86,7 +82,7 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_letter_detail_menu"
-                        visibleGone="@{isBtnVisible}"
+                        visibleGone="@{vm.letterDetail.status != 1}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="24dp"
@@ -135,7 +131,7 @@
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_letter_detail_bottom_virtual_view"
                         style="@style/PretendardRegular.ffffff.16dp"
-                        visibleGone="@{isBtnVisible}"
+                        visibleGone="@{vm.letterDetail.status != 1}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -155,15 +151,14 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_letter_detail_reply"
                 style="@style/PretendardRegular.ffffff.16dp"
-                visibleGone="@{isBtnVisible}"
-                android:layout_width="371dp"
-                android:layout_height="62dp"
+                letterDetailReplyEnabledAndText="@{vm.letterDetail}"
+                visibleGone="@{vm.letterDetail.status != 1}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
-                android:enabled="@{!vm.letterDetail.replyFlag}"
                 android:gravity="center"
                 android:paddingVertical="18.5dp"
-                android:text="@string/reply_letter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/gl_end"
                 app:layout_constraintStart_toStartOf="@+id/gl_start"
@@ -195,7 +190,7 @@
         <include
             android:id="@+id/layout_first_open_lottie"
             layout="@layout/view_first_open_letter_lottie"
-            app:readFlag="@{vm.readFlag || !isBtnVisible}"
+            app:isLottieVisible="@{vm.readFlag || (vm.letterDetail.status == 1)}"
             app:sendMailBoxName="@{vm.letterDetail.sendMailboxName}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

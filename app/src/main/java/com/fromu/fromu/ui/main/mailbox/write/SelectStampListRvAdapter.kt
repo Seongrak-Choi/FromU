@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fromu.fromu.databinding.ItemSelectStampBinding
 import com.fromu.fromu.model.FindStamp
 
-class SelectStampRvAdapter(private val listener: SelectStampListener) : ListAdapter<Int, SelectStampRvAdapter.ViewHolder>(StampDiffUtil()) {
+class SelectStampListRvAdapter(private val listener: SelectStampListener) : ListAdapter<Int, SelectStampListRvAdapter.ViewHolder>(StampDiffUtil()) {
     // 선택한 아이템의 포지션을 저장할 변수
     private var selectItemPosition = -1
 

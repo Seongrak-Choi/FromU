@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -14,12 +15,10 @@ import com.fromu.fromu.databinding.ActivityMainBinding
 import com.fromu.fromu.model.BottomMenuType
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseActivity
-import com.fromu.fromu.utils.Const
-import com.fromu.fromu.utils.EventObserver
-import com.fromu.fromu.utils.UiUtils
-import com.fromu.fromu.utils.Utils
+import com.fromu.fromu.utils.*
 import com.fromu.fromu.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
@@ -59,12 +58,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private fun initObserve() {
         mainViewModel.apply {
             getFromCountResult.observe(this@MainActivity, EventObserver { resources ->
+                Logger.e("rak", resources.toString())
                 handleResource(resources, false, object : ResourceSuccessListener<FromCountRes> {
                     override fun onSuccess(res: FromCountRes) {
                         handleFromCountRes(res)
                     }
                 })
             })
+
+            viewModelScope.launch {
+                fromCountFlow.collect {
+                    binding.tvFromCount.text = it
+                }
+            }
         }
     }
 

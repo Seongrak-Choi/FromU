@@ -4,10 +4,7 @@ import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.api.CoupleService
 import com.fromu.fromu.data.remote.network.request.PatchFirstMetDayReq
 import com.fromu.fromu.data.remote.network.request.PatchMailBoxNameReq
-import com.fromu.fromu.data.remote.network.response.BreakMatchingRes
-import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
-import com.fromu.fromu.data.remote.network.response.PatchFirstMetDayRes
-import com.fromu.fromu.data.remote.network.response.PatchMailBoxNameRes
+import com.fromu.fromu.data.remote.network.response.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -77,5 +74,20 @@ class CoupleDataSource @Inject constructor(private val coupleService: CoupleServ
         }
     }.catch {
         emit(Resource.Failed("breakMatching: An unkown error occurred"))
+    }
+
+
+    fun getCouplesStamp(stampId: Int): Flow<Resource<PurchaseStampRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = coupleService.getCouplesStamp(stampId)
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("getCouplesStamp: An unkown error occurred"))
     }
 }

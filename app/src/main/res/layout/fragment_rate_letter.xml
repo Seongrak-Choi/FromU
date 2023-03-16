@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.RateLetterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_rate_letter_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="3dp"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_v_0529">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_rate_letter_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:src="@drawable/ic_back_6f6f6f"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Cafe24SsurroundAir.000000.14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rate_letter_title"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_rate_letter_introduce"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/rate_letter_introduce"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@id/gl_v_1330" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Cafe24SsurroundAir.6f6f6f.16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/rate_letter_introduce2"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_rate_letter_introduce" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toTopOf="@+id/gl_v_3152">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_rate_letter_star_1"
+                fillImg="@{vm.startCount}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:onClick="@{() -> vm.setStartCount(1)}"
+                android:src="@drawable/ic_rate_star_empty"
+                android:tag="1" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_rate_letter_star_2"
+                fillImg="@{vm.startCount}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:onClick="@{() -> vm.setStartCount(2)}"
+                android:src="@drawable/ic_rate_star_empty"
+                android:tag="2" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_rate_letter_star_3"
+                fillImg="@{vm.startCount}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:onClick="@{() -> vm.setStartCount(3)}"
+                android:src="@drawable/ic_rate_star_empty"
+                android:tag="3" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_rate_letter_star_4"
+                fillImg="@{vm.startCount}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:onClick="@{() -> vm.setStartCount(4)}"
+                android:src="@drawable/ic_rate_star_empty"
+                android:tag="4" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_rate_letter_star_5"
+                fillImg="@{vm.startCount}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="@{() -> vm.setStartCount(5)}"
+                android:src="@drawable/ic_rate_star_empty"
+                android:tag="5" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_rate_letter_send"
+            style="@style/PretendardRegular.ffffff.16dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
+            android:enabled="true"
+            android:gravity="center"
+            android:paddingVertical="18.5dp"
+            android:text="별점보내기"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/gl_end"
+            app:layout_constraintStart_toStartOf="@+id/gl_start" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_0529"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0529" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1330"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1330" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_3152"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3152" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

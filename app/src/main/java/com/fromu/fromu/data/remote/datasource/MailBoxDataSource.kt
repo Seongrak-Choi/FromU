@@ -3,8 +3,10 @@ package com.fromu.fromu.data.remote.datasource
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.api.MailBoxService
 import com.fromu.fromu.data.remote.network.request.PostLetterReq
+import com.fromu.fromu.data.remote.network.request.RateLetterReq
 import com.fromu.fromu.data.remote.network.response.MailListRes
 import com.fromu.fromu.data.remote.network.response.PostLetterRes
+import com.fromu.fromu.data.remote.network.response.RateLetterRes
 import com.fromu.fromu.data.remote.network.response.ReadLetterRes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -66,4 +68,21 @@ class MailBoxDataSource @Inject constructor(private val mailBoxService: MailBoxS
         emit(Resource.Failed("postReplyLetter: An unkown error occurred"))
     }
 
+
+    /**
+     * 별점주기
+     */
+    fun patchLetters(letterId: Int, rateLetterReq: RateLetterReq): Flow<Resource<RateLetterRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = mailBoxService.patchLetter(letterId, rateLetterReq)
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("patchLetters: An unkown error occurred"))
+    }
 }

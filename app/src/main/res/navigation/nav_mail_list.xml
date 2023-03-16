@@ -30,13 +30,16 @@
             android:name="readFlag"
             android:defaultValue="true"
             app:argType="boolean" />
-        <argument
-            android:name="isBtnVisible"
-            android:defaultValue="true"
-            app:argType="boolean" />
         <action
             android:id="@+id/action_letterDetailFragment_to_replyLetterFragment"
             app:destination="@id/replyLetterFragment"
+            app:enterAnim="@anim/view_fade_in"
+            app:exitAnim="@anim/view_fade_out"
+            app:popEnterAnim="@anim/view_fade_in"
+            app:popExitAnim="@anim/view_fade_out" />
+        <action
+            android:id="@+id/action_letterDetailFragment_to_rateLetterFragment"
+            app:destination="@id/rateLetterFragment"
             app:enterAnim="@anim/view_fade_in"
             app:exitAnim="@anim/view_fade_out"
             app:popEnterAnim="@anim/view_fade_in"
@@ -47,6 +50,15 @@
         android:name="com.fromu.fromu.ui.main.mailbox.maillist.letter.reply.ReplyLetterFragment"
         android:label="ReplyLetterFragment"
         tools:layout="@layout/fragment_write_letter">
+        <argument
+            android:name="letterId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/rateLetterFragment"
+        android:name="com.fromu.fromu.ui.main.mailbox.maillist.letter.rate.RateLetterFragment"
+        android:label="RateLetterFragment"
+        tools:layout="@layout/fragment_rate_letter">
         <argument
             android:name="letterId"
             app:argType="integer" />

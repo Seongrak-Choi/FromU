@@ -41,7 +41,6 @@
     </style>
 
 
-
     <!-- ************ Font ************ -->
 
 
@@ -56,6 +55,10 @@
 
     <style name="Cafe24SsurroundAir.ffffff.14dp">
         <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="Cafe24SsurroundAir.ffffff.18dp">
+        <item name="android:textSize">18dp</item>
     </style>
 
     <style name="Cafe24SsurroundAir.ffffff.20dp">
@@ -129,14 +132,21 @@
         <item name="android:textSize">14dp</item>
     </style>
 
-
     <style name="Cafe24SsurroundAir.a735ff.16dp">
         <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="Cafe24SsurroundAir.a735ff.18dp">
+        <item name="android:textSize">18dp</item>
     </style>
 
 
     <style name="Cafe24SsurroundAir.c983ff">
         <item name="android:textColor">@color/color_c983ff</item>
+    </style>
+
+    <style name="Cafe24SsurroundAir.c983ff.14dp">
+        <item name="android:textSize">14dp</item>
     </style>
 
     <style name="Cafe24SsurroundAir.c983ff.16dp">
@@ -162,6 +172,15 @@
     </style>
 
     <style name="Cafe24SsurroundAir.999999.16dp">
+        <item name="android:textSize">16dp</item>
+    </style>
+
+
+    <style name="Cafe24SsurroundAir.242424">
+        <item name="android:textColor">@color/color_242424</item>
+    </style>
+
+    <style name="Cafe24SsurroundAir.242424.16dp">
         <item name="android:textSize">16dp</item>
     </style>
 

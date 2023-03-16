@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_stamp_box"
+    app:startDestination="@id/stampBoxFragment">
+
+    <fragment
+        android:id="@+id/stampBoxFragment"
+        android:name="com.fromu.fromu.ui.main.mailbox.stampbox.StampBoxFragment"
+        android:label="StampBoxFragment"
+        tools:layout="@layout/fragment_stamp_box">
+        <action
+            android:id="@+id/action_stampBoxFragment_to_purchaseStampFragment"
+            app:destination="@id/purchaseStampFragment"
+            app:enterAnim="@anim/view_fade_in"
+            app:exitAnim="@anim/view_fade_out"
+            app:popEnterAnim="@anim/view_fade_in"
+            app:popExitAnim="@anim/view_fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchaseStampFragment"
+        android:name="com.fromu.fromu.ui.main.mailbox.stampbox.PurchaseStampFragment"
+        android:label="PurchaseStampFragment"
+        tools:layout="@layout/fragment_purchase_stamp" />
+</navigation>

@@ -74,13 +74,13 @@
                             android:src="@drawable/ic_from" />
 
                         <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_from_count"
                             style="@style/PretendardRegular.a735ff.12dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_rectangle_e2dbff_radius_25"
                             android:paddingHorizontal="10dp"
                             android:paddingVertical="4dp"
-                            android:text="@{vm.fromCountFlow}"
                             tools:text="10" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 

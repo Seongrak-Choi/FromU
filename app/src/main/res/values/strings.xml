@@ -14,6 +14,10 @@
     <string name="change">변경하기</string>
     <string name="contents_hint">내용을 입력해주세요</string>
     <string name="contents_length">%d/200</string>
+    <string name="purchase">구매하기</string>
+    <string name="back">돌아가기</string>
+    <string name="send">보내기</string>
+
 
     <!-- error -->
     <string name="load_img_failure_msg">이미지를 불러오는 데 실패하였습니다.</string>
@@ -129,12 +133,30 @@
     <string name="letter_from">from, %s</string>
     <string name="letter_date">%s. %s. %s %s %s:%s</string>
     <string name="first_open_letter">%s에서 편지가 도착했어!</string>
+    <string name="already_reply_letter">이미 답장을 보냈어!</string>
     <string name="reply_letter">답장하기</string>
     <string name="select_stamp_title">편지에 사용할 우표를 골라줘!</string>
     <string name="write_start_title">편지를 작성해보자!\n우리의 이야기를 자랑해도 좋고,\n고민을 털어놔도 좋아 :)</string>
     <string name="select_stamp_empty_title">텅! 비었어!</string>
-    <string name="write_letter">편지 보내기</string>
+    <string name="send_write_letter">편지 보내기</string>
+    <string name="reply_write_letter">답장 보내기</string>
+    <string name="already_say_thank_you">이미 감사인사를 했어!</string>
+    <string name="say_thank_you">감사인사 하기</string>
+    <string name="check_reply">편지의 답장은 한 번만 가능해서,\n내가 쓰면 상대방은 쓰지 못해</string>
     <string name="post_letter_success_title">%s으로 편지를 보냈어!</string>
+    <string name="stamp_box_purchase"><u>구매하기</u></string>
+    <string name="purchase_stamp_subtitle">우표에 따라 편지지가 달라질 거야.</string>
+    <string name="purchase_stamp_title">어떤 우표를 구매하고 싶어?</string>
+    <string name="stamp_box_appbar_title">우표함</string>
+    <string name="purchase_stamp_appbar_title">우표구매</string>
+    <string name="lack_from">헉...프롬이 부족해...</string>
+    <string name="success_purchase_stamp">오예! 성공적으로 구매했어!</string>
+    <string name="rate_letter_title">별점 남기기</string>
+    <string name="rate_letter_introduce">편지의 답장이 마음에 들었다면,\n별점을 남겨줘!</string>
+    <string name="rate_letter_introduce2">별점 점수를 통해\n답장을 보내준 커플에게 프롬을 줄거야.</string>
+    <string name="rate_send_check">정말 이 별점으로 보낼까?</string>
+
+
     <!-- my_home -->
 
     <!-- setting -->
@@ -145,4 +167,11 @@
     <string name="logout">로그아웃</string>
     <string name="break_matching">커플매칭 끊기</string>
     <string name="withdrawal">탈퇴하기</string>
+    <string name="alarm_msg_setting">알람 메세지 설정</string>
+    <string name="mail_box_setting">우편함 설정</string>
+    <string name="alarm_msg_title">알람 메세지</string>
+    <string name="alarm_msg_comment">연인에게 울릴\n알람 메세지를 바꿔볼래?</string>
+    <string name="alarm_msg_menu_1">오늘 너의 하루가 궁금해:)</string>
+    <string name="alarm_msg_menu_2">쟈깅 일기쓰고 있어?</string>
+    <string name="alarm_msg_menu_3">빨리 일기장 내놔 -ㅅ-</string>
 </resources>

@@ -83,7 +83,7 @@ class ReceiveMailListFragment : BaseFragment<FragmentReceiveMailListBinding>(Fra
     private fun settingSendMailListRv() {
         receiveMailListRvAdapter = ReceiveMailListRvAdapter(object : MailListListener {
             override fun onSelect(letterInfo: MailListResult) {
-                val action = MailListFragmentDirections.actionMailListFragmentToLetterDetailFragment(letterInfo.letterId, letterInfo.readFlag, true)
+                val action = MailListFragmentDirections.actionMailListFragmentToLetterDetailFragment(letterInfo.letterId, letterInfo.readFlag)
                 findNavController().navigate(action)
             }
         })

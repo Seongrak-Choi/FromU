@@ -4,9 +4,11 @@ import android.animation.Animator
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.fromu.fromu.data.remote.network.response.PostLetterRes
 import com.fromu.fromu.databinding.FragmentWriteLetterBinding
+import com.fromu.fromu.model.WriteType
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.utils.Const
@@ -46,6 +48,7 @@ class WriteLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWri
         binding.apply {
             lifecycleOwner = this@WriteLetterFragment
             vm = writeLetterViewModel
+            writeType = WriteType.SEND
         }
     }
 
@@ -73,6 +76,11 @@ class WriteLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWri
                 override fun onAnimationCancel(p0: Animator) {}
                 override fun onAnimationRepeat(p0: Animator) {}
             })
+
+            // 뒤로가기 버튼
+            ivWriteLetterBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
     }
 

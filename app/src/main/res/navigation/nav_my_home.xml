@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_myHomeFragment_to_settingFragment"
             app:destination="@id/settingFragment" />
+        <action
+            android:id="@+id/action_myHomeFragment_to_alarmMsgSettingFragment"
+            app:destination="@id/alarmMsgSettingFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.fromu.fromu.ui.main.myhome.setting.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting" />
+    <fragment
+        android:id="@+id/alarmMsgSettingFragment"
+        android:name="com.fromu.fromu.ui.main.myhome.AlarmMsgSettingFragment"
+        android:label="AlarmMsgSettingFragment"
+        tools:layout="@layout/fragment_alarm_msg_setting" />
 </navigation>

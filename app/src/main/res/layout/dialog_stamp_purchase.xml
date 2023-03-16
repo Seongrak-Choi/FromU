@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.fromu.fromu.model.FindStamp" />
+
+        <variable
+            name="stampId"
+            type="Integer" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rectangle_ffffff_radius_20"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="30dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_stamp_purchase"
+            stampSize5858Background="@{stampId}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="@id/gl_h_6344"
+            app:layout_constraintStart_toStartOf="@id/gl_h_3656"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_letter_stamp_1_size_58_58" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_stamp_purchase_price"
+            style="@style/Cafe24SsurroundAir.a735ff.18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="3 프롬"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_stamp_purchase" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_stamp_purchase_explanation"
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@{FindStamp.INSTANCE.getExplanationById(stampId)}"
+            app:layout_constraintTop_toBottomOf="@id/tv_stamp_purchase_price"
+            tools:text="신비함을 상징하는 우표야.\n몽환적인 보라색 편지지와 함께\n우리의 이야기를 전달해볼까?" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_popup_two_btn_negative"
+            style="@style/Cafe24SsurroundAir.a735ff.14dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_rectangle_empty_stroke_c983ff_radius_12dp_width_1dp"
+            android:gravity="center"
+            android:paddingVertical="15dp"
+            android:text="@string/back"
+            app:layout_constraintEnd_toStartOf="@+id/tv_popup_two_btn_positive"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_stamp_purchase_explanation" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_popup_two_btn_positive"
+            style="@style/Cafe24SsurroundAir.ffffff.14dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_rectangle_c983ff_radius_12"
+            android:gravity="center"
+            android:paddingVertical="15dp"
+            android:text="@string/purchase"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_popup_two_btn_negative"
+            app:layout_constraintTop_toBottomOf="@+id/tv_stamp_purchase_explanation" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_3656"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.3656" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_6344"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.6344" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -5,9 +5,15 @@
 
     <data>
 
+        <import type="com.fromu.fromu.model.WriteType" />
+
         <variable
             name="vm"
             type="com.fromu.fromu.viewmodels.WriteLetterViewModel" />
+
+        <variable
+            name="writeType"
+            type="com.fromu.fromu.model.WriteType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="@id/gl_v_0529">
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/iv_mail_list_back"
+                    android:id="@+id/iv_write_letter_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_back_6f6f6f"
@@ -122,7 +128,7 @@
                 android:enabled="@{vm.inputContents.length() != 0}"
                 android:gravity="center"
                 android:paddingVertical="18.5dp"
-                android:text="@string/write_letter"
+                android:text="@{writeType==WriteType.SEND ? @string/send_write_letter : @string/reply_write_letter}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/gl_end"
                 app:layout_constraintStart_toStartOf="@+id/gl_start" />

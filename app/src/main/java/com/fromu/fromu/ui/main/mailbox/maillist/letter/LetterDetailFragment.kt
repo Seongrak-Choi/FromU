@@ -26,9 +26,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentLetterDetailBinding::inflate) {
 
     private val letterDetailViewModel: LetterDetailViewModel by viewModels()
-
     private var letterId: Int = 0 // 조회할 편지의 id
-    private var isBtnVisible: Boolean = true //하단 버튼의 유무
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -38,6 +37,7 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        callApi()
         initView()
         initObserve()
         initEvent()
@@ -45,14 +45,12 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
 
     private fun initData() {
         getArgs()
-        callApi()
     }
 
     private fun initView() {
         binding.apply {
             lifecycleOwner = this@LetterDetailFragment
             vm = letterDetailViewModel
-            isBtnVisible = this@LetterDetailFragment.isBtnVisible
         }
     }
 
@@ -94,10 +92,20 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
                 showPopupMenu(it, layoutInflater)
             }
 
-            // 답장하기 버튼
+            // 답장하기 or 감사인사하러 가기 버튼
             tvLetterDetailReply.setOnClickListener {
-                val action = LetterDetailFragmentDirections.actionLetterDetailFragmentToReplyLetterFragment(letterId)
-                findNavController().navigate(action)
+                if (letterDetailViewModel.letterDetail.value?.status == 0) {
+                    val action = LetterDetailFragmentDirections.actionLetterDetailFragmentToReplyLetterFragment(letterId)
+                    findNavController().navigate(action)
+                } else if (letterDetailViewModel.letterDetail.value?.status == 2) {
+                    val action = LetterDetailFragmentDirections.actionLetterDetailFragmentToRateLetterFragment(letterId)
+                    findNavController().navigate(action)
+                }
+            }
+
+            // 뒤로가기 버튼
+            ivLetterDetailBack.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }
@@ -106,9 +114,13 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
         val args by navArgs<LetterDetailFragmentArgs>()
         letterId = args.letterId
         letterDetailViewModel.readFlag.value = args.readFlag
-        isBtnVisible = args.isBtnVisible
     }
 
+    /**
+     * 편지 조회 결과
+     *
+     * @param res
+     */
     private fun handleReadLetterRes(res: ReadLetterRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
@@ -127,7 +139,7 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
         targetView: View,
         layoutInflater: LayoutInflater
     ) {
-        var popupView = PopupLetterDetailMenuBinding.inflate(layoutInflater)
+        val popupView = PopupLetterDetailMenuBinding.inflate(layoutInflater)
         val mPopupWindow = PopupWindow(
             popupView.root,
             LinearLayout.LayoutParams.WRAP_CONTENT,

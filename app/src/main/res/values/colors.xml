@@ -9,7 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FF0000</color>
 
-
+    <color name="color_66000000">#66000000</color>
     <color name="color_99000000">#99000000</color>
     <color name="color_000000">#000000</color>
     <color name="color_2B2B2B">#2B2B2B</color>
@@ -27,4 +27,5 @@
     <color name="color_ecebeb">#ecebeb</color>
     <color name="color_eeeeee">#eeeeee</color>
     <color name="color_6d6d6d">#6d6d6d</color>
+    <color name="color_242424">#242424</color>
 </resources>

@@ -16,7 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SelectStampFragment : BaseFragment<FragmentSelectStampBinding>(FragmentSelectStampBinding::inflate) {
     private val selectStampViewModel: SelectStampViewModel by viewModels()
-    private lateinit var selectStampRvAdapter: SelectStampRvAdapter
+    private lateinit var selectStampListRvAdapter: SelectStampListRvAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ class SelectStampFragment : BaseFragment<FragmentSelectStampBinding>(FragmentSel
     }
 
     private fun initAdapter() {
-        selectStampRvAdapter = SelectStampRvAdapter(object : SelectStampRvAdapter.SelectStampListener {
+        selectStampListRvAdapter = SelectStampListRvAdapter(object : SelectStampListRvAdapter.SelectStampListener {
             override fun onSelect(stampId: Int) {
                 selectStampViewModel.selectStampId.value = stampId
             }
@@ -90,7 +90,7 @@ class SelectStampFragment : BaseFragment<FragmentSelectStampBinding>(FragmentSel
      * 우표 선택하는 리사이클러뷰 어댑터 셋팅
      */
     private fun settingStampRv() {
-        binding.rvSelectStamp.adapter = selectStampRvAdapter
+        binding.rvSelectStamp.adapter = selectStampListRvAdapter
     }
 
 
@@ -103,7 +103,7 @@ class SelectStampFragment : BaseFragment<FragmentSelectStampBinding>(FragmentSel
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 selectStampViewModel.isPossessStamp.value = res.result.isNotEmpty()
-                selectStampRvAdapter.submitList(res.result)
+                selectStampListRvAdapter.submitList(res.result)
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)

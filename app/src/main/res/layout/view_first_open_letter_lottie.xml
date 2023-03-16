@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -10,22 +9,23 @@
             type="String" />
 
         <variable
-            name="readFlag"
+            name="isLottieVisible"
             type="Boolean" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        visibleGone="@{!readFlag}"
+        visibleGone="@{!isLottieVisible}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_splash_bg"
-        tools:visibility="gone">
+        android:visibility="gone">
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie_first_open"
-            playLottie="@{!readFlag}"
+            playLottie="@{!isLottieVisible}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/gl_v_6600"
             app:layout_constraintTop_toTopOf="@id/gl_v_1995"
             app:lottie_fileName="comingletter.json" />
@@ -39,7 +39,6 @@
             android:gravity="center"
             android:text="@{@string/first_open_letter(sendMailBoxName)}"
             app:layout_constraintTop_toBottomOf="@id/lottie_first_open" />
-
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_1995"
