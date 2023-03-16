@@ -61,8 +61,14 @@ object MailBoxBinder {
 
     @JvmStatic
     @BindingAdapter("stampSize5858Background")
-    fun setStampSrc(view: ImageView, stampId: Int) {
+    fun setStampSize5858Src(view: ImageView, stampId: Int) {
         view.setImageResource(FindStamp.getStampSize5858DrawableById(stampId))
+    }
+
+    @JvmStatic
+    @BindingAdapter("stampBackground")
+    fun setStampSrc(view: ImageView, stampId: Int) {
+        view.setImageResource(FindStamp.getStampDrawableById(stampId))
     }
 
     @JvmStatic

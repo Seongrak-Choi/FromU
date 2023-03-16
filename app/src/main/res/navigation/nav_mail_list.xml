@@ -34,5 +34,21 @@
             android:name="isBtnVisible"
             android:defaultValue="true"
             app:argType="boolean" />
+        <action
+            android:id="@+id/action_letterDetailFragment_to_replyLetterFragment"
+            app:destination="@id/replyLetterFragment"
+            app:enterAnim="@anim/view_fade_in"
+            app:exitAnim="@anim/view_fade_out"
+            app:popEnterAnim="@anim/view_fade_in"
+            app:popExitAnim="@anim/view_fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/replyLetterFragment"
+        android:name="com.fromu.fromu.ui.main.mailbox.maillist.letter.reply.ReplyLetterFragment"
+        android:label="ReplyLetterFragment"
+        tools:layout="@layout/fragment_write_letter">
+        <argument
+            android:name="letterId"
+            app:argType="integer" />
     </fragment>
 </navigation>

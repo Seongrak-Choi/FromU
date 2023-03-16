@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.ViewDataBinding
@@ -16,11 +17,13 @@ import com.fromu.fromu.ui.dialog.LoadingDialog
 import com.fromu.fromu.utils.Logger
 import com.fromu.fromu.utils.Utils
 
+
 abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInflater) -> T) : Fragment() {
     protected lateinit var binding: T
     lateinit var loadingDialog: LoadingDialog
 
     private var isLoading: Boolean = false
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = inflate(layoutInflater)
@@ -43,6 +46,14 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
         if (currentFocus != null) {
             inputManager.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
         }
+    }
+
+    /**
+     * 키보드를 올리기 위한 메소드
+     */
+    protected fun openKeyboard(et: EditText) {
+        val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.showSoftInput(et, InputMethodManager.SHOW_IMPLICIT)
     }
 
     /**

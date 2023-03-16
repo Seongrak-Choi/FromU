@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.SelectStampViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_select_stamp_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginStart="3dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="@id/gl_v_0529">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_select_stamp_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_6f6f6f"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!-- 우표가 있는 경우 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            visibleGone="@{vm.isPossessStamp()}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_select_stamp_app_bar">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_select_stamp_title"
+                style="@style/Cafe24SsurroundAir.000000.18dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/select_stamp_title"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_select_stamp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintBottom_toTopOf="@+id/tv_select_stamp_next"
+                app:layout_constraintEnd_toEndOf="@+id/gl_h_8880"
+                app:layout_constraintStart_toStartOf="@+id/gl_h_1120"
+                app:layout_constraintTop_toBottomOf="@+id/tv_select_stamp_title"
+                app:spanCount="2"
+                tools:listitem="@layout/item_select_stamp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_select_stamp_next"
+                style="@style/PretendardRegular.ffffff.16dp"
+                visibleGone="@{vm.isPossessStamp()}"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
+                android:enabled="@{vm.selectStampId != null}"
+                android:gravity="center"
+                android:paddingVertical="18.5dp"
+                android:text="@string/next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/gl_end"
+                app:layout_constraintStart_toStartOf="@id/gl_start" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_h_1120"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.1120" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_h_8880"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.8880" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!-- 우표가 비어있는 경우 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            visibleGone="@{!vm.isPossessStamp()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gl_v_3448">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_select_stamp_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_stamp_empty"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/Cafe24SsurroundAir.000000.16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/select_stamp_empty_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_select_stamp_empty" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_3448"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3448" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_0529"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.0529" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

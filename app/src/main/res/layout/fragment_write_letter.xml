@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="stampId"
-            type="Integer" />
+            name="vm"
+            type="com.fromu.fromu.viewmodels.WriteLetterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,6 +15,7 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            visibleGone="@{!vm.isPostSuccess()}"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -38,7 +39,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.AppCompatImageView
-                stampSize5858Background="@{stampId}"
+                stampSize5858Background="@{vm.selectStampId}"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:adjustViewBounds="true"
@@ -49,21 +50,21 @@
 
             <View
                 android:id="@+id/v_write_letter_paper"
+                paperBackgroundByStampId="@{vm.selectStampId}"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_write_letter_app_bar"
-                 />
+                tools:background="@drawable/ic_letter_paper_1" />
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/nsv_write_letter"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:fillViewport="true"
+                android:paddingTop="20dp"
                 android:scrollbars="none"
-                paperBackgroundByStampId="@{stampId}"
-                tools:background="@drawable/ic_letter_paper_1"
-                app:layout_constraintBottom_toTopOf="@+id/tv_write_letter_reply"
+                app:layout_constraintBottom_toTopOf="@+id/tv_write_letter_send"
                 app:layout_constraintTop_toBottomOf="@id/cl_write_letter_app_bar">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -82,10 +83,12 @@
                         android:gravity="center_horizontal"
                         android:hint="@string/contents_hint"
                         android:inputType="textMultiLine"
+                        android:maxLength="200"
+                        android:text="@={vm.inputContents}"
                         android:textColorHint="@color/color_999999"
                         android:textCursorDrawable="@drawable/cursor_bg_a735ff"
                         app:layout_constraintBottom_toTopOf="@+id/tv_write_letter_count"
-                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/gl_v_0500"
                         app:layout_constraintVertical_bias="0"
                         tools:text="저희가 쓴 이편지가\n어떤 우편함으로 도착할지는\n모르지만 잘부탁드려요!\n\n저희는 성격이 많이 다른 커플이에요." />
 
@@ -96,33 +99,33 @@
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="40dp"
                         android:layout_marginBottom="27dp"
-                        android:text="0/200"
+                        android:text="@{@string/contents_length(vm.inputContents.length())}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent" />
 
                     <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/gl_v_0100"
+                        android:id="@+id/gl_v_0500"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        app:layout_constraintGuide_percent="0.01" />
+                        app:layout_constraintGuide_percent="0.0300" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.core.widget.NestedScrollView>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_write_letter_reply"
+                android:id="@+id/tv_write_letter_send"
                 style="@style/PretendardRegular.ffffff.16dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
+                android:enabled="@{vm.inputContents.length() != 0}"
                 android:gravity="center"
                 android:paddingVertical="18.5dp"
-                android:text="@string/reply_letter"
+                android:text="@string/write_letter"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/gl_end"
-                app:layout_constraintStart_toStartOf="@+id/gl_start"
-                tools:text="답장하기" />
+                app:layout_constraintStart_toStartOf="@+id/gl_start" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_v_0529"
@@ -145,6 +148,13 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_end="20dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <include
+            android:id="@+id/layout_post_letter_success_lottie"
+            layout="@layout/view_post_letter_success_lottie"
+            app:isPostLetterSuccess="@{vm.isPostSuccess}"
+            app:receiveMailBoxName="@{vm.receiveMailBoxName}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

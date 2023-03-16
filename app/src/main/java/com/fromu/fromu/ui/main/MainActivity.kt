@@ -9,9 +9,13 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.fromu.fromu.R
+import com.fromu.fromu.data.remote.network.response.FromCountRes
 import com.fromu.fromu.databinding.ActivityMainBinding
 import com.fromu.fromu.model.BottomMenuType
+import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseActivity
+import com.fromu.fromu.utils.Const
+import com.fromu.fromu.utils.EventObserver
 import com.fromu.fromu.utils.UiUtils
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.MainViewModel
@@ -27,7 +31,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
         initData()
         initView()
+        initObserve()
         initEvent()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        mainViewModel.getFromCount()
     }
 
     private fun initData() {}
@@ -43,6 +54,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         }
 
         initBackPress()
+    }
+
+    private fun initObserve() {
+        mainViewModel.apply {
+            getFromCountResult.observe(this@MainActivity, EventObserver { resources ->
+                handleResource(resources, false, object : ResourceSuccessListener<FromCountRes> {
+                    override fun onSuccess(res: FromCountRes) {
+                        handleFromCountRes(res)
+                    }
+                })
+            })
+        }
     }
 
     private fun initEvent() {
@@ -78,6 +101,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
             ivAppbarAlarm.setOnClickListener {
                 navController.navigate(R.id.action_global_notificationFragment)
+            }
+        }
+    }
+
+    private fun handleFromCountRes(res: FromCountRes) {
+        when (res.code) {
+            Const.SUCCESS_CODE -> {
+                mainViewModel.fromCountFlow.value = res.result.toString()
+            }
+            else -> {
+                Utils.showNetworkErrorSnackBar(binding.root)
             }
         }
     }

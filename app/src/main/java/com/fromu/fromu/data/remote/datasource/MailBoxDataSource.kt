@@ -2,7 +2,9 @@ package com.fromu.fromu.data.remote.datasource
 
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.api.MailBoxService
+import com.fromu.fromu.data.remote.network.request.PostLetterReq
 import com.fromu.fromu.data.remote.network.response.MailListRes
+import com.fromu.fromu.data.remote.network.response.PostLetterRes
 import com.fromu.fromu.data.remote.network.response.ReadLetterRes
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -36,6 +38,32 @@ class MailBoxDataSource @Inject constructor(private val mailBoxService: MailBoxS
         }
     }.catch {
         emit(Resource.Failed("patchLetterRead: An unkown error occurred"))
+    }
+
+    fun postLetter(postLetterReq: PostLetterReq): Flow<Resource<PostLetterRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = mailBoxService.postLetters(postLetterReq)
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("postLetter: An unkown error occurred"))
+    }
+
+    fun postReplyLetter(letterId: Int, postLetterReq: PostLetterReq): Flow<Resource<PostLetterRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = mailBoxService.postReplyLetters(letterId, postLetterReq)
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("postReplyLetter: An unkown error occurred"))
     }
 
 }

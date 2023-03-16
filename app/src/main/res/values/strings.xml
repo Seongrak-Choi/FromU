@@ -13,6 +13,7 @@
     <string name="month">%s월</string>
     <string name="change">변경하기</string>
     <string name="contents_hint">내용을 입력해주세요</string>
+    <string name="contents_length">%d/200</string>
 
     <!-- error -->
     <string name="load_img_failure_msg">이미지를 불러오는 데 실패하였습니다.</string>
@@ -103,7 +104,6 @@
     <string name="decide_name_title">일기장의 이름을 정해줘!</string>
 
     <!-- inside_diary -->
-    <string name="contents_length">%d/200</string>
     <string name="contents_from">From.%s의 기록</string>
     <string name="emotion_weather">감정날씨:</string>
     <string name="current_position">%d/%d</string>
@@ -130,7 +130,11 @@
     <string name="letter_date">%s. %s. %s %s %s:%s</string>
     <string name="first_open_letter">%s에서 편지가 도착했어!</string>
     <string name="reply_letter">답장하기</string>
-
+    <string name="select_stamp_title">편지에 사용할 우표를 골라줘!</string>
+    <string name="write_start_title">편지를 작성해보자!\n우리의 이야기를 자랑해도 좋고,\n고민을 털어놔도 좋아 :)</string>
+    <string name="select_stamp_empty_title">텅! 비었어!</string>
+    <string name="write_letter">편지 보내기</string>
+    <string name="post_letter_success_title">%s으로 편지를 보냈어!</string>
     <!-- my_home -->
 
     <!-- setting -->

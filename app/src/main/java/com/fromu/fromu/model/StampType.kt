@@ -4,7 +4,7 @@ import com.fromu.fromu.R
 import com.fromu.fromu.data.dto.StampDto
 
 enum class StampType(val stamp: StampDto) {
-    BASIC(StampDto(0, 0, 0, R.drawable.ic_letter_paper_basic)),
+    BASIC(StampDto(0, 0, 0, R.drawable.ic_inside_paper)),
     FIRST(StampDto(1, R.drawable.ic_letter_stamp_1, R.drawable.ic_letter_stamp_1_size_58_58, R.drawable.ic_letter_paper_1)),
     SECOND(StampDto(2, R.drawable.ic_letter_stamp_2, R.drawable.ic_letter_stamp_2_size_58_58, R.drawable.ic_letter_paper_2)),
     THIRD(StampDto(3, R.drawable.ic_letter_stamp_3, R.drawable.ic_letter_stamp_3_size_58_58, R.drawable.ic_letter_paper_3)),

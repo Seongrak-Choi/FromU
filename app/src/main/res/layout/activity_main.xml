@@ -56,33 +56,33 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <!--                    <androidx.appcompat.widget.LinearLayoutCompat-->
-                    <!--                        visibleGone="@{vm.type != BottomMenuType.MY_HOME.type}"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_marginEnd="8dp"-->
-                    <!--                        android:gravity="center_vertical"-->
-                    <!--                        android:orientation="horizontal"-->
-                    <!--                        app:layout_constraintBottom_toBottomOf="parent"-->
-                    <!--                        app:layout_constraintEnd_toStartOf="@+id/iv_appbar_alarm"-->
-                    <!--                        app:layout_constraintTop_toTopOf="parent">-->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        visibleGone="@{vm.type != BottomMenuType.MY_HOME.type}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_appbar_alarm"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                    <!--                        <androidx.appcompat.widget.AppCompatImageView-->
-                    <!--                            android:layout_width="wrap_content"-->
-                    <!--                            android:layout_height="wrap_content"-->
-                    <!--                            android:layout_marginEnd="2dp"-->
-                    <!--                            android:src="@drawable/ic_from" />-->
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="2dp"
+                            android:src="@drawable/ic_from" />
 
-                    <!--                        <androidx.appcompat.widget.AppCompatTextView-->
-                    <!--                            style="@style/PretendardRegular.a735ff.12dp"-->
-                    <!--                            android:layout_width="wrap_content"-->
-                    <!--                            android:layout_height="wrap_content"-->
-                    <!--                            android:background="@drawable/bg_rectangle_e2dbff_radius_25"-->
-                    <!--                            android:paddingHorizontal="10dp"-->
-                    <!--                            android:paddingVertical="4dp"-->
-                    <!--                            android:text="@{vm.fromCount}"-->
-                    <!--                            tools:text="10" />-->
-                    <!--                    </androidx.appcompat.widget.LinearLayoutCompat>-->
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/PretendardRegular.a735ff.12dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bg_rectangle_e2dbff_radius_25"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
+                            android:text="@{vm.fromCountFlow}"
+                            tools:text="10" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_appbar_alarm"

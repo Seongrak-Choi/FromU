@@ -27,14 +27,12 @@ class SendMailListFragment : BaseFragment<FragmentSendMailListBinding>(FragmentS
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        viewCreateCallApi()
         initView()
         initObserve()
     }
 
-    private fun initData() {
-        callApi()
-    }
+    private fun initData() {}
 
     private fun initView() {
         binding.apply {
@@ -55,7 +53,8 @@ class SendMailListFragment : BaseFragment<FragmentSendMailListBinding>(FragmentS
         }
     }
 
-    private fun callApi() {
+
+    private fun viewCreateCallApi() {
         mailListViewModel.getSendMailList()
     }
 

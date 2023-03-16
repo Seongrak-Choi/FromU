@@ -41,6 +41,7 @@ class MailListFragment : BaseFragment<FragmentMailListBinding>(FragmentMailListB
     private fun settingViewPager2() {
         binding.apply {
             vpMailList.adapter = MailListMenuVpAdapter(this@MailListFragment)
+            vpMailList.offscreenPageLimit = 2
         }
     }
 

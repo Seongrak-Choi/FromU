@@ -3,13 +3,46 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:toosl="http://schemas.android.com/tools"
     android:id="@+id/nav_write_letter"
-    app:startDestination="@id/writeLetterFragment">
+    app:startDestination="@id/writeStartLottie">
 
 
     <fragment
         android:id="@+id/writeLetterFragment"
         android:name="com.fromu.fromu.ui.main.mailbox.write.WriteLetterFragment"
-        toosl:layout="@layout/fragment_write_letter"
-        android:label="WriteLetterFragment" />
+        android:label="WriteLetterFragment"
+        toosl:layout="@layout/fragment_write_letter">
+        <argument
+            android:name="stampId"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectStampFragment"
+        android:name="com.fromu.fromu.ui.main.mailbox.write.SelectStampFragment"
+        android:label="SelectStampFragment"
+        toosl:layout="@layout/fragment_select_stamp">
+        <action
+            android:id="@+id/action_selectStampFragment_to_writeLetterFragment"
+            app:destination="@id/writeLetterFragment"
+            app:enterAnim="@anim/view_fade_in"
+            app:exitAnim="@anim/view_fade_out"
+            app:popEnterAnim="@anim/view_fade_in"
+            app:popExitAnim="@anim/view_fade_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/writeStartLottie"
+        android:name="com.fromu.fromu.ui.main.mailbox.write.WriteStartLottieFragment"
+        android:label="WriteStartLottie"
+        toosl:layout="@layout/fragment_write_start_lottie">
+        <action
+            android:id="@+id/action_writeStartLottie_to_selectStampFragment"
+            app:destination="@id/selectStampFragment"
+            app:enterAnim="@anim/view_fade_in"
+            app:exitAnim="@anim/view_fade_out"
+            app:popEnterAnim="@anim/view_fade_in"
+            app:popExitAnim="@anim/view_fade_out"
+            app:popUpTo="@id/writeStartLottie"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

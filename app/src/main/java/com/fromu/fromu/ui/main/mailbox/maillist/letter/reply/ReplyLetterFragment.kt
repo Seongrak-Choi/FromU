@@ -1,9 +1,10 @@
-package com.fromu.fromu.ui.main.mailbox.write
+package com.fromu.fromu.ui.main.mailbox.maillist.letter.reply
 
 import android.animation.Animator
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.fromu.fromu.data.remote.network.response.PostLetterRes
 import com.fromu.fromu.databinding.FragmentWriteLetterBinding
@@ -16,8 +17,7 @@ import com.fromu.fromu.viewmodels.WriteLetterViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WriteLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWriteLetterBinding::inflate) {
-
+class ReplyLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWriteLetterBinding::inflate) {
     private val writeLetterViewModel: WriteLetterViewModel by viewModels()
 
     // 키보드 show에 따른 스크롤 위치 변경 유틸 클래스
@@ -44,7 +44,7 @@ class WriteLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWri
     private fun initView() {
         settingKeyBoardVisibilityUtils()
         binding.apply {
-            lifecycleOwner = this@WriteLetterFragment
+            lifecycleOwner = this@ReplyLetterFragment
             vm = writeLetterViewModel
         }
     }
@@ -87,8 +87,8 @@ class WriteLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWri
     }
 
     private fun setArgs() {
-        val args: WriteLetterFragmentArgs by navArgs()
-        writeLetterViewModel.selectStampId.value = args.stampId
+        val args: ReplyLetterFragmentArgs by navArgs()
+        writeLetterViewModel.letterId.value = args.letterId
     }
 
     /**
@@ -116,11 +116,11 @@ class WriteLetterFragment : BaseFragment<FragmentWriteLetterBinding>(FragmentWri
 
 
     fun lottieFinish() {
-        requireActivity().finish()
+        findNavController().popBackStack()
     }
 
     private fun sendLetter() {
-        writeLetterViewModel.postLetter()
+        writeLetterViewModel.postReplyLetter()
     }
 
     override fun onDestroyView() {

@@ -27,10 +27,10 @@ class PickCoverRvAdapter(private val listener: PickCoverRvListener) : ListAdapte
         fun bind(diaryCoverDto: DiaryCoverDto) {
             binding.apply {
                 ivPickCover.setImageResource(diaryCoverDto.coverDrawableNoShadow)
-                vItemPickCoverChecked.visibility = if (adapterPosition == selectItemPosition) View.VISIBLE else View.GONE
+                vItemPickCoverChecked.visibility = if (absoluteAdapterPosition == selectItemPosition) View.VISIBLE else View.GONE
 
                 clItemPickCoverRoot.setOnClickListener {
-                    selectItemPosition = layoutPosition
+                    selectItemPosition = absoluteAdapterPosition
                     listener.onClick(diaryCoverDto)
 
                     notifyDataSetChanged()

@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.ReadLetterRes
@@ -26,7 +27,7 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
 
     private val letterDetailViewModel: LetterDetailViewModel by viewModels()
 
-    private var letterId: Int = 25 // 조회할 편지의 id
+    private var letterId: Int = 0 // 조회할 편지의 id
     private var isBtnVisible: Boolean = true //하단 버튼의 유무
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,8 +89,15 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
                 }
             })
 
+            // 메뉴 버튼
             ivLetterDetailMenu.setOnClickListener {
-                showPopupMenu(it,layoutInflater)
+                showPopupMenu(it, layoutInflater)
+            }
+
+            // 답장하기 버튼
+            tvLetterDetailReply.setOnClickListener {
+                val action = LetterDetailFragmentDirections.actionLetterDetailFragmentToReplyLetterFragment(letterId)
+                findNavController().navigate(action)
             }
         }
     }
