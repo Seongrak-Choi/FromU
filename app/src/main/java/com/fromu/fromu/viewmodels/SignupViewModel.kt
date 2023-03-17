@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.data.remote.network.Resource
+import com.fromu.fromu.data.remote.network.request.PatchFcmTokenReq
 import com.fromu.fromu.data.remote.network.request.SignupReq
 import com.fromu.fromu.data.remote.network.response.SignupRes
 import com.fromu.fromu.data.repository.SignupRepo
@@ -73,9 +74,15 @@ class SignupViewModel @Inject constructor(private val signupRepo: SignupRepo) : 
                     FromUApplication.prefManager.setUserId(userId)
                     FromUApplication.prefManager.setLoginToken(jwt)
                     FromUApplication.prefManager.setRefreshToken(refreshToken)
+
+                    patchFcmToken(jwt)
                 }
             }
             resource
         }.asLiveData()
+    }
+
+    private fun patchFcmToken(jwt: String) {
+        signupRepo.patchFcmToken(jwt, PatchFcmTokenReq(FromUApplication.prefManager.getFcmId()))
     }
 }

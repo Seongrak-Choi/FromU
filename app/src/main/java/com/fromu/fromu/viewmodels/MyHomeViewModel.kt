@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.fromu.fromu.data.dto.CoupleRes
 import com.fromu.fromu.data.remote.network.Resource
-import com.fromu.fromu.data.remote.network.response.BreakMatchingRes
-import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
-import com.fromu.fromu.data.remote.network.response.LogoutRes
-import com.fromu.fromu.data.remote.network.response.WithdrawalRes
+import com.fromu.fromu.data.remote.network.request.SetBellMsgReq
+import com.fromu.fromu.data.remote.network.response.*
 import com.fromu.fromu.data.repository.MyHomeRepo
 import com.fromu.fromu.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -40,6 +38,10 @@ class MyHomeViewModel @Inject constructor(private val myHomeRepo: MyHomeRepo) : 
     private var _withdrawalResult: MutableLiveData<Resource<WithdrawalRes>> = MutableLiveData()
     val withdrawalResult: LiveData<Resource<WithdrawalRes>>
         get() = _withdrawalResult
+
+    private var _setBellMsgResult: MutableLiveData<Resource<SetBellMsgRes>> = MutableLiveData()
+    val setBellMsgResult: LiveData<Resource<SetBellMsgRes>>
+        get() = _setBellMsgResult
 
 
     fun getCoupleInfo() {
@@ -77,6 +79,17 @@ class MyHomeViewModel @Inject constructor(private val myHomeRepo: MyHomeRepo) : 
         viewModelScope.launch {
             myHomeRepo.withdrawal().collect {
                 _withdrawalResult.value = it
+            }
+        }
+    }
+
+    /**
+     * 벨 울리기 멘트 변경
+     */
+    fun setBellMsg(setBellMsgReq: SetBellMsgReq) {
+        viewModelScope.launch {
+            myHomeRepo.setBellMsg(setBellMsgReq).collect {
+                _setBellMsgResult.value = it
             }
         }
     }

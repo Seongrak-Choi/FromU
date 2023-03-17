@@ -63,7 +63,9 @@
                 android:scrollbars="none"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cl_letter_detail_app_bar"
-                tools:background="@drawable/ic_letter_paper_1">
+                app:layout_constraintVertical_bias="0.0"
+                tools:background="@drawable/ic_letter_paper_1"
+                tools:layout_editor_absoluteX="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -190,7 +192,7 @@
         <include
             android:id="@+id/layout_first_open_lottie"
             layout="@layout/view_first_open_letter_lottie"
-            app:isLottieVisible="@{vm.readFlag || (vm.letterDetail.status == 1)}"
+            app:isLottieVisible="@{!vm.readFlag &amp;&amp; (vm.letterDetail.status != 1)}"
             app:sendMailBoxName="@{vm.letterDetail.sendMailboxName}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

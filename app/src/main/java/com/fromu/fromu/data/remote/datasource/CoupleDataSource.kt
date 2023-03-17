@@ -4,6 +4,7 @@ import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.api.CoupleService
 import com.fromu.fromu.data.remote.network.request.PatchFirstMetDayReq
 import com.fromu.fromu.data.remote.network.request.PatchMailBoxNameReq
+import com.fromu.fromu.data.remote.network.request.SetBellMsgReq
 import com.fromu.fromu.data.remote.network.response.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -89,5 +90,20 @@ class CoupleDataSource @Inject constructor(private val coupleService: CoupleServ
         }
     }.catch {
         emit(Resource.Failed("getCouplesStamp: An unkown error occurred"))
+    }
+
+
+    fun patchPushMessage(setBellMsgReq: SetBellMsgReq): Flow<Resource<SetBellMsgRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = coupleService.patchPushMessage(setBellMsgReq)
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("patchPushMessage: An unkown error occurred"))
     }
 }

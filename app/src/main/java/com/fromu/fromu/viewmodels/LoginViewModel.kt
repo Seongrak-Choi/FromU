@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.data.dto.GoogleSignInAccessTokenDataClass
 import com.fromu.fromu.data.remote.network.Resource
+import com.fromu.fromu.data.remote.network.request.PatchFcmTokenReq
 import com.fromu.fromu.data.remote.network.response.JWTLoginRes
 import com.fromu.fromu.data.remote.network.response.SNSLoginRes
 import com.fromu.fromu.data.repository.LoginRepo
@@ -40,6 +41,8 @@ class LoginViewModel @Inject constructor(
                     FromUApplication.prefManager.setUserId(userInfo.userId)
                     FromUApplication.prefManager.setLoginToken(userInfo.jwt)
                     FromUApplication.prefManager.setRefreshToken(userInfo.refreshToken)
+
+                    patchFcmToken(userInfo.jwt)
                 }
             }
             resource
@@ -51,10 +54,12 @@ class LoginViewModel @Inject constructor(
             FromUApplication.prefManager.getRefreshToken()?.let { it ->
                 loginRepo.loginWithJwt(it).map { resource ->
                     if (resource is Resource.Success) {
-                        resource.body.result?.let {
-                            FromUApplication.prefManager.setUserId(it.userId)
-                            FromUApplication.prefManager.setLoginToken(it.jwt)
-                            FromUApplication.prefManager.setRefreshToken(it.refreshToken)
+                        resource.body.result?.let { userInfo ->
+                            FromUApplication.prefManager.setUserId(userInfo.userId)
+                            FromUApplication.prefManager.setLoginToken(userInfo.jwt)
+                            FromUApplication.prefManager.setRefreshToken(userInfo.refreshToken)
+
+                            patchFcmToken(userInfo.jwt)
                         }
                     }
                     resource
@@ -80,5 +85,13 @@ class LoginViewModel @Inject constructor(
                 _getGoogleAccessTokenResult.value = it
             }
         }
+    }
+
+    /**
+     * fcm 토큰 서버에 전송 api
+     *
+     */
+    private fun patchFcmToken(jwt: String) {
+        loginRepo.patchFcmToken(jwt, PatchFcmTokenReq(FromUApplication.prefManager.getFcmId()))
     }
 }

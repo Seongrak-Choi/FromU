@@ -4,10 +4,8 @@ import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.api.MailBoxService
 import com.fromu.fromu.data.remote.network.request.PostLetterReq
 import com.fromu.fromu.data.remote.network.request.RateLetterReq
-import com.fromu.fromu.data.remote.network.response.MailListRes
-import com.fromu.fromu.data.remote.network.response.PostLetterRes
-import com.fromu.fromu.data.remote.network.response.RateLetterRes
-import com.fromu.fromu.data.remote.network.response.ReadLetterRes
+import com.fromu.fromu.data.remote.network.request.ReportLetterReq
+import com.fromu.fromu.data.remote.network.response.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -84,5 +82,26 @@ class MailBoxDataSource @Inject constructor(private val mailBoxService: MailBoxS
         }
     }.catch {
         emit(Resource.Failed("patchLetters: An unkown error occurred"))
+    }
+
+    /**
+     * 편지 신고하기
+     *
+     * @param letterId 신고할 편지 id
+     * @param reportLetterReq 신고 내용
+     * @return
+     */
+    fun postReportLetter(letterId: Int, reportLetterReq: ReportLetterReq): Flow<Resource<ReportLetterRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = mailBoxService.postReportLetter(letterId, reportLetterReq)
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("postReportLetter: An unkown error occurred"))
     }
 }

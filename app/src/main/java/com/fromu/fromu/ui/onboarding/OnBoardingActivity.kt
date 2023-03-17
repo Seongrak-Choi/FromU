@@ -76,12 +76,7 @@ class OnBoardingActivity : BaseActivity<ActivityOnBoardingBinding>(ActivityOnBoa
             tvOnBoardingNext.setOnClickListener {
                 vpOnBoarding.currentItem = vpOnBoarding.currentItem + 1
             }
-            tvOnBoardingSkip.setOnClickListener {
-                Intent(this@OnBoardingActivity, LoginActivity::class.java).apply {
-                    startActivity(this)
-                    finish()
-                }
-            }
+
             tvOnBoardingStarting.setOnClickListener {
                 Intent(this@OnBoardingActivity, LoginActivity::class.java).apply {
                     startActivity(this)

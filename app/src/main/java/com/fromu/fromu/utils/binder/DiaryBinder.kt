@@ -21,8 +21,8 @@ object DiaryBinder {
 
     @JvmStatic
     @BindingAdapter("visibleByDiaryStatusId")
-    fun setVisibleByDiaryStatusId(view: View, diaryStatusId: String) {
-        view.visibility = if (view.tag == diaryStatusId) View.VISIBLE else View.GONE
+    fun setVisibleByDiaryStatusId(view: View, diaryStatusId: Int) {
+        view.visibility = if (view.tag == diaryStatusId.toString()) View.VISIBLE else View.GONE
     }
 
     @JvmStatic

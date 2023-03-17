@@ -34,7 +34,7 @@ class DiaryViewModel @Inject constructor(private val diaryViewRepo: DiaryViewRep
     val isSetFirstMetDay: MutableStateFlow<Boolean> = MutableStateFlow(false)
 
     // 일기장 상태 코드
-    val diaryBookStatusId: MutableStateFlow<String> = MutableStateFlow("-1")
+    val diaryBookStatusId: MutableStateFlow<Int> = MutableStateFlow(0)
 
     val diaryBook: MutableLiveData<DiaryBook> = MutableLiveData()
 

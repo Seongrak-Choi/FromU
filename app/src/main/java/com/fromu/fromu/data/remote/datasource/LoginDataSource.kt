@@ -4,8 +4,12 @@ import com.fromu.fromu.BuildConfig
 import com.fromu.fromu.data.dto.GoogleSignInAccessTokenDataClass
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.api.LoginService
+import com.fromu.fromu.data.remote.network.request.PatchFcmTokenReq
 import com.fromu.fromu.data.remote.network.response.JWTLoginRes
+import com.fromu.fromu.data.remote.network.response.PatchFcmTokenRes
 import com.fromu.fromu.data.remote.network.response.SNSLoginRes
+import com.fromu.fromu.utils.Const
+import com.fromu.fromu.utils.Logger
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -79,5 +83,29 @@ class LoginDataSource @Inject constructor(private val loginService: LoginService
         awaitClose()
     }.catch {
         emit(Resource.Failed("getGoogleAccessToken: An unkown error occurred"))
+    }
+
+    /**
+     * fcm토큰 서버에 저장 api
+     *
+     * @param patchFcmTokenReq
+     */
+    fun patchDeviceToken(jwt: String, patchFcmTokenReq: PatchFcmTokenReq) {
+        loginService.patchUsersDeviceToken(jwt, patchFcmTokenReq).enqueue(object : Callback<PatchFcmTokenRes> {
+            override fun onResponse(call: Call<PatchFcmTokenRes>, response: Response<PatchFcmTokenRes>) {
+                when (response.body()?.code) {
+                    Const.SUCCESS_CODE -> {
+                        Logger.e("patchFcmToken", "fcm 등록 성공")
+                    }
+                    else -> {
+                        Logger.e("patchFcmToken", "fcm 등록 실패")
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<PatchFcmTokenRes>, t: Throwable) {
+                Logger.e("patchFcmToken", t.message ?: "통신 오류")
+            }
+        })
     }
 }

@@ -271,7 +271,7 @@
                     style="@style/Cafe24SsurroundAir.000000.16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{@string/contents_length(vm.inputContents.length())}"
+                    android:text="@{@string/contents_length_max_200(vm.inputContents.length())}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@id/gl_end" />
 

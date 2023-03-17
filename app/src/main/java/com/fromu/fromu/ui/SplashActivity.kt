@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
@@ -39,6 +40,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
 
         initData()
         initView()
+        initBackPress()
     }
 
     private fun initData() {
@@ -173,5 +175,14 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
                 checkInitOnBoardingBeforeGoingLoginActivity()
             }
         }
+    }
+
+
+    private fun initBackPress() {
+        backPressed(object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Utils.exitApp(this@SplashActivity)
+            }
+        })
     }
 }

@@ -325,10 +325,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="내게로 일기가 가고 있어!"
+                android:text="@string/diary_book_go_to_partner"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                playLottie='@{vm.diaryBookStatusId == DiaryStatusType.GOING.id}'
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/gl_v_7568"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_fileName="goingdiary.json" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_v_7568"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.7568" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- 일기가 나에게 오고 있을 때 -->
@@ -347,10 +363,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:text="내게로 일기가 오고 있어!"
+                android:text="@string/diary_book_come_to_me"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                playLottie='@{vm.diaryBookStatusId == DiaryStatusType.COMING.id}'
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@id/gl_v_75680"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_fileName="comingdiary.json" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_v_75680"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.7568" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.Guideline

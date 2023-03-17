@@ -13,7 +13,8 @@
     <string name="month">%s월</string>
     <string name="change">변경하기</string>
     <string name="contents_hint">내용을 입력해주세요</string>
-    <string name="contents_length">%d/200</string>
+    <string name="contents_length_max_200">%d/200</string>
+    <string name="contents_length_max_100">%d/100</string>
     <string name="purchase">구매하기</string>
     <string name="back">돌아가기</string>
     <string name="send">보내기</string>
@@ -100,6 +101,9 @@
     <string name="diary_popup_no_write">일기를 작성하지 않으면\n상대방에게 일기를 보낼 수 없어</string>
     <string name="diary_create_success">하루에 한 번,\n서로의 일상을 공유해보자!</string>
     <string name="diary_spend_all_bell">벨 울리기 횟수를 다 썼어\n12시간 뒤 충전될 예정이야</string>
+    <string name="diary_book_go_to_partner">연인에게로 일기가 가고 있어!</string>
+    <string name="diary_book_come_to_me">내게로 일기가 오고 있어!</string>
+
 
     <!-- create_diary -->
     <string name="pick_cover_title">일기장의 표지를 골라줘!</string>
@@ -155,8 +159,9 @@
     <string name="rate_letter_introduce">편지의 답장이 마음에 들었다면,\n별점을 남겨줘!</string>
     <string name="rate_letter_introduce2">별점 점수를 통해\n답장을 보내준 커플에게 프롬을 줄거야.</string>
     <string name="rate_send_check">정말 이 별점으로 보낼까?</string>
-
-
+    <string name="rate_letter_send">별점보내기</string>
+    <string name="report_letter_introduce">이 사용자를 신고할까요?</string>
+    <string name="report_letter_success">신고가 접수되었습니다.\n확인 후 조치하도록 하겠습니다.</string>
     <!-- my_home -->
 
     <!-- setting -->

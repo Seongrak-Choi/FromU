@@ -131,7 +131,7 @@
             android:enabled="true"
             android:gravity="center"
             android:paddingVertical="18.5dp"
-            android:text="별점보내기"
+            android:text="@string/rate_letter_send"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/gl_end"
             app:layout_constraintStart_toStartOf="@+id/gl_start" />

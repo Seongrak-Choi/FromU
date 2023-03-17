@@ -34,19 +34,6 @@
             app:selectedDotColor="@color/color_c983ff" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_on_boarding_skip"
-            style="@style/Cafe24SsurroundAir.000000.16dp"
-            visibleGone="@{!isLastPage}"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:paddingHorizontal="10dp"
-            android:paddingBottom="10dp"
-            android:text="@string/on_boarding_skip"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gl_h_8805" />
-
-        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_on_boarding_next"
             style="@style/Cafe24SsurroundAir.a735ff.16dp"
             visibleGone="@{!isLastPage}"

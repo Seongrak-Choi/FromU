@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_splash_bg">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Cafe24SsurroundAir.000000.18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:lineHeight="25dp"
+            android:text="@string/report_letter_success"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/gl_v_1699" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_report_letter_success"
+            app:layout_constraintEnd_toEndOf="@+id/gl_h_9067"
+            app:layout_constraintStart_toStartOf="@+id/gl_h_0933"
+            app:layout_constraintTop_toTopOf="@id/gl_v_3891" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_0933"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.0933" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_9067"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9067" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_1699"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.1699" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_3891"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3891" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -3,8 +3,6 @@ package com.fromu.fromu.ui.main.myhome
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
-import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.CheckMatchingRes
 import com.fromu.fromu.databinding.FragmentMyHomeBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
@@ -68,16 +66,16 @@ class MyHomeFragment : BaseFragment<FragmentMyHomeBinding>(FragmentMyHomeBinding
 
     private fun initEvent() {
         binding.apply {
-
-            // 알람 메세지 설정
-            clAlarmMsgSetting.setOnClickListener {
-                findNavController().navigate(R.id.action_myHomeFragment_to_alarmMsgSettingFragment)
-            }
-
-            // 우편함 설정
-            clMailBoxSetting.setOnClickListener {
-
-            }
+            //TODO 출시용으로 주석
+//            // 알람 메세지 설정
+//            clAlarmMsgSetting.setOnClickListener {
+//                findNavController().navigate(R.id.action_myHomeFragment_to_alarmMsgSettingFragment)
+//            }
+//
+//            // 우편함 설정
+//            clMailBoxSetting.setOnClickListener {
+//
+//            }
         }
     }
 

@@ -147,7 +147,8 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
         )
 
         popupView.tvLetterDetailReport.setOnClickListener {
-            //TODO 신고하기 화면 이동
+            val action = LetterDetailFragmentDirections.actionLetterDetailFragmentToReportLetterFragment(letterId)
+            findNavController().navigate(action)
             mPopupWindow.dismiss()
         }
 

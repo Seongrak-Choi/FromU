@@ -14,7 +14,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        visibleGone="@{!isLottieVisible}"
+        visibleGone="@{isLottieVisible}"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_splash_bg"
@@ -22,10 +22,9 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie_first_open"
-            playLottie="@{!isLottieVisible}"
+            playLottie="@{isLottieVisible}"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@id/gl_v_6600"
             app:layout_constraintTop_toTopOf="@id/gl_v_1995"
             app:lottie_fileName="comingletter.json" />

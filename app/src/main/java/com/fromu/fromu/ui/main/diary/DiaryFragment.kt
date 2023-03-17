@@ -147,7 +147,7 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
                     isSetFirstMetDay.value = diaryInfo.dday != 0
                     partnerNickname.value = diaryInfo.partnerNickname
                     myNickname.value = diaryInfo.nickName
-                    diaryBookStatusId.value = diaryInfo.diaryBookStatus.toString()
+                    diaryBookStatusId.value = diaryInfo.diaryBookStatus
 
                     diaryInfo.diaryBook?.let { diary ->
                         diaryBook.value = diary
@@ -173,7 +173,7 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 // 가는 중으로 UI 변경
-                diaryViewModel.diaryBookStatusId.value = DiaryStatusType.GOING.id.toString()
+                diaryViewModel.diaryBookStatusId.value = DiaryStatusType.GOING.id
             }
             2071 -> {
                 showNoWritePopup()

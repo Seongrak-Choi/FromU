@@ -14,7 +14,9 @@ import com.fromu.fromu.ui.dialog.DialogPopupTwoBtn
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.RateLetterViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RateLetterFragment : BaseFragment<FragmentRateLetterBinding>(FragmentRateLetterBinding::inflate) {
 
     private val rateLetterViewModel: RateLetterViewModel by viewModels()
@@ -47,7 +49,7 @@ class RateLetterFragment : BaseFragment<FragmentRateLetterBinding>(FragmentRateL
     private fun initObserve() {
         rateLetterViewModel.apply {
             rateLetterResult.observe(viewLifecycleOwner) { resources ->
-                handleResource(resources, listener = object : ResourceSuccessListener<RateLetterRes> {
+                handleResource(resources, true, listener = object : ResourceSuccessListener<RateLetterRes> {
                     override fun onSuccess(res: RateLetterRes) {
                         handleRateLetterRes(res)
                     }
