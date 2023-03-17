@@ -319,24 +319,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_diary_front_dday_title">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_diary_going_title"
-                style="@style/Cafe24SsurroundAir.000000.16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@string/diary_book_go_to_partner"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <com.airbnb.lottie.LottieAnimationView
                 playLottie='@{vm.diaryBookStatusId == DiaryStatusType.GOING.id}'
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/gl_v_7568"
                 app:layout_constraintTop_toTopOf="parent"
-                app:lottie_fileName="goingdiary.json" />
+                app:lottie_fileName="goingdiary.json"
+                app:lottie_loop="true" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_v_7568"
@@ -357,24 +347,14 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_diary_front_dday_title">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_diary_coming_title"
-                style="@style/Cafe24SsurroundAir.000000.16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:text="@string/diary_book_come_to_me"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <com.airbnb.lottie.LottieAnimationView
                 playLottie='@{vm.diaryBookStatusId == DiaryStatusType.COMING.id}'
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/gl_v_75680"
                 app:layout_constraintTop_toTopOf="parent"
-                app:lottie_fileName="comingdiary.json" />
+                app:lottie_fileName="comingdiary.json"
+                app:lottie_loop="true" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/gl_v_75680"
