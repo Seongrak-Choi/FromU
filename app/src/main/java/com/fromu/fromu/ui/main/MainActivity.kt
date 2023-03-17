@@ -58,7 +58,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private fun initObserve() {
         mainViewModel.apply {
             getFromCountResult.observe(this@MainActivity, EventObserver { resources ->
-                Logger.e("rak", resources.toString())
                 handleResource(resources, false, object : ResourceSuccessListener<FromCountRes> {
                     override fun onSuccess(res: FromCountRes) {
                         handleFromCountRes(res)

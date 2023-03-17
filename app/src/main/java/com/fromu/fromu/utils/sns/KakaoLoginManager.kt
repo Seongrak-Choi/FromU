@@ -28,7 +28,6 @@ class KakaoLoginManager(private val context: Context) {
             })
         } else { //카카오톡이 설치되어 있지 않은 경우 카카오계정으로 로그인
             kakaoApiClient.loginWithKakaoAccount(context, callback = { token, error ->
-                Logger.e("rak", "카카오계정으로 로그인 : token = $token")
                 setLoginResult(token, error, listener)
             })
         }

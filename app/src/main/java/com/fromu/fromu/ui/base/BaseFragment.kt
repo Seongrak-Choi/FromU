@@ -75,7 +75,6 @@ abstract class BaseFragment<T : ViewDataBinding>(private val inflate: (LayoutInf
      */
     fun doVibrate(milliSecondsOfDuration: Long, power: Int = 100) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            Logger.e("rak", "진동하기")
             val vibratorManager = requireActivity().getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager
             val vibrationEffect = VibrationEffect.createOneShot(100L, VibrationEffect.DEFAULT_AMPLITUDE)
             val combinedVibration = CombinedVibration.createParallel(vibrationEffect)

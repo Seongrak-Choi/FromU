@@ -46,7 +46,6 @@ class StampBoxActivity : BaseActivity<ActivityStampBoxBinding>(ActivityStampBoxB
 
     private fun initObserve() {
         stampBoxViewModel.getFromCountResult.observe(this) { resources ->
-            Logger.e("rak", resources.toString())
             handleResource(resources, false, object : ResourceSuccessListener<FromCountRes> {
                 override fun onSuccess(res: FromCountRes) {
                     handleFromCountRes(res)
