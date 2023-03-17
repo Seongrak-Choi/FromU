@@ -31,13 +31,12 @@ class MailBoxFragment : BaseFragment<FragmentMailBoxBinding>(FragmentMailBoxBind
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        callApi()
         initObserve()
         initEvent()
     }
 
-    private fun initData() {
-        callApi()
-    }
+    private fun initData() {}
 
     private fun callApi() {
         mailBoxViewModel.getMailBoxView()

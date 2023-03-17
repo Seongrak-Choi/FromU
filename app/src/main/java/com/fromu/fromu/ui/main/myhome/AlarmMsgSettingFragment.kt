@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.LinearLayout
 import android.widget.PopupWindow
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.SetBellMsgRes
 import com.fromu.fromu.databinding.FragmentAlarmMsgSettingBinding
@@ -16,7 +17,9 @@ import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.MyHomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(FragmentAlarmMsgSettingBinding::inflate) {
     private val myHomeViewModel: MyHomeViewModel by viewModels()
 
@@ -47,8 +50,13 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
 
     private fun initEvent() {
         binding.apply {
-            clAlarmMsgSelect.setOnClickListener {
+            ivAlarmMsgDropMenu.setOnClickListener {
+                hideKeyboard()
                 showPopupMenu(it, layoutInflater)
+            }
+
+            ivAlarmMsgBack.setOnClickListener {
+                findNavController().popBackStack()
             }
         }
     }
@@ -74,10 +82,36 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
         val popupView = PopupAlarmMsgMenuBinding.inflate(layoutInflater)
         val mPopupWindow = PopupWindow(
             popupView.root,
-            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
 
+        popupView.apply {
+            tvAlarmMsgMenu1.setOnClickListener {
+                binding.etAlarmMsgSetting.apply {
+                    setText(tvAlarmMsgMenu1.text.toString())
+                    clearFocus()
+                }
+
+                mPopupWindow.dismiss()
+            }
+
+            tvAlarmMsgMenu2.setOnClickListener {
+                binding.etAlarmMsgSetting.apply {
+                    setText(tvAlarmMsgMenu2.text.toString())
+                    clearFocus()
+                }
+                mPopupWindow.dismiss()
+            }
+
+            tvAlarmMsgMenu3.setOnClickListener {
+                binding.etAlarmMsgSetting.apply {
+                    setText(tvAlarmMsgMenu3.text.toString())
+                    clearFocus()
+                }
+                mPopupWindow.dismiss()
+            }
+        }
 
         // popupWindow를 제외한 다른 부분 선택시 메뉴가 꺼지도록 popupWindow에 포커스를 줌
         mPopupWindow.isFocusable = true
@@ -87,10 +121,15 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
         mPopupWindow.showAsDropDown(targetView)
     }
 
+    /**
+     * 벨 울리기 메시지 설정 결과 핸들링
+     *
+     * @param res
+     */
     private fun handelSetBellMsgRes(res: SetBellMsgRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                //TODO 벨 메세지 변경 후 구현
+                Utils.showCustomSnackBar(binding.root, "알림 메세지가 변경됐어!")
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)

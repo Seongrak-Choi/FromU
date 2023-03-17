@@ -1,27 +1,25 @@
-package com.fromu.fromu.ui.mailbox
+package com.fromu.fromu.ui.main.myhome
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
-import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.request.PatchMailBoxNameReq
 import com.fromu.fromu.data.remote.network.response.PatchMailBoxNameRes
-import com.fromu.fromu.databinding.ActivityDecideMailBoxNameBinding
+import com.fromu.fromu.databinding.FragmentPatchMailBoxNameBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
-import com.fromu.fromu.ui.base.BaseActivity
-import com.fromu.fromu.ui.main.MainActivity
+import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.debounce
 import com.fromu.fromu.utils.Extension.setThrottleClick
-import com.fromu.fromu.utils.UiUtils
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.DecideMailBoxNameViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,22 +27,25 @@ import kotlinx.coroutines.launch
 import kotlin.math.ceil
 
 @AndroidEntryPoint
-class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>(ActivityDecideMailBoxNameBinding::inflate), Observer<Resource<PatchMailBoxNameRes>> {
+class PatchMailBoxNameFragment : BaseFragment<FragmentPatchMailBoxNameBinding>(FragmentPatchMailBoxNameBinding::inflate), Observer<Resource<PatchMailBoxNameRes>> {
     private val decideMailBoxNameViewModel: DecideMailBoxNameViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         initData()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         initView()
     }
 
     private fun initData() {}
     private fun initView() {
-        UiUtils.setFullScreenWithStatusBar(this)
-
         binding.apply {
-            lifecycleOwner = this@DecideMailBoxNameActivity
+            lifecycleOwner = this@PatchMailBoxNameFragment
             vm = decideMailBoxNameViewModel
         }
 
@@ -93,13 +94,12 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
             // 결정하기 버튼
             tvDecideMailBoxConnect.setThrottleClick(lifecycleScope) {
                 lifecycleScope.launch {
-                    decideMailBoxNameViewModel.patchMailBoxName(PatchMailBoxNameReq("${etContents.text.toString()}함")).observe(this@DecideMailBoxNameActivity, this@DecideMailBoxNameActivity)
+                    decideMailBoxNameViewModel.patchMailBoxName(PatchMailBoxNameReq("${etContents.text.toString()}함")).observe(viewLifecycleOwner, this@PatchMailBoxNameFragment)
                 }
             }
 
-            //뒤로가기 버튼
             ivDecideMailBoxBack.setOnClickListener {
-                finish()
+                findNavController().popBackStack()
             }
         }
     }
@@ -134,7 +134,7 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
      */
     private fun setPassNicknameUi() {
         binding.apply {
-            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(this@DecideMailBoxNameActivity, R.color.color_dedee2)
+            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_dedee2)
             tvWarringMsg.visibility = View.GONE
         }
     }
@@ -146,10 +146,10 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
      */
     private fun setNicknameErrorUi(errorMsg: String) {
         binding.apply {
-            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(this@DecideMailBoxNameActivity, R.color.color_ff4a6b)
+            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_ff4a6b)
             tvWarringMsg.visibility = View.VISIBLE
             tvWarringMsg.text = errorMsg
-            tvWarringMsg.setTextColor(ContextCompat.getColor(this@DecideMailBoxNameActivity, R.color.color_ff4a6b))
+            tvWarringMsg.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_ff4a6b))
         }
     }
 
@@ -160,19 +160,16 @@ class DecideMailBoxNameActivity : BaseActivity<ActivityDecideMailBoxNameBinding>
      */
     private fun setNicknameNormalUi() {
         binding.apply {
-            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(this@DecideMailBoxNameActivity, R.color.color_a735ff)
+            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_a735ff)
             tvWarringMsg.visibility = View.VISIBLE
-            tvWarringMsg.setTextColor(ContextCompat.getColor(this@DecideMailBoxNameActivity, R.color.color_6f6f6f))
+            tvWarringMsg.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_6f6f6f))
         }
     }
 
     private fun handlePatchMailBoxNameRes(res: PatchMailBoxNameRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                Intent(this, MainActivity::class.java).apply {
-                    startActivity(this)
-                }
-                finish()
+                findNavController().popBackStack()
             }
             2062 -> {
                 setNicknameErrorUi(getString(R.string.decide_mail_box_name_duplication_error_msg))

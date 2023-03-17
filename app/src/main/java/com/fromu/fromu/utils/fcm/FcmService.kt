@@ -84,7 +84,7 @@ class FcmService : FirebaseMessagingService() {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.mipmap.ic_logo)
             .setContentTitle(title) //타이틀
             .setContentText(message) // 콘텐츠
             .setVibrate(longArrayOf(1000, 1000, 1000)) //진동
@@ -98,7 +98,7 @@ class FcmService : FirebaseMessagingService() {
         val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setSmallIcon(R.mipmap.ic_logo)
             .setContentTitle(title) //타이틀
             .setContentText(message) // 콘텐츠
             .setVibrate(longArrayOf(1000, 1000, 1000)) //진동

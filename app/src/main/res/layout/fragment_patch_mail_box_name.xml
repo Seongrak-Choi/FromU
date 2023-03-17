@@ -15,7 +15,7 @@
         android:background="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_iv_decide_mail_box_app_bar"
+            android:id="@+id/cl_iv_patch_mail_box_app_bar"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_marginStart="3dp"
@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="@id/gl_v_0529">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_decide_mail_box_back"
+                android:id="@+id/iv_patch_mail_box_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_back_6f6f6f"
@@ -35,7 +35,7 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_decide_mail_box_title"
+            android:id="@+id/tv_patch_mail_box_title"
             style="@style/Cafe24SsurroundAir.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -73,7 +73,7 @@
                     android:textCursorDrawable="@drawable/cursor_bg_a735ff" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_decide_mail_box_context_suffix"
+                    android:id="@+id/tv_patch_mail_box_context_suffix"
                     style="@style/Cafe24SsurroundAir.000000.18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,7 +85,7 @@
 
 
             <View
-                android:id="@+id/v_decide_mail_box_underline"
+                android:id="@+id/v_patch_mail_box_underline"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="10.5dp"
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/decide_mail_box_name_invalid_error_msg"
-                app:layout_constraintTop_toBottomOf="@+id/v_decide_mail_box_underline" />
+                app:layout_constraintTop_toBottomOf="@+id/v_patch_mail_box_underline" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -113,7 +113,7 @@
             app:layout_constraintStart_toStartOf="@+id/gl_start">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_decide_mail_box_connect"
+                android:id="@+id/tv_patch_mail_box_connect"
                 style="@style/PretendardRegular.ffffff.16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,12 +133,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.0529" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gl_v_0591"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.0591" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_1699"

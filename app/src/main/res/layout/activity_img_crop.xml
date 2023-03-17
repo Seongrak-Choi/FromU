@@ -46,7 +46,7 @@
             android:id="@+id/crop_v_img"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="@color/color_999999"
+            android:background="@drawable/ic_splash_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/cl_diary_img_crop" />
 

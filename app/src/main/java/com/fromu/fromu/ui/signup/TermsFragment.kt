@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.FromUApplication
+import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.SignupRes
 import com.fromu.fromu.databinding.FragmentTermsBinding
@@ -18,6 +19,7 @@ import com.fromu.fromu.ui.invitaion.InvitationActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.setThrottleClick
 import com.fromu.fromu.utils.Logger
+import com.fromu.fromu.utils.UiUtils
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.SignupViewModel
 import kotlinx.coroutines.launch
@@ -45,8 +47,9 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
             lifecycleOwner = this@TermsFragment
             vm = signupViewModel
 
-        }
 
+            UiUtils.delayShowText(getString(R.string.terms_title).format(signupViewModel.nickname.value), tvTermsTitle, 250)
+        }
     }
 
     private fun initEvent() {
@@ -78,6 +81,7 @@ class TermsFragment : BaseFragment<FragmentTermsBinding>(FragmentTermsBinding::i
             }
         }
     }
+
 
     private fun handleSignupResult(signupRes: SignupRes) {
         when (signupRes.code) {

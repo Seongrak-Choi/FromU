@@ -10,6 +10,11 @@
         <variable
             name="vm"
             type="com.fromu.fromu.viewmodels.MainViewModel" />
+
+        <variable
+            name="type"
+            type="Integer" />
+
     </data>
 
 
@@ -57,7 +62,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
-                        visibleGone="@{vm.type != BottomMenuType.MY_HOME.type}"
+                        visibleGone="@{type != BottomMenuType.MY_HOME.type}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -86,7 +91,7 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_appbar_alarm"
-                        visibleGone="@{vm.type != BottomMenuType.MY_HOME.type}"
+                        visibleGone="@{type != BottomMenuType.MY_HOME.type}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_alarm"
@@ -97,7 +102,7 @@
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/iv_appbar_setting"
-                        visibleGone="@{vm.type == BottomMenuType.MY_HOME.type}"
+                        visibleGone="@{type == BottomMenuType.MY_HOME.type}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="10dp"
@@ -115,6 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fitsSystemWindows="false"
+            app:itemIconTint="@null"
             app:itemTextAppearanceActive="@style/BottomNavFontStyle"
             app:itemTextAppearanceInactive="@style/BottomNavFontStyle"
             app:itemTextColor="@color/selector_bottom_nav_text_color"

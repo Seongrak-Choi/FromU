@@ -25,14 +25,14 @@
             app:layout_constraintTop_toTopOf="@id/gl_v_0591" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_terms_title"
             style="@style/Cafe24SsurroundAir.000000.30dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@{@string/terms_title(vm.nickname)}"
             app:layout_constraintEnd_toEndOf="@id/gl_end"
             app:layout_constraintStart_toStartOf="@id/gl_start"
             app:layout_constraintTop_toTopOf="@id/gl_v_1576"
-            tools:text="아라야,\n안녕." />
+            tools:text="아라,\n안녕." />
 
 
         <androidx.appcompat.widget.LinearLayoutCompat

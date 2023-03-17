@@ -21,10 +21,48 @@
         android:id="@+id/settingFragment"
         android:name="com.fromu.fromu.ui.main.myhome.setting.SettingFragment"
         android:label="SettingFragment"
-        tools:layout="@layout/fragment_setting" />
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_settingFragment_to_withdrawalCheckFragment"
+            app:destination="@id/withdrawalCheckFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_settingFragment_to_breakMatchingCheckFragment"
+            app:destination="@id/breakMatchingCheckFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_settingFragment_to_appInfoFragment"
+            app:destination="@id/appInfoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/alarmMsgSettingFragment"
         android:name="com.fromu.fromu.ui.main.myhome.AlarmMsgSettingFragment"
         android:label="AlarmMsgSettingFragment"
         tools:layout="@layout/fragment_alarm_msg_setting" />
+
+    <fragment
+        android:id="@+id/withdrawalCheckFragment"
+        android:name="com.fromu.fromu.ui.main.myhome.setting.WithdrawalCheckFragment"
+        android:label="WithdrawalCheckFragment"
+        tools:layout="@layout/fragment_withdrawal_check" />
+    <fragment
+        android:id="@+id/breakMatchingCheckFragment"
+        android:name="com.fromu.fromu.ui.main.myhome.setting.BreakMatchingCheckFragment"
+        android:label="BreakMatchingCheckFragment"
+        tools:layout="@layout/fragment_break_matching_check" />
+    <fragment
+        android:id="@+id/appInfoFragment"
+        android:name="com.fromu.fromu.ui.main.myhome.setting.AppInfoFragment"
+        android:label="AppInfoFragment"
+        tools:layout="@layout/fragment_app_info" />
 </navigation>

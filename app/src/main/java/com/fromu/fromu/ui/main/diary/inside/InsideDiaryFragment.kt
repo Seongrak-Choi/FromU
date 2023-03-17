@@ -33,6 +33,9 @@ import com.fromu.fromu.utils.PrefManager
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.InsideDiaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -111,10 +114,9 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         binding.apply {
             // 일기 쓰기 버튼
             ivInsideDiaryAdd.setOnClickListener {
-                //TODO only test 추후 삭제
-                findNavController().navigate(R.id.action_insideDiaryFragment_to_addInsideDiaryFragment)
                 if (!firstPageResult.writeFlag) {
                     //일기 미작성
+                    findNavController().navigate(R.id.action_insideDiaryFragment_to_addInsideDiaryFragment)
                 } else {
                     //일기 작성
                     DialogPopupErrorAlert(getString(R.string.exist_write_diary), getString(R.string.ok)) {
@@ -234,7 +236,10 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         insideDiaryVpAdapter.submitList(insideDiaryList.toMutableList())
         insideDiaryViewModel.currentDiaryPosition.value = insideDiaryList.size - 1
         insideDiaryViewModel.maxLengthOfDiaries.value = insideDiaryList.size - 1
-        binding.vpInsideDiary.currentItem = insideDiaryList.size - 1
+
+        CoroutineScope(Dispatchers.Main).launch {
+            binding.vpInsideDiary.currentItem = insideDiaryList.size - 1
+        }
     }
 
 

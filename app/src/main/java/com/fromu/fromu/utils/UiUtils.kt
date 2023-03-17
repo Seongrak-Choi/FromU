@@ -6,10 +6,15 @@ import android.content.res.Configuration
 import android.os.Build
 import android.view.View
 import android.view.Window
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class UiUtils {
     companion object {
@@ -58,6 +63,23 @@ class UiUtils {
                 }
             }
             return statusbar
+        }
+
+
+        /**
+         * 텍스트를 한 글자 씩 나오게 해주는 메소드
+         *
+         * @param text 보여줄 텍스트
+         * @param tv 텍스트 뷰
+         * @param millis 나오는 간격
+         */
+        fun delayShowText(text: String, tv: TextView, millis: Long) {
+            CoroutineScope(Dispatchers.Main).launch {
+                for (i in text.indices) {
+                    tv.text = text.subSequence(0, i)
+                    delay(millis)
+                }
+            }
         }
     }
 }

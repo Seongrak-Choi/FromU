@@ -1,5 +1,6 @@
 package com.fromu.fromu.ui.invitaion
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -13,6 +14,7 @@ import com.fromu.fromu.databinding.FragmentInvitationMainBinding
 import com.fromu.fromu.model.listener.DynamicLinkListener
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
+import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.utils.*
 import com.fromu.fromu.utils.Extension.setThrottleClick
 import com.fromu.fromu.viewmodels.InvitationViewModel
@@ -117,7 +119,7 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
         }
 
         invitationViewModel.isMatching.observe(viewLifecycleOwner) { resource ->
-            handleResource(resource, listener = object : ResourceSuccessListener<CheckMatchingRes> {
+            handleResource(resource, true, listener = object : ResourceSuccessListener<CheckMatchingRes> {
                 override fun onSuccess(res: CheckMatchingRes) {
                     handleCheckMatching(res)
                 }
@@ -153,7 +155,14 @@ class InvitationMainFragment : BaseFragment<FragmentInvitationMainBinding>(Fragm
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 if (res.result.isMatch) {
-                    //TODO MainActivity로 이동
+                    if (res.result.coupleRes?.setMailboxName == true) {
+                        Intent(requireContext(), MainActivity::class.java).apply {
+                            startActivity(this)
+                            requireActivity().finish()
+                        }
+                    } else {
+                        Utils.showCustomSnackBar(binding.root, getString(R.string.invitation_matching_not_yet))
+                    }
                 } else {
                     Utils.showCustomSnackBar(binding.root, getString(R.string.invitation_matching_not_yet))
                 }

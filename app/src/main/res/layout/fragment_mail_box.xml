@@ -46,6 +46,16 @@
             app:layout_constraintStart_toStartOf="@id/gl_v_5520"
             app:layout_constraintTop_toTopOf="@id/gl_h_2438" />
 
+        <androidx.appcompat.widget.AppCompatImageView
+            visibleGone="@{vm.newLetterId>0}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_mail_box_tooltip"
+            app:layout_constraintBottom_toTopOf="@+id/cl_mail_box"
+            app:layout_constraintEnd_toEndOf="@+id/gl_v_7494"
+            app:layout_constraintStart_toStartOf="@+id/gl_v_2506" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_mail_box"
             android:layout_width="0dp"
@@ -122,6 +132,13 @@
             app:layout_constraintGuide_percent="0.2373" />
 
         <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_2506"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2506" />
+
+        <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_2533"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -142,6 +159,12 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.7640" />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_7494"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7494" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_4453"

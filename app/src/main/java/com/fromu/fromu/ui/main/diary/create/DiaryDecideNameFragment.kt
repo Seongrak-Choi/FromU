@@ -34,6 +34,7 @@ class DiaryDecideNameFragment : BaseFragment<FragmentDiaryDecideNameBinding>(Fra
         super.onViewCreated(view, savedInstanceState)
 
         initView()
+        initEvent()
     }
 
     private fun initData() {}
@@ -42,7 +43,6 @@ class DiaryDecideNameFragment : BaseFragment<FragmentDiaryDecideNameBinding>(Fra
             lifecycleOwner = this@DiaryDecideNameFragment
             vm = createDiaryViewModel
         }
-        initEvent()
     }
 
     private fun initEvent() {

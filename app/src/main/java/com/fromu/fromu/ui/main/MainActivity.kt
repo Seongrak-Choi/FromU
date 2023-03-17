@@ -15,7 +15,10 @@ import com.fromu.fromu.databinding.ActivityMainBinding
 import com.fromu.fromu.model.BottomMenuType
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseActivity
-import com.fromu.fromu.utils.*
+import com.fromu.fromu.utils.Const
+import com.fromu.fromu.utils.EventObserver
+import com.fromu.fromu.utils.UiUtils
+import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -50,6 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         binding.apply {
             lifecycleOwner = this@MainActivity
             vm = mainViewModel
+            type = 0
         }
 
         initBackPress()
@@ -68,6 +72,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             viewModelScope.launch {
                 fromCountFlow.collect {
                     binding.tvFromCount.text = it
+                }
+            }
+
+
+            viewModelScope.launch {
+                type.collect {
+                    binding.type = it
                 }
             }
         }
@@ -100,7 +111,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
 
             ivAppbarSetting.setOnClickListener {
-                isVisibleAppbar(false)
                 navController.navigate(R.id.action_myHomeFragment_to_settingFragment)
             }
 
