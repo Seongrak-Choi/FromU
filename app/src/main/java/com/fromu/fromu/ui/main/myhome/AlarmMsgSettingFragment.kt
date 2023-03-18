@@ -8,6 +8,7 @@ import android.widget.PopupWindow
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
+import com.fromu.fromu.data.remote.network.request.SetBellMsgReq
 import com.fromu.fromu.data.remote.network.response.SetBellMsgRes
 import com.fromu.fromu.databinding.FragmentAlarmMsgSettingBinding
 import com.fromu.fromu.databinding.PopupAlarmMsgMenuBinding
@@ -57,6 +58,11 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
 
             ivAlarmMsgBack.setOnClickListener {
                 findNavController().popBackStack()
+            }
+
+
+            tvAlarmMsgSettingDone.setOnClickListener {
+                myHomeViewModel.setBellMsg(SetBellMsgReq(etAlarmMsgSetting.text.toString()))
             }
         }
     }

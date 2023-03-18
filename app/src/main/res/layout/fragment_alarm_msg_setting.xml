@@ -105,7 +105,7 @@
             app:layout_constraintStart_toStartOf="@+id/gl_start">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_first_met_day_next"
+                android:id="@+id/tv_alarm_msg_setting_done"
                 style="@style/PretendardRegular.ffffff.16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
