@@ -28,4 +28,7 @@ interface CoupleService {
 
     @PATCH("couples/pushMessage")
     suspend fun patchPushMessage(@Body setBellMsgReq: SetBellMsgReq): Response<SetBellMsgRes>
+
+    @GET("couples/pushMessage")
+    suspend fun getPushMessage(): Response<GetBellMsgRes>
 }

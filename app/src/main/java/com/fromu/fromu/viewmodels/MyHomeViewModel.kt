@@ -11,6 +11,7 @@ import com.fromu.fromu.data.repository.MyHomeRepo
 import com.fromu.fromu.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,6 +20,7 @@ class MyHomeViewModel @Inject constructor(private val myHomeRepo: MyHomeRepo) : 
 
     val couple: MutableLiveData<CoupleRes> = MutableLiveData()
     val dday: MutableStateFlow<String> = MutableStateFlow("00")
+    val currentBellMsg: MutableStateFlow<String> = MutableStateFlow("")
 
     private var _coupleInfoResult: MutableLiveData<Resource<CheckMatchingRes>> = MutableLiveData()
     val coupleInfoResult: LiveData<Resource<CheckMatchingRes>>
@@ -42,6 +44,10 @@ class MyHomeViewModel @Inject constructor(private val myHomeRepo: MyHomeRepo) : 
     private var _setBellMsgResult: MutableLiveData<Resource<SetBellMsgRes>> = MutableLiveData()
     val setBellMsgResult: LiveData<Resource<SetBellMsgRes>>
         get() = _setBellMsgResult
+
+    private var _getBellMsgResult: MutableLiveData<Resource<GetBellMsgRes>> = MutableLiveData()
+    val getBellMsgResult: LiveData<Resource<GetBellMsgRes>>
+        get() = _getBellMsgResult
 
 
     fun getCoupleInfo() {
@@ -90,6 +96,17 @@ class MyHomeViewModel @Inject constructor(private val myHomeRepo: MyHomeRepo) : 
         viewModelScope.launch {
             myHomeRepo.setBellMsg(setBellMsgReq).collect {
                 _setBellMsgResult.value = it
+            }
+        }
+    }
+
+    /**
+     * 설정 되어 있는 벨 멘트 조회
+     */
+    fun getBellMsg() {
+        viewModelScope.launch {
+            myHomeRepo.getBellMsg().collect {
+                _getBellMsgResult.value = it
             }
         }
     }

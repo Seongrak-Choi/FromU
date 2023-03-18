@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.request.SetBellMsgReq
+import com.fromu.fromu.data.remote.network.response.GetBellMsgRes
 import com.fromu.fromu.data.remote.network.response.SetBellMsgRes
 import com.fromu.fromu.databinding.FragmentAlarmMsgSettingBinding
 import com.fromu.fromu.databinding.PopupAlarmMsgMenuBinding
@@ -39,13 +40,20 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
 
     }
 
-    private fun initData() {}
+    private fun initData() {
+        callApi()
+    }
     private fun initView() {
         if (requireActivity() is MainActivity) {
             (activity as MainActivity).apply {
                 isVisibleBottomNav(false)
                 isVisibleAppbar(false)
             }
+        }
+
+        binding.apply {
+            lifecycleOwner = this@AlarmMsgSettingFragment
+            vm = myHomeViewModel
         }
     }
 
@@ -71,12 +79,24 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
         myHomeViewModel.setBellMsgResult.observe(viewLifecycleOwner) { resources ->
             handleResource(resources, true, object : ResourceSuccessListener<SetBellMsgRes> {
                 override fun onSuccess(res: SetBellMsgRes) {
-                    handelSetBellMsgRes(res)
+                    handleSetBellMsgRes(res)
                 }
             })
         }
+
+        myHomeViewModel.getBellMsgResult.observe(viewLifecycleOwner) { resources ->
+            handleResource(resources, true, object : ResourceSuccessListener<GetBellMsgRes> {
+                override fun onSuccess(res: GetBellMsgRes) {
+                    handleGetBellMsgRes(res)
+                }
+            })
+
+        }
     }
 
+    private fun callApi() {
+        myHomeViewModel.getBellMsg()
+    }
 
     /**
      * show 알림 메세지 팝업
@@ -132,10 +152,26 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
      *
      * @param res
      */
-    private fun handelSetBellMsgRes(res: SetBellMsgRes) {
+    private fun handleSetBellMsgRes(res: SetBellMsgRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 Utils.showCustomSnackBar(binding.root, "알림 메세지가 변경됐어!")
+            }
+            else -> {
+                Utils.showNetworkErrorSnackBar(binding.root)
+            }
+        }
+    }
+
+    /**
+     * 현재 설정 된 벨 멘트 조회 결과 핸들링
+     *
+     * @param res
+     */
+    private fun handleGetBellMsgRes(res: GetBellMsgRes) {
+        when (res.code) {
+            Const.SUCCESS_CODE -> {
+                myHomeViewModel.currentBellMsg.value = res.result.pushMessage
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)

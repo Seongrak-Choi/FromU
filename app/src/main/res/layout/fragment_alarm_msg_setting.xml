@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.MyHomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -68,13 +71,14 @@
                 android:layout_marginEnd="20dp"
                 android:background="@null"
                 android:paddingVertical="16dp"
+                android:text="@{vm.currentBellMsg}"
                 android:textColorHint="@color/color_999999"
                 android:textCursorDrawable="@drawable/cursor_bg_a735ff"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/iv_alarm_msg_drop_menu"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:text="오늘 너의 하루가 궁금해:)" />
+                tools:text="오늘 너의 하루가 궁금해:)" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_alarm_msg_drop_menu"

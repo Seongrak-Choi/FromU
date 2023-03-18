@@ -106,4 +106,18 @@ class CoupleDataSource @Inject constructor(private val coupleService: CoupleServ
     }.catch {
         emit(Resource.Failed("patchPushMessage: An unkown error occurred"))
     }
+
+    fun getPushMessage(): Flow<Resource<GetBellMsgRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = coupleService.getPushMessage()
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("getPushMessage: An unkown error occurred"))
+    }
 }

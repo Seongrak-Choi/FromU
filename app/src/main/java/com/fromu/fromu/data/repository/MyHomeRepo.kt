@@ -33,4 +33,9 @@ class MyHomeRepo @Inject constructor(
         return coupleDataSource.patchPushMessage(setBellMsgReq)
     }
 
+    fun getBellMsg(): Flow<Resource<GetBellMsgRes>> {
+        return coupleDataSource.getPushMessage()
+    }
+
+
 }
