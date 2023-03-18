@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,7 +36,7 @@
                 style="@style/Cafe24SsurroundAir.000000.14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="알림"
+                android:text="@string/alarm_title"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -41,17 +45,32 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
+            android:id="@+id/v_title_line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/color_eeeeee"
             app:layout_constraintTop_toBottomOf="@id/cl_notification_app_bar" />
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_notification"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            visibleGone="@{!vm.noticeInfo.empty}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_title_line"
+            tools:listitem="@layout/item_notification" />
+
+
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/Cafe24SsurroundAir.000000.16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            visibleGone="@{vm.noticeInfo.empty}"
             android:gravity="center"
-            android:text="아직 알람이 없어!" />
+            android:text="@string/alarm_no_item" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_0529"

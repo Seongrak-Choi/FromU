@@ -2,10 +2,7 @@ package com.fromu.fromu.data.remote.datasource
 
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.api.ViewService
-import com.fromu.fromu.data.remote.network.response.DiaryViewRes
-import com.fromu.fromu.data.remote.network.response.FromCountRes
-import com.fromu.fromu.data.remote.network.response.MailBoxViewRes
-import com.fromu.fromu.data.remote.network.response.StampCountRes
+import com.fromu.fromu.data.remote.network.response.*
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -64,5 +61,18 @@ class ViewDataSource @Inject constructor(private val viewService: ViewService) {
         }
     }.catch {
         emit(Resource.Failed("getFromCount: An unkown error occurred"))
+    }
+
+    fun getNotice(): Flow<Resource<GetNoticeRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = viewService.getNotice()
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("getNotice: An unkown error occurred"))
     }
 }

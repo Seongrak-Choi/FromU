@@ -11,14 +11,12 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.FromCountRes
+import com.fromu.fromu.data.remote.network.response.GetNoticeRes
 import com.fromu.fromu.databinding.ActivityMainBinding
 import com.fromu.fromu.model.BottomMenuType
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseActivity
-import com.fromu.fromu.utils.Const
-import com.fromu.fromu.utils.EventObserver
-import com.fromu.fromu.utils.UiUtils
-import com.fromu.fromu.utils.Utils
+import com.fromu.fromu.utils.*
 import com.fromu.fromu.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -41,6 +39,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         super.onResume()
 
         mainViewModel.getFromCount()
+        mainViewModel.getNotice()
     }
 
     private fun initData() {}
@@ -54,6 +53,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             lifecycleOwner = this@MainActivity
             vm = mainViewModel
             type = 0
+            isNotice = false
         }
 
         initBackPress()
@@ -69,6 +69,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                 })
             })
 
+            getNoticeResult.observe(this@MainActivity) { resources ->
+                handleResource(resources, false, object: ResourceSuccessListener<GetNoticeRes> {
+                    override fun onSuccess(res: GetNoticeRes) {
+                        handleGetNoticeRes(res)
+                    }
+                })
+            }
+
             viewModelScope.launch {
                 fromCountFlow.collect {
                     binding.tvFromCount.text = it
@@ -79,6 +87,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             viewModelScope.launch {
                 type.collect {
                     binding.type = it
+                }
+            }
+
+            viewModelScope.launch {
+                noticeInfo.observe(this@MainActivity) {
+                    binding.isNotice = it.isNotEmpty()
                 }
             }
         }
@@ -130,6 +144,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             }
         }
     }
+
+    private fun handleGetNoticeRes(res: GetNoticeRes) {
+        when(res.code) {
+            Const.SUCCESS_CODE -> {
+                mainViewModel.noticeInfo.value = res.result
+            }
+            else -> {
+                Logger.e("handleGetNoticeRes", "Notification 조회 실패")
+            }
+        }
+    }
+
 
     /**
      * bottomNav와 navigation component 셋팅

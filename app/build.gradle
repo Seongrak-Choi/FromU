@@ -143,9 +143,8 @@ dependencies {
     implementation 'com.tbuonomo:dotsindicator:4.2'
 
     /* Calendar */
-    //https://github.com/kizitonwose/Calendar
-    implementation 'com.kizitonwose.calendar:view:2.0.2'
-
+    //https://github.com/prolificinteractive/material-calendarview
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 
     implementation "com.vanniktech:android-image-cropper:4.5.0"
 }

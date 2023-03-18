@@ -1,6 +1,7 @@
 package com.fromu.fromu.utils
 
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.*
 
@@ -110,5 +111,39 @@ class TimeUtils {
 
             return day
         }
+
+        /**
+         * yyyy-MM-dd HH:mm:ss 형식의 dateString을 Date
+         *
+         * @param dateString
+         * @return
+         */
+        @JvmStatic
+        fun getDateByYyyyMMddHHmmSS(dateString: String?): DateDto {
+            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+            val dateTime = LocalDateTime.parse(dateString, formatter)
+            val amPmValue = dateTime.format(DateTimeFormatter.ofPattern("a"))
+
+            return DateDto(
+                year = dateTime.year,
+                month = dateTime.monthValue,
+                day = dateTime.dayOfMonth,
+                hour = dateTime.hour,
+                minute = dateTime.minute,
+                second = dateTime.second,
+                amPmValue = amPmValue
+            )
+        }
+
     }
+
+    data class DateDto(
+        val year: Int = 0,
+        val month: Int = 0,
+        val day: Int = 0,
+        val hour: Int = 0,
+        val minute: Int = 0,
+        val second: Int = 0,
+        val amPmValue: String = "", //오전 or 오후
+    )
 }

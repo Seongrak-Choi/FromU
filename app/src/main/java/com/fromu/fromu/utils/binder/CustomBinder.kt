@@ -1,11 +1,14 @@
 package com.fromu.fromu.utils.binder
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DecodeFormat
+import com.fromu.fromu.utils.TimeUtils
 
 object CustomBinder {
     @JvmStatic
@@ -39,5 +42,12 @@ object CustomBinder {
     @BindingAdapter("playLottie")
     fun setLottieAutoPlay(view: LottieAnimationView, isPlay: Boolean) {
         if (isPlay) view.playAnimation()
+    }
+
+    @SuppressLint("SetTextI18n")
+    @JvmStatic
+    @BindingAdapter("monthAndDayFormSplitDot")
+    fun setDateToMonthAndDayFormSplitDot(view: TextView, date: String) {
+        view.text = "${String.format("%02d", TimeUtils.getDateByYyyyMMddHHmmSS(date).month)}.${String.format("%02d", TimeUtils.getDateByYyyyMMddHHmmSS(date).day)}"
     }
 }

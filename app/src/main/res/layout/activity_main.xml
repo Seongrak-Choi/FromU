@@ -15,6 +15,10 @@
             name="type"
             type="Integer" />
 
+        <variable
+            name="isNotice"
+            type="Boolean" />
+
     </data>
 
 
@@ -94,7 +98,7 @@
                         visibleGone="@{type != BottomMenuType.MY_HOME.type}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_alarm"
+                        android:src="@{isNotice ? @drawable/ic_alarm : @drawable/ic_alarm}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/iv_appbar_setting"
                         app:layout_constraintTop_toTopOf="parent"

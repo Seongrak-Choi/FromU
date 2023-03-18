@@ -52,6 +52,6 @@ object DiaryBinder {
     @BindingAdapter("monthAndDayForm")
     fun setDateToMonthAndDayForm(view: TextView, date: String) {
         val context = view.context
-        view.text = "${context.getString(R.string.month).format(TimeUtils.getMonthByYyyyMMdd(date).toShort())} ${context.getString(R.string.day).format(TimeUtils.getDayByYyyyMMdd(date))}"
+        view.text = "${context.getString(R.string.month).format(TimeUtils.getMonthByYyyyMMdd(date))} ${context.getString(R.string.day).format(TimeUtils.getDayByYyyyMMdd(date))}"
     }
 }

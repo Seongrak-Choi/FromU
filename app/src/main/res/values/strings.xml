@@ -86,6 +86,10 @@
     <string name="main_nav_letter">우편함</string>
     <string name="main_nav_my_home">우리집</string>
 
+    <!-- alarm -->
+    <string name="alarm_title">알림</string>
+    <string name="alarm_no_item">아직 알람이 없어!</string>
+
     <!-- first_met_day -->
     <string name="first_met_day_appbar_title">디데이 설정</string>
     <string name="first_met_day_title">연인과 처음 만난 날을 알려줘!</string>

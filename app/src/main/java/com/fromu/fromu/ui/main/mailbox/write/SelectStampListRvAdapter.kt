@@ -29,10 +29,10 @@ class SelectStampListRvAdapter(private val listener: SelectStampListener) : List
         fun bind(stampId: Int) {
             binding.apply {
                 ivSelectStamp.setImageResource(FindStamp.getStampDrawableById(stampId))
-                vSelect.visibility = if (absoluteAdapterPosition == selectItemPosition) View.VISIBLE else View.GONE
+                vSelect.visibility = if (adapterPosition == selectItemPosition) View.VISIBLE else View.GONE
 
                 root.setOnClickListener {
-                    selectItemPosition = absoluteAdapterPosition
+                    selectItemPosition = adapterPosition
                     listener.onSelect(stampId)
 
                     notifyDataSetChanged()

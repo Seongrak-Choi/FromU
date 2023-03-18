@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.fromu.fromu.data.dto.GetNoticeResult" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="17dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_notification_date"
+            style="@style/Cafe24SsurroundAir.000000.14dp"
+            monthAndDayFormSplitDot="@{item.time}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="01.08" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/Cafe24SsurroundAir.000000.14dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{item.content}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_notification_date"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="오늘은 남자친구와 다퉜다." />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
