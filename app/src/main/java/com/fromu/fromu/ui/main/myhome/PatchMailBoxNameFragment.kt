@@ -17,6 +17,7 @@ import com.fromu.fromu.data.remote.network.response.PatchMailBoxNameRes
 import com.fromu.fromu.databinding.FragmentPatchMailBoxNameBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
+import com.fromu.fromu.ui.main.MainActivity
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.Extension.debounce
 import com.fromu.fromu.utils.Extension.setThrottleClick
@@ -42,7 +43,15 @@ class PatchMailBoxNameFragment : BaseFragment<FragmentPatchMailBoxNameBinding>(F
         initView()
     }
 
-    private fun initData() {}
+    private fun initData() {
+        if (requireActivity() is MainActivity) {
+            (requireActivity() as MainActivity).apply {
+                isVisibleAppbar(false)
+                isVisibleBottomNav(false)
+            }
+        }
+    }
+
     private fun initView() {
         binding.apply {
             lifecycleOwner = this@PatchMailBoxNameFragment
