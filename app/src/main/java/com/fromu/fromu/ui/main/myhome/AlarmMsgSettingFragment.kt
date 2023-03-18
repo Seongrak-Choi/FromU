@@ -43,6 +43,7 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
     private fun initData() {
         callApi()
     }
+
     private fun initView() {
         if (requireActivity() is MainActivity) {
             (activity as MainActivity).apply {
@@ -68,10 +69,15 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
                 findNavController().popBackStack()
             }
 
-
             tvAlarmMsgSettingDone.setOnClickListener {
                 myHomeViewModel.setBellMsg(SetBellMsgReq(etAlarmMsgSetting.text.toString()))
             }
+
+            etAlarmMsgSetting.onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
+                if (hasFocus)
+                    myHomeViewModel.currentBellMsg.value = ""
+            }
+
         }
     }
 

@@ -16,17 +16,17 @@
         <!--            app:layout_constraintTop_toBottomOf="@+id/layout_appbar"-->
         <!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
 
-        <!--        <com.kizitonwose.calendar.view.CalendarView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="0dp"-->
-        <!--            app:layout_constraintTop_toBottomOf="@+id/layout_appbar"-->
-        <!--            app:layout_constraintBottom_toBottomOf="parent"/>-->
+                <com.kizitonwose.calendar.view.CalendarView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintTop_toBottomOf="@+id/gl_v_1600"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <CalendarView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gl_v_1600" />
+<!--        <CalendarView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/gl_v_1600" />-->
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_v_1600"

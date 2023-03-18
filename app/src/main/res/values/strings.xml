@@ -179,6 +179,8 @@
     <string name="alarm_msg_menu_1">오늘 너의 하루가 궁금해:)</string>
     <string name="alarm_msg_menu_2">쟈깅 일기쓰고 있어?</string>
     <string name="alarm_msg_menu_3">빨리 일기장 내놔 -ㅅ-</string>
+    <string name="alarm_msg_done">변경완료</string>
+    <string name="alarm_hint">직접 입력하기</string>
     <string name="logout_dialog_contents">정말 로그아웃 할 거야?</string>
     <string name="logout_do">로그아웃하기</string>
     <string name="break_matching_contents">연결을 끊으면, 모든 내역이 삭제 돼...\n우리와 계속 함께하지 않겠어?</string>

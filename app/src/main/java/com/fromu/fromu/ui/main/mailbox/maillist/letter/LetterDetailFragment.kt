@@ -154,7 +154,7 @@ class LetterDetailFragment : BaseFragment<FragmentLetterDetailBinding>(FragmentL
 
         // popupWindow를 제외한 다른 부분 선택시 메뉴가 꺼지도록 popupWindow에 포커스를 줌
         mPopupWindow.isFocusable = true
-        mPopupWindow.animationStyle = R.style.PopupWindowUpDownAnimation
+        mPopupWindow.animationStyle = R.style.PopupWindowFadeAnimation
 
         // 앱바 밑에 출력 되도록 셋팅
         mPopupWindow.showAsDropDown(targetView)

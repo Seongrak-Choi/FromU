@@ -5,6 +5,8 @@ import android.content.Context.CLIPBOARD_SERVICE
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Rect
 import android.util.Base64
 import android.util.DisplayMetrics
@@ -18,6 +20,7 @@ import com.fromu.fromu.R
 import com.fromu.fromu.model.OnDiaryCropImgListener
 import com.fromu.fromu.utils.custom.FromUBigSnackBarBlack
 import com.fromu.fromu.utils.custom.FromUSnackBarBlack
+import java.io.ByteArrayOutputStream
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import kotlin.system.exitProcess
@@ -170,6 +173,21 @@ class Utils {
                 type = "image/*"
                 galleryResultLauncher.launch(this)
             }
+        }
+
+        /**
+         * 비트맵 압축
+         *
+         * @param bitmap
+         * @param quality
+         * @return
+         */
+        fun compressBitmap(bitmap: Bitmap?, quality: Int): Bitmap {
+            val outputStream = ByteArrayOutputStream()
+            bitmap?.compress(Bitmap.CompressFormat.JPEG, quality, outputStream)
+            val compressedImage = outputStream.toByteArray()
+
+            return BitmapFactory.decodeByteArray(compressedImage, 0, compressedImage.size)
         }
     }
 }

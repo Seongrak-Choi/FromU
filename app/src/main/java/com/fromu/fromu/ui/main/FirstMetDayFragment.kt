@@ -40,7 +40,12 @@ class FirstMetDayFragment : BaseFragment<FragmentFirstMetDayBinding>(FragmentFir
     }
 
     private fun initData() {
-        (requireActivity() as MainActivity).isVisibleBottomNav(false)
+        if (requireActivity() is MainActivity) {
+            (requireActivity() as MainActivity).apply {
+                isVisibleBottomNav(false)
+                isVisibleAppbar(false)
+            }
+        }
     }
 
     private fun initView() {
