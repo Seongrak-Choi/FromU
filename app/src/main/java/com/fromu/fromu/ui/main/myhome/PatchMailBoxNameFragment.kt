@@ -57,7 +57,7 @@ class PatchMailBoxNameFragment : BaseFragment<FragmentPatchMailBoxNameBinding>(F
 
             etContents.apply {
                 onFocusChangeListener = View.OnFocusChangeListener { _, hasFocus ->
-                    vDecideMailBoxUnderline.isSelected = hasFocus
+                    vPatchMailBoxUnderline.isSelected = hasFocus
                 }
 
                 debounce(coroutineScope = lifecycleScope) {
@@ -76,10 +76,10 @@ class PatchMailBoxNameFragment : BaseFragment<FragmentPatchMailBoxNameBinding>(F
 
                 doAfterTextChanged {
                     if (it.toString().isEmpty()) {
-                        tvDecideMailBoxContextSuffix.visibility = View.GONE
+                        tvPatchMailBoxContextSuffix.visibility = View.GONE
                         setResizeEditTextWidthByTextWidth(this, getString(R.string.decide_mail_box_name_hint)) //hint 길이 만큼 width 설정
                     } else {
-                        tvDecideMailBoxContextSuffix.visibility = View.VISIBLE
+                        tvPatchMailBoxContextSuffix.visibility = View.VISIBLE
                         setResizeEditTextWidthByTextWidth(this, it.toString())
                     }
 
@@ -92,13 +92,13 @@ class PatchMailBoxNameFragment : BaseFragment<FragmentPatchMailBoxNameBinding>(F
 
 
             // 결정하기 버튼
-            tvDecideMailBoxConnect.setThrottleClick(lifecycleScope) {
+            tvPatchMailBoxConnect.setThrottleClick(lifecycleScope) {
                 lifecycleScope.launch {
                     decideMailBoxNameViewModel.patchMailBoxName(PatchMailBoxNameReq("${etContents.text.toString()}함")).observe(viewLifecycleOwner, this@PatchMailBoxNameFragment)
                 }
             }
 
-            ivDecideMailBoxBack.setOnClickListener {
+            ivPatchMailBoxBack.setOnClickListener {
                 findNavController().popBackStack()
             }
         }
@@ -134,7 +134,7 @@ class PatchMailBoxNameFragment : BaseFragment<FragmentPatchMailBoxNameBinding>(F
      */
     private fun setPassNicknameUi() {
         binding.apply {
-            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_dedee2)
+            vPatchMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_dedee2)
             tvWarringMsg.visibility = View.GONE
         }
     }
@@ -146,7 +146,7 @@ class PatchMailBoxNameFragment : BaseFragment<FragmentPatchMailBoxNameBinding>(F
      */
     private fun setNicknameErrorUi(errorMsg: String) {
         binding.apply {
-            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_ff4a6b)
+            vPatchMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_ff4a6b)
             tvWarringMsg.visibility = View.VISIBLE
             tvWarringMsg.text = errorMsg
             tvWarringMsg.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_ff4a6b))
@@ -160,7 +160,7 @@ class PatchMailBoxNameFragment : BaseFragment<FragmentPatchMailBoxNameBinding>(F
      */
     private fun setNicknameNormalUi() {
         binding.apply {
-            vDecideMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_a735ff)
+            vPatchMailBoxUnderline.background = ContextCompat.getDrawable(requireContext(), R.color.color_a735ff)
             tvWarringMsg.visibility = View.VISIBLE
             tvWarringMsg.setTextColor(ContextCompat.getColor(requireContext(), R.color.color_6f6f6f))
         }
