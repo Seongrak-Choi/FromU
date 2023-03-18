@@ -77,9 +77,7 @@ class MyHomeFragment : BaseFragment<FragmentMyHomeBinding>(FragmentMyHomeBinding
 
             // 우편함 이름 설정
             clMailBoxSetting.setOnClickListener {
-                Intent(requireContext(), DecideMailBoxNameActivity::class.java).apply {
-                    startActivity(this)
-                }
+                findNavController().navigate(R.id.action_myHomeFragment_to_patchMailBoxNameFragment)
             }
         }
     }
