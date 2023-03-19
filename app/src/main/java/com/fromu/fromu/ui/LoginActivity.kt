@@ -71,6 +71,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     private fun initLauncher() {
         activityLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            Logger.e("rak", it.toString())
+
             if (it.resultCode == RESULT_OK) {
                 val task: Task<GoogleSignInAccount> = GoogleSignIn.getSignedInAccountFromIntent(it.data)
                 googleLoginManagerInstance.handleSignInResult(task)?.let { result ->

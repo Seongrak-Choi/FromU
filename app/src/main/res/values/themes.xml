@@ -48,6 +48,28 @@
     </style>
 
 
+    <!-- ****************************** calendar view style ****************************************** -->
+
+    <!-- 달력 안의 숫자들에 적용되는 스타일 -->
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">@font/cafe24_ssurround_air</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <!-- 요일에 적용되는 스타일 -->
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">@font/cafe24_ssurround_air</item>
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="CalendarWidgetHeader">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">@font/cafe24_ssurround_air</item>
+    </style>
+
     <!-- ************ Font ************ -->
 
 

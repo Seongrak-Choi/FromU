@@ -2,6 +2,7 @@ package com.fromu.fromu.ui.main.calendar
 
 import android.os.Bundle
 import android.view.View
+import com.fromu.fromu.R
 import com.fromu.fromu.databinding.FragmentCalendarBinding
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.main.MainActivity
@@ -33,6 +34,7 @@ class CalendarFragment : BaseFragment<FragmentCalendarBinding>(FragmentCalendarB
 
         binding.apply {
             lifecycleOwner = this@CalendarFragment
+            calendar.setHeaderTextAppearance(R.style.CalendarWidgetHeader)
         }
     }
 }
