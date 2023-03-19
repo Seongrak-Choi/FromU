@@ -18,7 +18,8 @@
             android:text="@string/on_boarding_third"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/gl_h_1699" />
+            app:layout_constraintTop_toTopOf="@+id/gl_h_1699"
+            app:lineHeight="30dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"

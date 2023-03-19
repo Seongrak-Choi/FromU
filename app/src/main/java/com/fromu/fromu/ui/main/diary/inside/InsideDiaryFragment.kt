@@ -130,6 +130,7 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
 
+                    Utils.playWavFile(requireContext(), R.raw.diary_swipe)
                     insideDiaryViewModel.currentDiaryPosition.value = position
                 }
             })

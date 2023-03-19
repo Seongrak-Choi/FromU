@@ -76,7 +76,7 @@ class UiUtils {
         fun delayShowText(text: String, tv: TextView, millis: Long) {
             CoroutineScope(Dispatchers.Main).launch {
                 for (i in text.indices) {
-                    tv.text = text.subSequence(0, i)
+                    tv.text = text.subSequence(0, i + 1)
                     delay(millis)
                 }
             }

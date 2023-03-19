@@ -96,7 +96,6 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
             tvDiaryBell.setOnClickListener {
                 diaryViewModel.pushPartner()
                 doVibrate(100)
-                Utils.showCustomSnackBar(binding.root, "띵동!띵동! 벨을 울렸어!")
             }
         }
     }
@@ -199,6 +198,7 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
                     showSpendAllBell()
                 } else {
                     //Nothing
+                    Utils.showCustomSnackBar(binding.root, getString(R.string.ring_bell_msg))
                 }
             }
             else -> {

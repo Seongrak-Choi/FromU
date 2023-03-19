@@ -70,7 +70,6 @@ class GoogleLoginManager(private val mContext: Context, private val activityLaun
 
             return null
         }
-
     }
 
     fun showUserInfo() {

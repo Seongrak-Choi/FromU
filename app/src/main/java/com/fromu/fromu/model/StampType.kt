@@ -10,7 +10,7 @@ enum class StampType(val stamp: StampDto) {
     THIRD(StampDto(3, R.drawable.ic_letter_stamp_3, R.drawable.ic_letter_stamp_3_size_58_58, R.drawable.ic_letter_paper_3, "당당함을 상징하는 우표야.\n장난끼 가득한 알록달록한 \n편지지와 함께\n우리의 이야기를 적어보자!")),
     FOURTH(StampDto(4, R.drawable.ic_letter_stamp_4, R.drawable.ic_letter_stamp_4_size_58_58, R.drawable.ic_letter_paper_4, "부드러움을 상징하는 우표야.\n귀여운 분홍색의 편지지와 함께\n우리의 이야기를 전달해볼까?")),
     FIFTH(StampDto(5, R.drawable.ic_letter_stamp_5, R.drawable.ic_letter_stamp_5_size_58_58, R.drawable.ic_letter_paper_5, "희망과 자유를 상징하는 우표야.\n청량감 가득한 푸른 색의 \n편지지와 함께\n우리의 이야기를 적어볼까? ")),
-    SIXTH(StampDto(6, R.drawable.ic_letter_stamp_6, R.drawable.ic_letter_stamp_6_size_58_58, R.drawable.ic_letter_paper_6, "명량함과 활기를 상징하는 우표야.\n햇살 같은 편지지와 함께\n우리의 이야기를 써 내려가볼까?\n엄청난 호기심이 생기지 않니?"))
+    SIXTH(StampDto(6, R.drawable.ic_letter_stamp_6, R.drawable.ic_letter_stamp_6_size_58_58, R.drawable.ic_letter_paper_6, "명량함과 활기를 상징하는 우표야.\n햇살 같은 편지지와 함께\n우리의 이야기를 써 내려가볼까?"))
 }
 
 object FindStamp {

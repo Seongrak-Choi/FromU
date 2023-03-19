@@ -77,7 +77,6 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
                 if (hasFocus)
                     myHomeViewModel.currentBellMsg.value = ""
             }
-
         }
     }
 
@@ -140,6 +139,14 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
                 binding.etAlarmMsgSetting.apply {
                     setText(tvAlarmMsgMenu3.text.toString())
                     clearFocus()
+                }
+                mPopupWindow.dismiss()
+            }
+
+            tvAlarmMsgMenuDirect.setOnClickListener {
+                binding.etAlarmMsgSetting.apply {
+                    requestFocus()
+                    openKeyboard(this)
                 }
                 mPopupWindow.dismiss()
             }

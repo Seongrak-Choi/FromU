@@ -57,7 +57,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
     private fun initData() {
         initLauncher()
         googleLoginManagerInstance = GoogleLoginManager(this, activityLauncher)
-        googleLoginManagerInstance.logoutGoogle()
+        //TODO 추후 삭제
+//        googleLoginManagerInstance.logoutGoogle()
     }
 
     private fun initView() {
@@ -75,7 +76,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                 googleLoginManagerInstance.handleSignInResult(task)?.let { result ->
                     //서버로 accessToken 전달
                     loginViewModel.getGoogleAccessToken(result.first, result.second)
-
 
                 } ?: let {
                     Utils.showCustomSnackBar(binding.root, "구글 로그인에 실패하였습니다.")

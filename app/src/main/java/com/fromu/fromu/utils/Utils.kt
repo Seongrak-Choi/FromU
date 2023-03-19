@@ -8,6 +8,8 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
+import android.media.AudioAttributes
+import android.media.MediaPlayer
 import android.util.Base64
 import android.util.DisplayMetrics
 import android.view.View
@@ -188,6 +190,15 @@ class Utils {
             val compressedImage = outputStream.toByteArray()
 
             return BitmapFactory.decodeByteArray(compressedImage, 0, compressedImage.size)
+        }
+
+
+        fun playWavFile(context: Context, music: Int ) {
+            val mediaPlayer = MediaPlayer.create(context, music)
+            mediaPlayer.start()
+            mediaPlayer.setOnCompletionListener {
+                mediaPlayer.release()
+            }
         }
     }
 }

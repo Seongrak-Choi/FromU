@@ -101,6 +101,4 @@ class MyHomeFragment : BaseFragment<FragmentMyHomeBinding>(FragmentMyHomeBinding
             }
         }
     }
-
-
 }

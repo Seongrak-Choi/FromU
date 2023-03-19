@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.fromu.fromu.FromUApplication
+import com.fromu.fromu.R
 import com.fromu.fromu.data.remote.network.response.JWTLoginRes
 import com.fromu.fromu.databinding.ActivitySplashBinding
 import com.fromu.fromu.model.listener.ResourceSuccessListener
@@ -50,6 +51,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(ActivitySplashBinding
     private fun initView() {
         UiUtils.hideStatusBarAndSystemBar(window)
         UiUtils.setFullScreenWithStatusBar(this)
+
+        binding.apply {
+            UiUtils.delayShowText(getString(R.string.splash_welcome), tvSplash, 250)
+        }
 
         initEvent()
     }
