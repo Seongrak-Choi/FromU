@@ -51,6 +51,10 @@ class ReportLetterFragment : BaseFragment<FragmentReportLetterBinding>(FragmentR
             tvReportLetterSend.setOnClickListener {
                 reportLetterViewModel.reportLetter().observe(viewLifecycleOwner, this@ReportLetterFragment)
             }
+
+            ivReportLetterBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
     }
 
