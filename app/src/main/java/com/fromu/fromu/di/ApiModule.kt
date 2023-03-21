@@ -66,4 +66,10 @@ object ApiModule {
     fun provideUserService(retrofit: Retrofit): UserService {
         return retrofit.create(UserService::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideCalendarService(retrofit: Retrofit): CalendarService {
+        return retrofit.create(CalendarService::class.java)
+    }
 }

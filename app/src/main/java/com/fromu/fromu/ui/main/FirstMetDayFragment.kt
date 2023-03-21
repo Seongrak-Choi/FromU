@@ -198,7 +198,7 @@ class FirstMetDayFragment : BaseFragment<FragmentFirstMetDayBinding>(FragmentFir
     }
 
     override fun onChanged(resource: Resource<PatchFirstMetDayRes>) {
-        handleResource(resource, listener = object : ResourceSuccessListener<PatchFirstMetDayRes> {
+        handleResource(resource, true, listener = object : ResourceSuccessListener<PatchFirstMetDayRes> {
             override fun onSuccess(res: PatchFirstMetDayRes) {
                 when (res.code) {
                     Const.SUCCESS_CODE -> {

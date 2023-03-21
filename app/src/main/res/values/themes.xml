@@ -52,7 +52,7 @@
 
     <!-- 달력 안의 숫자들에 적용되는 스타일 -->
     <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
-        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textColor">@color/selector_calendar_day_color</item>
         <item name="android:fontFamily">@font/cafe24_ssurround_air</item>
         <item name="android:textSize">12dp</item>
     </style>
@@ -69,6 +69,7 @@
         <item name="android:textColor">@android:color/black</item>
         <item name="android:fontFamily">@font/cafe24_ssurround_air</item>
     </style>
+
 
     <!-- ************ Font ************ -->
 

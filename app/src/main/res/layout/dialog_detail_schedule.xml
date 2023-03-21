@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.fromu.fromu.ui.dialog.DialogBottomSchedule.DetailScheduleUiType" />
+
+        <import type="com.fromu.fromu.ui.dialog.DialogBottomSchedule.DetailScheduleInputType" />
+
+        <variable
+            name="vm"
+            type="com.fromu.fromu.viewmodels.DialogDetailScheduleViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_rectangle_ffffff_radius_top_16">
+
+        <View
+            android:id="@+id/v_detail_schedule_drag_handle"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_rectangle_9b9b9b_radius_100"
+            app:layout_constraintEnd_toEndOf="@+id/gl_h_5494"
+            app:layout_constraintStart_toStartOf="@id/gl_h_4506"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 목록 화면 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            visibleGone="@{vm.uiType == DetailScheduleUiType.INDEX}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_detail_schedule_drag_handle">
+            <!-- 이벤트가 있을 때 화면 -->
+            <androidx.core.widget.NestedScrollView
+                visibleGone="@{vm.isExistSchedule()}"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="24dp"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_detail_schedule"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:listitem="@layout/item_detail_schedule" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+            <!-- 이벤트가 없을 때 화면 -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                visibleGone="@{!vm.isExistSchedule()}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_detail_schedule_calendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_calendar"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_detail_schedule_no_item"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_detail_schedule_no_item"
+                    style="@style/Cafe24SsurroundAir.999999.16dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/no_schedule"
+                    app:layout_constraintBottom_toTopOf="@+id/ll_detail_schedule_no_item_add"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_detail_schedule_calendar" />
+
+
+                <LinearLayout
+                    android:id="@+id/ll_detail_schedule_no_item_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingVertical="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_detail_schedule_no_item">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/Cafe24SsurroundAir.000000.12dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/schedule_add" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_plus" />
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <!-- 수정 및 작성 화면 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            visibleGone="@{vm.uiType == DetailScheduleUiType.INPUT}"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="6dp"
+            android:paddingHorizontal="6dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_detail_schedule_drag_handle"
+            tools:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_detail_schedule_back"
+                style="@style/Cafe24SsurroundAir.a735ff.16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/before"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_detail_schedule_done"
+                style="@style/Cafe24SsurroundAir.999999.16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="@{!vm.scheduleInputData.empty}"
+                android:padding="10dp"
+                android:text="@{vm.inputType == DetailScheduleInputType.ADD ? @string/done : @string/modify}"
+                android:textColor="@color/selector_enable_a735ff_disable_999999"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Cafe24SsurroundAir.000000.18dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="14dp"
+                android:text="@{vm.inputType ==  DetailScheduleInputType.ADD ? @string/detail_schedule_add_title : @string/detail_schedule_modify_title}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_detail_schedule_back" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_detail_schedule"
+                style="@style/Cafe24SsurroundAir.000000.18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:background="@null"
+                android:hint="@string/contents_hint"
+                android:maxLength="20"
+                android:maxLines="1"
+                android:paddingVertical="12.5dp"
+                android:text="@={vm.scheduleInputData}"
+                android:textCursorDrawable="@drawable/cursor_bg_a735ff"
+                app:layout_constraintTop_toTopOf="@+id/gl_v_4500" />
+
+            <View
+                android:id="@+id/v_detail_schedule_input_underline"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="6dp"
+                android:background="@drawable/selector_bg_unclick_dedee2_click_a735ff"
+                app:layout_constraintTop_toBottomOf="@id/et_detail_schedule" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/Cafe24SsurroundAir.6f6f6f.12dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="6dp"
+                android:text="@string/detail_schedule_invalidate_msg"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_detail_schedule_input_underline" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_v_4500"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.4500" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 로딩 화면 -->
+        <FrameLayout
+            visibleGone="@{vm.isShowDialogLoading()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_rectangle_4d000000_radius_top_16"
+            tools:visibility="gone">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/color_a735ff" />
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_4506"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4506" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_h_5494"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5494" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">프롬유</string>
     <!-- common -->
+    <string name="before">이전</string>
     <string name="next">다음</string>
     <string name="slash">/</string>
     <string name="done">완료</string>
+    <string name="modify">수정</string>
     <string name="network_error">서버와의 연결이 원활하지 않습니다.</string>
     <string name="year_hint">YYYY</string>
     <string name="month_hint">MM</string>
@@ -19,7 +21,8 @@
     <string name="purchase">구매하기</string>
     <string name="back">돌아가기</string>
     <string name="send">보내기</string>
-
+    <string name="delete">삭제하기</string>
+    <string name="delete_confirm_mention">해당 일정을 삭제 할꺼야?</string>
 
     <!-- error -->
     <string name="load_img_failure_msg">이미지를 불러오는 데 실패하였습니다.</string>
@@ -126,6 +129,14 @@
     <string name="description_add">일기추가 아이콘을 눌러\n일기를 작성해보세요!</string>
     <string name="index_title">목차</string>
 
+
+    <!-- calendar -->
+    <string name="schedule_add">일정 추가하기</string>
+    <string name="no_schedule">예정된 일정이 없어</string>
+    <string name="detail_schedule_invalidate_msg">20자 이내</string>
+    <string name="detail_schedule_add_title">일정을 추가해줘!</string>
+    <string name="detail_schedule_modify_title">일정을 수정할래?</string>
+
     <!-- mail_box -->
     <string name="mail_box_title">%s의 이야기를\n다른 우편함으로 전송해볼까?</string>
     <string-array name="mail_list_tab_menu">
@@ -149,8 +160,8 @@
     <string name="select_stamp_empty_title">텅! 비었어!</string>
     <string name="send_write_letter">편지 보내기</string>
     <string name="reply_write_letter">답장 보내기</string>
-    <string name="already_say_thank_you">이미 감사인사를 했어!</string>
-    <string name="say_thank_you">감사인사 하기</string>
+    <string name="already_say_thank_you">이미 감사 인사를 했어!</string>
+    <string name="say_thank_you">감사 인사하기</string>
     <string name="check_reply">편지의 답장은 한 번만 가능해서,\n내가 쓰면 상대방은 쓰지 못해</string>
     <string name="post_letter_success_title">%s으로 편지를 보냈어!</string>
     <string name="stamp_box_purchase"><u>구매하기</u></string>

@@ -28,6 +28,15 @@ class TimeUtils {
         }
 
         /**
+         * 현재의 연도를 반환
+         *
+         * @return
+         */
+        fun getCurrentYear(): Int {
+            return calendar[Calendar.YEAR]
+        }
+
+        /**
          * 오늘의 요일 구하는 메소드
          *
          * @return (ex. 월요일, 화요일, 수요일 ....)
