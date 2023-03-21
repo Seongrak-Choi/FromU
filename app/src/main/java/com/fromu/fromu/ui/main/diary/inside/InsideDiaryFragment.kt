@@ -167,6 +167,11 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                 }
             }
 
+            // 메뉴 버튼
+            ivInsideDiaryMenu.setOnClickListener {
+
+            }
+
             clDescription.setOnClickListener {
                 //Nothing
             }
