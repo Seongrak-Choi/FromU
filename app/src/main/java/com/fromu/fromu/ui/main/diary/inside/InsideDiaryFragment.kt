@@ -267,7 +267,6 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
      */
     private fun setVisibleMenu(writerUserId: Int) {
         // 일기 작성자가 내가 아닌 경우 편집, 삭제 불가
-        Logger.e("rak", "loginUserId: ${FromUApplication.prefManager.getUserId()} / writerUserId: ${writerUserId}")
         if (writerUserId != FromUApplication.prefManager.getUserId()) {
             binding.ivInsideDiaryMenu.visibility = View.GONE
         } else {
