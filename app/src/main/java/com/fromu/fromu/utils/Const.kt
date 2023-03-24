@@ -9,8 +9,8 @@ class Const {
         const val FROMU_INSTAGRAM_URL = "https://www.instagram.com/_fromus2/"
 
         /* 개인정보방침 url */
-        const val PRIVACY_POLICY = "https://rebel-jar-42c.notion.site/58f3f0070fea4572aa9a7a01da4d1c53"
-        const val TERMS_OF_USE = "https://rebel-jar-42c.notion.site/78990410be0b41059741e66cb3f0362b"
+        const val PRIVACY_POLICY = "https://instinctive-celery-f5b.notion.site/a615e39b0c4b4cfb9cca172c0d909a66"
+        const val TERMS_OF_USE = "https://instinctive-celery-f5b.notion.site/cef8cc8db37b4557ab4061306a417006"
 
         /* api 서버 응답 코드 */
         const val SUCCESS_CODE = 1000
