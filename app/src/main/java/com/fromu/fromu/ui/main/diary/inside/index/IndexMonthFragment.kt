@@ -87,7 +87,7 @@ class IndexMonthFragment : BaseFragment<FragmentIndexMonthBinding>(FragmentIndex
     private fun initEvent() {
         binding.apply {
             ivIndexBack.setOnClickListener {
-                findNavController().popBackStack()
+                requireActivity().finish()
             }
         }
     }
