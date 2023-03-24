@@ -7,15 +7,13 @@ import com.fromu.fromu.data.remote.network.request.WriteDiaryReq
 import com.fromu.fromu.data.remote.network.response.WriteDiaryRes
 import com.fromu.fromu.data.repository.AddInsideDiaryRepo
 import com.fromu.fromu.ui.base.BaseViewModel
+import com.fromu.fromu.utils.Utils
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
-import java.io.File
 import javax.inject.Inject
 
 @HiltViewModel
@@ -52,15 +50,9 @@ class AddInsideDairyViewModel @Inject constructor(private val addInsideDiaryRepo
      * @return
      */
     suspend fun writeDiary(): LiveData<Resource<WriteDiaryRes>> {
-        return addInsideDiaryRepo.writeDiary(makeImgToMultipartBody(), makePostDiaryRequestBody()).asLiveData()
+        return addInsideDiaryRepo.writeDiary(Utils.makeSingleImgToMultipartBody(cropImgPath.value)!!, makePostDiaryRequestBody()).asLiveData()
     }
 
-
-    private fun makeImgToMultipartBody(): MultipartBody.Part {
-        val file = File(cropImgPath.value)
-        val requestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
-        return MultipartBody.Part.createFormData("imageFile", file.name, requestBody)
-    }
 
     private fun makePostDiaryRequestBody(): RequestBody {
         return Gson().toJson(WriteDiaryReq(inputContents.value, checkWeatherValue.value)).toRequestBody("application/json".toMediaTypeOrNull())

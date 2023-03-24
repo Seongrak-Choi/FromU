@@ -17,6 +17,9 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_insideDiaryFragment_to_editInsideDiaryFragment"
+            app:destination="@id/editInsideDiaryFragment" />
     </fragment>
 
 
@@ -25,4 +28,14 @@
         android:name="com.fromu.fromu.ui.main.diary.inside.AddInsideDiaryFragment"
         android:label="AddInsideDiaryFragment"
         tools:layout="@layout/fragment_add_inside_diary" />
+
+    <fragment
+        android:id="@+id/editInsideDiaryFragment"
+        android:name="com.fromu.fromu.ui.main.diary.inside.EditInsideDiaryFragment"
+        android:label="EditInsideDiaryFragment"
+        tools:layout="@layout/fragment_edit_inside_diary">
+        <argument
+            android:name="diaryId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

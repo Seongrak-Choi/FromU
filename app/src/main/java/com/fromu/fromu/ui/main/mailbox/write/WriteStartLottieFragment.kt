@@ -31,7 +31,7 @@ class WriteStartLottieFragment : BaseFragment<FragmentWriteStartLottieBinding>(F
     private fun initView() {}
 
     private fun goSelectStampAfterDelay1500() {
-        CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             delay(1500)
             findNavController().navigate(R.id.action_writeStartLottie_to_selectStampFragment)
         }

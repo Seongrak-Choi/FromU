@@ -6,6 +6,7 @@ import com.fromu.fromu.data.remote.network.response.*
 import com.fromu.fromu.model.listener.DetailDiaryListener
 import kotlinx.coroutines.flow.Flow
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import javax.inject.Inject
 
 class InsideDiaryRepo @Inject constructor(private val diaryDataSource: DiaryDataSource) {
@@ -22,6 +23,11 @@ class InsideDiaryRepo @Inject constructor(private val diaryDataSource: DiaryData
         return diaryDataSource.getDetailDiariesById(diaryId, listener)
     }
 
+    fun getDetailDiariesById(diaryId: Int): Flow<Resource<DetailDiaryRes>> {
+        return diaryDataSource.getDetailDiariesById(diaryId)
+    }
+
+
     suspend fun changeFirstPageImg(imgFile: MultipartBody.Part): Flow<Resource<ChangeFirstPageImgRes>> {
         return diaryDataSource.changeFirstPageImg(imgFile)
     }
@@ -32,5 +38,13 @@ class InsideDiaryRepo @Inject constructor(private val diaryDataSource: DiaryData
 
     suspend fun getDiariesByMonth(diaryBookId: Int, month: String): Flow<Resource<IndexByMonthRes>> {
         return diaryDataSource.getDiariesByMonth(diaryBookId, month)
+    }
+
+    suspend fun editDiary(diaryId: Int, imgFile: MultipartBody.Part?, patchDiaryReq: RequestBody): Flow<Resource<EditDiaryRes>> {
+        return diaryDataSource.patchDiaries(diaryId, imgFile, patchDiaryReq)
+    }
+
+    suspend fun deleteDiary(diaryId: Int): Flow<Resource<DeleteDiaryRes>> {
+        return diaryDataSource.deleteDiary(diaryId)
     }
 }

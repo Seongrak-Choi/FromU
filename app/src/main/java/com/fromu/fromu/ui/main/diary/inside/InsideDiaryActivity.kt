@@ -28,7 +28,6 @@ class InsideDiaryActivity : BaseActivity<ActivityInsideDiaryBinding>(ActivityIns
     //일기장 아이디
     private var diaryBookInfo: DiaryBook? = null
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -82,6 +81,4 @@ class InsideDiaryActivity : BaseActivity<ActivityInsideDiaryBinding>(ActivityIns
             window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
         }
     }
-
-
 }

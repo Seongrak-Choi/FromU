@@ -2,7 +2,10 @@ package com.fromu.fromu.ui.main.diary.inside
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,8 +20,10 @@ import com.fromu.fromu.data.dto.FirstPageResult
 import com.fromu.fromu.data.dto.IndexDiaryInfo
 import com.fromu.fromu.data.remote.network.response.AllDiariesRes
 import com.fromu.fromu.data.remote.network.response.ChangeFirstPageImgRes
+import com.fromu.fromu.data.remote.network.response.DeleteDiaryRes
 import com.fromu.fromu.data.remote.network.response.FirstPageRes
 import com.fromu.fromu.databinding.FragmentInsideDiaryBinding
+import com.fromu.fromu.databinding.PopupInsideDiaryMenuBinding
 import com.fromu.fromu.model.InsideDiaryModel
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
@@ -26,11 +31,8 @@ import com.fromu.fromu.ui.base.ImgCropActivity
 import com.fromu.fromu.ui.dialog.DialogPopupErrorAlert
 import com.fromu.fromu.ui.main.diary.inside.index.IndexByMonthFragment
 import com.fromu.fromu.ui.main.diary.inside.index.IndexDiaryActivity
-import com.fromu.fromu.utils.Const
-import com.fromu.fromu.utils.EventObserver
+import com.fromu.fromu.utils.*
 import com.fromu.fromu.utils.Extension.customGetSerializable
-import com.fromu.fromu.utils.PrefManager
-import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.InsideDiaryViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -62,10 +64,15 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
     // 목차 콜백 처리
     private val indexLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == IndexByMonthFragment.INDEX_BY_MONTH_CODE) {
-                // 디테일 라이프로그에서 콜백으로 어떤 동작을 할 것인지 전달 받음
-                val indexDiaryInfo = result.data?.customGetSerializable<IndexDiaryInfo>(IndexByMonthFragment.INDEX_DIARY_INFO)
-                goToSelectPositionPageByDiaryId(indexDiaryInfo)
+            when (result.resultCode) {
+                IndexByMonthFragment.INDEX_BY_MONTH_CODE -> {
+                    // 디테일 라이프로그에서 콜백으로 어떤 동작을 할 것인지 전달 받음
+                    val indexDiaryInfo = result.data?.customGetSerializable<IndexDiaryInfo>(IndexByMonthFragment.INDEX_DIARY_INFO)
+                    goToSelectPositionPageByDiaryId(indexDiaryInfo)
+                }
+                IndexByMonthFragment.INDEX_BY_FIRST_PAGE_CODE -> {
+                    binding.vpInsideDiary.currentItem = 0
+                }
             }
         }
 
@@ -99,6 +106,14 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
             lifecycleOwner = this@InsideDiaryFragment
             vm = insideDiaryViewModel
         }
+
+        // 일기 작성자가 내가 아닌 경우 편집, 삭제 불가
+        if (binding.vpInsideDiary.currentItem != 0) {
+            if ((insideDiaryList[binding.vpInsideDiary.currentItem] as InsideDiaryModel.Diaries).item.writerUserId != FromUApplication.prefManager.getUserId()) {
+                binding.ivInsideDiaryMenu.visibility = View.GONE
+            }
+        }
+
         settingViewPager()
     }
 
@@ -129,6 +144,10 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
             vpInsideDiary.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
+
+                    if (binding.vpInsideDiary.currentItem != 0) {
+                        setVisibleMenu((insideDiaryList[position] as InsideDiaryModel.Diaries).item.writerUserId ?: 0)
+                    }
 
                     Utils.playWavFile(requireContext(), R.raw.diary_swipe)
                     insideDiaryViewModel.currentDiaryPosition.value = position
@@ -165,6 +184,11 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                     putExtra(IndexDiaryActivity.DIARY_BOOk_ID, firstPageResult.diaryBookId)
                     indexLauncher.launch(this)
                 }
+            }
+
+            // 메뉴 버튼
+            ivInsideDiaryMenu.setOnClickListener {
+                showPopupDiaryMenu(it, layoutInflater)
             }
 
             clDescription.setOnClickListener {
@@ -215,6 +239,14 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                     }
                 })
             }
+
+            deleteDiaryResult.observe(viewLifecycleOwner) { resources ->
+                handleResource(resources, true, object : ResourceSuccessListener<DeleteDiaryRes> {
+                    override fun onSuccess(res: DeleteDiaryRes) {
+                        handleDeleteDiaryRes(res)
+                    }
+                })
+            }
         }
 
         // backStack
@@ -226,6 +258,21 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
 
     private fun callApi() {
         insideDiaryViewModel.getFirstPage()
+    }
+
+    /**
+     * 일기 작성자의 id와 비교하여 내가 작성한 일기가 아니라면, 메뉴 버튼을 gone처리
+     *
+     * @param writerUserId
+     */
+    private fun setVisibleMenu(writerUserId: Int) {
+        // 일기 작성자가 내가 아닌 경우 편집, 삭제 불가
+        if (writerUserId != FromUApplication.prefManager.getUserId()) {
+            binding.ivInsideDiaryMenu.visibility = View.GONE
+        } else {
+            binding.ivInsideDiaryMenu.visibility = View.VISIBLE
+        }
+
     }
 
 
@@ -331,7 +378,7 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 insideDiaryViewModel.maxLengthOfDiaries.value = res.result.size
-                insideDiaryList.addAll(res.result.map { InsideDiaryModel.Diaries(DetailDiaryResult(diaryId = it)) })
+                insideDiaryList.addAll(res.result.map { InsideDiaryModel.Diaries(DetailDiaryResult(diaryId = it.diaryId, writerUserId = it.writerUserId)) })
                 insideDiaryVpAdapter.submitList(insideDiaryList)
             }
         }
@@ -351,5 +398,89 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                 Utils.showNetworkErrorSnackBar(binding.root)
             }
         }
+    }
+
+
+    /**
+     * 일기 삭제 결과 핸들링
+     *
+     * @param res
+     */
+    private fun handleDeleteDiaryRes(res: DeleteDiaryRes) {
+        when (res.code) {
+            Const.SUCCESS_CODE -> {
+                val deletedItemPosition = insideDiaryList.indexOf(InsideDiaryModel.Diaries(DetailDiaryResult(diaryId = res.result)))
+                Utils.showCustomSnackBar(binding.root, "일기를 삭제했어!")
+                insideDiaryList.removeAt(deletedItemPosition)
+                insideDiaryVpAdapter.submitList(insideDiaryList)
+                insideDiaryVpAdapter.notifyItemRemoved(deletedItemPosition)
+                insideDiaryViewModel.maxLengthOfDiaries.value = insideDiaryList.size - 1
+            }
+            else -> {
+                Utils.showNetworkErrorSnackBar(binding.root)
+            }
+        }
+    }
+
+
+    /**
+     * show 메뉴 팝업
+     */
+    private fun showPopupDiaryMenu(
+        targetView: View,
+        layoutInflater: LayoutInflater
+    ) {
+        val popupView = PopupInsideDiaryMenuBinding.inflate(layoutInflater)
+        val mPopupWindow = PopupWindow(
+            popupView.root,
+            LinearLayout.LayoutParams.WRAP_CONTENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        val currentPosition = binding.vpInsideDiary.currentItem
+
+        // 첫 페이지에는 수정하기 버튼 Gone 처리
+        if (binding.vpInsideDiary.currentItem == 0) {
+            popupView.tvInsdieDiaryDelete.visibility = View.GONE
+            popupView.vInsdieDiaryLine1.visibility = View.GONE
+        }
+
+        //편집하기 버튼
+        popupView.tvInsdieDiaryEdit.setOnClickListener {
+            if (currentPosition == 0) {
+                goToEditDiaryBook()
+            } else {
+                goToEditDiary()
+            }
+
+            mPopupWindow.dismiss()
+        }
+
+        // 삭제하기 버튼
+        popupView.tvInsdieDiaryDelete.setOnClickListener {
+            insideDiaryViewModel.deleteDiary((insideDiaryList[binding.vpInsideDiary.currentItem] as InsideDiaryModel.Diaries).item.diaryId)
+            mPopupWindow.dismiss()
+        }
+
+        // popupWindow를 제외한 다른 부분 선택시 메뉴가 꺼지도록 popupWindow에 포커스를 줌
+        mPopupWindow.isFocusable = true
+        mPopupWindow.animationStyle = R.style.PopupWindowFadeAnimation
+
+        // 앱바 밑에 출력 되도록 셋팅
+        mPopupWindow.showAsDropDown(targetView)
+    }
+
+    /**
+     * 일기 수정으로 이동
+     */
+    private fun goToEditDiary() {
+        val action = InsideDiaryFragmentDirections.actionInsideDiaryFragmentToEditInsideDiaryFragment((insideDiaryList[binding.vpInsideDiary.currentItem] as InsideDiaryModel.Diaries).item.diaryId)
+        findNavController().navigate(action)
+    }
+
+    /**
+     * 일기장 수정으로 이동
+     */
+    private fun goToEditDiaryBook() {
+        //TODO 일기장 커버 수정
     }
 }
