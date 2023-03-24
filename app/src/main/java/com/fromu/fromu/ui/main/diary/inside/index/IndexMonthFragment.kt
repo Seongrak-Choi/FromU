@@ -48,6 +48,11 @@ class IndexMonthFragment : BaseFragment<FragmentIndexMonthBinding>(FragmentIndex
                 val bundle = bundleOf(DIARY_BOOK_ID to diaryBookId, MONTH to month)
                 findNavController().navigate(R.id.action_indexMonthFragment_to_indexByMonthFragment, bundle)
             }
+
+            override fun onClickToFirstPage() {
+                requireActivity().setResult(IndexByMonthFragment.INDEX_BY_FIRST_PAGE_CODE)
+                requireActivity().finish()
+            }
         })
 
         settingBundle()
@@ -97,7 +102,11 @@ class IndexMonthFragment : BaseFragment<FragmentIndexMonthBinding>(FragmentIndex
     private fun handleGetMonthListRes(res: IndexMonthListRes) {
         when (res.code) {
             Const.SUCCESS_CODE -> {
-                indexRvAdapter.submitList(res.result)
+                val indexList = res.result.apply {
+                    add(0, "첫 장")
+                }
+
+                indexRvAdapter.submitList(indexList)
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)

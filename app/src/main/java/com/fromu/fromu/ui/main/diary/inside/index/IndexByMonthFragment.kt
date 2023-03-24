@@ -21,6 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class IndexByMonthFragment : BaseFragment<FragmentIndexByMonthBinding>(FragmentIndexByMonthBinding::inflate) {
     companion object {
         const val INDEX_BY_MONTH_CODE = 100
+        const val INDEX_BY_FIRST_PAGE_CODE = 101
         const val INDEX_DIARY_INFO = "indexDiaryInfo"
     }
 

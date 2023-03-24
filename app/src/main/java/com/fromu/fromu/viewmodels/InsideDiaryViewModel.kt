@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.response.AllDiariesRes
 import com.fromu.fromu.data.remote.network.response.ChangeFirstPageImgRes
+import com.fromu.fromu.data.remote.network.response.DeleteDiaryRes
 import com.fromu.fromu.data.remote.network.response.FirstPageRes
 import com.fromu.fromu.data.repository.InsideDiaryRepo
 import com.fromu.fromu.model.listener.DetailDiaryListener
@@ -53,6 +54,11 @@ class InsideDiaryViewModel @Inject constructor(private val insideDiaryRepo: Insi
     val allDiariesRes: LiveData<Event<Resource<AllDiariesRes>>>
         get() = _allDiariesId
 
+    // 일기 삭제 결과
+    private var _deleteDiaryResult: MutableLiveData<Resource<DeleteDiaryRes>> = MutableLiveData()
+    val deleteDiaryResult: LiveData<Resource<DeleteDiaryRes>>
+        get() = _deleteDiaryResult
+
 
     /**
      * 일기 첫 페이지 조회
@@ -96,6 +102,20 @@ class InsideDiaryViewModel @Inject constructor(private val insideDiaryRepo: Insi
             }
         }
     }
+
+    /**
+     * 일기 삭제
+     *
+     * @param diaryId
+     */
+    fun deleteDiary(diaryId: Int) {
+        viewModelScope.launch {
+            insideDiaryRepo.deleteDiary(diaryId).collect {
+                _deleteDiaryResult.value = it
+            }
+        }
+    }
+
 
     /**
      * make 일기 첫 장 표지 이미지 TO MultiPartBody

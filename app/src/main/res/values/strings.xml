@@ -21,7 +21,9 @@
     <string name="purchase">구매하기</string>
     <string name="back">돌아가기</string>
     <string name="send">보내기</string>
+    <string name="report">신고하기</string>
     <string name="delete">삭제하기</string>
+    <string name="edit">편집하기</string>
     <string name="delete_confirm_mention">해당 일정을 삭제 할꺼야?</string>
 
     <!-- error -->

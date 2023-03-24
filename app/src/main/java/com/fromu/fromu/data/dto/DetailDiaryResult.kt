@@ -7,5 +7,6 @@ data class DetailDiaryResult(
     val diaryId: Int, // 일기 id
     val imageUrl: String? = "", //일기에 첨부한 이미지
     val weather: String = "", // 감정 날씨
-    val writerNickname: String? = null //작성자 닉네임
+    val writerNickname: String? = null, //작성자 닉네임
+    val writerUserId: Int? = null //작성자 유저 id
 )

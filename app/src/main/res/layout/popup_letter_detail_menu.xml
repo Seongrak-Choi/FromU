@@ -18,6 +18,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="5dp"
+            app:cardCornerRadius="4dp"
             app:cardElevation="1dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +36,7 @@
                     android:paddingVertical="8dp"
                     android:paddingStart="4dp"
                     android:paddingEnd="21dp"
-                    android:text="신고하기"
+                    android:text="@string/report"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

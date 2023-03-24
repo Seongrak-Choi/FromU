@@ -8,21 +8,26 @@ import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Rect
-import android.media.AudioAttributes
 import android.media.MediaPlayer
 import android.util.Base64
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
+import com.bumptech.glide.Glide
 import com.fromu.fromu.R
 import com.fromu.fromu.model.OnDiaryCropImgListener
 import com.fromu.fromu.utils.custom.FromUBigSnackBarBlack
 import com.fromu.fromu.utils.custom.FromUSnackBarBlack
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.ByteArrayOutputStream
+import java.io.File
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 import kotlin.system.exitProcess
@@ -193,11 +198,46 @@ class Utils {
         }
 
 
-        fun playWavFile(context: Context, music: Int ) {
+        /**
+         * wav 파일 실행
+         *
+         * @param context
+         * @param music
+         */
+        fun playWavFile(context: Context, music: Int) {
             val mediaPlayer = MediaPlayer.create(context, music)
             mediaPlayer.start()
             mediaPlayer.setOnCompletionListener {
                 mediaPlayer.release()
+            }
+        }
+
+        /**
+         * ImageView에 Glide를 사용하여 url 셋팅
+         *
+         * @param iv
+         * @param imgUrl
+         */
+        fun setImgByUrl(iv: ImageView, imgUrl: String?) {
+            Glide.with(iv)
+                .load(imgUrl)
+                .into(iv)
+        }
+
+
+        /**
+         * 이미지를 MultipartBody로 반환
+         *
+         * @param filePath
+         * @return
+         */
+        fun makeSingleImgToMultipartBody(filePath: String): MultipartBody.Part? {
+            return if (filePath.isEmpty())
+                null
+            else {
+                val file = File(filePath)
+                val requestBody = file.asRequestBody("image/*".toMediaTypeOrNull())
+                MultipartBody.Part.createFormData("imageFile", file.name, requestBody)
             }
         }
     }

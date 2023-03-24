@@ -114,7 +114,7 @@ class DiaryFragment : BaseFragment<FragmentDiaryBinding>(FragmentDiaryBinding::i
 
             // 일기 보내기 결과
             diaryPassResult.observe(viewLifecycleOwner, EventObserver { resource ->
-                handleResource(resource, listener = object : ResourceSuccessListener<SendDiaryBooksRes> {
+                handleResource(resource, true, listener = object : ResourceSuccessListener<SendDiaryBooksRes> {
                     override fun onSuccess(res: SendDiaryBooksRes) {
                         handleDiaryPassResult(res)
                     }

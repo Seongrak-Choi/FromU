@@ -38,6 +38,7 @@ class DiaryDataSource @Inject constructor(
         emit(Resource.Failed("getFirstPage : An unkown error occurred"))
     }
 
+
     /**
      *일기장 등록(생성)
      */
@@ -53,6 +54,7 @@ class DiaryDataSource @Inject constructor(
     }.catch {
         emit(Resource.Failed("createDiaryBook : An unkown error occurred"))
     }
+
 
     /**
      * 일기장 보내기
@@ -72,6 +74,7 @@ class DiaryDataSource @Inject constructor(
         emit(Resource.Failed("sendDiaryBooks : An unkown error occurred"))
     }
 
+
     /**
      * 일기 등록 api
      */
@@ -86,6 +89,23 @@ class DiaryDataSource @Inject constructor(
         }
     }.catch {
         emit(Resource.Failed("writeDiary : An unkown error occurred"))
+    }
+
+    /**
+     * 일기 수정
+     */
+    suspend fun patchDiaries(diaryId: Int, imgFile: MultipartBody.Part?, patchDiaryReq: RequestBody): Flow<Resource<EditDiaryRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = diaryService.patchDiaries(diaryId, imgFile, patchDiaryReq)
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("patchDiaries : An unkown error occurred"))
     }
 
 
@@ -107,10 +127,10 @@ class DiaryDataSource @Inject constructor(
 
 
     /**
-     * 일기 상세 조회
+     * 일기 상세 조회(리스너 버전)
      */
     fun getDetailDiariesById(diaryId: Int, listener: DetailDiaryListener) {
-        diaryService.getDetailDiary(diaryId).enqueue(object : Callback<DetailDiaryRes> {
+        diaryService.getDetailDiaryForListener(diaryId).enqueue(object : Callback<DetailDiaryRes> {
             override fun onResponse(call: Call<DetailDiaryRes>, response: Response<DetailDiaryRes>) {
                 response.body()?.let {
                     listener.onSuccess(it)
@@ -123,6 +143,23 @@ class DiaryDataSource @Inject constructor(
                 listener.onFailure(t)
             }
         })
+    }
+
+    /**
+     * 일기 상세 조회
+     */
+    fun getDetailDiariesById(diaryId: Int): Flow<Resource<DetailDiaryRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = diaryService.getDetailDiary(diaryId)
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("getDetailDiariesById : An unkown error occurred"))
     }
 
     /**
@@ -174,5 +211,25 @@ class DiaryDataSource @Inject constructor(
         emit(Resource.Failed("getDiariesByMonth : An unkown error occurred"))
     }
 
+
+    /**
+     * 일기 삭제
+     *
+     * @param diaryId
+     * @return
+     */
+    suspend fun deleteDiary(diaryId: Int): Flow<Resource<DeleteDiaryRes>> = flow {
+        emit(Resource.Loading)
+
+        val res = diaryService.deleteDiary(diaryId)
+
+        if (res.isSuccessful) {
+            emit(Resource.Success(res.body()!!))
+        } else {
+            emit(Resource.Failed(res.message()))
+        }
+    }.catch {
+        emit(Resource.Failed("deleteDiary : An unkown error occurred"))
+    }
 
 }
