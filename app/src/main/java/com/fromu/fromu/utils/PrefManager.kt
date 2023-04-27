@@ -148,4 +148,13 @@ class PrefManager constructor(val sp: SharedPreferences) {
             return this
         }
     }
+
+    /**
+     * 로그인 이후 sp에 저장해야 할 데이터 저장 메소드 모음
+     */
+    fun setLoginData(userId: Int?, jwt: String?, refreshToken: String) {
+        setUserId(userId)
+        setLoginToken(jwt)
+        setRefreshToken(refreshToken)
+    }
 }
