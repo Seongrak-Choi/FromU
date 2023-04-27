@@ -95,7 +95,6 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
                     handleGetBellMsgRes(res)
                 }
             })
-
         }
     }
 
@@ -169,6 +168,7 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 Utils.showCustomSnackBar(binding.root, "알림 메세지가 변경됐어!")
+                findNavController().popBackStack()
             }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)
