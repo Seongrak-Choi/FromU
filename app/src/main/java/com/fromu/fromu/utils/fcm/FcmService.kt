@@ -24,8 +24,6 @@ import com.google.firebase.messaging.RemoteMessage
 
 
 class FcmService : FirebaseMessagingService() {
-    private var notificationId = 0
-
     companion object {
         val CHANNEL_ID = "CHN_ID"
     }
@@ -37,8 +35,6 @@ class FcmService : FirebaseMessagingService() {
                 Logger.d("FCM_SERVICE", task.result)
             }
         }
-
-        notificationId = System.currentTimeMillis().toInt()
     }
 
     override fun onNewToken(token: String) {
@@ -61,8 +57,7 @@ class FcmService : FirebaseMessagingService() {
     }
 
     private fun showNotification(title: String?, message: String?, imgUri: String? = null) {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) { }
 
         val uri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
 
@@ -73,9 +68,9 @@ class FcmService : FirebaseMessagingService() {
         notificationManager.createNotificationChannel(notificationChannel)
 
         if (FromUApplication.RUNNING_FLAG == AppRunningState.NOT_RUNNING) { //앱이 꺼져 있는 경우
-            notificationManager.notify(notificationId, setAppNotRunning(title, message).build())
+            notificationManager.notify(System.currentTimeMillis().toInt(), setAppNotRunning(title, message).build())
         } else { //앱이 켜져 있는 경우
-            notificationManager.notify(notificationId, setAppRunning(title, message).build())
+            notificationManager.notify(System.currentTimeMillis().toInt(), setAppRunning(title, message).build())
         }
     }
 
