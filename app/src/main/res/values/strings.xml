@@ -180,6 +180,7 @@
     <string name="rate_letter_send">별점보내기</string>
     <string name="report_letter_introduce">이 사용자를 신고할까요?</string>
     <string name="report_letter_success">신고가 접수되었습니다.\n확인 후 조치하도록 하겠습니다.</string>
+    <string name="rate_letter_already_send">이미 별점을 남겼어!</string>
     <!-- my_home -->
 
     <!-- setting -->
