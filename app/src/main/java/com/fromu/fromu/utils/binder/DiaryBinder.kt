@@ -28,7 +28,10 @@ object DiaryBinder {
     @JvmStatic
     @BindingAdapter("visibleByWeatherId")
     fun setVisibleByWeatherId(view: View, weatherId: String?) {
-        view.visibility = if (view.tag == weatherId) View.VISIBLE else View.INVISIBLE
+        view.visibility = if (view.tag == weatherId && weatherId != null)
+            View.VISIBLE
+        else
+            View.INVISIBLE
     }
 
     @JvmStatic

@@ -48,7 +48,11 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
     private lateinit var insideDiaryVpAdapter: InsideDiaryVpAdapter
 
     // 일기장 디테일 저장할 리스트
-    private val insideDiaryList: ArrayList<InsideDiaryModel> = arrayListOf()
+    private val insideDiaryList: ArrayList<InsideDiaryModel?> = ArrayList<InsideDiaryModel?>().apply {
+        repeat(10) {
+            add(null)
+        }
+    }
 
     // 갤러리 콜백 결과 리스너
     private lateinit var galleryResultLauncher: ActivityResultLauncher<Intent>
@@ -59,6 +63,7 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
     // 선택한 이미지 파일 경로
     private var selectedCropImgFilePath: String? = null
 
+    // 첫 페이지 정보
     private lateinit var firstPageResult: FirstPageResult
 
     // 목차 콜백 처리
@@ -66,7 +71,6 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             when (result.resultCode) {
                 IndexByMonthFragment.INDEX_BY_MONTH_CODE -> {
-                    // 디테일 라이프로그에서 콜백으로 어떤 동작을 할 것인지 전달 받음
                     val indexDiaryInfo = result.data?.customGetSerializable<IndexDiaryInfo>(IndexByMonthFragment.INDEX_DIARY_INFO)
                     goToSelectPositionPageByDiaryId(indexDiaryInfo)
                 }
@@ -145,9 +149,10 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
                 override fun onPageSelected(position: Int) {
                     super.onPageSelected(position)
 
-                    if (binding.vpInsideDiary.currentItem != 0) {
-                        setVisibleMenu((insideDiaryList[position] as InsideDiaryModel.Diaries).item.writerUserId ?: 0)
-                    }
+                    //TODO 일단은 메뉴 버튼 컨트롤 안 함. 추후 일기가 없는 페이지의 경우 메뉴 어떻게 할지 정해지면 수정
+//                    if (binding.vpInsideDiary.currentItem != 0) {
+//                        setVisibleMenu((insideDiaryList[position] as InsideDiaryModel.Diaries).item.writerUserId ?: 0)
+//                    }
 
                     Utils.playWavFile(requireContext(), R.raw.diary_swipe)
                     insideDiaryViewModel.currentDiaryPosition.value = position
@@ -300,7 +305,6 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         val currentList = insideDiaryVpAdapter.currentList
         var findIndex: Int = 0
 
-
         indexDiaryInfo?.let { info ->
             for (i in currentList.indices) {
                 if (currentList[i] is InsideDiaryModel.Diaries) {
@@ -360,7 +364,6 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
             Const.SUCCESS_CODE -> {
                 firstPageResult = res.result
                 insideDiaryViewModel.getAllDiaries(firstPageResult.diaryBookId)
-                insideDiaryList.add(InsideDiaryModel.Header(firstPageResult))
                 insideDiaryViewModel.diaryFirstPageFilePath.value = firstPageResult.imageUrl
             }
             else -> {
@@ -378,7 +381,14 @@ class InsideDiaryFragment : BaseFragment<FragmentInsideDiaryBinding>(FragmentIns
         when (res.code) {
             Const.SUCCESS_CODE -> {
                 insideDiaryViewModel.maxLengthOfDiaries.value = res.result.size
-                insideDiaryList.addAll(res.result.map { InsideDiaryModel.Diaries(DetailDiaryResult(diaryId = it.diaryId, writerUserId = it.writerUserId)) })
+
+                for (index in res.result.indices) {
+                    val item = res.result[index]
+                    insideDiaryList.removeAt(index)
+                    insideDiaryList.add(index, InsideDiaryModel.Diaries(DetailDiaryResult(diaryId = item.diaryId, writerUserId = item.writerUserId)))
+                }
+
+                insideDiaryList.add(0, InsideDiaryModel.Header(firstPageResult)) //인덱스 0번에는 첫 장의 데이터가 들어갈 수 있도록 첫 장 데이터 넣어주기
                 insideDiaryVpAdapter.submitList(insideDiaryList)
             }
         }

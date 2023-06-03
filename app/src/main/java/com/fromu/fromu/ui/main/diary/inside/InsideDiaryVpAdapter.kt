@@ -49,7 +49,10 @@ class InsideDiaryVpAdapter(
                 holder.bind(getItem(position) as InsideDiaryModel.Header)
             }
             is ItemViewHolder -> {
-                holder.bind(getItem(position) as InsideDiaryModel.Diaries)
+                val item = getItem(position)
+
+                if (item != null)
+                    holder.bind(item as InsideDiaryModel.Diaries)
             }
         }
     }
