@@ -10,6 +10,14 @@
         app:fontWeight="400" />
 
     <font
+        android:font="@font/balsam_tint"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/balsam_tint"
+        app:fontStyle="normal"
+        app:fontWeight="400" />
+
+    <font
         android:font="@font/pretendard_thin"
         android:fontStyle="normal"
         android:fontWeight="400"
