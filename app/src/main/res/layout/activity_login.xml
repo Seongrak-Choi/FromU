@@ -53,7 +53,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_kakao_login"
-                style="@style/PretendardRegular.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_kakao"
@@ -91,7 +91,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_google_login"
-                style="@style/PretendardMedium.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_google"

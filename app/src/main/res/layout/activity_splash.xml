@@ -20,7 +20,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_splash"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"

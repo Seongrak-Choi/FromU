@@ -24,7 +24,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_one_btn_contents"
-            style="@style/Cafe24SsurroundAir.000000.18dp"
+            style="@style/BalsamTint.000000.18dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -34,7 +34,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_one_btn_confirm"
-            style="@style/Cafe24SsurroundAir.ffffff.14dp"
+            style="@style/BalsamTint.ffffff.14dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"

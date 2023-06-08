@@ -36,7 +36,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_report_letter_introduce"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/report_letter_introduce"
@@ -57,7 +57,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_report_letter"
-                style="@style/Cafe24SsurroundAir.000000.16dp"
+                style="@style/BalsamTint.000000.16dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
@@ -74,7 +74,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_report_letter_count"
-                style="@style/Cafe24SsurroundAir.999999.12dp"
+                style="@style/BalsamTint.999999.12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{@string/contents_length_max_100(vm.contents.length())}"

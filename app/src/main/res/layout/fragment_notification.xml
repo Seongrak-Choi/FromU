@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.000000.14dp"
+                style="@style/BalsamTint.000000.14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/alarm_title"
@@ -65,7 +65,7 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/Cafe24SsurroundAir.000000.16dp"
+            style="@style/BalsamTint.000000.16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             visibleGone="@{vm.noticeInfo.empty}"

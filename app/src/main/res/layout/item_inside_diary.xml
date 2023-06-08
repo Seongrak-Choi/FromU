@@ -45,7 +45,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_inside_diary_month"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -63,7 +63,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_inside_diary_day"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -80,7 +80,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_inside_diary_day_of_week"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         dayOfWeek="@{detailDiary.day}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_inside_diary_weather"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
@@ -192,7 +192,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/Cafe24SsurroundAir.000000.16dp"
+                    style="@style/BalsamTint.000000.16dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -204,7 +204,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/Cafe24SsurroundAir.000000.16dp"
+                    style="@style/BalsamTint.000000.16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{@string/contents_from(detailDiary.writerNickname)}"

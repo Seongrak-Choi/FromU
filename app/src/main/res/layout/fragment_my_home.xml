@@ -16,7 +16,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_my_home_my_name"
-            style="@style/Cafe24SsurroundAir.000000.18dp"
+            style="@style/BalsamTint.000000.18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{vm.couple.nickname}"
@@ -36,7 +36,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_my_home_partner_name"
-            style="@style/Cafe24SsurroundAir.000000.18dp"
+            style="@style/BalsamTint.000000.18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -47,7 +47,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_my_home_front_dday_title"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -57,7 +57,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_my_home_dday"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -77,7 +77,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_my_home_back_dday_title"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"

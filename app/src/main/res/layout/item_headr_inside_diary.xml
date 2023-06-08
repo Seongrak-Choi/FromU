@@ -65,7 +65,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_inside_diary_book_name"
-            style="@style/Cafe24SsurroundAir.000000.18dp"
+            style="@style/BalsamTint.000000.18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

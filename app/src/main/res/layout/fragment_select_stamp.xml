@@ -43,7 +43,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_select_stamp_title"
-                style="@style/Cafe24SsurroundAir.000000.18dp"
+                style="@style/BalsamTint.000000.18dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -135,7 +135,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                style="@style/Cafe24SsurroundAir.000000.16dp"
+                style="@style/BalsamTint.000000.16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

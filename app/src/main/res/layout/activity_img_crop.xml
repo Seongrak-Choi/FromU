@@ -30,7 +30,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_img_crop_done"
-                style="@style/Cafe24SsurroundAir.a735ff.13dp"
+                style="@style/BalsamTint.a735ff.13dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"

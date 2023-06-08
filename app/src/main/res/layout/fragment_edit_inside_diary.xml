@@ -42,7 +42,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_add_inside_diary_done"
-                style="@style/Cafe24SsurroundAir.999999.13dp"
+                style="@style/BalsamTint.999999.13dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
@@ -86,7 +86,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_add_inside_diary_month"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
@@ -104,7 +104,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_add_inside_diary_day"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
@@ -121,7 +121,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_add_inside_diary_day_of_week"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         dayOfWeek="@{vm.writeDayOfWeek}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_add_add_inside_diary_weather"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="4dp"
@@ -244,7 +244,7 @@
                     app:layout_constraintTop_toTopOf="@id/cv_add_inside_diary_img" />
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    style="@style/Cafe24SsurroundAir.000000.16dp"
+                    style="@style/BalsamTint.000000.16dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -267,7 +267,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_add_inside_diary_contents_length"
-                    style="@style/Cafe24SsurroundAir.000000.16dp"
+                    style="@style/BalsamTint.000000.16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{@string/contents_length_max_200(vm.inputContents.length())}"

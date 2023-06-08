@@ -41,7 +41,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/stamp_box_appbar_title"
@@ -84,7 +84,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_stamp_box_purchase"
-            style="@style/Cafe24SsurroundAir.c983ff.14dp"
+            style="@style/BalsamTint.c983ff.14dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -168,7 +168,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                style="@style/Cafe24SsurroundAir.000000.16dp"
+                style="@style/BalsamTint.000000.16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

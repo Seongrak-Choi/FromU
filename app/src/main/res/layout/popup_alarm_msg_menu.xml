@@ -24,7 +24,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_alarm_msg_menu_1"
-                    style="@style/Cafe24SsurroundAir.000000.16dp"
+                    style="@style/BalsamTint.000000.16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
@@ -35,7 +35,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_alarm_msg_menu_2"
-                    style="@style/Cafe24SsurroundAir.000000.16dp"
+                    style="@style/BalsamTint.000000.16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
@@ -46,7 +46,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_alarm_msg_menu_3"
-                    style="@style/Cafe24SsurroundAir.000000.16dp"
+                    style="@style/BalsamTint.000000.16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
@@ -57,7 +57,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_alarm_msg_menu_direct"
-                    style="@style/Cafe24SsurroundAir.000000.16dp"
+                    style="@style/BalsamTint.000000.16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"

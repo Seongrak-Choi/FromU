@@ -16,7 +16,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_send_mail_list_title"
-            style="@style/Cafe24SsurroundAir.000000.14dp"
+            style="@style/BalsamTint.000000.14dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="22dp"
@@ -33,7 +33,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_send_mail_list_date"
-            style="@style/Cafe24SsurroundAir.000000.12dp"
+            style="@style/BalsamTint.000000.12dp"
             mailListDate="@{item.time}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -12,14 +12,14 @@
         android:paddingHorizontal="20dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/on_boarding_third"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/gl_h_1699"
-            app:lineHeight="30dp" />
+            app:lineHeight="32dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
