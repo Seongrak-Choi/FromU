@@ -21,8 +21,8 @@ android {
         applicationId "com.fromu.fromu"
         minSdk 28
         targetSdk 33
-        versionCode 10
-        versionName "1.2.1"
+        versionCode 11
+        versionName "1.2.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -146,5 +146,7 @@ dependencies {
     //https://github.com/prolificinteractive/material-calendarview
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 
+    /* Image Cropper */
+    //https://github.com/CanHub/Android-Image-Cropper
     implementation "com.vanniktech:android-image-cropper:4.5.0"
 }
