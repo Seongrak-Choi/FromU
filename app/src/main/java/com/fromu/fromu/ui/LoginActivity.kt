@@ -56,9 +56,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
 
     private fun initData() {
         initLauncher()
-        googleLoginManagerInstance = GoogleLoginManager(this, activityLauncher)
-        //TODO 추후 삭제
-//        googleLoginManagerInstance.logoutGoogle()
+        initSnsManager()
+        allSnsLogout()
     }
 
     private fun initView() {
@@ -99,13 +98,27 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         }
     }
 
+    /**
+     * sns로그인에 필요한 인스턴스 생성
+     *
+     */
+    private fun initSnsManager() {
+        googleLoginManagerInstance = GoogleLoginManager(this, activityLauncher) //구글 로그인 manager 인스턴스 생성
+        kakaoLoginManager = KakaoLoginManager(this) //카카오 로그인 manager 인스턴스 생성
+    }
+
+    /**
+     * 모든 sns 로그아웃
+     */
+    private fun allSnsLogout() {
+        googleLoginManagerInstance.logoutGoogle() //구글 로그아웃
+        kakaoLoginManager.logoutKakao() // 카카오 로그아웃
+    }
 
     /**
      * 카카오 로그인
      */
     fun loginKakao() {
-        kakaoLoginManager = KakaoLoginManager(this)
-
         kakaoLoginManager.loginKakao(object : KakaoLoginManager.OnKakaoLoginListener {
             override fun onSuccess(accessToken: String) {
                 Logger.d("kakao_login", accessToken)

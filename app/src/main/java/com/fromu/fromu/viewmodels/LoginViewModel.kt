@@ -38,9 +38,7 @@ class LoginViewModel @Inject constructor(
         return loginRepo.loginWithSns(accessToken, loginType).map { resource ->
             if (resource is Resource.Success) {
                 resource.body.result.userInfo?.let { userInfo ->
-                    FromUApplication.prefManager.setUserId(userInfo.userId)
-                    FromUApplication.prefManager.setLoginToken(userInfo.jwt)
-                    FromUApplication.prefManager.setRefreshToken(userInfo.refreshToken)
+                    FromUApplication.prefManager.setLoginData(userInfo.userId, userInfo.jwt, userInfo.refreshToken)
 
                     patchFcmToken(userInfo.jwt)
                 }
@@ -55,12 +53,13 @@ class LoginViewModel @Inject constructor(
                 loginRepo.loginWithJwt(it).map { resource ->
                     if (resource is Resource.Success) {
                         resource.body.result?.let { userInfo ->
-                            FromUApplication.prefManager.setUserId(userInfo.userId)
-                            FromUApplication.prefManager.setLoginToken(userInfo.jwt)
-                            FromUApplication.prefManager.setRefreshToken(userInfo.refreshToken)
+                            FromUApplication.prefManager.setLoginData(userInfo.userId, userInfo.jwt, userInfo.refreshToken)
 
                             patchFcmToken(userInfo.jwt)
                         }
+                    }
+                    else if (resource is Resource.Failed) {
+                        //TODO 추후 실패 시 작업 추가
                     }
                     resource
                 }.collect {

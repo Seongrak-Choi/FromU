@@ -31,9 +31,14 @@ class MailBoxFragment : BaseFragment<FragmentMailBoxBinding>(FragmentMailBoxBind
         super.onViewCreated(view, savedInstanceState)
 
         initView()
-        callApi()
         initObserve()
         initEvent()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        callApi()
     }
 
     private fun initData() {}
