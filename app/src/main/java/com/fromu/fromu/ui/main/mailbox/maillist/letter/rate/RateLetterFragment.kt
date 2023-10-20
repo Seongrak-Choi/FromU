@@ -89,6 +89,10 @@ class RateLetterFragment : BaseFragment<FragmentRateLetterBinding>(FragmentRateL
             Const.SUCCESS_CODE -> {
                 findNavController().popBackStack()
             }
+            3071 -> {
+                //이미 별점을 남긴 경우
+                Utils.showCustomSnackBar(binding.root, getString(R.string.rate_letter_already_send))
+            }
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)
             }

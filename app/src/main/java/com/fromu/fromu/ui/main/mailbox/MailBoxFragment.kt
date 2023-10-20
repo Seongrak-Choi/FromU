@@ -13,6 +13,7 @@ import com.fromu.fromu.ui.main.mailbox.maillist.MailListActivity
 import com.fromu.fromu.ui.main.mailbox.stampbox.StampBoxActivity
 import com.fromu.fromu.ui.main.mailbox.write.WriteLetterActivity
 import com.fromu.fromu.utils.Const
+import com.fromu.fromu.utils.Logger
 import com.fromu.fromu.utils.Utils
 import com.fromu.fromu.viewmodels.MailBoxViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,9 +32,14 @@ class MailBoxFragment : BaseFragment<FragmentMailBoxBinding>(FragmentMailBoxBind
         super.onViewCreated(view, savedInstanceState)
 
         initView()
-        callApi()
         initObserve()
         initEvent()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        callApi()
     }
 
     private fun initData() {}

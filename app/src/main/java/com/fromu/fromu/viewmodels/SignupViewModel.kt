@@ -7,6 +7,7 @@ import com.fromu.fromu.data.remote.network.Resource
 import com.fromu.fromu.data.remote.network.request.PatchFcmTokenReq
 import com.fromu.fromu.data.remote.network.request.SignupReq
 import com.fromu.fromu.data.remote.network.response.SignupRes
+import com.fromu.fromu.data.repository.LoginRepo
 import com.fromu.fromu.data.repository.SignupRepo
 import com.fromu.fromu.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,10 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @HiltViewModel
-class SignupViewModel @Inject constructor(private val signupRepo: SignupRepo) : BaseViewModel() {
+class SignupViewModel @Inject constructor(
+    private val signupRepo: SignupRepo,
+    private val loginRepo: LoginRepo
+) : BaseViewModel() {
     // 로그인 했던 이메일
     val email: MutableStateFlow<String> = MutableStateFlow("")
 
@@ -71,9 +75,7 @@ class SignupViewModel @Inject constructor(private val signupRepo: SignupRepo) : 
         return signupRepo.postSignup(getSignupReq()).map { resource ->
             if (resource is Resource.Success) {
                 resource.body.result.apply {
-                    FromUApplication.prefManager.setUserId(userId)
-                    FromUApplication.prefManager.setLoginToken(jwt)
-                    FromUApplication.prefManager.setRefreshToken(refreshToken)
+                    FromUApplication.prefManager.setLoginData(userId, jwt, refreshToken)
 
                     patchFcmToken(jwt)
                 }
@@ -83,6 +85,6 @@ class SignupViewModel @Inject constructor(private val signupRepo: SignupRepo) : 
     }
 
     private fun patchFcmToken(jwt: String) {
-        signupRepo.patchFcmToken(jwt, PatchFcmTokenReq(FromUApplication.prefManager.getFcmId()))
+        loginRepo.patchFcmToken(jwt, PatchFcmTokenReq(FromUApplication.prefManager.getFcmId()))
     }
 }
