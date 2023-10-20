@@ -58,6 +58,9 @@ class LoginViewModel @Inject constructor(
                             patchFcmToken(userInfo.jwt)
                         }
                     }
+                    else if (resource is Resource.Failed) {
+                        //TODO 추후 실패 시 작업 추가
+                    }
                     resource
                 }.collect {
                     _loginWithRefreshTokenResult.value = it

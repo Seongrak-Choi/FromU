@@ -146,5 +146,7 @@ dependencies {
     //https://github.com/prolificinteractive/material-calendarview
     implementation 'com.prolificinteractive:material-calendarview:1.4.3'
 
+    /* Image Cropper */
+    //https://github.com/CanHub/Android-Image-Cropper
     implementation "com.vanniktech:android-image-cropper:4.5.0"
 }
