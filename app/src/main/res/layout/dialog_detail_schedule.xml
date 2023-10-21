@@ -83,7 +83,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_detail_schedule_no_item"
-                    style="@style/Cafe24SsurroundAir.999999.16dp"
+                    style="@style/BalsamTint.999999.16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -105,7 +105,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_detail_schedule_no_item">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/Cafe24SsurroundAir.000000.12dp"
+                        style="@style/BalsamTint.000000.12dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/schedule_add" />
@@ -133,7 +133,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_detail_schedule_back"
-                style="@style/Cafe24SsurroundAir.a735ff.16dp"
+                style="@style/BalsamTint.a735ff.16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -143,7 +143,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_detail_schedule_done"
-                style="@style/Cafe24SsurroundAir.999999.16dp"
+                style="@style/BalsamTint.999999.16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="@{!vm.scheduleInputData.empty}"
@@ -154,7 +154,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.000000.18dp"
+                style="@style/BalsamTint.000000.18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
@@ -165,7 +165,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_detail_schedule"
-                style="@style/Cafe24SsurroundAir.000000.18dp"
+                style="@style/BalsamTint.000000.18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
@@ -187,7 +187,7 @@
                 app:layout_constraintTop_toBottomOf="@id/et_detail_schedule" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.6f6f6f.12dp"
+                style="@style/BalsamTint.6f6f6f.12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

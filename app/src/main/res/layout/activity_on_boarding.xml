@@ -35,7 +35,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_on_boarding_next"
-            style="@style/Cafe24SsurroundAir.a735ff.16dp"
+            style="@style/BalsamTint.a735ff.16dp"
             visibleGone="@{!isLastPage}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

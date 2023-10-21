@@ -17,7 +17,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_mail_box_title"
-            style="@style/Cafe24SsurroundAir.000000.18dp"
+            style="@style/BalsamTint.000000.18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -79,7 +79,7 @@
                 tools:src="@drawable/ic_mail_box_empty" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.000000.13dp"
+                style="@style/BalsamTint.000000.13dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_rectangle_ffffff_radius_4"

@@ -35,7 +35,7 @@
             android:background="@drawable/bg_rectangle_fede02_radius_8"
             android:onClick="@{() -> view.loginKakao()}"
             android:paddingVertical="18dp"
-            app:layout_constraintBottom_toTopOf="@+id/cl_google_login"
+            app:layout_constraintTop_toTopOf="@+id/gl_v_7487"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -53,7 +53,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_kakao_login"
-                style="@style/PretendardRegular.000000.16dp"
+                style="@style/PretendardRegular.000000.18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_kakao"
@@ -65,41 +65,50 @@
 
 
         <!-- 구글 로그인 버튼 -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_google_login"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_google_login"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:background="@drawable/bg_rectangle_ffffff_radius_8"
+            app:cardCornerRadius="8dp"
+            android:layout_marginTop="14dp"
             android:onClick="@{() -> view.loginGoogle()}"
-            android:paddingVertical="18dp"
-            app:layout_constraintBottom_toBottomOf="@id/gl_top_to_8025"
+            app:layout_constraintTop_toBottomOf="@+id/cl_kakao_login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_google_login_logo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:src="@drawable/ic_google_login_logo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tv_google_login"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_google_login"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="20dp"
+                android:paddingVertical="18dp">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_google_login"
-                style="@style/PretendardMedium.000000.16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/login_google"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_google_login_logo"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_google_login_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_google_login_logo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/tv_google_login"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_google_login"
+                    style="@style/PretendardMedium.000000.18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_google"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/iv_google_login_logo"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -108,6 +117,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.22" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_v_7487"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.7487" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_top_to_8025"

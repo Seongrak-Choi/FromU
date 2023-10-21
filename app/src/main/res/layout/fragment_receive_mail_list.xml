@@ -31,7 +31,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_receive_mail_list_empty"
-                style="@style/Cafe24SsurroundAir.999999.16dp"
+                style="@style/BalsamTint.999999.16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

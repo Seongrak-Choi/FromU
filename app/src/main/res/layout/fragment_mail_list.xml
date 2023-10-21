@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.000000.14dp"
+                style="@style/BalsamTint.000000.14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mail_list_title"
@@ -49,7 +49,7 @@
             app:tabIndicatorHeight="2dp"
             app:tabRippleColor="@color/transparent"
             app:tabSelectedTextColor="@color/black"
-            app:tabTextAppearance="@style/Cafe24SsurroundAir.000000.16dp" />
+            app:tabTextAppearance="@style/BalsamTint.000000.16dp" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_mail_list"

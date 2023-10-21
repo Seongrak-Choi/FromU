@@ -73,7 +73,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_letter_detail_to"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="40dp"
@@ -93,7 +93,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/Cafe24SsurroundAir.000000.16dp"
+                        style="@style/BalsamTint.000000.16dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="40dp"
@@ -108,7 +108,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_letter_detail_date"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         letterDate="@{vm.letterDetail.time}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_letter_detail_from"
-                        style="@style/Cafe24SsurroundAir.000000.14dp"
+                        style="@style/BalsamTint.000000.14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="40dp"

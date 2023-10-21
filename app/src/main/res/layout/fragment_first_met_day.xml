@@ -36,7 +36,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_first_met_day_title"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/first_met_day_title"

@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.000000.14dp"
+                style="@style/BalsamTint.000000.14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/alarm_msg_title"
@@ -46,7 +46,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_alarm_msg_setting_comment"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/alarm_msg_comment"
@@ -64,7 +64,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_alarm_msg_setting"
-                style="@style/Cafe24SsurroundAir.000000.16dp"
+                style="@style/BalsamTint.000000.16dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"

@@ -75,142 +75,142 @@
 
 
     <!-- EfDiary -->
-    <style name="Cafe24SsurroundAir" parent="TextAppearance.AppCompat">
+    <style name="BalsamTint" parent="TextAppearance.AppCompat">
         <item name="fontFamily">@font/cafe24_ssurround_air</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.ffffff">
+    <style name="BalsamTint.ffffff">
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.ffffff.14dp">
+    <style name="BalsamTint.ffffff.14dp">
         <item name="android:textSize">14dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.ffffff.18dp">
+    <style name="BalsamTint.ffffff.18dp">
         <item name="android:textSize">18dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.ffffff.20dp">
+    <style name="BalsamTint.ffffff.20dp">
         <item name="android:textSize">20dp</item>
     </style>
 
 
-    <style name="Cafe24SsurroundAir.000000">
+    <style name="BalsamTint.000000">
         <item name="android:textColor">@color/black</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.12dp">
+    <style name="BalsamTint.000000.12dp">
         <item name="android:textSize">12dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.13dp">
+    <style name="BalsamTint.000000.13dp">
         <item name="android:textSize">13dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.14dp">
+    <style name="BalsamTint.000000.14dp">
         <item name="android:textSize">14dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.16dp">
+    <style name="BalsamTint.000000.16dp">
         <item name="android:textSize">16dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.18dp">
+    <style name="BalsamTint.000000.18dp">
         <item name="android:textSize">18dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.20dp">
+    <style name="BalsamTint.000000.20dp">
         <item name="android:textSize">20dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.22dp">
+    <style name="BalsamTint.000000.22dp">
         <item name="android:textSize">22dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.24dp">
+    <style name="BalsamTint.000000.24dp">
         <item name="android:textSize">24dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.000000.30dp">
+    <style name="BalsamTint.000000.30dp">
         <item name="android:textSize">30dp</item>
     </style>
 
 
-    <style name="Cafe24SsurroundAir.6f6f6f">
+    <style name="BalsamTint.6f6f6f">
         <item name="android:textColor">@color/color_6f6f6f</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.6f6f6f.12dp">
+    <style name="BalsamTint.6f6f6f.12dp">
         <item name="android:textSize">12dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.6f6f6f.16dp">
+    <style name="BalsamTint.6f6f6f.16dp">
         <item name="android:textSize">16dp</item>
     </style>
 
 
-    <style name="Cafe24SsurroundAir.a735ff">
+    <style name="BalsamTint.a735ff">
         <item name="android:textColor">@color/color_a735ff</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.a735ff.13dp">
+    <style name="BalsamTint.a735ff.13dp">
         <item name="android:textSize">13dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.a735ff.14dp">
+    <style name="BalsamTint.a735ff.14dp">
         <item name="android:textSize">14dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.a735ff.16dp">
+    <style name="BalsamTint.a735ff.16dp">
         <item name="android:textSize">16dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.a735ff.18dp">
+    <style name="BalsamTint.a735ff.18dp">
         <item name="android:textSize">18dp</item>
     </style>
 
 
-    <style name="Cafe24SsurroundAir.c983ff">
+    <style name="BalsamTint.c983ff">
         <item name="android:textColor">@color/color_c983ff</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.c983ff.14dp">
+    <style name="BalsamTint.c983ff.14dp">
         <item name="android:textSize">14dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.c983ff.16dp">
+    <style name="BalsamTint.c983ff.16dp">
         <item name="android:textSize">16dp</item>
     </style>
 
 
-    <style name="Cafe24SsurroundAir.999999">
+    <style name="BalsamTint.999999">
         <item name="android:textColor">@color/color_999999</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.999999.12dp">
+    <style name="BalsamTint.999999.12dp">
         <item name="android:textSize">12dp</item>
     </style>
 
 
-    <style name="Cafe24SsurroundAir.999999.13dp">
+    <style name="BalsamTint.999999.13dp">
         <item name="android:textSize">13dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.999999.14dp">
+    <style name="BalsamTint.999999.14dp">
         <item name="android:textSize">14dp</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.999999.16dp">
+    <style name="BalsamTint.999999.16dp">
         <item name="android:textSize">16dp</item>
     </style>
 
 
-    <style name="Cafe24SsurroundAir.242424">
+    <style name="BalsamTint.242424">
         <item name="android:textColor">@color/color_242424</item>
     </style>
 
-    <style name="Cafe24SsurroundAir.242424.16dp">
+    <style name="BalsamTint.242424.16dp">
         <item name="android:textSize">16dp</item>
     </style>
 
@@ -307,6 +307,10 @@
 
     <style name="PretendardMedium.000000.16dp">
         <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="PretendardMedium.000000.18dp">
+        <item name="android:textSize">18dp</item>
     </style>
 
 </resources>

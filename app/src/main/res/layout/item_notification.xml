@@ -18,7 +18,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_notification_date"
-            style="@style/Cafe24SsurroundAir.000000.14dp"
+            style="@style/BalsamTint.000000.14dp"
             monthAndDayFormSplitDot="@{item.time}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             tools:text="01.08" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/Cafe24SsurroundAir.000000.14dp"
+            style="@style/BalsamTint.000000.14dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"

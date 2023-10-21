@@ -19,7 +19,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diary_my_name"
-            style="@style/Cafe24SsurroundAir.000000.18dp"
+            style="@style/BalsamTint.000000.18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{vm.myNickname}"
@@ -39,7 +39,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diary_partner_name"
-            style="@style/Cafe24SsurroundAir.000000.18dp"
+            style="@style/BalsamTint.000000.18dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -50,7 +50,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diary_front_dday_title"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -60,7 +60,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diary_dday"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             isInvisible="@{vm.isSetFirstMetDay()}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diary_back_dday_title"
-            style="@style/Cafe24SsurroundAir.000000.20dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -113,7 +113,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_diary_dday">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.000000.12dp"
+                style="@style/BalsamTint.000000.12dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -144,7 +144,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.999999.16dp"
+                style="@style/BalsamTint.999999.16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-3dp"
@@ -186,7 +186,7 @@
                     tools:src="@drawable/ic_diary_cover_1" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/Cafe24SsurroundAir.000000.20dp"
+                    style="@style/BalsamTint.000000.20dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_diary_cover_title"
@@ -267,7 +267,7 @@
                 app:layout_constraintTop_toTopOf="@+id/gl_v_1763" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/Cafe24SsurroundAir.999999.14dp"
+                style="@style/BalsamTint.999999.14dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -280,7 +280,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_diary_bell"
-                style="@style/Cafe24SsurroundAir.c983ff.16dp"
+                style="@style/BalsamTint.c983ff.16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="96dp"

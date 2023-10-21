@@ -30,7 +30,7 @@
             app:lottie_fileName="comingletter.json" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/Cafe24SsurroundAir.000000.22dp"
+            style="@style/BalsamTint.000000.22dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="31dp"

@@ -27,7 +27,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diary_decide_name_title"
-            style="@style/Cafe24SsurroundAir.000000.22dp"
+            style="@style/BalsamTint.000000.22dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/decide_name_title"
@@ -46,7 +46,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_contents"
-                style="@style/Cafe24SsurroundAir.000000.18dp"
+                style="@style/BalsamTint.000000.18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -68,7 +68,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_warring_msg"
-                style="@style/Cafe24SsurroundAir.6f6f6f.12dp"
+                style="@style/BalsamTint.6f6f6f.12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
