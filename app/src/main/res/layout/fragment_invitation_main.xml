@@ -55,7 +55,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_invitation_send"
-            style="@style/PretendardRegular.ffffff.24dp"
+            style="@style/BalsamTint.ffffff.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="14dp"
@@ -69,7 +69,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_invitation_input_code"
-            style="@style/PretendardRegular.a735ff.24dp"
+            style="@style/BalsamTint.a735ff.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="80dp"

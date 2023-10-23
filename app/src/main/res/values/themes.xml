@@ -182,6 +182,14 @@
         <item name="android:textSize">18dp</item>
     </style>
 
+    <style name="BalsamTint.a735ff.20dp">
+        <item name="android:textSize">20dp</item>
+    </style>
+
+    <style name="BalsamTint.a735ff.24dp">
+        <item name="android:textSize">24dp</item>
+    </style>
+
 
     <style name="BalsamTint.c983ff">
         <item name="android:textColor">@color/color_c983ff</item>
@@ -193,6 +201,10 @@
 
     <style name="BalsamTint.c983ff.16dp">
         <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="BalsamTint.c983ff.24dp">
+        <item name="android:textSize">24dp</item>
     </style>
 
 
@@ -217,6 +229,9 @@
         <item name="android:textSize">16dp</item>
     </style>
 
+    <style name="BalsamTint.999999.24dp">
+        <item name="android:textSize">24dp</item>
+    </style>
 
     <style name="BalsamTint.242424">
         <item name="android:textColor">@color/color_242424</item>
@@ -268,6 +283,10 @@
 
     <style name="PretendardRegular.000000.18dp">
         <item name="android:textSize">18dp</item>
+    </style>
+
+    <style name="PretendardRegular.000000.20dp">
+        <item name="android:textSize">20dp</item>
     </style>
 
     <style name="PretendardRegular.000000.24dp">

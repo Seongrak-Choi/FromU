@@ -35,7 +35,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_on_boarding_next"
-            style="@style/BalsamTint.a735ff.16dp"
+            style="@style/BalsamTint.a735ff.24dp"
             visibleGone="@{!isLastPage}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_on_boarding_starting"
-            style="@style/PretendardRegular.ffffff.16dp"
+            style="@style/BalsamTint.ffffff.24dp"
             visibleGone="@{isLastPage}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

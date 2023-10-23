@@ -28,7 +28,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_one_btn_contents"
-            style="@style/BalsamTint.000000.18dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -38,14 +38,14 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_two_btn_negative"
-            style="@style/BalsamTint.a735ff.14dp"
+            style="@style/BalsamTint.a735ff.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_rectangle_empty_stroke_c983ff_radius_12dp_width_1dp"
             android:gravity="center"
-            android:paddingVertical="15dp"
+            android:paddingVertical="11dp"
             android:text="@{negativeBtnText}"
             app:layout_constraintEnd_toStartOf="@+id/tv_popup_two_btn_positive"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,13 +54,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_two_btn_positive"
-            style="@style/BalsamTint.ffffff.14dp"
+            style="@style/BalsamTint.ffffff.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@drawable/bg_rectangle_c983ff_radius_12"
             android:gravity="center"
-            android:paddingVertical="15dp"
+            android:paddingVertical="11dp"
             android:text="@{positiveBtnText}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_popup_two_btn_negative"
