@@ -36,7 +36,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_decide_mail_box_title"
-            style="@style/BalsamTint.000000.20dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/decide_mail_box_name_title"
@@ -61,7 +61,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/et_contents"
-                    style="@style/BalsamTint.000000.18dp"
+                    style="@style/BalsamTint.000000.24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@null"
@@ -74,7 +74,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_decide_mail_box_context_suffix"
-                    style="@style/BalsamTint.000000.18dp"
+                    style="@style/BalsamTint.000000.24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="함"
@@ -94,7 +94,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_warring_msg"
-                style="@style/BalsamTint.6f6f6f.12dp"
+                style="@style/BalsamTint.6f6f6f.18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
@@ -114,7 +114,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_decide_mail_box_connect"
-                style="@style/PretendardRegular.ffffff.16dp"
+                style="@style/PretendardRegular.ffffff.24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"

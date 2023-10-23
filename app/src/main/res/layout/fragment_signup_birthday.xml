@@ -27,7 +27,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_birthday_title"
-            style="@style/BalsamTint.000000.20dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/birthday_title"
@@ -106,7 +106,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_birthday_day"
-                style="@style/PretendardRegular.000000.18dp"
+                style="@style/PretendardRegular.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
@@ -140,7 +140,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_birthday_next"
-                style="@style/PretendardRegular.ffffff.16dp"
+                style="@style/PretendardRegular.ffffff.24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
