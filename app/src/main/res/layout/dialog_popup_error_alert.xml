@@ -24,7 +24,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_one_btn_contents"
-            style="@style/BalsamTint.000000.18dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -34,13 +34,13 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_one_btn_confirm"
-            style="@style/BalsamTint.ffffff.14dp"
+            style="@style/BalsamTint.ffffff.20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:background="@drawable/bg_rectangle_ff4a6b_radius_12"
             android:gravity="center"
-            android:paddingVertical="15dp"
+            android:paddingVertical="11dp"
             android:text="@{btnText}"
             app:layout_constraintTop_toBottomOf="@+id/tv_popup_one_btn_contents"
             tools:text="알겠어" />

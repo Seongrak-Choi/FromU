@@ -114,7 +114,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_inside_diary_go_last_page"
-                style="@style/BalsamTint.a735ff.13dp"
+                style="@style/BalsamTint.a735ff.18dp"
                 isInvisible="@{vm.currentDiaryPosition == 0 ? true : false}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -203,7 +203,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_invitation_description_title"
-                style="@style/BalsamTint.ffffff.20dp"
+                style="@style/BalsamTint.ffffff.24dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -251,7 +251,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_invitation_description2_title"
-                style="@style/BalsamTint.ffffff.20dp"
+                style="@style/BalsamTint.ffffff.24dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"

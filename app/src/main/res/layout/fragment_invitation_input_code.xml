@@ -93,7 +93,7 @@
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
                 android:enabled="@{vm.isValidOpponentCode()}"
                 android:gravity="center"
-                android:paddingVertical="18.5dp"
+                android:paddingVertical="13dp"
                 android:text="@string/invitation_input_code_connect"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

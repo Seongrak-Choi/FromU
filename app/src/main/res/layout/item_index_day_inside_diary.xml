@@ -17,7 +17,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_index_day_date"
-            style="@style/BalsamTint.000000.14dp"
+            style="@style/BalsamTint.000000.20dp"
             monthAndDayForm="@{indexByMonthResult.date}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             tools:text="1월 8일" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/BalsamTint.000000.14dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="58dp"

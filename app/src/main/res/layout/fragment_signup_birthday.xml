@@ -47,7 +47,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_birthday_year"
-                style="@style/PretendardRegular.000000.18dp"
+                style="@style/PretendardRegular.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
@@ -67,7 +67,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_birthday_slash_1"
-                style="@style/PretendardRegular.999999.18dp"
+                style="@style/BalsamTint.999999.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
@@ -78,7 +78,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_birthday_month"
-                style="@style/PretendardRegular.000000.18dp"
+                style="@style/PretendardRegular.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
@@ -95,7 +95,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_birthday_slash_2"
-                style="@style/PretendardRegular.999999.18dp"
+                style="@style/BalsamTint.999999.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="6dp"
@@ -146,7 +146,7 @@
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
                 android:enabled="@{vm.isValidBirthday()}"
                 android:gravity="center"
-                android:paddingVertical="18.5dp"
+                android:paddingVertical="13dp"
                 android:text="@string/next"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />

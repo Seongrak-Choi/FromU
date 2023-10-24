@@ -69,7 +69,7 @@
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
                 android:enabled="@{vm.selectCoverNum != 0}"
                 android:gravity="center"
-                android:paddingVertical="18.5dp"
+                android:paddingVertical="13dp"
                 android:text="@string/next"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />
