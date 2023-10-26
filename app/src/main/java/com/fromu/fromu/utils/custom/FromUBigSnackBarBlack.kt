@@ -1,12 +1,10 @@
 package com.fromu.fromu.utils.custom
 
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.core.content.ContextCompat
-import com.fromu.fromu.FromUApplication
 import com.fromu.fromu.databinding.CustomBigSnackbarBlackBinding
 import com.google.android.material.snackbar.Snackbar
 
@@ -29,17 +27,18 @@ class FromUBigSnackBarBlack(view: View, private val message: String, private val
     }
 
     private fun initView() {
-        with(snackBarLayout) {
-            width = ViewGroup.LayoutParams.MATCH_PARENT
-            gravity = Gravity.CENTER
-        }
 
         with(snackBarView) {
             removeAllViews()
-            setPadding(28, FromUApplication.statusHeight, 28, 0)
-
+            setPadding(0, 0, 0, 0)
             setBackgroundColor(ContextCompat.getColor(context, android.R.color.transparent))
             addView(snackBarBinding.root, 0)
+        }
+
+        with(snackBarLayout) {
+            width = ViewGroup.LayoutParams.MATCH_PARENT
+            height = ViewGroup.LayoutParams.MATCH_PARENT
+            setMargins(0, 0, 0, 0)
         }
     }
 
