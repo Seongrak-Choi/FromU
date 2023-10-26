@@ -35,7 +35,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/v_detail_schedule_drag_handle">
+            app:layout_constraintTop_toBottomOf="@id/v_detail_schedule_drag_handle"
+            tools:visibility="invisible">
             <!-- 이벤트가 있을 때 화면 -->
             <androidx.core.widget.NestedScrollView
                 visibleGone="@{vm.isExistSchedule()}"
@@ -83,7 +84,7 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_detail_schedule_no_item"
-                    style="@style/BalsamTint.999999.16dp"
+                    style="@style/BalsamTint.999999.24dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
@@ -105,7 +106,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_detail_schedule_no_item">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/BalsamTint.000000.12dp"
+                        style="@style/BalsamTint.000000.18dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/schedule_add" />
@@ -129,11 +130,11 @@
             android:paddingHorizontal="6dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/v_detail_schedule_drag_handle"
-            tools:visibility="gone">
+            tools:visibility="visible">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_detail_schedule_back"
-                style="@style/BalsamTint.a735ff.16dp"
+                style="@style/BalsamTint.a735ff.18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
@@ -143,7 +144,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_detail_schedule_done"
-                style="@style/BalsamTint.999999.16dp"
+                style="@style/BalsamTint.999999.18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="@{!vm.scheduleInputData.empty}"
@@ -151,7 +152,8 @@
                 android:text="@{vm.inputType == DetailScheduleInputType.ADD ? @string/done : @string/modify}"
                 android:textColor="@color/selector_enable_a735ff_disable_999999"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="완료" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/BalsamTint.000000.18dp"
@@ -165,7 +167,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_detail_schedule"
-                style="@style/BalsamTint.000000.18dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="6dp"
@@ -187,7 +189,7 @@
                 app:layout_constraintTop_toBottomOf="@id/et_detail_schedule" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/BalsamTint.6f6f6f.12dp"
+                style="@style/BalsamTint.6f6f6f.18dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"

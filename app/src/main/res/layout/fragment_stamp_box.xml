@@ -41,7 +41,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/BalsamTint.000000.14dp"
+                        style="@style/BalsamTint.000000.20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/stamp_box_appbar_title"
@@ -53,7 +53,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="52dp"
+                        android:layout_marginEnd="16dp"
                         android:gravity="center_vertical"
                         android:orientation="horizontal"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,12 +67,11 @@
                             android:src="@drawable/ic_from" />
 
                         <androidx.appcompat.widget.AppCompatTextView
-                            style="@style/PretendardRegular.a735ff.12dp"
+                            style="@style/PretendardRegular.a735ff.18dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_rectangle_e2dbff_radius_25"
                             android:paddingHorizontal="10dp"
-                            android:paddingVertical="4dp"
                             android:text="@{Integer.toString(vm.fromCountFlow)}"
                             tools:text="10" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -84,7 +83,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_stamp_box_purchase"
-            style="@style/BalsamTint.c983ff.14dp"
+            style="@style/BalsamTint.c983ff.20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"

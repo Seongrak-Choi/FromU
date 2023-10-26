@@ -54,18 +54,18 @@
     <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textColor">@color/selector_calendar_day_color</item>
         <item name="android:fontFamily">@font/balsam_tint</item>
-        <item name="android:textSize">12dp</item>
+        <item name="android:textSize">24dp</item>
     </style>
 
     <!-- 요일에 적용되는 스타일 -->
     <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:fontFamily">@font/balsam_tint</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:textSize">16dp</item>
     </style>
 
     <style name="CalendarWidgetHeader">
-        <item name="android:textSize">16dp</item>
+        <item name="android:textSize">24dp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:fontFamily">@font/balsam_tint</item>
     </style>
@@ -161,6 +161,10 @@
         <item name="android:textSize">20dp</item>
     </style>
 
+    <style name="BalsamTint.6f6f6f.24dp">
+        <item name="android:textSize">24dp</item>
+    </style>
+
 
     <style name="BalsamTint.a735ff">
         <item name="android:textColor">@color/color_a735ff</item>
@@ -203,6 +207,10 @@
         <item name="android:textSize">16dp</item>
     </style>
 
+    <style name="BalsamTint.c983ff.20dp">
+        <item name="android:textSize">20dp</item>
+    </style>
+
     <style name="BalsamTint.c983ff.24dp">
         <item name="android:textSize">24dp</item>
     </style>
@@ -227,6 +235,10 @@
 
     <style name="BalsamTint.999999.16dp">
         <item name="android:textSize">16dp</item>
+    </style>
+
+    <style name="BalsamTint.999999.18dp">
+        <item name="android:textSize">18dp</item>
     </style>
 
     <style name="BalsamTint.999999.24dp">

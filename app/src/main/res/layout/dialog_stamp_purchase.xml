@@ -31,57 +31,70 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/ic_letter_stamp_1_size_58_58" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_stamp_purchase_price"
-            style="@style/BalsamTint.a735ff.18dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="3 프롬"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_stamp_purchase" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_stamp_purchase_explanation"
-            style="@style/BalsamTint.000000.18dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="@{FindStamp.INSTANCE.getExplanationById(stampId)}"
-            app:layout_constraintTop_toBottomOf="@id/tv_stamp_purchase_price"
+            app:layout_constraintTop_toBottomOf="@id/iv_stamp_purchase"
             tools:text="신비함을 상징하는 우표야.\n몽환적인 보라색 편지지와 함께\n우리의 이야기를 전달해볼까?" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_stamp_purchase_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="11dp"
+            android:src="@drawable/ic_from"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_stamp_purchase_from_price"
+            app:layout_constraintEnd_toStartOf="@+id/tv_stamp_purchase_from_price"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_stamp_purchase_from_price" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_stamp_purchase_from_price"
+            style="@style/BalsamTint.a735ff.24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="3 프롬"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_stamp_purchase_from"
+            app:layout_constraintTop_toBottomOf="@+id/tv_stamp_purchase_explanation"
+            tools:text="3 프롬" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_two_btn_negative"
-            style="@style/BalsamTint.a735ff.14dp"
+            style="@style/BalsamTint.a735ff.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="8dp"
             android:background="@drawable/bg_rectangle_empty_stroke_c983ff_radius_12dp_width_1dp"
             android:gravity="center"
-            android:paddingVertical="15dp"
+            android:paddingVertical="11dp"
             android:text="@string/back"
             app:layout_constraintEnd_toStartOf="@+id/tv_popup_two_btn_positive"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_stamp_purchase_explanation" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_stamp_purchase_from_price" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_popup_two_btn_positive"
-            style="@style/BalsamTint.ffffff.14dp"
+            style="@style/BalsamTint.ffffff.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:background="@drawable/bg_rectangle_c983ff_radius_12"
             android:gravity="center"
-            android:paddingVertical="15dp"
+            android:paddingVertical="11dp"
             android:text="@string/purchase"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_popup_two_btn_negative"
-            app:layout_constraintTop_toBottomOf="@+id/tv_stamp_purchase_explanation" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_stamp_purchase_from_price" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_h_3656"

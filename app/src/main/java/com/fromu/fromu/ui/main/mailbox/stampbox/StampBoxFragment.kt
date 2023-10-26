@@ -67,6 +67,7 @@ class StampBoxFragment : BaseFragment<FragmentStampBoxBinding>(FragmentStampBoxB
 
     private fun initEvent() {
         binding.apply {
+            // 구매하기 버튼
             tvStampBoxPurchase.setThrottleClick(lifecycleScope) {
                 findNavController().navigate(R.id.action_stampBoxFragment_to_purchaseStampFragment)
             }

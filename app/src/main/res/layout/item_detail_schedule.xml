@@ -16,7 +16,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_detail_schedule"
-            style="@style/BalsamTint.000000.14dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

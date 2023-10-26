@@ -157,6 +157,6 @@ class PurchaseStampFragment : BaseFragment<FragmentPurchaseStampBinding>(Fragmen
      * @return
      */
     private fun checkEnoughFrom(stampPrice: Int): Boolean {
-        return stampBoxViewModel.fromCountFlow.value > stampPrice
+        return stampBoxViewModel.fromCountFlow.value >= stampPrice
     }
 }
