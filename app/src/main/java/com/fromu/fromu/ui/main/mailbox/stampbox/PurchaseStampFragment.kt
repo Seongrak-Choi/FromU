@@ -12,6 +12,7 @@ import com.fromu.fromu.model.FindStamp
 import com.fromu.fromu.model.listener.ResourceSuccessListener
 import com.fromu.fromu.ui.base.BaseFragment
 import com.fromu.fromu.ui.dialog.DialogPopupStampPurchase
+import com.fromu.fromu.ui.dialog.DialogPopupTextAlert
 import com.fromu.fromu.utils.Const
 import com.fromu.fromu.utils.EventObserver
 import com.fromu.fromu.utils.Utils
@@ -105,7 +106,7 @@ class PurchaseStampFragment : BaseFragment<FragmentPurchaseStampBinding>(Fragmen
                 if (checkEnoughFrom(FindStamp.getStampPriceById(stampId))) {
                     stampBoxViewModel.purchaseStamp(stampId)
                 } else {
-                    Utils.showBigCustomSnackBar(binding.root, getString(R.string.lack_from))
+                    DialogPopupTextAlert(getString(R.string.lack_from)).show(childFragmentManager, DialogPopupTextAlert.TAG)
                 }
             }
         }).show(childFragmentManager, DialogPopupStampPurchase.TAG)
@@ -123,10 +124,12 @@ class PurchaseStampFragment : BaseFragment<FragmentPurchaseStampBinding>(Fragmen
                 Utils.showBigCustomSnackBar(binding.root, getString(R.string.success_purchase_stamp))
                 stampBoxViewModel.getFromCount()
             }
+
             3061 -> {
                 //프롬 부족
                 Utils.showBigCustomSnackBar(binding.root, getString(R.string.lack_from))
             }
+
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)
             }
@@ -143,6 +146,7 @@ class PurchaseStampFragment : BaseFragment<FragmentPurchaseStampBinding>(Fragmen
             Const.SUCCESS_CODE -> {
                 stampBoxViewModel.fromCountFlow.value = res.result
             }
+
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)
             }
