@@ -73,7 +73,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_letter_detail_to"
-                        style="@style/BalsamTint.000000.14dp"
+                        style="@style/BalsamTint.000000.20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="40dp"
@@ -93,12 +93,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/BalsamTint.000000.16dp"
+                        style="@style/BalsamTint.000000.20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="40dp"
                         android:layout_marginTop="20dp"
-                        android:layout_marginBottom="60dp"
+                        android:layout_marginBottom="24dp"
                         android:gravity="center_horizontal"
                         android:text="@{vm.letterDetail.content}"
                         app:layout_constraintBottom_toTopOf="@+id/tv_letter_detail_date"
@@ -108,7 +108,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_letter_detail_date"
-                        style="@style/BalsamTint.000000.14dp"
+                        style="@style/BalsamTint.000000.20dp"
                         letterDate="@{vm.letterDetail.time}"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -120,7 +120,7 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/tv_letter_detail_from"
-                        style="@style/BalsamTint.000000.14dp"
+                        style="@style/BalsamTint.000000.20dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="40dp"
@@ -152,7 +152,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_letter_detail_reply"
-                style="@style/PretendardRegular.ffffff.16dp"
+                style="@style/BalsamTint.ffffff.24dp"
                 letterDetailReplyEnabledAndText="@{vm.letterDetail}"
                 visibleGone="@{vm.letterDetail.status != 1}"
                 android:layout_width="0dp"
@@ -160,7 +160,7 @@
                 android:layout_marginBottom="24dp"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
                 android:gravity="center"
-                android:paddingVertical="18.5dp"
+                android:paddingVertical="13dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/gl_end"
                 app:layout_constraintStart_toStartOf="@+id/gl_start"

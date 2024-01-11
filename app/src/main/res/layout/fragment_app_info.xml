@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/BalsamTint.000000.14dp"
+                style="@style/BalsamTint.000000.20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/setting_app_info_title"
@@ -46,11 +46,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
-            android:paddingVertical="16dp"
+            android:paddingVertical="13dp"
             app:layout_constraintTop_toBottomOf="@+id/cl_iv_setting_back_app_bar">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/PretendardRegular.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/setting_terms"
@@ -73,11 +73,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
-            android:paddingVertical="16dp"
+            android:paddingVertical="13dp"
             app:layout_constraintTop_toBottomOf="@+id/cl_terms">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/PretendardRegular.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/setting_personal_info"

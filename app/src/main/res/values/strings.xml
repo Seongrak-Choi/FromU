@@ -214,4 +214,5 @@
     <string name="setting_terms">이용약관</string>
     <string name="setting_personal_info">개인정보처리방침</string>
     <string name="setting_app_info_title">앱 정보</string>
+    <string name="alarm_setting_condition">20글자 이내(영어, 숫자, 특수문자 및 공백 포함)</string>
 </resources>

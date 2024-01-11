@@ -141,14 +141,6 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
                 }
                 mPopupWindow.dismiss()
             }
-
-            tvAlarmMsgMenuDirect.setOnClickListener {
-                binding.etAlarmMsgSetting.apply {
-                    requestFocus()
-                    openKeyboard(this)
-                }
-                mPopupWindow.dismiss()
-            }
         }
 
         // popupWindow를 제외한 다른 부분 선택시 메뉴가 꺼지도록 popupWindow에 포커스를 줌
@@ -170,6 +162,7 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
                 Utils.showCustomSnackBar(binding.root, "알림 메세지가 변경됐어!")
                 findNavController().popBackStack()
             }
+
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)
             }
@@ -186,6 +179,7 @@ class AlarmMsgSettingFragment : BaseFragment<FragmentAlarmMsgSettingBinding>(Fra
             Const.SUCCESS_CODE -> {
                 myHomeViewModel.currentBellMsg.value = res.result.pushMessage
             }
+
             else -> {
                 Utils.showNetworkErrorSnackBar(binding.root)
             }

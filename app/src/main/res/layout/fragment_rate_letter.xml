@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/BalsamTint.000000.14dp"
+                style="@style/BalsamTint.000000.20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/rate_letter_title"
@@ -46,7 +46,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_rate_letter_introduce"
-            style="@style/BalsamTint.000000.18dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/rate_letter_introduce"
@@ -55,10 +55,11 @@
             app:layout_constraintTop_toBottomOf="@id/gl_v_1330" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/BalsamTint.6f6f6f.16dp"
+            android:id="@+id/tv_rate_letter_subscribe"
+            style="@style/BalsamTint.6f6f6f.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="20dp"
             android:text="@string/rate_letter_introduce2"
             app:layout_constraintEnd_toEndOf="@id/gl_end"
             app:layout_constraintStart_toStartOf="@id/gl_start"
@@ -67,9 +68,10 @@
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="@id/gl_end"
             app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintTop_toTopOf="@+id/gl_v_3152">
+            app:layout_constraintTop_toBottomOf="@id/tv_rate_letter_subscribe">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/iv_rate_letter_star_1"
@@ -123,14 +125,14 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_rate_letter_send"
-            style="@style/PretendardRegular.ffffff.16dp"
+            style="@style/BalsamTint.ffffff.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
             android:enabled="true"
             android:gravity="center"
-            android:paddingVertical="18.5dp"
+            android:paddingVertical="13dp"
             android:text="@string/rate_letter_send"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/gl_end"

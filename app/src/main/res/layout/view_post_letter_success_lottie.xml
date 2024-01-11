@@ -29,7 +29,7 @@
             app:lottie_fileName="letter.json" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/BalsamTint.000000.22dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"

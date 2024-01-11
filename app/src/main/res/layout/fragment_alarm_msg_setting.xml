@@ -33,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/BalsamTint.000000.14dp"
+                style="@style/BalsamTint.000000.20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/alarm_msg_title"
@@ -46,7 +46,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_alarm_msg_setting_comment"
-            style="@style/BalsamTint.000000.20dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/alarm_msg_comment"
@@ -64,15 +64,15 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_alarm_msg_setting"
-                style="@style/BalsamTint.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_marginEnd="20dp"
                 android:background="@null"
-                android:paddingVertical="16dp"
-                android:text="@={vm.currentBellMsg}"
                 android:hint="@string/alarm_hint"
+                android:paddingVertical="13dp"
+                android:text="@={vm.currentBellMsg}"
                 android:textColorHint="@color/color_999999"
                 android:textCursorDrawable="@drawable/cursor_bg_a735ff"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -93,12 +93,23 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
+                android:id="@+id/v_alarm_msg_drop"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="@color/color_a735ff"
                 app:layout_constraintBottom_toBottomOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/BalsamTint.6f6f6f.18dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="6dp"
+            android:text="@string/alarm_setting_condition"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@+id/cl_alarm_msg_select" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
@@ -111,12 +122,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_alarm_msg_setting_done"
-                style="@style/PretendardRegular.ffffff.16dp"
+                style="@style/BalsamTint.ffffff.24dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
                 android:gravity="center"
-                android:paddingVertical="18.5dp"
+                android:paddingVertical="13dp"
                 android:text="@string/alarm_msg_done"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="0dp" />

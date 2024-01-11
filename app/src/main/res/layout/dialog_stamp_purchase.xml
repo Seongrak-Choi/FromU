@@ -34,7 +34,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_stamp_purchase_explanation"
-            style="@style/BalsamTint.000000.20dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

@@ -36,7 +36,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_report_letter_introduce"
-            style="@style/BalsamTint.000000.20dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/report_letter_introduce"
@@ -57,7 +57,7 @@
 
             <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/et_report_letter"
-                style="@style/BalsamTint.000000.16dp"
+                style="@style/BalsamTint.000000.20dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginBottom="10dp"
@@ -86,14 +86,14 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_report_letter_send"
-            style="@style/PretendardRegular.ffffff.16dp"
+            style="@style/BalsamTint.ffffff.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
             android:enabled="@{!vm.contents.empty}"
             android:gravity="center"
-            android:paddingVertical="18.5dp"
+            android:paddingVertical="13dp"
             android:text="@string/done"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/gl_end"

@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/BalsamTint.000000.14dp"
+                style="@style/BalsamTint.000000.20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/setting_title"
@@ -74,11 +74,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
-            android:paddingVertical="16dp"
+            android:paddingVertical="13dp"
             app:layout_constraintTop_toBottomOf="@+id/cl_account_management">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/PretendardRegular.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/notice_inquire"
@@ -101,11 +101,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingHorizontal="20dp"
-            android:paddingVertical="16dp"
+            android:paddingVertical="13dp"
             app:layout_constraintTop_toBottomOf="@+id/cl_notice_inquire">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/PretendardRegular.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/app_info"
@@ -130,11 +130,11 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_app_info">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/PretendardRegular.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginVertical="16dp"
+                android:layout_marginVertical="13dp"
                 android:text="@string/logout"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -155,11 +155,11 @@
             app:layout_constraintTop_toBottomOf="@+id/cl_logout">
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/PretendardRegular.000000.16dp"
+                style="@style/BalsamTint.000000.24dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginVertical="16dp"
+                android:layout_marginVertical="13dp"
                 android:text="@string/break_matching"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -174,11 +174,11 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_withdrawal"
-            style="@style/PretendardRegular.000000.14dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="15dp"
             android:text="@string/withdrawal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cl_break_matching" />

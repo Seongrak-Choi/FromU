@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/BalsamTint.000000.14dp"
+                style="@style/BalsamTint.000000.20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/break_matching_title"
@@ -42,7 +42,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_break_matching_comment"
-            style="@style/BalsamTint.000000.22dp"
+            style="@style/BalsamTint.000000.24dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/break_matching_introduce"
@@ -61,7 +61,7 @@
             app:layout_constraintTop_toTopOf="@+id/gl_v_4199" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            style="@style/BalsamTint.000000.16dp"
+            style="@style/BalsamTint.000000.20dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
@@ -84,13 +84,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_break_matching_disconnect"
-                style="@style/PretendardRegular.c983ff.16dp"
+                style="@style/BalsamTint.c983ff.20dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/bg_rectangle_empty_stroke_c983ff_radius_8dp_width_1dp"
                 android:gravity="center"
-                android:paddingVertical="18.5dp"
+                android:paddingVertical="15dp"
                 android:text="@string/break_matching_disconnect"
                 app:layout_constraintEnd_toEndOf="@id/gl_h_3413"
                 app:layout_constraintStart_toStartOf="parent"
@@ -98,12 +98,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_break_matching_continue"
-                style="@style/PretendardRegular.ffffff.16dp"
+                style="@style/BalsamTint.ffffff.24dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_bg_disable_dedee2_enable_c983ff_radius_8"
                 android:gravity="center"
-                android:paddingVertical="18.5dp"
+                android:paddingVertical="13dp"
                 android:text="@string/break_matching_continue"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@id/gl_h_3413"
