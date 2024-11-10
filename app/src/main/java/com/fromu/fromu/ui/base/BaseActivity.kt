@@ -126,7 +126,7 @@ abstract class BaseActivity<T : ViewDataBinding>(private val inflate: (LayoutInf
     open fun <T> handleResource(resource: Resource<T>, isShowLoadingDialog: Boolean = false, listener: ResourceSuccessListener<T>) {
         when (resource) {
             is Resource.Loading -> {
-                if (isShowLoadingDialog)
+                if (!isShowLoadingDialog)
                     showLoadingDialog()
             }
             is Resource.Success -> {

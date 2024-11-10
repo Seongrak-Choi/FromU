@@ -50,16 +50,15 @@ class LoginViewModel @Inject constructor(
     fun loginWithRefreshToken() {
         viewModelScope.launch {
             FromUApplication.prefManager.getRefreshToken()?.let { it ->
-                loginRepo.loginWithJwt(it).map { resource ->
-                    if (resource is Resource.Success) {
-                        resource.body.result?.let { userInfo ->
+                loginRepo.loginWithJwt(it).collect {
+                    if(it is Resource.Success){
+                        it.body.result?.let { userInfo ->
                             FromUApplication.prefManager.setLoginData(userInfo.userId, userInfo.jwt, userInfo.refreshToken)
 
                             patchFcmToken(userInfo.jwt)
                         }
                     }
-                    resource
-                }.collect {
+
                     _loginWithRefreshTokenResult.value = it
                 }
             } ?: let {
